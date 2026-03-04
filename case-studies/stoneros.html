@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stonerOS — Personal AI Memory System — Joshua Stoner</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-name">Joshua Stoner</a>
+      <ul class="nav-links">
+        <li><a href="/">Portfolio</a></li>
+        <li><a href="https://linkedin.com/in/joshuastoner">LinkedIn</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="/" class="back-link">&larr; Back to Portfolio</a>
+
+    <div class="case-header">
+      <span class="tab-title">stonerOS &mdash; Personal AI Memory System</span>
+      <span class="tab-subtitle">Production AI System | Self-Initiated | February 2026&ndash;Present</span>
+      <div class="tags">
+        <span class="tag">AI systems architecture</span>
+        <span class="tag">Multi-agent orchestration</span>
+        <span class="tag">Automation &amp; CI/CD</span>
+        <span class="tag">Iterative design</span>
+        <span class="tag">Self-directed build</span>
+      </div>
+    </div>
+
+    <hr>
+
+    <h2>About This Project</h2>
+    <p>Every Claude session starts from zero. No memory of prior conversations, no knowledge of preferences, no continuity across sessions. For a daily AI user doing serious work&mdash;job search strategy, resume iteration, research synthesis&mdash;that&rsquo;s a meaningful friction point.</p>
+    <p>I built <strong>stonerOS</strong>: a production AI memory system that gives Claude persistent, evolving knowledge about me across every session. It&rsquo;s a git repository&mdash;3-layer memory architecture, 17 specialized agents across three model tiers, 5 automation hooks, pre-commit secret scanning, and daily backup via macOS launchd. I use it every day. No one asked me to build it.</p>
+    <p>What makes it a portfolio piece is not that it was built&mdash;it&rsquo;s how it evolved. The system now on version 2.6 looks materially different from v1.0. Real use generated real friction. Real friction generated real fixes. The system learns about me as I use it, and I learn how to build better systems by running them.</p>
+    <blockquote>This demonstrates: AI systems architecture, multi-agent orchestration, automation pipeline design, iterative engineering judgment, and the kind of self-directed builder instinct that doesn&rsquo;t wait for a formal request to solve a real problem.</blockquote>
+
+    <hr>
+
+    <h2>Context</h2>
+    <table>
+      <tbody>
+        <tr><td><strong>Role</strong></td><td>Self-initiated&mdash;designer, architect, engineer, user</td></tr>
+        <tr><td><strong>Start</strong></td><td>February 2026 (built post-layoff, October 2025)</td></tr>
+        <tr><td><strong>Status</strong></td><td>Active production use&mdash;daily</td></tr>
+        <tr><td><strong>Stack</strong></td><td>Claude API, Claude Code hooks, bash, git, macOS launchd</td></tr>
+        <tr><td><strong>Repo</strong></td><td>Private GitHub</td></tr>
+        <tr><td><strong>Version</strong></td><td>2.6 as of March 2026</td></tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h2>The Problem</h2>
+    <p>Large language models have no persistent memory by default. Every new conversation is a blank slate. For casual use, that&rsquo;s fine. For someone running active job search operations, refining career strategy, managing a personal knowledge base, and iterating on complex documents over weeks&mdash;it&rsquo;s a significant gap.</p>
+    <p>Workarounds exist but each breaks down:</p>
+    <ul>
+      <li><strong>Pasting context into every session</strong>: scales poorly, hits token limits, costs time</li>
+      <li><strong>Uploading files manually</strong>: brittle, requires remembering what&rsquo;s relevant</li>
+      <li><strong>Relying on the model to &ldquo;remember&rdquo;</strong>: doesn&rsquo;t persist across API calls</li>
+    </ul>
+    <p>The real problem wasn&rsquo;t technical&mdash;it was that there was no designed system for how AI memory <em>should</em> work for a single user doing complex, evolving work.</p>
+
+    <hr>
+
+    <h2>The Architecture</h2>
+    <p>A three-layer memory hierarchy with agent delegation and automated CI/CD.</p>
+<pre><code>CLAUDE.md (auto-read every session — master instruction set)
+  ↓
+Memory Layer (3 tiers, append-only):
+  memories/       immutable baseline (professional history, personality exports)
+  learnings/      append-only (patterns, expertise, communication style, corrections)
+  preferences/    current state (tools, active projects, workflow context)
+  ↓
+Session Router:
+  context-router (Haiku) → classifies session in &lt;3 sec
+    transactional → skip memory load
+    partial       → preferences + corrections only
+    deep-work     → full load + skill suggestions
+  ↓
+Agent Layer (17 agents, 3 model tiers):
+  Haiku:   memory-search, session-writer, qa-validator, dedup-validator,
+           context-router, skill-curator, session-analyst
+  Sonnet:  archivist, talent, code-architect, research-analyst, docs-sync,
+           scribe, repo-janitor, slide-architect, finance-analyst
+  Opus:    main orchestrator (cost gate — not a quality upgrade)
+  ↓
+Automation Layer (5 hooks + launchd):
+  PostToolUse hook      → timestamps every file change to session log
+  SessionEnd hook       → auto-commits + pushes to GitHub
+  PreCompact hook       → writes checkpoint before context compression
+  SubagentStart/Stop    → full agent lifecycle audit trail (zero instrumentation)
+  pre-commit hook       → 9 secret patterns scanned; read-only enforcement
+  launchd               → daily 2am backup (survives missed sessions)</code></pre>
+
+    <p><strong>Key design decisions at the start:</strong></p>
+    <ul>
+      <li><strong>Append-only learnings</strong>: old memories preserved as written; git history = version control</li>
+      <li><strong>Model-tier delegation</strong>: Haiku for reads and simple writes, Sonnet for reasoning&mdash;reduces per-session token cost ~40%</li>
+      <li><strong>Safety-first</strong>: pre-commit blocks secrets before they can reach GitHub; post-commit auto-pushes, so assume everything goes public immediately</li>
+      <li><strong>Intelligent session routing</strong>: context-router (Haiku) classifies each session in &lt;3 seconds&mdash;transactional requests skip memory load entirely</li>
+    </ul>
+
+    <hr>
+
+    <h2>The Iteration Record</h2>
+    <p>This is where the portfolio piece lives. The initial build was functional. The current system is correct. What separates them is a documented log of real friction.</p>
+
+    <h3>Correction Layer (v1 &rarr; v1.5)</h3>
+    <p>The initial memory baseline contained factual errors embedded in an immutable file designated as read-only. Rather than edit the source (which would have broken the design intent of the immutable tier), I built a <strong>corrections overlay</strong>: a file that any agent must load <em>before</em> reading the baseline. This pattern&mdash;layered overrides rather than in-place edits&mdash;became a design principle.</p>
+
+    <h3>Write Race Bug (v1.5 &rarr; v2.0)</h3>
+    <p>Early multi-agent sessions produced corrupted output files. Investigation traced it to parallel agents writing to the same file simultaneously. Fix: <strong>max 1 writer active at any time.</strong> A dedicated <code>session-writer</code> agent became the sole agent authorized to write to memory files. All other agents write staging output first, then signal the orchestrator for integration.</p>
+
+    <h3>Silent Failure Protocol (v2.0 &rarr; v2.1)</h3>
+    <p>Background agents occasionally completed with empty output files. Fix: <strong>launch logging + completion markers.</strong> Before every background task, a LAUNCH entry is logged. Agents write COMPLETE or FAILED markers on finish. After every background task: verify the output file is non-empty before integrating.</p>
+
+    <h3>QA Gate Protocol (v2.0 &rarr; v2.1)</h3>
+    <p>For significant agent outputs, a <code>qa-validator</code> reviews output before returning it. Max 2 retries on NEEDS_REVISION verdict, then escalate. The constraint on retries was deliberate: preventing infinite loops by design, not by hope.</p>
+
+    <h3>Token Optimization (v2.1 &rarr; v2.2)</h3>
+    <p>Initial sessions loaded too much context. Added ignore rules, condensed index files, and session-start protocol to skip memory load for transactional requests. Result: <strong>~40% reduction in per-session token cost.</strong></p>
+
+    <h3>Skill Module System (v2.2 &rarr; v2.3)</h3>
+    <p>Loading all skills into every session was wasteful. Built a skill module system: <code>skills/_active/</code> holds currently relevant skills; inactive skills live separately. Activation is explicit&mdash;load only what&rsquo;s needed.</p>
+
+    <h3>Backlog-as-System (v2.3 &rarr; v2.4)</h3>
+    <p>Added a living bug tracker and feature backlog for the system itself. A <code>session-analyst</code> agent reads the backlog weekly and surfaces recurring patterns. The system now has a product management layer for its own development.</p>
+
+    <h3>Context-Router &amp; Session Classification (v2.4 &rarr; v2.5)</h3>
+    <p>Not every session needs full memory. A Haiku classifier reads the first message and returns a memory-load tier in under 3 seconds. Cost optimization through intelligence, not reduction.</p>
+
+    <h3>Learnings Integrity (v2.5 &rarr; v2.6)</h3>
+    <p>As learnings grew, semantic near-duplicates accumulated. Added a <code>dedup-validator</code> that checks every proposed entry against existing entries. Returns UNIQUE, SUPERSEDE, or DUPLICATE at a 60% conceptual overlap threshold.</p>
+
+    <hr>
+
+    <h2>What Makes It a Learning System</h2>
+    <table>
+      <thead><tr><th>Learning Principle</th><th>stonerOS Implementation</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Prior knowledge matters</strong></td><td>Baseline memory layer loads before each session&mdash;Claude enters knowing who I am</td></tr>
+        <tr><td><strong>Active recall &gt; passive storage</strong></td><td><code>memory-search</code> agent retrieves specific memories without loading all files</td></tr>
+        <tr><td><strong>Spaced repetition via use</strong></td><td>Learnings accumulate across sessions; frequently referenced patterns surface naturally</td></tr>
+        <tr><td><strong>Error correction</strong></td><td>Corrections overlay overrides factual errors in baseline</td></tr>
+        <tr><td><strong>Transfer</strong></td><td>Agent delegation routes tasks to the right specialist</td></tr>
+        <tr><td><strong>Adaptive load</strong></td><td><code>context-router</code> adjusts how much memory loads per session</td></tr>
+        <tr><td><strong>Metacognition</strong></td><td><code>session-analyst</code> reviews the system&rsquo;s own performance weekly</td></tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Evidence of Production Use</h2>
+    <ul>
+      <li><strong>Git log</strong>: Session-end commits timestamped to every working session since February 2026&mdash;80+ commits in 3 weeks</li>
+      <li><strong>Agent invocations</strong>: 17 agents across 3 model tiers actively routing tasks</li>
+      <li><strong>5 automation hooks</strong>: PostToolUse, SessionEnd, PreCompact, SubagentStart, SubagentStop&mdash;zero manual intervention</li>
+      <li><strong>14 slash commands</strong>: From <code>/weekly-review</code> to <code>/analyze-portfolio</code></li>
+      <li><strong>Correction layer active</strong>: Known baseline errors documented and overridden</li>
+      <li><strong>BUG-002 resolved</strong>: Write race fix has held across hundreds of sessions</li>
+      <li><strong>Token reduction confirmed</strong>: ~40% session startup cost reduction</li>
+      <li><strong>Version history</strong>: v1 &rarr; v2.6 across 8 documented iterations</li>
+    </ul>
+
+    <hr>
+
+    <h2>What It Demonstrates</h2>
+    <table>
+      <thead><tr><th>Competency</th><th>Evidence</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Systems architecture</strong></td><td>3-layer memory hierarchy; correction overlay pattern; context-router for session classification</td></tr>
+        <tr><td><strong>AI/ML engineering</strong></td><td>17-agent orchestration; model-tier delegation; dedup-validator for learnings integrity</td></tr>
+        <tr><td><strong>Automation &amp; CI/CD</strong></td><td>5 hooks; pre-commit scanning; launchd backup; auto-push pipeline</td></tr>
+        <tr><td><strong>Iterative engineering</strong></td><td>v1 &rarr; v2.6 across 8 iterations driven by real friction</td></tr>
+        <tr><td><strong>Product thinking</strong></td><td>14 slash commands, skill modules, session classification, QA gates</td></tr>
+        <tr><td><strong>Learning systems design</strong></td><td>Architecture mirrors instructional design principles</td></tr>
+        <tr><td><strong>Self-direction</strong></td><td>No spec, no team, no deadline&mdash;in daily production</td></tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner">LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com">Email</a></p>
+  </footer>
+</body>
+</html>

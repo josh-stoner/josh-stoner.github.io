@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Effectiveness Assessment — Joshua Stoner</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-name">Joshua Stoner</a>
+      <ul class="nav-links">
+        <li><a href="/">Portfolio</a></li>
+        <li><a href="https://linkedin.com/in/joshuastoner">LinkedIn</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="/" class="back-link">&larr; Back to Portfolio</a>
+
+    <div class="case-header">
+      <span class="tab-title">Team Effectiveness Assessment</span>
+      <span class="tab-subtitle">End-to-End Google Workspace Automation | People &amp; Culture L&amp;D, 2023</span>
+      <div class="tags">
+        <span class="tag tag--teal">Learning systems architecture</span>
+        <span class="tag tag--teal">Google Workspace</span>
+        <span class="tag tag--teal">Apps Script</span>
+        <span class="tag tag--teal">Zapier automation</span>
+      </div>
+    </div>
+
+    <blockquote>
+      <strong>PUBLIC VERSION</strong> &mdash; Company name and internal system references redacted for public sharing.<br>
+      Original with full technical documentation available upon request.
+    </blockquote>
+
+    <hr>
+
+    <h2>About This Project</h2>
+    <p>A structured team diagnostic grounded in Google's Project Aristotle research required significant manual coordination per team: intake tracking, eligibility checks, file creation, communications sequencing, and results delivery. As program demand scaled, that manual overhead was becoming the primary bottleneck.</p>
+    <p>I designed and built an end-to-end automation system in <strong>Google Workspace</strong> (Forms, Sheets, Apps Script) and <strong>Zapier</strong> that reduced per-team manual effort to near zero, handling the full 4-week lifecycle automatically from sign-up to results delivery.</p>
+    <blockquote>This demonstrates: learning systems architecture, Google Workspace and Apps Script development, automation logic design, scalable infrastructure thinking, and end-to-end program ops ownership. This was built as a working production system, not a prototype.</blockquote>
+
+    <hr>
+
+    <h2>The Problem</h2>
+    <p>The Team Effectiveness Assessment&mdash;grounded in <strong>Google Project Aristotle</strong> research across 4 pillars: Psychological Safety, Dependability, Structure &amp; Clarity, and Purpose &amp; Impact&mdash;required significant manual coordination per team:</p>
+    <ul>
+      <li>Manual scheduling and eligibility checks against headcount thresholds</li>
+      <li>Per-team file creation from templates</li>
+      <li>Multi-step communications sequencing over a 4-week window</li>
+      <li>Results compilation and personalized delivery to each team leader</li>
+    </ul>
+    <p>As program demand scaled, this bottleneck capped how many teams could participate per cycle.</p>
+
+    <hr>
+
+    <h2>The Solution</h2>
+    <p>An end-to-end automation system handling the full <strong>4-week lifecycle</strong> of each team's assessment&mdash;from intake to results delivery&mdash;requiring near-zero per-team manual intervention.</p>
+
+    <hr>
+
+    <h2>System Architecture</h2>
+
+    <h3>1. Sign-Up &mdash; Google Form</h3>
+    <p>Leaders self-register with: name, team name, HR partner contact, preferred launch date.</p>
+
+    <h3>2. Validation &mdash; Apps Script on Form Submit</h3>
+    <p>Checks direct reports count against eligibility threshold.</p>
+    <div class="demo-block">
+      If &lt; 5 direct reports &rarr; ineligibility email triggered + row marked canceled<br>
+      If &ge; 5 direct reports &rarr; launch/close dates calculated + confirmation triggered
+    </div>
+
+    <h3>3. Automated Communications &mdash; Zapier 10-Step Sequence</h3>
+    <table>
+      <thead><tr><th>Step</th><th>Trigger</th><th>Communication</th></tr></thead>
+      <tbody>
+        <tr><td>00</td><td>Leader interest</td><td>Program overview + intake form link</td></tr>
+        <tr><td>01a</td><td>Sign-up (eligible)</td><td>Confirmation with launch/close dates</td></tr>
+        <tr><td>01b</td><td>Sign-up (ineligible)</td><td>Ineligibility notice</td></tr>
+        <tr><td>02a</td><td>Pre-launch (T&minus;1 week)</td><td>Reminder + how-to-nominate instructions</td></tr>
+        <tr><td>03</td><td>Launch day</td><td>Assessment live&mdash;link + close date CTA</td></tr>
+        <tr><td>04.1</td><td>T+2 days</td><td>Participation reminder</td></tr>
+        <tr><td>04.2</td><td>T&minus;1 day</td><td>Final participation push</td></tr>
+        <tr><td>05</td><td>Close day</td><td>Assessment closed confirmation</td></tr>
+        <tr><td>06</td><td>Results ready</td><td>Results link + debrief prep checklist</td></tr>
+      </tbody>
+    </table>
+
+    <h3>4. Automated File Creation &mdash; Apps Script on Launch Day</h3>
+    <ul>
+      <li>Creates team-specific Google Drive folder</li>
+      <li>Copies template files (Doc, Sheet, Form) with team name and dates injected via <code>{{variables}}</code></li>
+      <li>Logs folder and results URLs back to sign-up sheet</li>
+    </ul>
+
+    <h3>5. Automated Results Delivery &mdash; Apps Script on Close Day</h3>
+    <ul>
+      <li>Toggles form off</li>
+      <li>Retrieves team folder from sheet reference</li>
+      <li>Opens results Google Doc; replaces all <code>{{variables}}</code> with live data from responses sheet</li>
+      <li>Sends results notification to team leader</li>
+    </ul>
+
+    <hr>
+
+    <h2>Key Functions</h2>
+    <table>
+      <thead><tr><th>Function</th><th>Trigger Type</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td><code>onFormSubmit</code></td><td>Form submission</td><td>Validates eligibility; logs dates</td></tr>
+        <tr><td><code>checkLaunchDates</code></td><td>Daily time-based</td><td>Fires launch workflow when today == launchDate</td></tr>
+        <tr><td><code>checkCloseDates</code></td><td>Daily time-based</td><td>Fires close workflow when today == closeDate</td></tr>
+        <tr><td><code>newTeamEffectivenessAssessment</code></td><td>Called by checkLaunchDates</td><td>Creates folder, copies templates, logs URLs</td></tr>
+        <tr><td><code>closeTeamEffectivenessAssessment</code></td><td>Called by checkCloseDates</td><td>Toggles form off, sends close notification</td></tr>
+        <tr><td><code>sendResultsToDoc</code></td><td>Post-close</td><td>Injects live data into results Doc; triggers results comms</td></tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Debrief System</h2>
+    <p>Built alongside the automation: a <strong>facilitator template deck</strong> auto-populated with team results, structured around a 5-step process:</p>
+    <p><strong>Assessment &rarr; Debrief &rarr; Focus Area &rarr; Action Items &rarr; Change</strong></p>
+    <p>Included speaker notes, timing guidance, a Start/Stop/Continue activity framework, and linked pillar toolkits for each of the 4 Project Aristotle dimensions.</p>
+
+    <hr>
+
+    <h2>Scale &amp; Outcomes</h2>
+    <ul>
+      <li>Designed to support <strong>unlimited simultaneous cohorts</strong> with no manual per-team overhead</li>
+      <li>Leader time commitment: <strong>~2 hours total</strong> over 4 weeks</li>
+      <li>Full end-to-end tested via mock submissions</li>
+      <li>System built to be maintained by non-technical team members via sheet-based configuration</li>
+    </ul>
+
+    <hr>
+
+    <h2>This Demonstrates</h2>
+    <ul>
+      <li><strong>Learning systems architecture</strong>&mdash;designed a complete operational infrastructure, not just a program</li>
+      <li><strong>Google Workspace development</strong>&mdash;Forms, Sheets, Apps Script, Drive folder management, template injection</li>
+      <li><strong>Automation logic design</strong>&mdash;eligibility branching, date-triggered workflows, multi-step Zapier sequences</li>
+      <li><strong>Scalable infrastructure thinking</strong>&mdash;system designed to run unlimited cohorts without incremental overhead</li>
+      <li><strong>End-to-end ownership</strong>&mdash;from problem identification through architecture, build, testing, and production deployment</li>
+      <li><strong>Non-technical handoff design</strong>&mdash;built so the system could be maintained without Apps Script knowledge</li>
+    </ul>
+  </main>
+
+  <footer>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner">LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com">Email</a></p>
+  </footer>
+</body>
+</html>
