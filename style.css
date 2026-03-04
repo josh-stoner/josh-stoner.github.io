@@ -37,12 +37,22 @@
 
 /* ---- Icons (Lucide) ---- */
 
-i[data-lucide] {
+i[data-lucide],
+i[data-lucide] svg {
   display: inline-block;
   width: 1em;
   height: 1em;
   vertical-align: -0.125em;
   stroke-width: 2;
+}
+
+/* Ensure Lucide-rendered SVGs inherit size */
+h2 i[data-lucide],
+h2 i[data-lucide] svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  vertical-align: -0.1em;
+  margin-right: 0.35rem;
 }
 
 /* Icon color modifiers */
@@ -129,8 +139,11 @@ i[data-lucide].icon-muted { color: var(--overlay0); }
 }
 
 .how-table td:first-child {
-  display: flex;
-  align-items: center;
+  vertical-align: middle;
+}
+.how-table td:first-child .how-icon {
+  vertical-align: middle;
+  margin-right: 0.5rem;
 }
 
 /* Nav link icons */
@@ -188,11 +201,17 @@ footer i[data-lucide] {
 }
 
 /* Skill areas table icons */
-.skill-icon i[data-lucide] {
-  width: 1rem;
-  height: 1rem;
-  margin-right: 0.4rem;
-  vertical-align: -0.15em;
+.skill-icon {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+.skill-icon i[data-lucide],
+.skill-icon svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  margin-right: 0.35rem;
+  flex-shrink: 0;
 }
 
 /* ---- Reset & Base ---- */
@@ -606,7 +625,8 @@ td {
   font-weight: 600;
   color: var(--text);
   white-space: nowrap;
-  width: 160px;
+  width: 200px;
+  vertical-align: middle;
 }
 
 /* ---- Footer ---- */
