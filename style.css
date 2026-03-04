@@ -35,6 +35,166 @@
   --nav-height: 56px;
 }
 
+/* ---- Icons (Lucide) ---- */
+
+i[data-lucide] {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  stroke-width: 2;
+}
+
+/* Icon color modifiers */
+.icon-blue i[data-lucide],
+i[data-lucide].icon-blue { color: var(--blue); }
+.icon-sky i[data-lucide],
+i[data-lucide].icon-sky { color: var(--sky); }
+.icon-teal i[data-lucide],
+i[data-lucide].icon-teal { color: var(--teal); }
+.icon-green i[data-lucide],
+i[data-lucide].icon-green { color: var(--green); }
+.icon-peach i[data-lucide],
+i[data-lucide].icon-peach { color: var(--peach); }
+.icon-mauve i[data-lucide],
+i[data-lucide].icon-mauve { color: var(--mauve); }
+.icon-lavender i[data-lucide],
+i[data-lucide].icon-lavender { color: var(--lavender); }
+.icon-yellow i[data-lucide],
+i[data-lucide].icon-yellow { color: var(--yellow); }
+.icon-red i[data-lucide],
+i[data-lucide].icon-red { color: var(--red); }
+.icon-flamingo i[data-lucide],
+i[data-lucide].icon-flamingo { color: var(--flamingo); }
+.icon-muted i[data-lucide],
+i[data-lucide].icon-muted { color: var(--overlay0); }
+
+/* Stat block icons */
+.stat-icon {
+  display: block;
+  margin: 0 auto 0.5rem;
+  color: var(--surface2);
+}
+.stat-icon i[data-lucide] {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Section label icons */
+.section-label i[data-lucide] {
+  width: 0.85rem;
+  height: 0.85rem;
+  margin-right: 0.35rem;
+  vertical-align: -0.1em;
+}
+
+/* Card title icons */
+.card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 6px;
+  background: var(--mantle);
+  margin-right: 0.6rem;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+.card-icon i[data-lucide] {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+}
+
+/* How I Work icons */
+.how-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 6px;
+  background: var(--mantle);
+  margin-right: 0.6rem;
+  flex-shrink: 0;
+}
+.how-icon i[data-lucide] {
+  width: 1rem;
+  height: 1rem;
+}
+
+.how-table td:first-child {
+  display: flex;
+  align-items: center;
+}
+
+/* Nav link icons */
+nav .nav-links i[data-lucide] {
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-right: 0.3rem;
+  vertical-align: -0.15em;
+  color: var(--overlay0);
+}
+nav .nav-links a:hover i[data-lucide] { color: var(--blue); }
+
+/* Case study header icon */
+.case-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 10px;
+  background: var(--surface0);
+  margin-bottom: 0.75rem;
+}
+.case-icon i[data-lucide] {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Demonstrates list icons */
+.demonstrates-list {
+  list-style: none;
+  padding: 0;
+}
+.demonstrates-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+.demonstrates-list i[data-lucide] {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.3rem;
+  flex-shrink: 0;
+  color: var(--green);
+}
+
+/* Footer icons */
+footer i[data-lucide] {
+  width: 0.9rem;
+  height: 0.9rem;
+  vertical-align: -0.15em;
+  margin-right: 0.15rem;
+}
+
+/* Skill areas table icons */
+.skill-icon i[data-lucide] {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.4rem;
+  vertical-align: -0.15em;
+}
+
 /* ---- Reset & Base ---- */
 
 *, *::before, *::after {
