@@ -434,6 +434,10 @@ main {
   margin: 1.5rem 0;
 }
 
+.card-grid--2col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .card {
   background: var(--surface0);
   border: 1px solid var(--surface1);
@@ -494,6 +498,7 @@ a.card:hover {
 .tag--green { color: var(--green); }
 .tag--blue { color: var(--blue); }
 .tag--mauve { color: var(--mauve); }
+.tag--sky { color: var(--sky); }
 
 /* ---- Section Divider Labels ---- */
 
@@ -695,6 +700,10 @@ footer a:hover { color: var(--blue); }
 
   nav .nav-links a {
     font-size: 0.8rem;
+  }
+
+  .card-grid--2col {
+    grid-template-columns: 1fr;
   }
 
   .case-header .tab-title {
