@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joshua Stoner — Portfolio</title>
+  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <nav>
@@ -17,6 +18,10 @@
         <li><a href="#how-i-work"><i data-lucide="compass"></i> How I Work</a></li>
         <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
       </ul>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
     </div>
   </nav>
 
@@ -25,42 +30,14 @@
       <h1>Joshua Stoner</h1>
       <p class="byline">Learning Experience Design &bull; Enablement Systems &bull; AI Integration</p>
       <p class="byline"><strong>Brooklyn, NY</strong></p>
-      <p class="tagline">"I'm a learning experience designer and enablement systems architect with 10+ years building programs that scale. My work sits at the intersection of instructional design, data analysis, and systems automation&mdash;I don't just design learning; I build the infrastructure that makes it measurable, repeatable, and self-sustaining."</p>
     </div>
 
     <hr>
 
-    <h2><i data-lucide="eye" class="icon-blue"></i> At a Glance</h2>
-    <div class="stat-row">
-      <div class="stat-block">
-        <span class="stat-icon"><i data-lucide="calendar-range"></i></span>
-        <span class="stat-number">10+</span>
-        <span class="stat-label">Years in L&amp;D &amp; Enablement</span>
-      </div>
-      <div class="stat-block">
-        <span class="stat-icon"><i data-lucide="building-2"></i></span>
-        <span class="stat-number">~6+</span>
-        <span class="stat-label">Years at Lyft</span>
-      </div>
-      <div class="stat-block">
-        <span class="stat-icon"><i data-lucide="users"></i></span>
-        <span class="stat-number">~4,000</span>
-        <span class="stat-label">TMs Supported</span>
-      </div>
-      <div class="stat-block">
-        <span class="stat-icon"><i data-lucide="user-check"></i></span>
-        <span class="stat-number">~500+</span>
-        <span class="stat-label">People Managers</span>
-      </div>
-    </div>
-
-    <hr>
-
-    <h2 id="portfolio"><i data-lucide="briefcase" class="icon-blue"></i> Portfolio Index</h2>
-
-    <p class="section-label"><i data-lucide="bar-chart-2" class="icon-lavender"></i> Data &amp; Measurement</p>
+    <div class="portfolio-section">
+    <p class="section-label reveal"><i data-lucide="bar-chart-2" class="icon-lavender"></i> Data &amp; Measurement</p>
     <div class="card-grid">
-      <a href="case-studies/perfdev-pilot.html" class="card">
+      <a href="case-studies/perfdev-pilot.html" class="card reveal">
         <span class="card-title">
           <span class="card-icon icon-lavender"><i data-lucide="bar-chart-2"></i></span>
           01 &mdash; Performance Feedback Redesign
@@ -68,17 +45,17 @@
         <span class="card-date">Jul&ndash;Oct 2025</span>
         <p class="card-desc">A/B tested two peer feedback formats with 169 participants to diagnose a ceiling effect in the performance cycle. Designed a Frequency &times; Impact matrix as a replacement, analyzed results across job family, location, and role, and built a quadrant-based intervention framework for manager development conversations.</p>
         <div class="tags">
-          <span class="tag">A/B testing</span>
-          <span class="tag">Data analysis</span>
-          <span class="tag">Instructional design</span>
-          <span class="tag">Performance systems</span>
+          <span class="tag tag--lavender">A/B testing</span>
+          <span class="tag tag--lavender">Data analysis</span>
+          <span class="tag tag--lavender">Instructional design</span>
+          <span class="tag tag--lavender">Performance systems</span>
         </div>
       </a>
     </div>
 
-    <p class="section-label"><i data-lucide="settings" class="icon-teal"></i> Systems &amp; Automation</p>
+    <p class="section-label reveal"><i data-lucide="settings" class="icon-teal"></i> Systems &amp; Automation</p>
     <div class="card-grid">
-      <a href="case-studies/team-effectiveness.html" class="card">
+      <a href="case-studies/team-effectiveness.html" class="card reveal">
         <span class="card-title">
           <span class="card-icon icon-teal"><i data-lucide="settings"></i></span>
           02 &mdash; Team Effectiveness Assessment
@@ -94,9 +71,9 @@
       </a>
     </div>
 
-    <p class="section-label"><i data-lucide="bot" class="icon-peach"></i> AI Enablement</p>
+    <p class="section-label reveal"><i data-lucide="bot" class="icon-peach"></i> AI Enablement</p>
     <div class="card-grid">
-      <a href="case-studies/ai-manager-guide.html" class="card">
+      <a href="case-studies/ai-manager-guide.html" class="card reveal">
         <span class="card-title">
           <span class="card-icon icon-peach"><i data-lucide="bot"></i></span>
           03 &mdash; Manager-Led AI Enablement
@@ -112,17 +89,17 @@
       </a>
     </div>
 
-    <p class="section-label"><i data-lucide="book-open" class="icon-green"></i> Curriculum &amp; Facilitation</p>
+    <p class="section-label reveal"><i data-lucide="book-open" class="icon-green"></i> Curriculum &amp; Workshop Design</p>
     <div class="card-grid">
-      <a href="case-studies/conversations-count.html" class="card">
+      <a href="case-studies/conversations-count.html" class="card reveal">
         <span class="card-title">
           <span class="card-icon icon-green"><i data-lucide="book-open"></i></span>
           04 &mdash; Conversations That Count
         </span>
         <span class="card-date">Q2 2024&ndash;2026</span>
-        <p class="card-desc">Designed and facilitated a manager development workshop to close a diagnosed gap in feedback quality across performance cycles. Built around the SBID framework already embedded in the culture, with a paired workbook for post-session application. Delivered to ~60&ndash;70 managers during a period of significant organizational change.</p>
+        <p class="card-desc">Designed and developed a manager development workshop to close a diagnosed gap in feedback quality across performance cycles. Built around the SBID framework already embedded in the culture, with a paired workbook for post-session application. Reached ~60&ndash;70 managers during a period of significant organizational change.</p>
         <div class="tags">
-          <span class="tag tag--green">Live facilitation</span>
+          <span class="tag tag--green">Workshop design</span>
           <span class="tag tag--green">Curriculum design</span>
           <span class="tag tag--green">Manager enablement</span>
           <span class="tag tag--green">Behavior change</span>
@@ -130,9 +107,9 @@
       </a>
     </div>
 
-    <p class="section-label"><i data-lucide="brain" class="icon-mauve"></i> AI Systems (Self-Initiated)</p>
+    <p class="section-label reveal"><i data-lucide="brain" class="icon-mauve"></i> AI Systems (Self-Initiated)</p>
     <div class="card-grid">
-      <a href="case-studies/stoneros.html" class="card">
+      <a href="case-studies/stoneros.html" class="card reveal">
         <span class="card-title">
           <span class="card-icon icon-mauve"><i data-lucide="brain"></i></span>
           05 &mdash; stonerOS &mdash; Personal AI Memory System
@@ -140,15 +117,15 @@
         <span class="card-date">February 2026&ndash;Present</span>
         <p class="card-desc">Built a production AI memory system from scratch&mdash;a 3-layer memory hierarchy, 17-agent orchestration across three model tiers, and an automated CI/CD pipeline via Claude Code hooks, pre-commit secret scanning, and macOS launchd. The system learns about me as I use it. No spec, no team, no deadline.</p>
         <div class="tags">
-          <span class="tag">AI systems architecture</span>
-          <span class="tag">Multi-agent orchestration</span>
-          <span class="tag">Automation &amp; CI/CD</span>
-          <span class="tag">Iterative design</span>
+          <span class="tag tag--mauve">AI systems architecture</span>
+          <span class="tag tag--mauve">Multi-agent orchestration</span>
+          <span class="tag tag--mauve">Automation &amp; CI/CD</span>
+          <span class="tag tag--mauve">Iterative design</span>
         </div>
       </a>
     </div>
 
-    <p class="section-label"><i data-lucide="film" class="icon-sky"></i> Content Design &amp; Production</p>
+    <p class="section-label reveal"><i data-lucide="film" class="icon-sky"></i> Content Design &amp; Production</p>
     <div class="card-grid card-grid--2col">
       <a href="https://josh-stoner.github.io/rise-demo-ew-s1/" class="card" target="_blank">
         <span class="card-title">
@@ -164,7 +141,7 @@
           <span class="tag tag--sky">Branching scenarios</span>
         </div>
       </a>
-      <a href="https://github.com/josh-stoner/keynote-video-animator" class="card" target="_blank">
+      <a href="https://josh-stoner.github.io/keynote-video-animator/" class="card" target="_blank">
         <span class="card-title">
           <span class="card-icon icon-sky"><i data-lucide="film"></i></span>
           Keynote Video Animations
@@ -180,10 +157,12 @@
       </a>
     </div>
 
+    </div>
+
     <hr>
 
-    <h2 id="how-i-work"><i data-lucide="compass" class="icon-blue"></i> How I Work</h2>
-    <table class="how-table">
+    <h2 id="how-i-work" class="reveal"><i data-lucide="compass" class="icon-blue"></i> How I Work</h2>
+    <table class="how-table reveal">
       <tbody>
         <tr>
           <td><span class="how-icon icon-sky"><i data-lucide="search"></i></span> Problem framing</td>
@@ -198,7 +177,7 @@
           <td>Production-ready systems, not prototypes&mdash;built to be maintained by non-technical stakeholders</td>
         </tr>
         <tr>
-          <td><span class="how-icon icon-yellow"><i data-lucide="activity"></i></span> Measurement</td>
+          <td><span class="how-icon icon-mauve"><i data-lucide="activity"></i></span> Measurement</td>
           <td>Every program has a diagnostic hook&mdash;pilot data, participation metrics, or behavioral observation frameworks</td>
         </tr>
         <tr>
@@ -210,8 +189,8 @@
 
     <hr>
 
-    <h2><i data-lucide="layers" class="icon-blue"></i> Skill Areas Across These Samples</h2>
-    <table>
+    <h2 class="reveal"><i data-lucide="layers" class="icon-blue"></i> Skill Areas Across These Samples</h2>
+    <table class="reveal">
       <thead>
         <tr><th>Area</th><th>Evidence</th></tr>
       </thead>
@@ -219,7 +198,7 @@
         <tr><td><strong><span class="skill-icon icon-lavender"><i data-lucide="pen-tool"></i></span>Instructional design</strong></td><td>A/B pilot methodology, SBID workshop design, values-mapped facilitation framework</td></tr>
         <tr><td><strong><span class="skill-icon icon-blue"><i data-lucide="bar-chart-2"></i></span>Data analysis</strong></td><td>169-participant segmentation by job family, location, role; ceiling effect identification; intervention matrix</td></tr>
         <tr><td><strong><span class="skill-icon icon-teal"><i data-lucide="network"></i></span>Systems architecture</strong></td><td>End-to-end Google Workspace automation; Apps Script; Zapier 10-step sequence; template injection pipeline</td></tr>
-        <tr><td><strong><span class="skill-icon icon-green"><i data-lucide="presentation"></i></span>Facilitation design</strong></td><td>Manager workshop with workbook artifact; 3-part AI guide with icebreakers, scripts, and adoption pathways</td></tr>
+        <tr><td><strong><span class="skill-icon icon-sky"><i data-lucide="presentation"></i></span>Facilitation design</strong></td><td>Manager workshop with workbook artifact; 3-part AI guide with icebreakers, scripts, and adoption pathways</td></tr>
         <tr><td><strong><span class="skill-icon icon-peach"><i data-lucide="bot"></i></span>AI integration</strong></td><td>Manager AI facilitation guide built proactively; values-mapped AI use case framework</td></tr>
         <tr><td><strong><span class="skill-icon icon-mauve"><i data-lucide="rocket"></i></span>Proactive ownership</strong></td><td>PerfDev pilot, AI guide, and Team Effectiveness automation were all self-initiated</td></tr>
       </tbody>
@@ -232,5 +211,6 @@
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>lucide.createIcons();</script>
+  <script src="theme.js"></script>
 </body>
 </html>
