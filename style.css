@@ -37,6 +37,13 @@
 
 /* ---- Icons (Lucide) ---- */
 
+/*
+ * Icon hierarchy:
+ *   WITH background shape → standalone objects (cards, stats, case headers)
+ *   BARE inline           → next to text (headings, tables, nav, footer, lists)
+ */
+
+/* Base: all Lucide icons */
 i[data-lucide],
 i[data-lucide] svg {
   display: inline-block;
@@ -46,59 +53,51 @@ i[data-lucide] svg {
   stroke-width: 2;
 }
 
-/* Ensure Lucide-rendered SVGs inherit size */
-h2 i[data-lucide],
-h2 i[data-lucide] svg {
-  width: 1.1rem;
-  height: 1.1rem;
-  vertical-align: -0.1em;
-  margin-right: 0.35rem;
-}
-
-/* Icon color modifiers */
-.icon-blue i[data-lucide],
+/* Color modifiers */
+.icon-blue i[data-lucide], .icon-blue svg,
 i[data-lucide].icon-blue { color: var(--blue); }
-.icon-sky i[data-lucide],
+.icon-sky i[data-lucide], .icon-sky svg,
 i[data-lucide].icon-sky { color: var(--sky); }
-.icon-teal i[data-lucide],
+.icon-teal i[data-lucide], .icon-teal svg,
 i[data-lucide].icon-teal { color: var(--teal); }
-.icon-green i[data-lucide],
+.icon-green i[data-lucide], .icon-green svg,
 i[data-lucide].icon-green { color: var(--green); }
-.icon-peach i[data-lucide],
+.icon-peach i[data-lucide], .icon-peach svg,
 i[data-lucide].icon-peach { color: var(--peach); }
-.icon-mauve i[data-lucide],
+.icon-mauve i[data-lucide], .icon-mauve svg,
 i[data-lucide].icon-mauve { color: var(--mauve); }
-.icon-lavender i[data-lucide],
+.icon-lavender i[data-lucide], .icon-lavender svg,
 i[data-lucide].icon-lavender { color: var(--lavender); }
-.icon-yellow i[data-lucide],
+.icon-yellow i[data-lucide], .icon-yellow svg,
 i[data-lucide].icon-yellow { color: var(--yellow); }
-.icon-red i[data-lucide],
+.icon-red i[data-lucide], .icon-red svg,
 i[data-lucide].icon-red { color: var(--red); }
-.icon-flamingo i[data-lucide],
+.icon-flamingo i[data-lucide], .icon-flamingo svg,
 i[data-lucide].icon-flamingo { color: var(--flamingo); }
-.icon-muted i[data-lucide],
+.icon-muted i[data-lucide], .icon-muted svg,
 i[data-lucide].icon-muted { color: var(--overlay0); }
 
-/* Stat block icons */
+/* ---- BACKGROUND SHAPE icons (standalone objects) ---- */
+
+/* Stat blocks — centered above number */
 .stat-icon {
-  display: block;
-  margin: 0 auto 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 8px;
+  background: var(--mantle);
+  margin: 0 auto 0.6rem;
+}
+.stat-icon i[data-lucide],
+.stat-icon svg {
+  width: 1.15rem;
+  height: 1.15rem;
   color: var(--surface2);
 }
-.stat-icon i[data-lucide] {
-  width: 1.5rem;
-  height: 1.5rem;
-}
 
-/* Section label icons */
-.section-label i[data-lucide] {
-  width: 0.85rem;
-  height: 0.85rem;
-  margin-right: 0.35rem;
-  vertical-align: -0.1em;
-}
-
-/* Card title icons */
+/* Card titles — small square before title text */
 .card-icon {
   display: inline-flex;
   align-items: center;
@@ -108,10 +107,10 @@ i[data-lucide].icon-muted { color: var(--overlay0); }
   border-radius: 6px;
   background: var(--mantle);
   margin-right: 0.6rem;
-  vertical-align: middle;
   flex-shrink: 0;
 }
-.card-icon i[data-lucide] {
+.card-icon i[data-lucide],
+.card-icon svg {
   width: 1.1rem;
   height: 1.1rem;
 }
@@ -121,44 +120,9 @@ i[data-lucide].icon-muted { color: var(--overlay0); }
   align-items: center;
 }
 
-/* How I Work icons */
-.how-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 6px;
-  background: var(--mantle);
-  margin-right: 0.6rem;
-  flex-shrink: 0;
-}
-.how-icon i[data-lucide] {
-  width: 1rem;
-  height: 1rem;
-}
-
-.how-table td:first-child {
-  vertical-align: middle;
-}
-.how-table td:first-child .how-icon {
-  vertical-align: middle;
-  margin-right: 0.5rem;
-}
-
-/* Nav link icons */
-nav .nav-links i[data-lucide] {
-  width: 0.9rem;
-  height: 0.9rem;
-  margin-right: 0.3rem;
-  vertical-align: -0.15em;
-  color: var(--overlay0);
-}
-nav .nav-links a:hover i[data-lucide] { color: var(--blue); }
-
-/* Case study header icon */
+/* Case study header — large icon above title */
 .case-icon {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 2.75rem;
@@ -167,40 +131,46 @@ nav .nav-links a:hover i[data-lucide] { color: var(--blue); }
   background: var(--surface0);
   margin-bottom: 0.75rem;
 }
-.case-icon i[data-lucide] {
+.case-icon i[data-lucide],
+.case-icon svg {
   width: 1.5rem;
   height: 1.5rem;
 }
 
-/* Demonstrates list icons */
-.demonstrates-list {
-  list-style: none;
-  padding: 0;
+/* ---- BARE INLINE icons (next to text) ---- */
+
+/* Section headings (h2) */
+h2 i[data-lucide],
+h2 svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  vertical-align: -0.1em;
+  margin-right: 0.4rem;
 }
-.demonstrates-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-  margin-bottom: 0.75rem;
-  line-height: 1.6;
+
+/* Section divider labels */
+.section-label i[data-lucide],
+.section-label svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  margin-right: 0.35rem;
+  vertical-align: -0.1em;
 }
-.demonstrates-list i[data-lucide] {
-  width: 1.1rem;
-  height: 1.1rem;
-  margin-top: 0.3rem;
+
+/* How I Work table — bare icon, no background */
+.how-icon {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.5rem;
   flex-shrink: 0;
-  color: var(--green);
+}
+.how-icon i[data-lucide],
+.how-icon svg {
+  width: 1rem;
+  height: 1rem;
 }
 
-/* Footer icons */
-footer i[data-lucide] {
-  width: 0.9rem;
-  height: 0.9rem;
-  vertical-align: -0.15em;
-  margin-right: 0.15rem;
-}
-
-/* Skill areas table icons */
+/* Skill areas table — bare icon inline with label */
 .skill-icon {
   display: inline-flex;
   align-items: center;
@@ -212,6 +182,55 @@ footer i[data-lucide] {
   height: 0.95rem;
   margin-right: 0.35rem;
   flex-shrink: 0;
+}
+
+/* Nav link icons */
+nav .nav-links i[data-lucide],
+nav .nav-links svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-right: 0.3rem;
+  vertical-align: -0.15em;
+  color: var(--overlay0);
+}
+nav .nav-links a:hover i[data-lucide],
+nav .nav-links a:hover svg { color: var(--blue); }
+
+/* Footer icons */
+footer i[data-lucide],
+footer svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  vertical-align: -0.15em;
+  margin-right: 0.15rem;
+}
+
+/* Back link */
+.back-link i[data-lucide],
+.back-link svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+/* Demonstrates list — bare check icons */
+.demonstrates-list {
+  list-style: none;
+  padding: 0;
+}
+.demonstrates-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+.demonstrates-list i[data-lucide],
+.demonstrates-list svg {
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.35rem;
+  flex-shrink: 0;
+  color: var(--green);
 }
 
 /* ---- Reset & Base ---- */
@@ -513,6 +532,11 @@ td {
   border-bottom: 1px solid var(--surface0);
   color: var(--subtext1);
   font-size: 0.95rem;
+  vertical-align: top;
+}
+
+th {
+  vertical-align: bottom;
 }
 
 /* ---- Case Study Pages ---- */
@@ -625,8 +649,9 @@ td {
   font-weight: 600;
   color: var(--text);
   white-space: nowrap;
-  width: 200px;
-  vertical-align: middle;
+  width: 210px;
+  vertical-align: top;
+  padding-top: 0.7rem;
 }
 
 /* ---- Footer ---- */
