@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>I Gave Claude a Brain — Joshua Stoner</title>
+  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
   <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     /* Article-specific styles */
     .article-header {
@@ -91,19 +94,32 @@
     <div class="nav-inner">
       <a href="../" class="nav-name">Joshua Stoner</a>
       <ul class="nav-links">
-        <li><a href="../">Portfolio</a></li>
-        <li><a href="../writing/ai-brain-ch0.html">Writing</a></li>
+        <li><a href="../"><i data-lucide="folder-open"></i> Portfolio</a></li>
+        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
       </ul>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
     </div>
   </nav>
 
   <main>
-    <a href="../" class="back-link">&larr; Back to portfolio</a>
+    <a href="../" class="back-link"><i data-lucide="arrow-left"></i> Back to Portfolio</a>
 
     <div class="article-header">
+      <span class="case-icon icon-mauve"><i data-lucide="brain"></i></span>
       <h1>I Gave Claude a Brain. Here's What Happened.</h1>
       <p class="article-meta">March 2026 &middot; Josh Stoner</p>
+      <div class="tags">
+        <span class="tag tag--mauve">AI systems architecture</span>
+        <span class="tag tag--mauve">Multi-agent orchestration</span>
+        <span class="tag tag--mauve">Automation</span>
+        <span class="tag tag--mauve">Build in public</span>
+      </div>
     </div>
+
+    <hr>
 
     <div class="article-body">
 
@@ -113,7 +129,7 @@
 
       <p>I got tired of introducing myself.</p>
 
-      <h2>What I Built</h2>
+      <h2><i data-lucide="cpu" class="icon-mauve"></i> What I Built</h2>
 
       <p>In February 2026, a few months after getting laid off, I started building what I call stonerOS &mdash; a persistent memory system for Claude. Not a wrapper. Not a chatbot. A structured knowledge layer that gives an AI assistant a durable understanding of who I am, what I'm working on, and how I think.</p>
 
@@ -131,7 +147,7 @@
 
       <img src="../assets/images/ai-brain-before-after.png" alt="Side-by-side comparison: a stateless AI conversation asking 6 clarifying questions vs. stonerOS immediately delivering a personalized fit score, specific project matches, and behavioral warnings">
 
-      <h2>The Architecture (One Paragraph Version)</h2>
+      <h2><i data-lucide="network" class="icon-mauve"></i> The Architecture (One Paragraph Version)</h2>
 
       <p>Three memory layers: an immutable baseline (who I am, my history, my personality), an append-only learnings layer (corrections, patterns, expertise that evolve), and a current-state layer (active preferences, live projects, recent sessions). Seventeen specialized agents handle different jobs &mdash; searching memory, writing session logs, validating outputs, auditing documentation, coaching career strategy. Each agent runs on the cheapest model that can do the job well. Five automation hooks fire on file changes, session ends, and context compression events. Two git hooks block secrets and auto-push backups. Everything version-controlled, everything recoverable.</p>
 
@@ -139,7 +155,7 @@
 
       <p>That's the skeleton. The interesting part is what I learned building it.</p>
 
-      <h2>Five Things Nobody Told Me</h2>
+      <h2><i data-lucide="lightbulb" class="icon-peach"></i> Five Things Nobody Told Me</h2>
 
       <div class="discovery">
         <p class="discovery-title">1. Background agents fail silently.</p>
@@ -171,7 +187,7 @@
         <p>The fix was a <code>/docs-sync</code> command that compares documentation against the actual repo state and patches the gaps. The meta-lesson: if your system changes frequently, documentation needs to be a process, not a deliverable.</p>
       </div>
 
-      <h2>Why I'm Writing This</h2>
+      <h2><i data-lucide="pen-tool" class="icon-lavender"></i> Why I'm Writing This</h2>
 
       <p>I spent ten years in Learning &amp; Development. I've designed curriculum for thousands of people, built automation systems that ran for years without maintenance, and shipped learning programs with measurable impact. When I started building stonerOS, I wasn't trying to create a product. I was trying to solve a problem: AI without memory is a tool; AI with memory is a partner.</p>
 
@@ -179,7 +195,7 @@
 
       <p>I wanted to change that. Not by telling people what to build, but by showing what happened when I did &mdash; the decisions, the mistakes, and the moments where the system started surprising me.</p>
 
-      <h2>What's Ahead</h2>
+      <h2><i data-lucide="map" class="icon-sky"></i> What's Ahead</h2>
 
       <div class="ahead-item">
         <strong>Why Memory Changes Everything</strong>
@@ -214,15 +230,11 @@
   </main>
 
   <footer>
-    Joshua Stoner &middot; Brooklyn, NY &middot;
-    <a href="https://linkedin.com/in/joshuastoner">LinkedIn</a> &middot;
-    <a href="mailto:itsJoshStoner@gmail.com">Email</a>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></p>
   </footer>
 
-  <script>
-    // Theme toggle (inherit from main site)
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
 </body>
 </html>
