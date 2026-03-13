@@ -150,7 +150,7 @@
 
     <div class="article-body">
 
-      <p>Most AI assistants now offer some form of memory &mdash; saved preferences, conversation history, pinned facts. It's a start. But it's shallow: a flat list of things the AI noticed, with no structure, no categories, no rules about what changes and what doesn't.</p>
+      <p>Most AI assistants now offer some form of memory&mdash;saved preferences, conversation history, pinned facts. It's a start. But it's shallow: a flat list of things the AI noticed, with no structure, no categories, no rules about what changes and what doesn't.</p>
 
       <p>It doesn't matter that you spent three hours last Tuesday mapping out your project architecture. The AI might remember your name and that you're a developer. It won't remember the specific tradeoffs you discussed, the decision you made, or that you already rejected the approach it's about to suggest. The memory exists. The depth doesn't.</p>
 
@@ -158,16 +158,16 @@
 
       <h2><i data-lucide="cpu" class="icon-mauve"></i> What I Built</h2>
 
-      <p>In February 2026, a few months after getting laid off, I started building what I call stonerOS &mdash; a persistent memory system for Claude. Not a wrapper. Not a chatbot. A structured knowledge layer that gives an AI assistant a durable understanding of who I am, what I'm working on, and how I think.</p>
+      <p>In February 2026, a few months after getting laid off, I started building what I call stonerOS&mdash;a persistent memory system for Claude. Not a wrapper. Not a chatbot. A structured knowledge layer that gives an AI assistant a durable understanding of who I am, what I'm working on, and how I think.</p>
 
-      <p>The system lives in a folder on my laptop. It's a git repo. Every session Claude runs, it reads a core instruction file that loads my preferences, my behavioral patterns, my active projects, and my career context. When something new is learned &mdash; a correction, a preference, a pattern &mdash; it gets written to the appropriate file and committed. The next session picks up where the last one left off.</p>
+      <p>The system lives in a folder on my laptop. It's a git repo. Every session Claude runs, it reads a core instruction file that loads my preferences, my behavioral patterns, my active projects, and my career context. When something new is learned&mdash;a correction, a preference, a pattern&mdash;it gets written to the appropriate file and committed. The next session picks up where the last one left off.</p>
 
       <p>Here's what it looks like in practice:</p>
 
       <ul>
         <li>I open a new Claude session and ask it to help me prep for a job interview. It already knows my resume, my portfolio, my past interview feedback, and which companies I've applied to. No preamble needed.</li>
         <li>I ask it to review a piece of writing. It already knows I don't want flattery, that I prefer direct feedback, and that I catch overclaiming language instinctively. It adjusts.</li>
-        <li>I run a slash command &mdash; <code>/job-prep</code> &mdash; and it scores a job posting against my actual skill inventory, professional history, and career goals. Not generic advice. Advice grounded in <em>my</em> context.</li>
+        <li>I run a slash command&mdash;<code>/job-prep</code>&mdash;and it scores a job posting against my actual skill inventory, professional history, and career goals. Not generic advice. Advice grounded in <em>my</em> context.</li>
       </ul>
 
       <p>None of this is magic. It's just files, conventions, and a few automation hooks. But the cumulative effect is something I didn't expect: the AI stopped feeling like a tool and started feeling like infrastructure.</p>
@@ -176,7 +176,7 @@
 
       <h2><i data-lucide="network" class="icon-mauve"></i> The Architecture (One Paragraph Version)</h2>
 
-      <p>Three memory layers: an immutable baseline (who I am, my history, my personality), an append-only learnings layer (corrections, patterns, expertise that evolve), and a current-state layer (active preferences, live projects, recent sessions). Seventeen specialized agents handle different jobs &mdash; searching memory, writing session logs, validating outputs, auditing documentation, coaching career strategy. Each agent runs on the cheapest model that can do the job well. Five automation hooks fire on file changes, session ends, and context compression events. Two git hooks block secrets and auto-push backups. Everything version-controlled, everything recoverable.</p>
+      <p>Three memory layers: an immutable baseline (who I am, my history, my personality), an append-only learnings layer (corrections, patterns, expertise that evolve), and a current-state layer (active preferences, live projects, recent sessions). Seventeen specialized agents handle different jobs&mdash;searching memory, writing session logs, validating outputs, auditing documentation, coaching career strategy. Each agent runs on the cheapest model that can do the job well. Five automation hooks fire on file changes, session ends, and context compression events. Two git hooks block secrets and auto-push backups. Everything version-controlled, everything recoverable.</p>
 
       <img src="../assets/images/ai-brain-architecture.png" alt="stonerOS architecture diagram: session start flow through context-router, three memory layers (baseline, learnings, current state), 17 agents across Haiku/Sonnet/Opus tiers, and six automation hooks">
 
@@ -186,8 +186,8 @@
 
       <div class="discovery">
         <p class="discovery-title">1. Background agents fail silently.</p>
-        <p>I learned this the hard way. Claude Code lets you run agents in the background &mdash; fire off a task and keep working. Useful in theory. In practice, background agents can complete without producing any output and without throwing an error. The task just&hellip; finishes. You check for the output file and it isn't there. No log entry, no error message, nothing.</p>
-        <p>The fix was a policy decision: high-stakes writes always run in the foreground. Background mode is for tasks where silent failure is acceptable. Not a code fix &mdash; an architecture decision driven by observed behavior.</p>
+        <p>I learned this the hard way. Claude Code lets you run agents in the background&mdash;fire off a task and keep working. Useful in theory. In practice, background agents can complete without producing any output and without throwing an error. The task just&hellip; finishes. You check for the output file and it isn't there. No log entry, no error message, nothing.</p>
+        <p>The fix was a policy decision: high-stakes writes always run in the foreground. Background mode is for tasks where silent failure is acceptable. Not a code fix&mdash;an architecture decision driven by observed behavior.</p>
       </div>
 
       <div class="discovery">
@@ -198,8 +198,8 @@
 
       <div class="discovery">
         <p class="discovery-title">3. Your AI will learn things about you that surprise you.</p>
-        <p>After a month of accumulated session data, the system started surfacing patterns I hadn't articulated to myself. That I build infrastructure before I build the thing I actually need &mdash; and that this is a strength with runway but a risk with deadlines. That I lose engagement the moment work cycles back to already-solved problems. That I instinctively catch overclaiming in my own writing but chronically underclaim the scale of my automation work.</p>
-        <p>These aren't insights the AI generated from nothing. They emerged from the accumulated evidence of dozens of sessions. The memory system didn't make Claude smarter &mdash; it gave it enough data to be observant.</p>
+        <p>After a month of accumulated session data, the system started surfacing patterns I hadn't articulated to myself. That I build infrastructure before I build the thing I actually need&mdash;and that this is a strength with runway but a risk with deadlines. That I lose engagement the moment work cycles back to already-solved problems. That I instinctively catch overclaiming in my own writing but chronically underclaim the scale of my automation work.</p>
+        <p>These aren't insights the AI generated from nothing. They emerged from the accumulated evidence of dozens of sessions. The memory system didn't make Claude smarter&mdash;it gave it enough data to be observant.</p>
       </div>
 
       <div class="discovery">
@@ -218,9 +218,9 @@
 
       <p>I spent ten years in Learning &amp; Development. I've designed curriculum for thousands of people, built automation systems that ran for years without maintenance, and shipped learning programs with measurable impact. When I started building stonerOS, I wasn't trying to create a product. I was trying to solve a problem: AI without memory is a tool; AI with memory is a partner.</p>
 
-      <p>But the more I built, the more I realized: the discoveries I was making &mdash; about agent design, memory architecture, automation patterns, failure modes &mdash; weren't documented anywhere. Not in Anthropic's docs. Not in blog posts. Not in the Claude Code community. Because most people using AI aren't building persistent systems. They're having conversations.</p>
+      <p>But the more I built, the more I realized: the discoveries I was making&mdash;about agent design, memory architecture, automation patterns, failure modes&mdash;weren't documented anywhere. Not in Anthropic's docs. Not in blog posts. Not in the Claude Code community. Because most people using AI aren't building persistent systems. They're having conversations.</p>
 
-      <p>I wanted to change that. Not by telling people what to build, but by showing what happened when I did &mdash; the decisions, the mistakes, and the moments where the system started surprising me.</p>
+      <p>I wanted to change that. Not by telling people what to build, but by showing what happened when I did&mdash;the decisions, the mistakes, and the moments where the system started surprising me.</p>
 
       <h2><i data-lucide="map" class="icon-sky"></i> What's Ahead</h2>
 
@@ -236,7 +236,7 @@
 
       <div class="ahead-item">
         <strong>The First Agent</strong>
-        <p>The moment the system went from "files Claude reads" to "a team that works for me" &mdash; building a specialized sub-agent on the cheapest model possible.</p>
+        <p>The moment the system went from "files Claude reads" to "a team that works for me"&mdash;building a specialized sub-agent on the cheapest model possible.</p>
       </div>
 
       <div class="ahead-item">
