@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>stonerOS — Personal AI Memory System — Joshua Stoner</title>
+  <meta name="description" content="Production AI memory system with 3-layer memory hierarchy, 18-agent orchestration, autonomous scheduled sessions, and automated CI/CD pipeline.">
+  <meta property="og:title" content="stonerOS — Personal AI Memory System">
+  <meta property="og:description" content="Built a production AI memory system from scratch — 18-agent orchestration across three model tiers, autonomous sessions, and automated CI/CD via Claude Code.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://josh-stoner.github.io/case-studies/stoneros.html">
+  <meta name="twitter:card" content="summary">
   <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
   <link rel="stylesheet" href="../style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,8 +50,8 @@
 
     <h2><i data-lucide="info" class="icon-blue"></i> About This Project</h2>
     <p>Every Claude session starts from zero. No memory of prior conversations, no knowledge of preferences, no continuity across sessions. For a daily AI user doing serious work&mdash;job search strategy, resume iteration, research synthesis&mdash;that&rsquo;s a meaningful friction point.</p>
-    <p>I built <strong>stonerOS</strong>: a production AI memory system that gives Claude persistent, evolving knowledge about me across every session. It&rsquo;s a git repository&mdash;3-layer memory architecture, 17 specialized agents across three model tiers, 5 automation hooks, pre-commit secret scanning, and daily backup via macOS launchd. I use it every day. No one asked me to build it.</p>
-    <p>What makes it a portfolio piece is not that it was built&mdash;it&rsquo;s how it evolved. The system now on version 2.6 looks materially different from v1.0. Real use generated real friction. Real friction generated real fixes. The system learns about me as I use it, and I learn how to build better systems by running them.</p>
+    <p>I built <strong>stonerOS</strong>: a production AI memory system that gives Claude persistent, evolving knowledge about me across every session. It&rsquo;s a git repository&mdash;3-layer memory architecture, 18 specialized agents across three model tiers, 5 automation hooks, autonomous scheduled sessions, pre-commit secret scanning, and daily backup via macOS launchd. I use it every day. No one asked me to build it.</p>
+    <p>What makes it a portfolio piece is not that it was built&mdash;it&rsquo;s how it evolved. The system now on version 2.8 looks materially different from v1.0. Real use generated real friction. Real friction generated real fixes. The system learns about me as I use it, and I learn how to build better systems by running them.</p>
     <blockquote>This demonstrates: AI systems architecture, multi-agent orchestration, automation pipeline design, iterative engineering judgment, and the kind of self-directed builder instinct that doesn&rsquo;t wait for a formal request to solve a real problem.</blockquote>
 
     <hr>
@@ -58,7 +64,7 @@
         <tr><td><strong>Status</strong></td><td>Active production use&mdash;daily</td></tr>
         <tr><td><strong>Stack</strong></td><td>Claude API, Claude Code hooks, bash, git, macOS launchd</td></tr>
         <tr><td><strong>Repo</strong></td><td>Private GitHub</td></tr>
-        <tr><td><strong>Version</strong></td><td>2.6 as of March 2026</td></tr>
+        <tr><td><strong>Version</strong></td><td>2.8 as of March 2026</td></tr>
       </tbody>
     </table>
 
@@ -91,11 +97,12 @@ Session Router:
     partial       → preferences + corrections only
     deep-work     → full load + skill suggestions
   ↓
-Agent Layer (17 agents, 3 model tiers):
+Agent Layer (18 agents, 3 model tiers):
   Haiku:   memory-search, session-writer, qa-validator, dedup-validator,
            context-router, skill-curator, session-analyst
   Sonnet:  archivist, talent, code-architect, research-analyst, docs-sync,
-           scribe, repo-janitor, slide-architect, finance-analyst
+           scribe, repo-janitor, slide-architect, finance-analyst,
+           security-auditor
   Opus:    main orchestrator (cost gate — not a quality upgrade)
   ↓
 Automation Layer (5 hooks + launchd):
@@ -109,7 +116,7 @@ Automation Layer (5 hooks + launchd):
     <p><strong>Key design decisions at the start:</strong></p>
     <ul>
       <li><strong>Append-only learnings</strong>: old memories preserved as written; git history = version control</li>
-      <li><strong>Model-tier delegation</strong>: Haiku for reads and simple writes, Sonnet for reasoning&mdash;reduces per-session token cost ~40%</li>
+      <li><strong>Model-tier delegation</strong>: Haiku for reads and simple writes, Sonnet for reasoning&mdash;reduces per-session token cost significantly</li>
       <li><strong>Safety-first</strong>: pre-commit blocks secrets before they can reach GitHub; post-commit auto-pushes, so assume everything goes public immediately</li>
       <li><strong>Intelligent session routing</strong>: context-router (Haiku) classifies each session in &lt;3 seconds&mdash;transactional requests skip memory load entirely</li>
     </ul>
@@ -132,7 +139,7 @@ Automation Layer (5 hooks + launchd):
     <p>For significant agent outputs, a <code>qa-validator</code> reviews output before returning it. Max 2 retries on NEEDS_REVISION verdict, then escalate. The constraint on retries was deliberate: preventing infinite loops by design, not by hope.</p>
 
     <h3>Token Optimization (v2.1 &rarr; v2.2)</h3>
-    <p>Initial sessions loaded too much context. Added ignore rules, condensed index files, and session-start protocol to skip memory load for transactional requests. Result: <strong>~40% reduction in per-session token cost.</strong></p>
+    <p>Initial sessions loaded too much context. Added ignore rules, condensed index files, and session-start protocol to skip memory load for transactional requests. Result: <strong>transactional sessions now skip memory load entirely.</strong></p>
 
     <h3>Skill Module System (v2.2 &rarr; v2.3)</h3>
     <p>Loading all skills into every session was wasteful. Built a skill module system: <code>skills/_active/</code> holds currently relevant skills; inactive skills live separately. Activation is explicit&mdash;load only what&rsquo;s needed.</p>
@@ -145,6 +152,14 @@ Automation Layer (5 hooks + launchd):
 
     <h3>Learnings Integrity (v2.5 &rarr; v2.6)</h3>
     <p>As learnings grew, semantic near-duplicates accumulated. Added a <code>dedup-validator</code> that checks every proposed entry against existing entries. Returns UNIQUE, SUPERSEDE, or DUPLICATE at a 60% conceptual overlap threshold.</p>
+
+    <h3>Decision Engineering &amp; Adversarial Patterns (v2.6 &rarr; v2.7)</h3>
+    <p>As the system matured, single-agent outputs became the bottleneck&mdash;not in quality, but in blind spots. Built an <strong>adversarial debate pattern</strong>: Advocate and Critic agents spawn in parallel with opposing briefs, then a Judge synthesizes the strongest arguments into a verdict. Also added an <strong>ensemble pattern</strong> for career-critical outputs&mdash;two independent agents run the same task in parallel, and their divergences surface blind spots neither catches alone.</p>
+    <p>Also: 8 product management frameworks as interactive commands, and a decision log that prevents re-evaluating the same tools and patterns across sessions.</p>
+
+    <h3>Autonomous Operations &amp; Platform Expansion (v2.7 &rarr; v2.8)</h3>
+    <p>The system was powerful but required me to be present. Built <strong>autonomous execution</strong>&mdash;headless sessions on a schedule with 6-layer safety: kill switch, command allowlist, 10-minute timeout, $2/run budget cap, git-based write sandbox, and execution log. Two scheduled jobs run weekly via launchd.</p>
+    <p>Also: <code>security-auditor</code> agent for macOS defensive security; a repository evaluation pipeline; Safari Bridge for browser interaction via AppleScript; a collectibles data pipeline; and a persistent design system for app building.</p>
 
     <hr>
 
@@ -166,14 +181,16 @@ Automation Layer (5 hooks + launchd):
 
     <h2><i data-lucide="check-square" class="icon-green"></i> Evidence of Production Use</h2>
     <ul>
-      <li><strong>Git log</strong>: Session-end commits timestamped to every working session since February 2026&mdash;80+ commits in 3 weeks</li>
-      <li><strong>Agent invocations</strong>: 17 agents across 3 model tiers actively routing tasks</li>
+      <li><strong>Git log</strong>: Session-end commits timestamped to every working session since February 2026</li>
+      <li><strong>Agent invocations</strong>: 18 agents across 3 model tiers actively routing tasks</li>
       <li><strong>5 automation hooks</strong>: PostToolUse, SessionEnd, PreCompact, SubagentStart, SubagentStop&mdash;zero manual intervention</li>
-      <li><strong>14 slash commands</strong>: From <code>/weekly-review</code> to <code>/analyze-portfolio</code></li>
+      <li><strong>2 autonomous scheduled sessions</strong>: Weekly headless runs via launchd with 6-layer safety</li>
+      <li><strong>17 slash commands</strong>: From <code>/weekly-review</code> to <code>/security-audit</code></li>
+      <li><strong>10 active skill modules</strong>: Covering job search, finance, security, AI research, creative systems, and more</li>
       <li><strong>Correction layer active</strong>: Known baseline errors documented and overridden</li>
       <li><strong>BUG-002 resolved</strong>: Write race fix has held across hundreds of sessions</li>
-      <li><strong>Token reduction confirmed</strong>: ~40% session startup cost reduction</li>
-      <li><strong>Version history</strong>: v1 &rarr; v2.6 across 8 documented iterations</li>
+      <li><strong>Token reduction confirmed</strong>: transactional sessions skip memory load entirely; light-use days average under $2 vs. deep-work days at $10&ndash;$34 (ccusage data, Feb&ndash;Mar 2026)</li>
+      <li><strong>Version history</strong>: v1 &rarr; v2.8 across 10 documented iterations</li>
     </ul>
 
     <hr>
@@ -182,13 +199,13 @@ Automation Layer (5 hooks + launchd):
     <table>
       <thead><tr><th>Competency</th><th>Evidence</th></tr></thead>
       <tbody>
-        <tr><td><strong>Systems architecture</strong></td><td>3-layer memory hierarchy; correction overlay pattern; context-router for session classification</td></tr>
-        <tr><td><strong>AI/ML engineering</strong></td><td>17-agent orchestration; model-tier delegation; dedup-validator for learnings integrity</td></tr>
-        <tr><td><strong>Automation &amp; CI/CD</strong></td><td>5 hooks; pre-commit scanning; launchd backup; auto-push pipeline</td></tr>
-        <tr><td><strong>Iterative engineering</strong></td><td>v1 &rarr; v2.6 across 8 iterations driven by real friction</td></tr>
-        <tr><td><strong>Product thinking</strong></td><td>14 slash commands, skill modules, session classification, QA gates</td></tr>
+        <tr><td><strong>Systems architecture</strong></td><td>3-layer memory hierarchy; correction overlay pattern; context-router; adversarial debate and ensemble patterns</td></tr>
+        <tr><td><strong>AI/ML engineering</strong></td><td>18-agent orchestration; model-tier delegation; dedup-validator for learnings integrity</td></tr>
+        <tr><td><strong>Automation &amp; CI/CD</strong></td><td>5 hooks; pre-commit scanning; launchd backup; auto-push; autonomous headless sessions with 6-layer safety</td></tr>
+        <tr><td><strong>Iterative engineering</strong></td><td>v1 &rarr; v2.8 across 10 iterations driven by real friction</td></tr>
+        <tr><td><strong>Product thinking</strong></td><td>17 slash commands, 10 skill modules, session classification, QA gates, decision log</td></tr>
         <tr><td><strong>Learning systems design</strong></td><td>Architecture mirrors instructional design principles</td></tr>
-        <tr><td><strong>Self-direction</strong></td><td>No spec, no team, no deadline&mdash;in daily production</td></tr>
+        <tr><td><strong>Self-direction</strong></td><td>No spec, no team, no deadline&mdash;iterated through 10 versions, in daily production</td></tr>
       </tbody>
     </table>
   </main>
