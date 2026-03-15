@@ -53,13 +53,48 @@
     .article-body em {
       color: var(--text-muted);
     }
+    .timeline-sequence {
+      position: relative;
+      margin: 1.5rem 0 2rem;
+    }
+    /* Vertical line behind center of cards */
+    .timeline-sequence::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(92,122,31,0.08), rgba(92,122,31,0.18), rgba(131,0,119,0.18), rgba(131,0,119,0.08));
+      z-index: 0;
+    }
     .timeline-block {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-left: 3px solid var(--olive);
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       padding: 1.25rem;
-      margin: 1rem 0;
+      margin: 0 0 1.25rem;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease, border-left-color 0.3s ease;
+    }
+    .timeline-block.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Progressive depth: each block shifts deeper */
+    .timeline-block:nth-child(1) { transition-delay: 0ms; }
+    .timeline-block:nth-child(2) {
+      transition-delay: 150ms;
+      border-left-color: var(--olive-light);
+    }
+    .timeline-block:nth-child(3) {
+      transition-delay: 300ms;
+      border-left-color: var(--purple);
     }
     .timeline-block strong {
       color: var(--olive);
@@ -71,6 +106,8 @@
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
+    .timeline-block:nth-child(2) strong { color: var(--olive-light); }
+    .timeline-block:nth-child(3) strong { color: var(--purple); }
     .timeline-block strong i[data-lucide],
     .timeline-block strong svg {
       width: 0.9rem;
@@ -132,8 +169,6 @@
 
       <p>But that moment didn't happen on day one. It took weeks to get there, and the shift was more gradual than I expected.</p>
 
-      <img src="../assets/images/ai-brain-mirror-quote.png" alt="A note the system wrote: tends to over-invest in infrastructure before validating the core problem">
-
       <h2><i data-lucide="fish" class="icon-sky"></i> The Goldfish Problem</h2>
 
       <p>Here's the context. Most AI assistants now offer some form of memory&mdash;saved preferences, conversation history, a few pinned facts. It's better than nothing. But it's shallow. The AI might remember your name and your job title. It won't remember the architectural decision you made last Tuesday, or that you already tried and rejected the approach it's about to suggest, or that &ldquo;enablement&rdquo; means something specific in your industry.</p>
@@ -144,6 +179,7 @@
 
       <h2><i data-lucide="trending-up" class="icon-green"></i> What Changed, Week by Week</h2>
 
+      <div class="timeline-sequence">
       <div class="timeline-block">
         <strong><i data-lucide="calendar"></i> Week 1: I stopped repeating myself</strong>
         <p>I mentioned my tech stack once. Described my communication preferences once. Corrected a wrong assumption once. From that point forward, the AI knew. This sounds minor until you calculate how many minutes per session go to preamble. For me, it was roughly 3&ndash;5 minutes per conversation, across 3&ndash;4 conversations per day. That's 40&ndash;80 minutes per week spent saying &ldquo;actually, I prefer&hellip;&rdquo; and &ldquo;as I mentioned before&hellip;&rdquo; and &ldquo;the context here is&hellip;&rdquo;</p>
@@ -162,8 +198,7 @@
         <p>That session log observation I mentioned at the top? It didn't come from nowhere. It came from twelve sessions of accumulated evidence&mdash;what I prioritized, what I avoided, where I spent disproportionate time. The AI just had enough data to notice a pattern. That's all.</p>
         <p>The disorienting part wasn't that the observation was wrong. It's that it was right, and I hadn't seen it myself. That's a different experience than getting good answers. It's having something point out your blind spots using your own data.</p>
       </div>
-
-      <img src="../assets/images/ai-brain-progression.png" alt="The progression: Week 1 stopped repeating, Week 2 started anticipating, Month 1 started noticing things">
+      </div>
 
       <h2><i data-lucide="layers" class="icon-lavender"></i> The Three Things Memory Actually Does</h2>
 
@@ -231,6 +266,17 @@
   <script>
     const saved = localStorage.getItem('theme');
     if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+
+    // Scroll-reveal for timeline blocks
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.timeline-block').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
