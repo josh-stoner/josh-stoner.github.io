@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What My AI Taught Me About Myself—Joshua Stoner</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .article-header {
+      padding: 3rem 0 1.5rem;
+    }
+    .article-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .article-meta {
+      font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-bottom: 0.25rem;
+    }
+    .article-body h2 {
+      margin-top: 3rem;
+    }
+    .article-body p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .article-body ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .article-body li {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 0.5rem;
+    }
+    .article-body strong {
+      color: var(--text);
+    }
+    .article-body em {
+      color: var(--text-muted);
+    }
+    .insight-block {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--purple);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .insight-block strong {
+      color: var(--purple);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.35rem;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .insight-block strong i[data-lucide],
+    .insight-block strong svg {
+      width: 0.9rem;
+      height: 0.9rem;
+    }
+    .insight-block p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .closing {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+    [data-theme="dark"] .closing {
+      border-top-color: rgba(255,255,255,0.08);
+    }
+    .lede {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="nav-name">Joshua Stoner</a>
+      <ul class="nav-links">
+        <li><a href="../"><i data-lucide="folder-open"></i> Portfolio</a></li>
+        <li><a href="../writing/ai-brain-ch0.html"><i data-lucide="pen-tool"></i> Writing</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="../" class="back-link"><i data-lucide="arrow-left"></i> Back to Portfolio</a>
+
+    <div class="article-header">
+      <h1>What My AI Taught Me About Myself</h1>
+      <p class="article-meta">March 2026 &middot; Josh Stoner</p>
+    </div>
+
+    <div class="article-body">
+
+      <p class="lede">I pointed my personal AI memory system at my own data. What came back was more honest than I expected.</p>
+
+      <p>I've been building something called stonerOS&mdash;a personal AI memory system that sits on top of Claude. It tracks my career history, preferences, projects, and working patterns across sessions. But until this week, it only knew what I <em>told</em> it.</p>
+
+      <p>So I tried something different: <strong>what if it could learn from my actual behavior instead?</strong></p>
+
+      <p>Your Mac already has access to most of your iPhone data through iCloud&mdash;browsing history, photos, app usage, reminders, voice memos. All SQLite databases. I had Claude build a set of Python scripts to pull patterns from each one and feed them into stonerOS's routing pipeline. Everything runs locally&mdash;no data leaves the machine.</p>
+
+      <p>Here's what came back.</p>
+
+      <hr>
+
+      <h2><i data-lucide="moon" class="icon-sky"></i> I'm a Night Builder</h2>
+
+      <p>My app usage data shows peak activity between <strong>1am and 3am</strong>. Not doomscrolling&mdash;VS Code. 91 hours of active use in 90 days, nearly double the next app (Perplexity at 52 hours). Development represents 48% of my total tracked screen time.</p>
+
+      <p>I've always known I'm a night owl. But there's a difference between knowing that and seeing "peak sessions: 1&ndash;3am" confirmed across three independent data sources. There's also a clear afternoon dip where I switch from building to communicating, then a second wind after 10pm.</p>
+
+      <div class="insight-block">
+        <strong><i data-lucide="zap"></i> What I learned</strong>
+        <p>This isn't a habit to fix&mdash;it's when my brain actually works. Schedule deep work for late night. Keep meetings in the afternoon. Lean into the rhythm instead of fighting it.</p>
+      </div>
+
+      <h2><i data-lucide="shopping-bag" class="icon-peach"></i> The Hobby That's Actually a Skill</h2>
+
+      <p>My browsing data categorized 68% of my web activity as "Other." When I actually looked at what that meant: <strong>~780 visits</strong> to collectibles marketplaces&mdash;eBay, Whatnot, PopMart, specialty jewelry sites. Almost as much as social media.</p>
+
+      <p>I collect designer toys and vinyl figures. I knew I spent time on this, but the data showed how much of it is <em>research</em>&mdash;not just browsing. I have an eBay scraper that tracks market prices into a SQLite database. I'm watching wholesale and secondary markets. It's systematic.</p>
+
+      <div class="insight-block">
+        <strong><i data-lucide="zap"></i> What I learned</strong>
+        <p>The skills I use for collecting&mdash;market analysis, data pipelines, pattern recognition&mdash;are the same ones I use in my professional work. Hobbies aren't separate from your professional identity. They're often the same muscles applied differently.</p>
+      </div>
+
+      <h2><i data-lucide="target" class="icon-green"></i> My Focus Has a Shape</h2>
+
+      <p>I'm a builder in deep-focus mode. My geographic footprint is essentially two places: my apartment in Brooklyn and my family's place in rural Pennsylvania. My communication is concentrated in a tight inner circle&mdash;a handful of people I talk to daily, deeply, and consistently. My photos are 78% from home: plants, my space, my dog Theodore.</p>
+
+      <p>None of this was news to me. But seeing all of it together, quantified, I noticed something I hadn't named before: <strong>narrow inputs, deep engagement, high consistency.</strong> It's the same pattern everywhere&mdash;few apps used heavily, few people messaged frequently, few places visited repeatedly.</p>
+
+      <div class="insight-block">
+        <strong><i data-lucide="zap"></i> What I learned</strong>
+        <p>This is how I operate. It works well for building&mdash;but it also means things like networking and exploring new spaces don't happen on their own. They have to be intentional.</p>
+      </div>
+
+      <h2><i data-lucide="archive" class="icon-lavender"></i> My Old Systems Are Time Capsules</h2>
+
+      <p>My Apple Notes&mdash;86 of them&mdash;haven't been touched since November 2025. They contain resume drafts, job search prompts, design philosophy statements, and shower thoughts from a pre-AI version of me.</p>
+
+      <p>One note from 2023: <em>"Designers are observers and curators to the creation of a finalized product, not the dictators."</em> Another: <em>"My design starts with Why."</em> The ideas are still mine, but they were written in a different role, at a different company, with different tools. It's interesting to see where your head was before you had a system to build on those thoughts.</p>
+
+      <div class="insight-block">
+        <strong><i data-lucide="zap"></i> What I learned</strong>
+        <p>The thinking was always there. What changed is having a system that compounds it instead of letting it sit in a notes app.</p>
+      </div>
+
+      <hr>
+
+      <h2><i data-lucide="lightbulb" class="icon-mauve"></i> The Meta-Lesson</h2>
+
+      <p>Honestly, none of this was a surprise. <strong>I already knew all of it.</strong> I knew I was a night builder. I knew my focus was narrow. I knew my hobbies used the same muscles as my work.</p>
+
+      <p>But knowing something and seeing it in data are different. "I think I'm a night person" becomes "my peak cognitive window is 11pm&ndash;3am, confirmed across three data sources." One is a feeling. The other is something I can actually plan around.</p>
+
+      <div class="closing">
+        <p><em>All of this was already on my phone. I just never looked at it this way before.</em></p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
+    <p style="margin-top: 0.75rem;"><em>Built with <a href="https://github.com/josh-stoner/stonerOS">stonerOS</a>&mdash;a personal AI memory system running on Claude Code. The extraction pipeline reads iCloud-synced databases from macOS. Everything runs locally.</em></p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script>
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  </script>
+</body>
+</html>

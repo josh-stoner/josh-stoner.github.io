@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>I Gave Claude a Brain — Joshua Stoner</title>
-  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
   <link rel="stylesheet" href="../style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     /* Article-specific styles */
     .article-header {
@@ -87,34 +84,6 @@
     [data-theme="dark"] .closing {
       border-top-color: rgba(255,255,255,0.08);
     }
-
-    /* Lightbox */
-    .article-body img {
-      cursor: zoom-in;
-    }
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      background: rgba(0,0,0,0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: zoom-out;
-      opacity: 0;
-      transition: opacity 0.25s ease;
-      padding: 2rem;
-    }
-    .lightbox.active { opacity: 1; }
-    .lightbox img {
-      max-width: 95vw;
-      max-height: 90vh;
-      border-radius: var(--radius);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
-      transform: scale(0.95);
-      transition: transform 0.25s ease;
-    }
-    .lightbox.active img { transform: scale(1); }
   </style>
 </head>
 <body>
@@ -122,31 +91,19 @@
     <div class="nav-inner">
       <a href="../" class="nav-name">Joshua Stoner</a>
       <ul class="nav-links">
-        <li><a href="../"><i data-lucide="folder-open"></i> Portfolio</a></li>
-        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+        <li><a href="../">Portfolio</a></li>
+        <li><a href="../writing/ai-brain-ch0.html">Writing</a></li>
       </ul>
-      <button class="theme-toggle" aria-label="Toggle theme">
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-      </button>
     </div>
   </nav>
 
   <main>
-    <a href="../" class="back-link"><i data-lucide="arrow-left"></i> Back to Portfolio</a>
+    <a href="../" class="back-link">&larr; Back to portfolio</a>
 
     <div class="article-header">
-      <span class="case-icon icon-lavender"><i data-lucide="pen-tool"></i></span>
       <h1>I Gave Claude a Brain. Here's What Happened.</h1>
       <p class="article-meta">March 2026 &middot; Josh Stoner</p>
-      <div class="tags">
-        <span class="tag tag--lavender">Personal essay</span>
-        <span class="tag tag--lavender">Build in public</span>
-        <span class="tag tag--lavender">Lessons learned</span>
-      </div>
     </div>
-
-    <hr>
 
     <div class="article-body">
 
@@ -156,7 +113,7 @@
 
       <p>I got tired of re-establishing context.</p>
 
-      <h2><i data-lucide="cpu" class="icon-mauve"></i> What I Built</h2>
+      <h2>What I Built</h2>
 
       <p>In February 2026, a few months after getting laid off, I started building what I call stonerOS&mdash;a persistent memory system for Claude. Not a wrapper. Not a chatbot. A structured knowledge layer that gives an AI assistant a durable understanding of who I am, what I'm working on, and how I think.</p>
 
@@ -170,19 +127,19 @@
         <li>I run a slash command&mdash;<code>/job-prep</code>&mdash;and it scores a job posting against my actual skill inventory, professional history, and career goals. Not generic advice. Advice grounded in <em>my</em> context.</li>
       </ul>
 
-      <p>None of this is magic. It's just files, conventions, and a few automation hooks. But the cumulative effect is something I didn't expect: the AI stopped feeling like a tool and started feeling like infrastructure.</p>
+      <p>None of this is magic. It's just files, conventions, and a few automation hooks. But the cumulative effect is something I didn't expect: the AI started doing useful things without me asking.</p>
 
       <img src="../assets/images/ai-brain-before-after.png" alt="Side-by-side comparison: a stateless AI conversation asking 6 clarifying questions vs. stonerOS immediately delivering a personalized fit score, specific project matches, and behavioral warnings">
 
-      <h2><i data-lucide="network" class="icon-mauve"></i> The Architecture (One Paragraph Version)</h2>
+      <h2>The Architecture (One Paragraph Version)</h2>
 
       <p>Three memory layers: an immutable baseline (who I am, my history, my personality), an append-only learnings layer (corrections, patterns, expertise that evolve), and a current-state layer (active preferences, live projects, recent sessions). Seventeen specialized agents handle different jobs&mdash;searching memory, writing session logs, validating outputs, auditing documentation, coaching career strategy. Each agent runs on the cheapest model that can do the job well. Five automation hooks fire on file changes, session ends, and context compression events. Two git hooks block secrets and auto-push backups. Everything version-controlled, everything recoverable.</p>
 
       <img src="../assets/images/ai-brain-architecture.png" alt="stonerOS architecture diagram: session start flow through context-router, three memory layers (baseline, learnings, current state), 17 agents across Haiku/Sonnet/Opus tiers, and six automation hooks">
 
-      <p>That's the skeleton. The interesting part is what I learned building it.</p>
+      <p>Here's what I learned building it.</p>
 
-      <h2><i data-lucide="lightbulb" class="icon-peach"></i> Five Things Nobody Told Me</h2>
+      <h2>What Surprised Me</h2>
 
       <div class="discovery">
         <p class="discovery-title">1. Background agents fail silently.</p>
@@ -211,18 +168,18 @@
       <div class="discovery">
         <p class="discovery-title">5. Documentation rots faster than code.</p>
         <p>I built comprehensive docs on day one. By day twelve, they were wrong. Agent counts were stale, slash command lists were incomplete, architecture descriptions referenced features that had been redesigned. The system was evolving faster than I could manually update the docs about the system.</p>
-        <p>The fix was a <code>/docs-sync</code> command that compares documentation against the actual repo state and patches the gaps. The meta-lesson: if your system changes frequently, documentation needs to be a process, not a deliverable.</p>
+        <p>The fix was a <code>/docs-sync</code> command that compares documentation against the actual repo state and patches the gaps. Lesson: if your system changes frequently, documentation needs to be a process, not a deliverable.</p>
       </div>
 
-      <h2><i data-lucide="pen-tool" class="icon-lavender"></i> Why I'm Writing This</h2>
+      <h2>Why I'm Writing This</h2>
 
-      <p>I spent ten years in Learning &amp; Development. I've designed curriculum for thousands of people, built automation systems that ran for years without maintenance, and shipped learning programs with measurable impact. When I started building stonerOS, I wasn't trying to create a product. I was trying to solve a problem: AI without memory is a tool; AI with memory is a partner.</p>
+      <p>I spent ten years in Learning &amp; Development. I've designed curriculum for thousands of people, built automation systems that ran for years without maintenance, and shipped learning programs with measurable impact. When I started building stonerOS, I wasn't trying to create a product. I was trying to solve a problem: Adding memory turned my AI from something I used into something I relied on.</p>
 
-      <p>But the more I built, the more I realized: the discoveries I was making&mdash;about agent design, memory architecture, automation patterns, failure modes&mdash;weren't documented anywhere. Not in Anthropic's docs. Not in blog posts. Not in the Claude Code community. Because most people using AI aren't building persistent systems. They're having conversations.</p>
+      <p>But the more I built, the more I realized: the discoveries I was making&mdash;about agent design, memory architecture, automation patterns, failure modes&mdash;none of this was documented anywhere, because most people aren't building persistent AI systems.</p>
 
       <p>I wanted to change that. Not by telling people what to build, but by showing what happened when I did&mdash;the decisions, the mistakes, and the moments where the system started surprising me.</p>
 
-      <h2><i data-lucide="map" class="icon-sky"></i> What's Ahead</h2>
+      <h2>What's Ahead</h2>
 
       <div class="ahead-item">
         <strong>Why Memory Changes Everything</strong>
@@ -250,47 +207,22 @@
       </div>
 
       <div class="closing">
-        <p><em>I built stonerOS because I got tired of starting over. The system I have now isn't perfect, but it remembers. And that changes more than I expected.</em></p>
+        <p><em>I built stonerOS because I got tired of starting over. The system isn't perfect, but I haven't re-introduced myself in six weeks.</em></p>
       </div>
 
     </div>
   </main>
 
   <footer>
-    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></p>
+    Joshua Stoner &middot; Brooklyn, NY &middot;
+    <a href="https://linkedin.com/in/joshuastoner">LinkedIn</a> &middot;
+    <a href="mailto:itsJoshStoner@gmail.com">Email</a>
   </footer>
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>lucide.createIcons();</script>
   <script>
-  (function(){
-    var overlay = document.createElement('div');
-    overlay.className = 'lightbox';
-    var big = document.createElement('img');
-    overlay.appendChild(big);
-    document.body.appendChild(overlay);
-
-    document.querySelectorAll('.article-body img').forEach(function(img){
-      img.addEventListener('click', function(){
-        big.src = img.src;
-        big.alt = img.alt;
-        overlay.style.display = 'flex';
-        requestAnimationFrame(function(){ overlay.classList.add('active'); });
-      });
-    });
-
-    overlay.addEventListener('click', function(){
-      overlay.classList.remove('active');
-      setTimeout(function(){ overlay.style.display = 'none'; }, 250);
-    });
-
-    document.addEventListener('keydown', function(e){
-      if (e.key === 'Escape' && overlay.classList.contains('active')) overlay.click();
-    });
-
-    overlay.style.display = 'none';
-  })();
+    // Theme toggle (inherit from main site)
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
   </script>
-  <script src="../theme.js"></script>
 </body>
 </html>
