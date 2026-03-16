@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>I Gave Claude a Brain — Joshua Stoner</title>
+  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
   <link rel="stylesheet" href="../style.css">
   <style>
     /* Article-specific styles */
@@ -91,9 +92,14 @@
     <div class="nav-inner">
       <a href="../" class="nav-name">Joshua Stoner</a>
       <ul class="nav-links">
-        <li><a href="../">Portfolio</a></li>
-        <li><a href="../writing/ai-brain-ch0.html">Writing</a></li>
+        <li><a href="../"><i data-lucide="folder-open"></i> Portfolio</a></li>
+        <li><a href="../#how-i-work"><i data-lucide="compass"></i> How I Work</a></li>
+        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
       </ul>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
     </div>
   </nav>
 
@@ -219,10 +225,8 @@
     <a href="mailto:itsJoshStoner@gmail.com">Email</a>
   </footer>
 
-  <script>
-    // Theme toggle (inherit from main site)
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
 </body>
 </html>
