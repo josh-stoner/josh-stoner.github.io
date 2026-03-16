@@ -18,7 +18,7 @@
 
   /* Category Colors — stonerOS presentation palette */
   --purple: #7c3aed;
-  --olive: #4a90d9;
+  --olive: #3271b0;
   --warm-coral: #d4a017;
   --olive-light: #34a853;
   --coral: #d94f4f;
@@ -927,7 +927,7 @@ a.card:has(.icon-sky):hover {
 
   /* Accent colors — slightly lightened for dark backgrounds */
   --purple: #9d6ef5;
-  --olive: #6aaee3;
+  --olive: #5a9ad4;
   --warm-coral: #e8b84b;
   --olive-light: #4ec36a;
   --coral: #e87070;
