@@ -761,6 +761,7 @@ tr:hover td {
 .how-table td:first-child:has(.icon-green) { color: var(--olive-light); }
 .how-table td:first-child:has(.icon-mauve) { color: var(--coral); }
 .how-table td:first-child:has(.icon-peach) { color: var(--warm-coral); }
+.how-table td:first-child:has(.icon-teal) { color: var(--olive); }
 
 /* ---- Footer ---- */
 
