@@ -656,6 +656,10 @@ tr:hover td {
   margin-bottom: 2rem;
   border-left: 2px solid var(--card-border);
   background: transparent;
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+  clear: both;
 }
 
 .toc-label {
