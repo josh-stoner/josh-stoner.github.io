@@ -658,6 +658,11 @@ tr:hover td {
   height: auto !important;
   overflow: visible !important;
   display: flow-root;
+  position: static;
+  z-index: auto;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
 }
 
 .toc .toc-label {
