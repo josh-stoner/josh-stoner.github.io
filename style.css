@@ -24,6 +24,7 @@
   --coral: #c06060;
   --blue-shift: #5a8dbf;
   --pink: #6d5acd;
+  --rose: #c47088;
 
   /* Gradient */
   --gradient: linear-gradient(135deg, #7c3aed, #4a90d9);
@@ -66,6 +67,8 @@ i[data-lucide].icon-yellow { color: var(--warm-coral); }
 i[data-lucide].icon-red { color: var(--coral); }
 .icon-flamingo i[data-lucide], .icon-flamingo svg,
 i[data-lucide].icon-flamingo { color: var(--pink); }
+.icon-rose i[data-lucide], .icon-rose svg,
+i[data-lucide].icon-rose { color: var(--rose); }
 .icon-muted i[data-lucide], .icon-muted svg,
 i[data-lucide].icon-muted { color: var(--text-faint); }
 
@@ -104,6 +107,7 @@ i[data-lucide].icon-muted { color: var(--text-faint); }
 .card-icon.icon-green { background: rgba(52,168,83,0.1); }
 .card-icon.icon-mauve { background: rgba(217,79,79,0.1); }
 .card-icon.icon-sky { background: rgba(74,144,217,0.1); }
+.card-icon.icon-rose { background: rgba(196,112,136,0.1); }
 
 .card-icon i[data-lucide],
 .card-icon svg {
@@ -123,6 +127,7 @@ i[data-lucide].icon-muted { color: var(--text-faint); }
 .card-title:has(.icon-green) { color: var(--olive-light); }
 .card-title:has(.icon-mauve) { color: var(--coral); }
 .card-title:has(.icon-sky) { color: var(--blue-shift); }
+.card-title:has(.icon-rose) { color: var(--rose); }
 
 .case-icon {
   display: flex;
@@ -178,6 +183,7 @@ td strong:has(.icon-green) { color: var(--olive-light); }
 td strong:has(.icon-peach) { color: var(--warm-coral); }
 td strong:has(.icon-mauve) { color: var(--coral); }
 td strong:has(.icon-sky) { color: var(--blue-shift); }
+td strong:has(.icon-rose) { color: var(--rose); }
 
 .skill-icon {
   display: inline-flex;
@@ -284,6 +290,7 @@ h1.color-peach, .case-header .tab-title.color-peach { color: var(--warm-coral); 
 h1.color-green, .case-header .tab-title.color-green { color: var(--olive-light); }
 h1.color-mauve, .case-header .tab-title.color-mauve { color: var(--coral); }
 h1.color-sky, .case-header .tab-title.color-sky { color: var(--blue-shift); }
+h1.color-rose, .case-header .tab-title.color-rose { color: var(--rose); }
 h2 { font-size: 1.25rem; font-weight: 700; margin: 3.5rem 0 1rem; color: var(--text); letter-spacing: -0.01em; }
 h3 { font-size: 1.05rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: var(--text-secondary); }
 
@@ -531,6 +538,7 @@ main {
 .card:has(.icon-green)::before { background: var(--olive-light); }
 .card:has(.icon-mauve)::before { background: var(--coral); }
 .card:has(.icon-sky)::before { background: var(--blue-shift); }
+.card:has(.icon-rose)::before { background: var(--rose); }
 
 a.card:hover {
   transform: translateY(-2px);
@@ -590,6 +598,7 @@ a.card:hover {
 .tag--lavender { color: var(--purple); background: rgba(124,58,237,0.08); border-color: rgba(124,58,237,0.12); }
 .tag--mauve { color: var(--coral); background: rgba(217,79,79,0.08); border-color: rgba(217,79,79,0.12); }
 .tag--sky { color: var(--blue-shift); background: rgba(74,144,217,0.08); border-color: rgba(74,144,217,0.12); }
+.tag--rose { color: var(--rose); background: rgba(196,112,136,0.08); border-color: rgba(196,112,136,0.12); }
 
 /* ---- Section Divider Labels ---- */
 
@@ -611,6 +620,7 @@ a.card:hover {
 .section-label:has(.icon-green) { color: var(--olive-light); border-bottom-color: var(--olive-light); }
 .section-label:has(.icon-mauve) { color: var(--coral); border-bottom-color: var(--coral); }
 .section-label:has(.icon-sky) { color: var(--blue-shift); border-bottom-color: var(--blue-shift); }
+.section-label:has(.icon-rose) { color: var(--rose); border-bottom-color: var(--rose); }
 
 /* ---- Tables ---- */
 
@@ -830,6 +840,7 @@ tr:hover td {
 .how-table td:first-child:has(.icon-mauve) { color: var(--coral); }
 .how-table td:first-child:has(.icon-peach) { color: var(--warm-coral); }
 .how-table td:first-child:has(.icon-teal) { color: var(--olive); }
+.how-table td:first-child:has(.icon-rose) { color: var(--rose); }
 
 /* ---- Footer ---- */
 
@@ -944,6 +955,9 @@ a.card:has(.icon-mauve):hover {
 a.card:has(.icon-sky):hover {
   box-shadow: 0 8px 24px rgba(74,144,217,0.1), 0 2px 8px rgba(74,144,217,0.05);
 }
+a.card:has(.icon-rose):hover {
+  box-shadow: 0 8px 24px rgba(196,112,136,0.1), 0 2px 8px rgba(196,112,136,0.05);
+}
 
 /* ---- Theme Toggle Button ---- */
 
@@ -1002,6 +1016,7 @@ a.card:has(.icon-sky):hover {
   --coral: #d47878;
   --blue-shift: #7aa4cc;
   --pink: #8a75d6;
+  --rose: #d48a9e;
 }
 
 [data-theme="dark"] nav {
