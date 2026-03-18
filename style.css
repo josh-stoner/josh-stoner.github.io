@@ -662,25 +662,26 @@ tr:hover td {
 
 .toc .toc-label {
   display: block;
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: 0.65rem;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-faint);
+  opacity: 0.6;
   margin-bottom: 0.35rem;
 }
 
 .toc a {
   display: block;
   font-size: 0.8rem;
-  color: var(--text-secondary);
+  color: var(--blue-shift);
   text-decoration: none;
   line-height: 1.8;
   transition: color 0.2s;
 }
 
 .toc a:hover {
-  color: var(--text);
+  color: var(--purple);
 }
 
 /* ---- Case Study Pages ---- */
