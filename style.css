@@ -344,11 +344,11 @@ nav .nav-inner {
 }
 
 nav .nav-name {
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--text);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-secondary);
 }
-nav .nav-name:hover { color: var(--purple); }
+nav .nav-name:hover { color: var(--text); }
 
 nav .nav-links {
   display: flex;
@@ -357,9 +357,9 @@ nav .nav-links {
 }
 
 nav .nav-links a {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  font-weight: 500;
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  font-weight: 400;
 }
 nav .nav-links a:hover { color: var(--text); }
 
