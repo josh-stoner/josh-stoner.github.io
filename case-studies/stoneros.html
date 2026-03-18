@@ -46,9 +46,21 @@
       </div>
     </div>
 
+    <nav class="toc">
+      <span class="toc-label">On this page</span>
+      <a href="#about-this-project">About This Project</a>
+      <a href="#context">Context</a>
+      <a href="#the-problem">The Problem</a>
+      <a href="#the-architecture">The Architecture</a>
+      <a href="#the-iteration-record">The Iteration Record</a>
+      <a href="#what-makes-it-a-learning-system">What Makes It a Learning System</a>
+      <a href="#evidence-of-production-use">Evidence of Production Use</a>
+      <a href="#what-it-demonstrates">What It Demonstrates</a>
+    </nav>
+
     <hr>
 
-    <h2><i data-lucide="info" class="icon-blue"></i> About This Project</h2>
+    <h2 id="about-this-project"><i data-lucide="info" class="icon-blue"></i> About This Project</h2>
     <p>Every Claude session starts from zero. No memory of prior conversations, no knowledge of preferences, no continuity across sessions. For a daily AI user doing serious work&mdash;job search strategy, resume iteration, research synthesis&mdash;that&rsquo;s a meaningful friction point.</p>
     <p>I built <strong>stonerOS</strong>: a production AI memory system that gives Claude persistent, evolving knowledge about me across every session. It&rsquo;s a git repository&mdash;3-layer memory architecture, 18 specialized agents across three model tiers, 5 automation hooks, autonomous scheduled sessions, pre-commit secret scanning, and daily backup via macOS launchd. I use it every day. No one asked me to build it.</p>
     <p>What makes it a portfolio piece is not that it was built&mdash;it&rsquo;s how it evolved. The system now on version 2.8 looks materially different from v1.0. Real use generated real friction. Real friction generated real fixes. The system learns about me as I use it, and I learn how to build better systems by running them.</p>
@@ -56,7 +68,7 @@
 
     <hr>
 
-    <h2><i data-lucide="map-pin" class="icon-sky"></i> Context</h2>
+    <h2 id="context"><i data-lucide="map-pin" class="icon-sky"></i> Context</h2>
     <table>
       <tbody>
         <tr><td><strong>Role</strong></td><td>Self-initiated&mdash;designer, architect, engineer, user</td></tr>
@@ -70,7 +82,7 @@
 
     <hr>
 
-    <h2><i data-lucide="alert-triangle" class="icon-yellow"></i> The Problem</h2>
+    <h2 id="the-problem"><i data-lucide="alert-triangle" class="icon-yellow"></i> The Problem</h2>
     <p>Large language models have no persistent memory by default. Every new conversation is a blank slate. For casual use, that&rsquo;s fine. For someone running active job search operations, refining career strategy, managing a personal knowledge base, and iterating on complex documents over weeks&mdash;it&rsquo;s a significant gap.</p>
     <p>Workarounds exist but each breaks down:</p>
     <ul>
@@ -82,7 +94,7 @@
 
     <hr>
 
-    <h2><i data-lucide="network" class="icon-mauve"></i> The Architecture</h2>
+    <h2 id="the-architecture"><i data-lucide="network" class="icon-mauve"></i> The Architecture</h2>
     <p>A three-layer memory hierarchy with agent delegation and automated CI/CD.</p>
 <pre><code>CLAUDE.md (auto-read every session — master instruction set)
   ↓
@@ -123,7 +135,7 @@ Automation Layer (5 hooks + launchd):
 
     <hr>
 
-    <h2><i data-lucide="git-commit" class="icon-mauve"></i> The Iteration Record</h2>
+    <h2 id="the-iteration-record"><i data-lucide="git-commit" class="icon-mauve"></i> The Iteration Record</h2>
     <p>This is where the portfolio piece lives. The initial build was functional. The current system is correct. What separates them is a documented log of real friction.</p>
 
     <h3>Correction Layer (v1 &rarr; v1.5)</h3>
@@ -163,7 +175,7 @@ Automation Layer (5 hooks + launchd):
 
     <hr>
 
-    <h2><i data-lucide="graduation-cap" class="icon-mauve"></i> What Makes It a Learning System</h2>
+    <h2 id="what-makes-it-a-learning-system"><i data-lucide="graduation-cap" class="icon-mauve"></i> What Makes It a Learning System</h2>
     <table>
       <thead><tr><th>Learning Principle</th><th>stonerOS Implementation</th></tr></thead>
       <tbody>
@@ -179,7 +191,7 @@ Automation Layer (5 hooks + launchd):
 
     <hr>
 
-    <h2><i data-lucide="check-square" class="icon-green"></i> Evidence of Production Use</h2>
+    <h2 id="evidence-of-production-use"><i data-lucide="check-square" class="icon-green"></i> Evidence of Production Use</h2>
     <ul>
       <li><strong>Git log</strong>: Session-end commits timestamped to every working session since February 2026</li>
       <li><strong>Agent invocations</strong>: 18 agents across 3 model tiers actively routing tasks</li>
@@ -195,7 +207,7 @@ Automation Layer (5 hooks + launchd):
 
     <hr>
 
-    <h2><i data-lucide="award" class="icon-green"></i> What It Demonstrates</h2>
+    <h2 id="what-it-demonstrates"><i data-lucide="award" class="icon-green"></i> What It Demonstrates</h2>
     <table>
       <thead><tr><th>Competency</th><th>Evidence</th></tr></thead>
       <tbody>
