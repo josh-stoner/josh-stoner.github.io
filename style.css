@@ -116,6 +116,14 @@ i[data-lucide].icon-muted { color: var(--text-faint); }
   align-items: center;
 }
 
+/* Card title text matches icon color */
+.card-title:has(.icon-lavender) { color: var(--purple); }
+.card-title:has(.icon-teal) { color: var(--olive); }
+.card-title:has(.icon-peach) { color: var(--warm-coral); }
+.card-title:has(.icon-green) { color: var(--olive-light); }
+.card-title:has(.icon-mauve) { color: var(--coral); }
+.card-title:has(.icon-sky) { color: var(--blue-shift); }
+
 .case-icon {
   display: flex;
   align-items: center;
@@ -182,6 +190,14 @@ td strong:has(.icon-sky) { color: var(--blue-shift); }
   height: 0.95rem;
   margin-right: 0.35rem;
   flex-shrink: 0;
+}
+
+nav .nav-name i[data-lucide],
+nav .nav-name svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  margin-right: 0.3rem;
+  vertical-align: -0.1em;
 }
 
 nav .nav-links i[data-lucide],
@@ -1079,6 +1095,41 @@ blockquote, code, pre, .theme-toggle, .case-icon, .stat-icon, .tag, .stat-block 
   transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1),
               transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1),
               background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* ---- Prev/Next Page Navigation ---- */
+
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  border-top: 1px solid var(--card-border);
+}
+
+.page-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.page-nav-link:hover {
+  color: var(--text);
+}
+
+.page-nav-next {
+  margin-left: auto;
+}
+
+.page-nav-link i[data-lucide],
+.page-nav-link svg {
+  width: 0.85rem;
+  height: 0.85rem;
 }
 
 /* ---- Responsive ---- */
