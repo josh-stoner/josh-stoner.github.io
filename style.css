@@ -16,14 +16,14 @@
   --text-muted: #666666;
   --text-faint: #999999;
 
-  /* Category Colors — stonerOS presentation palette */
-  --purple: #7c3aed;
-  --olive: #3271b0;
-  --warm-coral: #d4a017;
-  --olive-light: #34a853;
-  --coral: #d94f4f;
-  --blue-shift: #4a90d9;
-  --pink: #7c3aed;
+  /* Category Colors — matched to stonerOS deck palette */
+  --purple: #6d5acd;
+  --olive: #4a7fad;
+  --warm-coral: #b8941f;
+  --olive-light: #4a9960;
+  --coral: #c06060;
+  --blue-shift: #5a8dbf;
+  --pink: #6d5acd;
 
   /* Gradient */
   --gradient: linear-gradient(135deg, #7c3aed, #4a90d9);
@@ -977,14 +977,14 @@ a.card:has(.icon-sky):hover {
   --text-muted: #908580;
   --text-faint: #645A56;
 
-  /* Accent colors — slightly lightened for dark backgrounds */
-  --purple: #9d6ef5;
-  --olive: #5a9ad4;
-  --warm-coral: #e8b84b;
-  --olive-light: #4ec36a;
-  --coral: #e87070;
-  --blue-shift: #6aaee3;
-  --pink: #9d6ef5;
+  /* Accent colors — lightened from muted deck palette */
+  --purple: #8a75d6;
+  --olive: #6a9cc4;
+  --warm-coral: #d4ad3a;
+  --olive-light: #66b47a;
+  --coral: #d47878;
+  --blue-shift: #7aa4cc;
+  --pink: #8a75d6;
 }
 
 [data-theme="dark"] nav {
