@@ -328,6 +328,7 @@ pre {
   overflow-x: auto;
   margin: 1rem 0;
   border: 1px solid var(--card-border);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 pre code {
   background: none;
@@ -432,8 +433,8 @@ main {
   height: 500px;
   top: -40%;
   right: -20%;
-  background: radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%);
-  filter: blur(60px);
+  background: radial-gradient(circle, rgba(124,58,237,0.10) 0%, transparent 70%);
+  filter: blur(40px);
 }
 
 .depth-orb--secondary {
@@ -441,8 +442,8 @@ main {
   height: 400px;
   bottom: -50%;
   left: -15%;
-  background: radial-gradient(circle, rgba(74,144,217,0.05) 0%, transparent 70%);
-  filter: blur(80px);
+  background: radial-gradient(circle, rgba(74,144,217,0.08) 0%, transparent 70%);
+  filter: blur(50px);
 }
 
 /* ---- Stat Row ---- */
@@ -598,7 +599,7 @@ a.card:hover {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-muted);
-  margin: 7rem 0 1.25rem;
+  margin: 5rem 0 1.25rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(0,0,0,0.06);
 }
@@ -666,7 +667,7 @@ tr:hover td {
   text-align: left;
   padding: 1rem 1.25rem;
   margin: 1rem 0 2.5rem 0;
-  border-left: 2px solid var(--card-border);
+  border-left: 3px solid var(--card-border);
   background: rgba(0,0,0,0.02);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   width: 100%;
@@ -856,7 +857,7 @@ footer a:hover { color: var(--text); }
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
 }
-.back-link:hover { color: var(--blue-shift); }
+.back-link:hover { color: var(--blue-shift); text-decoration: underline; }
 
 /* ---- Portfolio Section ---- */
 
@@ -1040,7 +1041,7 @@ a.card:has(.icon-sky):hover {
 }
 
 [data-theme="dark"] .toc {
-  background: rgba(255,255,255,0.03);
+  background: rgba(255,255,255,0.05);
 }
 
 [data-theme="dark"] .tag {
@@ -1179,12 +1180,21 @@ blockquote, code, pre, .theme-toggle, .case-icon, .stat-icon, .tag, .stat-block 
   }
 
   nav .nav-inner {
-    flex-direction: column;
+    flex-direction: row;
     gap: 0.5rem;
     padding: 0.75rem 1rem;
   }
 
-  nav { height: auto; }
+  nav .nav-links a {
+    font-size: 0;
+  }
+
+  nav .nav-links a i[data-lucide],
+  nav .nav-links a svg {
+    font-size: 0.9rem;
+    width: 1rem;
+    height: 1rem;
+  }
 
   .hero h1 { font-size: 1.8rem; }
 }

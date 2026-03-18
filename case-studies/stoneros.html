@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>stonerOS — Personal AI Memory System — Joshua Stoner</title>
-  <meta name="description" content="Production AI memory system with 3-layer memory hierarchy, 18-agent orchestration, autonomous scheduled sessions, and automated CI/CD pipeline.">
+  <meta name="description" content="Production AI memory system with 3-layer memory hierarchy, 21-agent orchestration, autonomous scheduled sessions, and automated CI/CD pipeline.">
   <meta property="og:title" content="stonerOS — Personal AI Memory System">
-  <meta property="og:description" content="Built a production AI memory system from scratch — 18-agent orchestration across three model tiers, autonomous sessions, and automated CI/CD via Claude Code.">
+  <meta property="og:description" content="Built a production AI memory system from scratch — 21-agent orchestration across three model tiers, autonomous sessions, and automated CI/CD via Claude Code.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://josh-stoner.github.io/case-studies/stoneros.html">
   <meta name="twitter:card" content="summary">
@@ -18,7 +18,7 @@
 <body>
   <nav>
     <div class="nav-inner">
-      <a href="/" class="nav-name"><i data-lucide="home"></i> Joshua Stoner</a>
+      <a href="../" class="nav-name"><i data-lucide="home"></i> Joshua Stoner</a>
       <button class="theme-toggle" aria-label="Toggle theme">
         <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
@@ -30,18 +30,18 @@
   </nav>
 
   <main>
-    <a href="/" class="back-link"><i data-lucide="arrow-left"></i> Back to Portfolio</a>
+    <a href="../" class="back-link"><i data-lucide="arrow-left"></i> Back to Portfolio</a>
 
     <div class="case-header">
       <span class="case-icon icon-mauve"><i data-lucide="brain"></i></span>
       <span class="tab-title color-mauve">stonerOS &mdash; Personal AI Memory System</span>
       <span class="tab-subtitle">Production AI System | Self-Initiated | February 2026&ndash;Present</span>
       <div class="tags">
-        <span class="tag">AI systems architecture</span>
-        <span class="tag">Multi-agent orchestration</span>
-        <span class="tag">Automation &amp; CI/CD</span>
-        <span class="tag">Iterative design</span>
-        <span class="tag">Self-directed build</span>
+        <span class="tag tag--mauve">AI systems architecture</span>
+        <span class="tag tag--mauve">Multi-agent orchestration</span>
+        <span class="tag tag--mauve">Automation &amp; CI/CD</span>
+        <span class="tag tag--mauve">Iterative design</span>
+        <span class="tag tag--mauve">Self-directed build</span>
       </div>
     </div>
 
@@ -61,11 +61,9 @@
 
     <h2 id="about-this-project"><i data-lucide="info" class="icon-blue"></i> About This Project</h2>
     <p>Every Claude session starts from zero. No memory of prior conversations, no knowledge of preferences, no continuity across sessions. For a daily AI user doing serious work&mdash;job search strategy, resume iteration, research synthesis&mdash;that&rsquo;s a meaningful friction point.</p>
-    <p>I built <strong>stonerOS</strong>: a production AI memory system that gives Claude persistent, evolving knowledge about me across every session. It&rsquo;s a git repository&mdash;3-layer memory architecture, 18 specialized agents across three model tiers, 5 automation hooks, autonomous scheduled sessions, pre-commit secret scanning, and daily backup via macOS launchd. I use it every day. No one asked me to build it.</p>
+    <p>I built <strong>stonerOS</strong>: a production AI memory system that gives Claude persistent, evolving knowledge about me across every session. It&rsquo;s a git repository&mdash;3-layer memory architecture, 21 specialized agents across three model tiers, 5 automation hooks, autonomous scheduled sessions, pre-commit secret scanning, and daily backup via macOS launchd. I use it every day. No one asked me to build it.</p>
     <p>What makes it a portfolio piece is not that it was built&mdash;it&rsquo;s how it evolved. The system now on version 2.8 looks materially different from v1.0. Real use generated real friction. Real friction generated real fixes. The system learns about me as I use it, and I learn how to build better systems by running them.</p>
     <blockquote>This demonstrates: AI systems architecture, multi-agent orchestration, automation pipeline design, iterative engineering judgment, and the kind of self-directed builder instinct that doesn&rsquo;t wait for a formal request to solve a real problem.</blockquote>
-
-    <hr>
 
     <h2 id="context"><i data-lucide="map-pin" class="icon-sky"></i> Context</h2>
     <table>
@@ -79,8 +77,6 @@
       </tbody>
     </table>
 
-    <hr>
-
     <h2 id="the-problem"><i data-lucide="alert-triangle" class="icon-yellow"></i> The Problem</h2>
     <p>Large language models have no persistent memory by default. Every new conversation is a blank slate. For casual use, that&rsquo;s fine. For someone running active job search operations, refining career strategy, managing a personal knowledge base, and iterating on complex documents over weeks&mdash;it&rsquo;s a significant gap.</p>
     <p>Workarounds exist but each breaks down:</p>
@@ -90,8 +86,6 @@
       <li><strong>Relying on the model to &ldquo;remember&rdquo;</strong>: doesn&rsquo;t persist across API calls</li>
     </ul>
     <p>The real problem wasn&rsquo;t technical&mdash;it was that there was no designed system for how AI memory <em>should</em> work for a single user doing complex, evolving work.</p>
-
-    <hr>
 
     <h2 id="the-architecture"><i data-lucide="network" class="icon-mauve"></i> The Architecture</h2>
     <p>A three-layer memory hierarchy with agent delegation and automated CI/CD.</p>
@@ -108,7 +102,7 @@ Session Router:
     partial       → preferences + corrections only
     deep-work     → full load + skill suggestions
   ↓
-Agent Layer (18 agents, 3 model tiers):
+Agent Layer (21 agents, 3 model tiers):
   Haiku:   memory-search, session-writer, qa-validator, dedup-validator,
            context-router, skill-curator, session-analyst
   Sonnet:  archivist, talent, code-architect, research-analyst, docs-sync,
@@ -131,8 +125,6 @@ Automation Layer (5 hooks + launchd):
       <li><strong>Safety-first</strong>: pre-commit blocks secrets before they can reach GitHub; post-commit auto-pushes, so assume everything goes public immediately</li>
       <li><strong>Intelligent session routing</strong>: context-router (Haiku) classifies each session in &lt;3 seconds&mdash;transactional requests skip memory load entirely</li>
     </ul>
-
-    <hr>
 
     <h2 id="the-iteration-record"><i data-lucide="git-commit" class="icon-mauve"></i> The Iteration Record</h2>
     <p>This is where the portfolio piece lives. The initial build was functional. The current system is correct. What separates them is a documented log of real friction.</p>
@@ -172,8 +164,6 @@ Automation Layer (5 hooks + launchd):
     <p>The system was powerful but required me to be present. Built <strong>autonomous execution</strong>&mdash;headless sessions on a schedule with 6-layer safety: kill switch, command allowlist, 10-minute timeout, $2/run budget cap, git-based write sandbox, and execution log. Two scheduled jobs run weekly via launchd.</p>
     <p>Also: <code>security-auditor</code> agent for macOS defensive security; a repository evaluation pipeline; Safari Bridge for browser interaction via AppleScript; a collectibles data pipeline; and a persistent design system for app building.</p>
 
-    <hr>
-
     <h2 id="what-makes-it-a-learning-system"><i data-lucide="graduation-cap" class="icon-mauve"></i> What Makes It a Learning System</h2>
     <table>
       <thead><tr><th>Learning Principle</th><th>stonerOS Implementation</th></tr></thead>
@@ -188,15 +178,13 @@ Automation Layer (5 hooks + launchd):
       </tbody>
     </table>
 
-    <hr>
-
     <h2 id="evidence-of-production-use"><i data-lucide="check-square" class="icon-green"></i> Evidence of Production Use</h2>
     <ul>
       <li><strong>Git log</strong>: Session-end commits timestamped to every working session since February 2026</li>
-      <li><strong>Agent invocations</strong>: 18 agents across 3 model tiers actively routing tasks</li>
+      <li><strong>Agent invocations</strong>: 21 agents across 3 model tiers actively routing tasks</li>
       <li><strong>5 automation hooks</strong>: PostToolUse, SessionEnd, PreCompact, SubagentStart, SubagentStop&mdash;zero manual intervention</li>
       <li><strong>2 autonomous scheduled sessions</strong>: Weekly headless runs via launchd with 6-layer safety</li>
-      <li><strong>17 slash commands</strong>: From <code>/weekly-review</code> to <code>/security-audit</code></li>
+      <li><strong>20 slash commands</strong>: From <code>/weekly-review</code> to <code>/security-audit</code></li>
       <li><strong>10 active skill modules</strong>: Covering job search, finance, security, AI research, creative systems, and more</li>
       <li><strong>Correction layer active</strong>: Known baseline errors documented and overridden</li>
       <li><strong>BUG-002 resolved</strong>: Write race fix has held across hundreds of sessions</li>
@@ -211,10 +199,10 @@ Automation Layer (5 hooks + launchd):
       <thead><tr><th>Competency</th><th>Evidence</th></tr></thead>
       <tbody>
         <tr><td><strong>Systems architecture</strong></td><td>3-layer memory hierarchy; correction overlay pattern; context-router; adversarial debate and ensemble patterns</td></tr>
-        <tr><td><strong>AI/ML engineering</strong></td><td>18-agent orchestration; model-tier delegation; dedup-validator for learnings integrity</td></tr>
+        <tr><td><strong>AI/ML engineering</strong></td><td>21-agent orchestration; model-tier delegation; dedup-validator for learnings integrity</td></tr>
         <tr><td><strong>Automation &amp; CI/CD</strong></td><td>5 hooks; pre-commit scanning; launchd backup; auto-push; autonomous headless sessions with 6-layer safety</td></tr>
         <tr><td><strong>Iterative engineering</strong></td><td>v1 &rarr; v2.8 across 10 iterations driven by real friction</td></tr>
-        <tr><td><strong>Product thinking</strong></td><td>17 slash commands, 10 skill modules, session classification, QA gates, decision log</td></tr>
+        <tr><td><strong>Product thinking</strong></td><td>20 slash commands, 10 skill modules, session classification, QA gates, decision log</td></tr>
         <tr><td><strong>Learning systems design</strong></td><td>Architecture mirrors instructional design principles</td></tr>
         <tr><td><strong>Self-direction</strong></td><td>No spec, no team, no deadline&mdash;iterated through 10 versions, in daily production</td></tr>
       </tbody>
@@ -227,7 +215,7 @@ Automation Layer (5 hooks + launchd):
   </main>
 
   <footer>
-    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></p>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
   </footer>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>lucide.createIcons();</script>
