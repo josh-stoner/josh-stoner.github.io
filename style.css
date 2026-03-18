@@ -278,12 +278,12 @@ h1, h2, h3, h4 {
 }
 
 h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
-h1.color-lavender, .tab-title.color-lavender { color: var(--purple); }
-h1.color-teal, .tab-title.color-teal { color: var(--olive); }
-h1.color-peach, .tab-title.color-peach { color: var(--warm-coral); }
-h1.color-green, .tab-title.color-green { color: var(--olive-light); }
-h1.color-mauve, .tab-title.color-mauve { color: var(--coral); }
-h1.color-sky, .tab-title.color-sky { color: var(--blue-shift); }
+h1.color-lavender, .case-header .tab-title.color-lavender { color: var(--purple); }
+h1.color-teal, .case-header .tab-title.color-teal { color: var(--olive); }
+h1.color-peach, .case-header .tab-title.color-peach { color: var(--warm-coral); }
+h1.color-green, .case-header .tab-title.color-green { color: var(--olive-light); }
+h1.color-mauve, .case-header .tab-title.color-mauve { color: var(--coral); }
+h1.color-sky, .case-header .tab-title.color-sky { color: var(--blue-shift); }
 h2 { font-size: 1.25rem; font-weight: 700; margin: 3.5rem 0 1rem; color: var(--text); letter-spacing: -0.01em; }
 h3 { font-size: 1.05rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: var(--text-secondary); }
 
