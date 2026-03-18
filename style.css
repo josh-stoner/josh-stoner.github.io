@@ -651,7 +651,7 @@ tr:hover td {
   padding: 1rem 1.25rem;
   margin: 1rem 0 2.5rem 0;
   border-left: 2px solid var(--card-border);
-  background: var(--card-bg);
+  background: rgba(0,0,0,0.02);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   width: 100%;
   box-sizing: border-box;
@@ -1021,6 +1021,10 @@ a.card:has(.icon-sky):hover {
 
 [data-theme="dark"] .case-icon {
   background: rgba(255,255,255,0.08);
+}
+
+[data-theme="dark"] .toc {
+  background: rgba(255,255,255,0.03);
 }
 
 [data-theme="dark"] .tag {
