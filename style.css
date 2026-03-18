@@ -647,19 +647,17 @@ tr:hover td {
 /* ---- Table of Contents ---- */
 
 .toc {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: block;
   text-align: left;
-  gap: 0.3rem;
   padding: 0.85rem 1rem;
-  margin-bottom: 2rem;
+  margin: 0 0 2.5rem 0;
   border-left: 2px solid var(--card-border);
   background: transparent;
-  position: relative;
-  z-index: 1;
-  overflow: visible;
-  clear: both;
+}
+
+.toc a,
+.toc .toc-label {
+  display: block;
 }
 
 .toc-label {
@@ -668,17 +666,15 @@ tr:hover td {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-faint);
-  margin-bottom: 0.2rem;
-  text-align: left;
+  margin-bottom: 0.35rem;
 }
 
 .toc a {
   font-size: 0.8rem;
   color: var(--text-secondary);
   text-decoration: none;
-  line-height: 1.4;
+  line-height: 1.8;
   transition: color 0.2s;
-  text-align: left;
 }
 
 .toc a:hover {
