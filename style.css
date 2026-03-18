@@ -647,31 +647,21 @@ tr:hover td {
 /* ---- Table of Contents ---- */
 
 .toc {
-  display: block;
   text-align: left;
   padding: 1rem 1.25rem;
   margin: 1rem 0 2.5rem 0;
   border-left: 2px solid var(--card-border);
   background: var(--card-bg);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  float: none;
   width: 100%;
   box-sizing: border-box;
+  height: auto !important;
+  overflow: visible !important;
+  display: flow-root;
 }
 
-.toc::after {
-  content: '';
-  display: table;
-  clear: both;
-}
-
-.toc a,
 .toc .toc-label {
   display: block;
-  float: none;
-}
-
-.toc-label {
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -681,6 +671,7 @@ tr:hover td {
 }
 
 .toc a {
+  display: block;
   font-size: 0.8rem;
   color: var(--text-secondary);
   text-decoration: none;
