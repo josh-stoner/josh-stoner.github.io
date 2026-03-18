@@ -703,7 +703,7 @@ tr:hover td {
 
 .soundcloud-embed iframe {
   display: block;
-  color-scheme: dark;
+  filter: brightness(0.78) contrast(1.1) saturate(0.9);
 }
 
 .toc .toc-label {
