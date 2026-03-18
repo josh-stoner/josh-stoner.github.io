@@ -692,6 +692,20 @@ tr:hover td {
   border-bottom: none;
 }
 
+/* ---- SoundCloud Embeds — always dark ---- */
+
+.soundcloud-embed {
+  background: #1a1a1a;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  padding: 0;
+}
+
+.soundcloud-embed iframe {
+  display: block;
+  color-scheme: dark;
+}
+
 .toc .toc-label {
   display: block;
   font-size: 0.65rem;
