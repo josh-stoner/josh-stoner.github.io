@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How I Work: A Data Portrait — Joshua Stoner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})()</script>
+<style>
+  :root {
+    /* Light mode (default) */
+    --bg: #F1F0ED;
+    --card-bg: #FFFFFF;
+    --card-border: rgba(0,0,0,0.06);
+    --surface-hover: rgba(0,0,0,0.02);
+    --text: #1a1a1a;
+    --text-secondary: #666666;
+    --text-muted: #666666;
+    --text-faint: #999999;
+    --accent: #c47088;
+    --accent-dim: rgba(196,112,136,0.1);
+    --accent-glow: rgba(196,112,136,0.2);
+    --purple: #6d5acd;
+    --sky: #5a8dbf;
+    --teal: #4a7fad;
+    --peach: #b8941f;
+    --green: #4a9960;
+    --coral: #c06060;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  }
+
+  [data-theme="dark"] {
+    --bg: #110A0F;
+    --card-bg: rgba(255,255,255,0.06);
+    --card-border: rgba(255,255,255,0.08);
+    --surface-hover: rgba(255,255,255,0.04);
+    --text: #D2CBC7;
+    --text-secondary: #B5ACA7;
+    --text-muted: #908580;
+    --text-faint: #645A56;
+    --accent: #d48a9e;
+    --accent-dim: rgba(212,138,158,0.15);
+    --accent-glow: rgba(212,138,158,0.25);
+    --purple: #8a75d6;
+    --sky: #7aa4cc;
+    --teal: #6a9cc4;
+    --peach: #d4ad3a;
+    --green: #66b47a;
+    --coral: #d47878;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    text-wrap: pretty;
+  }
+
+  /* ── Slide container ── */
+  .slide {
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100vh;
+    max-height: 100dvh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 3.5rem 3rem 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  /* ── Slide counter ── */
+  .slide::after {
+    content: attr(data-slide);
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Typography ── */
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    text-wrap: balance;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Per-slide accent colors */
+  .slide.c-purple { --slide-accent: var(--purple); }
+  .slide.c-rose   { --slide-accent: var(--accent); }
+  .slide.c-sky    { --slide-accent: var(--sky); }
+  .slide.c-coral  { --slide-accent: var(--coral); }
+  .slide.c-green  { --slide-accent: var(--green); }
+  .slide.c-peach  { --slide-accent: var(--peach); }
+
+  .slide[class*="c-"] .section-label { color: var(--slide-accent); }
+  .slide[class*="c-"] .stat-number   { color: var(--slide-accent); }
+  .slide[class*="c-"] .insight       { border-left-color: var(--slide-accent); }
+  .slide[class*="c-"] .quote-block blockquote { border-left-color: var(--slide-accent); }
+  .slide[class*="c-"] .quote-block .attribution { color: var(--slide-accent); }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 600px;
+    text-wrap: pretty;
+  }
+
+  .tagline {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 1rem;
+  }
+
+  .insight {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    margin-top: 1.5rem;
+    max-width: 540px;
+  }
+
+  /* ── Stats ── */
+  .stats-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── Bar chart ── */
+  .bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 1rem;
+  }
+
+  .bar-row {
+    display: grid;
+    grid-template-columns: 110px 1fr 44px;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .bar-label {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+    text-align: right;
+  }
+
+  .bar-track {
+    height: 28px;
+    background: var(--card-bg);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-glow));
+    transition: width 0.8s ease;
+    position: relative;
+  }
+
+  .bar-fill.night {
+    background: linear-gradient(90deg, var(--accent), var(--accent-glow));
+  }
+
+  .bar-fill.day {
+    background: linear-gradient(90deg, var(--purple), var(--accent-dim));
+  }
+
+  .bar-value {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .bar-character {
+    font-size: 0.72rem;
+    color: var(--text-faint);
+    grid-column: 2 / -1;
+    margin-top: -0.35rem;
+    padding-left: 0.25rem;
+  }
+
+  /* ── Cards grid ── */
+  .card-grid {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .card-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+  .card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .card-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+  }
+
+  .card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .card p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  .card .card-meta {
+    font-size: 0.72rem;
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .card .card-pct {
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Card accent colors */
+  .card.purple::before { background: var(--purple); }
+  .card.purple .card-pct { color: var(--purple); }
+  .card.rose::before { background: var(--accent); }
+  .card.rose .card-pct { color: var(--accent); }
+  .card.sky::before { background: var(--sky); }
+  .card.sky .card-pct { color: var(--sky); }
+  .card.teal::before { background: var(--teal); }
+  .card.teal .card-pct { color: var(--teal); }
+  .card.peach::before { background: var(--peach); }
+  .card.peach .card-pct { color: var(--peach); }
+  .card.green::before { background: var(--green); }
+  .card.green .card-pct { color: var(--green); }
+  .card.coral::before { background: var(--coral); }
+  .card.coral .card-pct { color: var(--coral); }
+
+  /* ── Phase timeline ── */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .phase {
+    position: relative;
+    padding-top: 1.5rem;
+  }
+
+  .phase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  .phase:nth-child(1)::before { background: var(--purple); }
+  .phase:nth-child(2)::before { background: var(--sky); }
+  .phase:nth-child(3)::before { background: var(--coral); }
+  .phase:nth-child(4)::before { background: var(--accent); }
+
+  .phase-label {
+    font-size: 0.65rem;
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.3rem;
+  }
+
+  .phase h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .phase:nth-child(1) h3 { color: var(--purple); }
+  .phase:nth-child(2) h3 { color: var(--sky); }
+  .phase:nth-child(3) h3 { color: var(--coral); }
+  .phase:nth-child(4) h3 { color: var(--accent); }
+
+  .phase p {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* ── Cycle diagram ── */
+  .cycle {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .cycle-node {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .cycle-node.build { color: var(--purple); border-color: rgba(138,117,214,0.3); }
+  .cycle-node.write { color: var(--accent); border-color: rgba(212,138,158,0.3); }
+  .cycle-node.job { color: var(--sky); border-color: rgba(122,164,204,0.3); }
+  .cycle-node.maint { color: var(--teal); border-color: rgba(106,156,196,0.3); }
+
+  .cycle-arrow {
+    color: var(--text-faint);
+    font-size: 0.9rem;
+  }
+
+  /* ── Switch list ── */
+  .switch-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .switch-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.85rem;
+    background: var(--card-bg);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--card-border);
+  }
+
+  .switch-count {
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--accent);
+    min-width: 2rem;
+    text-align: center;
+  }
+
+  .switch-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .switch-desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-left: auto;
+  }
+
+  /* ── Closing quote ── */
+  .quote-block {
+    max-width: 620px;
+  }
+
+  .quote-block blockquote {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--text);
+    font-weight: 400;
+    border-left: 3px solid var(--accent);
+    padding-left: 1.25rem;
+    margin-bottom: 1.5rem;
+    text-wrap: pretty;
+  }
+
+  .quote-block .attribution {
+    font-size: 0.95rem;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  /* ── Theme toggle ── */
+  .theme-toggle {
+    position: fixed;
+    top: 1.25rem;
+    left: 1.5rem;
+    z-index: 10;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s, background 0.2s;
+  }
+  .theme-toggle:hover { color: var(--text); }
+  .theme-toggle svg { width: 16px; height: 16px; }
+  .theme-toggle .icon-sun { display: none; }
+  [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+  [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+  /* ── Navigation ── */
+  .nav-hint {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    letter-spacing: 0.05em;
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* ── Two-column layout ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    html { scroll-padding-top: 7rem; }
+    .slide {
+      padding: 2rem 1.5rem;
+    }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.3rem; }
+    .section-label { margin-top: 0; }
+    .card-grid.cols-2, .card-grid.cols-3, .card-grid.cols-4 { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: 1fr 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .bar-row { grid-template-columns: 80px 1fr 36px; }
+    .stats-row { gap: 1.5rem; }
+    .stat-number { font-size: 1.6rem; }
+  }
+
+  /* ── Print / PDF ── */
+  @media print {
+    html { scroll-snap-type: none; }
+    .slide {
+      page-break-after: always;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .nav-hint { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" aria-label="Toggle theme" onclick="var t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t)">
+  <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+  <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+</button>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 1: Title                             -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="slide c-purple" data-slide="1 / 9">
+  <div class="section-label">A Data Portrait</div>
+  <h1>How I Work</h1>
+  <p class="subtitle">
+    I pointed my AI memory system at its own git history&nbsp;&mdash; 38&nbsp;days of saved changes across building, writing, job searching, and maintaining&nbsp;&mdash; and mapped what&nbsp;came&nbsp;out.
+  </p>
+  <div class="stats-row">
+    <div class="stat">
+      <span class="stat-number">38</span>
+      <span class="stat-label">Days tracked</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">34</span>
+      <span class="stat-label">Sessions</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">191</span>
+      <span class="stat-label">Commits</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">5+</span>
+      <span class="stat-label">Domains</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 2: When I Work                       -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="slide c-rose" data-slide="2 / 9">
+  <div class="section-label">Time Distribution</div>
+  <h2>When I Work</h2>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <span class="bar-label">11 AM – 1 PM</span>
+      <div class="bar-track"><div class="bar-fill day" style="width:100%"></div></div>
+      <span class="bar-value">24%</span>
+    </div>
+    <div class="bar-character">The productive window. Organized work&nbsp;&mdash; system building, job prep, upkeep.</div>
+
+    <div class="bar-row">
+      <span class="bar-label">10 PM – 2 AM</span>
+      <div class="bar-track"><div class="bar-fill night" style="width:92%"></div></div>
+      <span class="bar-value">22%</span>
+    </div>
+    <div class="bar-character">Deep focus. The biggest writing and building breakthroughs happen&nbsp;here.</div>
+
+    <div class="bar-row">
+      <span class="bar-label">6 PM – 9 PM</span>
+      <div class="bar-track"><div class="bar-fill night" style="width:83%"></div></div>
+      <span class="bar-value">20%</span>
+    </div>
+    <div class="bar-character">Second wind. Creative, exploratory, often where new ideas&nbsp;start.</div>
+
+    <div class="bar-row">
+      <span class="bar-label">2 PM – 5 PM</span>
+      <div class="bar-track"><div class="bar-fill day" style="width:63%"></div></div>
+      <span class="bar-value">15%</span>
+    </div>
+    <div class="bar-character">Afternoon push. Finishing what the morning&nbsp;started.</div>
+
+    <div class="bar-row">
+      <span class="bar-label">6 AM – 10 AM</span>
+      <div class="bar-track"><div class="bar-fill day" style="width:54%"></div></div>
+      <span class="bar-value">13%</span>
+    </div>
+    <div class="bar-character">Morning catch-up. Job applications, wrapping up&nbsp;loose&nbsp;ends.</div>
+
+    <div class="bar-row">
+      <span class="bar-label">2 AM – 6 AM</span>
+      <div class="bar-track"><div class="bar-fill night" style="width:25%"></div></div>
+      <span class="bar-value">6%</span>
+    </div>
+    <div class="bar-character">Insomniac sessions. Automation scripts, data tools. Pure building&nbsp;energy.</div>
+  </div>
+  <div class="insight">
+    Two peaks at nearly equal weight&nbsp;&mdash; organized output by day, creative breakthroughs after dark. 48% of all work happens after&nbsp;6&nbsp;PM.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 3: What I Work On                    -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="slide c-peach" data-slide="3 / 9">
+  <div class="section-label">Domain Breakdown</div>
+  <h2>What I Work On</h2>
+  <div class="card-grid cols-3">
+    <div class="card purple">
+      <div class="card-meta">Weeks 7–8</div>
+      <div class="card-pct">24%</div>
+      <h3>System Building</h3>
+      <p>Nine building sessions in ten days&nbsp;&mdash; config files, workflows, commands, guardrails.</p>
+    </div>
+    <div class="card rose">
+      <div class="card-meta">Weeks 11–12</div>
+      <div class="card-pct">20%</div>
+      <h3>Writing</h3>
+      <p>Five-part essay series, LinkedIn drafts, a voice checker&nbsp;&mdash; 40 tone edits in one session.</p>
+    </div>
+    <div class="card sky">
+      <div class="card-meta">Weeks 10–11</div>
+      <div class="card-pct">16%</div>
+      <h3>Job Search</h3>
+      <p>Applications, interview prep, positioning. Frustration here fuels the best writing.</p>
+    </div>
+    <div class="card teal">
+      <div class="card-meta">Distributed</div>
+      <div class="card-pct">16%</div>
+      <h3>Maintenance</h3>
+      <p>Follows every building phase. Doc checks, consistency reviews. Never builds and walks away.</p>
+    </div>
+    <div class="card green">
+      <div class="card-meta">Follows writing</div>
+      <div class="card-pct">6%</div>
+      <h3>Portfolio</h3>
+      <p>Design system, case studies, public site. Always the last mile after a writing sprint.</p>
+    </div>
+    <div class="card coral">
+      <div class="card-meta">Nights only</div>
+      <div class="card-pct">4%</div>
+      <h3>Data Pipelines</h3>
+      <p>Tools to pull data from my phone, track collectibles prices, and process notes. Pure building energy, no&nbsp;audience.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 4: Evolution Arc — section header    -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="slide c-green" data-slide="4 / 9">
+  <div class="section-label">38 Days in Four Phases</div>
+  <h2>The Evolution Arc</h2>
+  <div class="timeline">
+    <div class="phase">
+      <div class="phase-label">Weeks 7–8</div>
+      <h3>The Builder</h3>
+      <p>Feb 9–21. Pure infrastructure&nbsp;&mdash; config files, automated workflows, custom commands, safety guardrails, specialized AI&nbsp;agents. Foundation only, no visible output&nbsp;yet.</p>
+    </div>
+    <div class="phase">
+      <div class="phase-label">Weeks 8–9</div>
+      <h3>The Stabilizer</h3>
+      <p>Feb 19–28. Documentation checks, consistency reviews, weekly summaries. Built the system, then immediately made sure it&nbsp;held.</p>
+    </div>
+    <div class="phase">
+      <div class="phase-label">Weeks 10–11</div>
+      <h3>The Explosion</h3>
+      <p>Mar 3–15. 32 saved changes on Mar&nbsp;15 alone. Job search, essay series, a scam-detection app, a phone data tool&nbsp;&mdash; everything at&nbsp;once.</p>
+    </div>
+    <div class="phase">
+      <div class="phase-label">Weeks 11–12</div>
+      <h3>The Creative</h3>
+      <p>Mar 14–19. Writing dominates. A tool to check my writing voice, LinkedIn posts, portfolio design. Positioning emerges from the&nbsp;work.</p>
+    </div>
+  </div>
+  <div class="insight">
+    Build &rarr; Stabilize &rarr; Explode &rarr; Create. Each phase feeds the next. The system had to exist before it could produce.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 5: Thread-Pulling Pattern            -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="slide c-sky" data-slide="5 / 9">
+  <div class="section-label">How Domains Connect</div>
+  <h2>The Thread-Pulling Pattern</h2>
+  <div class="two-col">
+    <div>
+      <p class="subtitle" style="margin-bottom:1.25rem;">
+        Every work area feeds the next one. Shifting between them isn't random&nbsp;&mdash; it's associative. Build something, then write about it. Writing sharpens positioning. Positioning feeds the job search. Gaps in the search become new&nbsp;things&nbsp;to&nbsp;build.
+      </p>
+      <div class="cycle">
+        <span class="cycle-node build">BUILD</span>
+        <span class="cycle-arrow">&rarr;</span>
+        <span class="cycle-node write">WRITE</span>
+        <span class="cycle-arrow">&rarr;</span>
+        <span class="cycle-node job">JOB</span>
+        <span class="cycle-arrow">&rarr;</span>
+        <span class="cycle-node maint">MAINT</span>
+        <span class="cycle-arrow">&rarr;</span>
+        <span class="cycle-node build">BUILD</span>
+      </div>
+    </div>
+    <div class="switch-list">
+      <div class="switch-item">
+        <span class="switch-count">3x</span>
+        <span class="switch-label">BUILD &rarr; WRITE</span>
+        <span class="switch-desc">Build something, write about it</span>
+      </div>
+      <div class="switch-item">
+        <span class="switch-count">2x</span>
+        <span class="switch-label">WRITE &rarr; JOB</span>
+        <span class="switch-desc">Writing sharpens positioning</span>
+      </div>
+      <div class="switch-item">
+        <span class="switch-count">2x</span>
+        <span class="switch-label">JOB &rarr; WRITE</span>
+        <span class="switch-desc">Job friction generates writing</span>
+      </div>
+      <div class="switch-item">
+        <span class="switch-count">2x</span>
+        <span class="switch-label">JOB &rarr; MAINT</span>
+        <span class="switch-desc">After job work, clean the system</span>
+      </div>
+      <div class="switch-item">
+        <span class="switch-count">2x</span>
+        <span class="switch-label">WRITE &rarr; BUILD</span>
+        <span class="switch-desc">Writing surfaces tool gaps</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 6: The Busiest Days                  -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="slide c-coral" data-slide="6 / 9">
+  <div class="section-label">Surprise Sprints</div>
+  <h2>The Busiest Days Are Never Planned</h2>
+  <div class="two-col">
+    <div>
+      <div class="card coral" style="margin-bottom:0.75rem;">
+        <div class="card-meta">March 15, 2026</div>
+        <div class="card-pct">32</div>
+        <h3>commits in one day</h3>
+        <p>A phone data tool, a scam-detection app, essay writing, a price tracker, and note processing&nbsp;&mdash; one thread that touched five&nbsp;domains.</p>
+      </div>
+      <div class="card sky">
+        <div class="card-meta">March 4, 2026</div>
+        <div class="card-pct">20</div>
+        <h3>commits in one day</h3>
+        <p>Started with a single job posting. Ended eight hours later across system building, writing, and interview&nbsp;prep.</p>
+      </div>
+    </div>
+    <div>
+      <p class="subtitle" style="margin-bottom:1rem;">
+        Not planned sprints. Threads that&nbsp;escalated.
+      </p>
+      <p class="subtitle">
+        Start one thing, connect it to another, and eight hours later the change log tells a story nobody intended&nbsp;to&nbsp;write.
+      </p>
+      <div class="insight" style="margin-top:1.5rem;">
+        The pattern: curiosity finds a thread, follows it across work areas, and only stops when it resolves or branches into something&nbsp;bigger.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 7: Signature Moves                   -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="slide c-purple" data-slide="7 / 9">
+  <div class="section-label">Recurring Patterns</div>
+  <h2>Signature Moves</h2>
+  <div class="card-grid cols-2">
+    <div class="card rose">
+      <h3>Late-Night Thread Pull</h3>
+      <p>Most productive sessions start after 10&nbsp;PM and follow a single thread across multiple work areas. Mar&nbsp;15 at 3&nbsp;AM: a phone data tool. Mar&nbsp;17 at 11&nbsp;PM: a writing-voice checker, portfolio redesign, and content&nbsp;calendar.</p>
+    </div>
+    <div class="card purple">
+      <h3>Build-Then-Document</h3>
+      <p>Every building sprint is followed by a cleanup phase. Never builds and walks away. The documentation and review cadence is unusually disciplined for solo&nbsp;work.</p>
+    </div>
+    <div class="card coral">
+      <h3>Frustration-as-Fuel</h3>
+      <p>The best creative work follows friction. A conversation about being "too versatile" produced both a consulting rate card and an essay. A job rejection produced the entire portfolio. Job frustration consistently sharpens the&nbsp;writing.</p>
+    </div>
+    <div class="card sky">
+      <h3>Surprise Busiest Days</h3>
+      <p>Mar&nbsp;15: 32 changes. Mar&nbsp;4: 20 changes. Never planned&nbsp;&mdash; these are threads that escalated. Start one thing, and eight hours later the work has spread across five&nbsp;domains.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 8: The Insight                       -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="slide c-sky" data-slide="8 / 9">
+  <div class="section-label">The Insight</div>
+  <div class="quote-block">
+    <blockquote>
+      Doesn't work in lanes. Works in threads. A thread starts anywhere&nbsp;&mdash; a job posting, a newsletter, a late-night thought&nbsp;&mdash; and follows it until resolved or branched. The "randomness" is associative. Every domain connects because the person is the connective&nbsp;tissue.
+    </blockquote>
+    <p class="attribution">The driver isn't discipline. It's curiosity that doesn't&nbsp;quit.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 9: Colophon                          -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="slide c-rose" data-slide="9 / 9">
+  <h2 style="color:var(--text-muted); font-weight:400; font-size:1rem; margin-bottom:2rem;">Josh Stoner &middot; March 2026</h2>
+  <h1 style="font-size:2rem; margin-bottom:0.75rem;">Works in threads, not lanes.</h1>
+  <p class="subtitle">
+    Generated from 38 days of change&nbsp;history.<br>
+    Built with the same system it&nbsp;describes.
+  </p>
+  <div class="stats-row" style="margin-top:2rem;">
+    <div class="stat">
+      <span class="stat-number" style="font-size:1.2rem;">34</span>
+      <span class="stat-label">Sessions</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number" style="font-size:1.2rem;">191</span>
+      <span class="stat-label">Commits</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number" style="font-size:1.2rem;">5+</span>
+      <span class="stat-label">Domains</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number" style="font-size:1.2rem;">1</span>
+      <span class="stat-label">Thread</span>
+    </div>
+  </div>
+</section>
+
+<div class="nav-hint">&uarr; &darr; or scroll &middot; &#8984;P to print as PDF</div>
+
+<script>
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    const slides = document.querySelectorAll('.slide');
+    const vh = window.innerHeight;
+    const current = Math.round(window.scrollY / vh);
+
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+      e.preventDefault();
+      const next = Math.min(current + 1, slides.length - 1);
+      slides[next].scrollIntoView({ behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      const prev = Math.max(current - 1, 0);
+      slides[prev].scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+</script>
+
+</body>
+</html>

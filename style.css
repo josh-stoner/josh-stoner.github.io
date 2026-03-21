@@ -275,7 +275,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.7;
@@ -325,6 +325,18 @@ hr {
 
 strong { color: var(--text); font-weight: 600; }
 
+/* ---- Long-form article body — Source Serif 4 ---- */
+.article-body {
+  font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
+}
+.article-body h1, .article-body h2, .article-body h3, .article-body h4 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+.article-body p, .article-body li {
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
 blockquote {
   border-left: 3px solid rgba(0,0,0,0.12);
   padding: 0.75rem 1rem;
@@ -335,7 +347,7 @@ blockquote {
 }
 
 code {
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   background: rgba(0,0,0,0.05);
   padding: 0.15em 0.4em;
   border-radius: 4px;
@@ -856,28 +868,87 @@ tr:hover td {
   font-weight: 600;
 }
 
-/* ---- "How I Work" table ---- */
+/* ---- How I Work: Data Portrait ---- */
 
-.how-table td:first-child {
-  font-weight: 700;
-  font-size: 0.88rem;
-  color: var(--text);
-  white-space: nowrap;
-  width: 210px;
-  vertical-align: top;
-  padding-top: 0.7rem;
+.how-intro {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
 }
 
-/* How I Work left column matches icon color */
-.how-table td:first-child:has(.icon-purple) { color: var(--purple); }
-.how-table td:first-child:has(.icon-lavender) { color: var(--lavender); }
-.how-table td:first-child:has(.icon-sky) { color: var(--sky); }
-.how-table td:first-child:has(.icon-teal) { color: var(--teal); }
-.how-table td:first-child:has(.icon-peach) { color: var(--peach); }
-.how-table td:first-child:has(.icon-green) { color: var(--green); }
-.how-table td:first-child:has(.icon-coral) { color: var(--coral); }
-.how-table td:first-child:has(.icon-rose) { color: var(--rose); }
-.how-table td:first-child:has(.icon-mauve) { color: var(--coral); }
+.portrait-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.portrait-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-left: 3px solid;
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.portrait-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0.5rem 0 0.5rem;
+  line-height: 1.3;
+}
+
+.portrait-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.portrait-card p:last-child { margin-bottom: 0; }
+
+.portrait-icon {
+  display: inline-flex;
+  align-items: center;
+}
+.portrait-icon i[data-lucide],
+.portrait-icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.portrait-cycle {
+  display: block;
+  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin-top: 0.25rem;
+}
+
+.portrait-stat {
+  display: block;
+  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.portrait-source {
+  font-size: 0.85rem;
+  margin-top: 1.25rem;
+}
+
+.portrait-source a {
+  color: var(--sky);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.portrait-source a:hover {
+  color: var(--purple);
+}
 
 /* ---- Footer ---- */
 
@@ -1216,8 +1287,8 @@ blockquote, code, pre, .theme-toggle, .case-icon, .stat-icon, .tag, .stat-block 
     font-size: 1.4rem;
   }
 
-  .how-table td:first-child {
-    white-space: normal;
+  .portrait-grid {
+    grid-template-columns: 1fr;
   }
 
   .depth-orb--primary {

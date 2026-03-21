@@ -15,7 +15,8 @@
   <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
   <nav>
@@ -179,34 +180,33 @@
     <hr>
 
     <h2 id="how-i-work" class="reveal"><i data-lucide="compass" class="icon-blue"></i> How I Work</h2>
-    <table class="how-table reveal">
-      <tbody>
-        <tr>
-          <td><span class="how-icon icon-sky"><i data-lucide="search"></i></span> Problem framing</td>
-          <td>I start from data and signal, not assumptions&mdash;gap analysis, cycle data, or direct stakeholder input before scoping any solution</td>
-        </tr>
-        <tr>
-          <td><span class="how-icon icon-lavender"><i data-lucide="pen-tool"></i></span> Design philosophy</td>
-          <td>Reinforce existing language and frameworks where possible; reduce cognitive load, not add to it</td>
-        </tr>
-        <tr>
-          <td><span class="how-icon icon-green"><i data-lucide="shield-check"></i></span> Build quality</td>
-          <td>Production-ready systems, not prototypes&mdash;built to run without me maintaining them</td>
-        </tr>
-        <tr>
-          <td><span class="how-icon icon-coral"><i data-lucide="activity"></i></span> Measurement</td>
-          <td>Every program has a diagnostic hook&mdash;pilot data, participation metrics, or behavioral observation frameworks</td>
-        </tr>
-        <tr>
-          <td><span class="how-icon icon-peach"><i data-lucide="cpu"></i></span> Systems thinking</td>
-          <td>I build the infrastructure first&mdash;templates, automation, architecture&mdash;then leverage it. The same structural patterns show up in my curriculum, my code, and my creative work</td>
-        </tr>
-        <tr>
-          <td><span class="how-icon icon-teal"><i data-lucide="repeat"></i></span> Same skill, different medium</td>
-          <td>Prompt engineering, learning design, music production, memory architecture&mdash;different outputs, identical process: define a base, apply contextual modifiers, iterate within constraints</td>
-        </tr>
-      </tbody>
-    </table>
+    <p class="how-intro reveal">I pointed my AI memory system at its own git history&mdash;38&nbsp;days, 191&nbsp;commits, 5+&nbsp;domains&mdash;and mapped what came out.</p>
+    <div class="portrait-grid reveal">
+      <div class="portrait-card" style="border-left-color: var(--purple);">
+        <span class="portrait-icon icon-purple"><i data-lucide="git-branch"></i></span>
+        <h3>Works in Threads, Not Lanes</h3>
+        <p>Every work area feeds the next. Build something, write about it. Writing sharpens positioning. Positioning feeds the job search. Gaps become new things to build.</p>
+        <span class="portrait-cycle">BUILD &rarr; WRITE &rarr; JOB &rarr; MAINT &rarr; BUILD</span>
+      </div>
+      <div class="portrait-card" style="border-left-color: var(--sky);">
+        <span class="portrait-icon icon-sky"><i data-lucide="file-check"></i></span>
+        <h3>Build, Then Document</h3>
+        <p>Every building sprint is followed by a cleanup phase. Never builds something and walks away. The documentation cadence is unusually disciplined for solo work.</p>
+        <span class="portrait-stat">24% system building &rarr; 16% maintenance</span>
+      </div>
+      <div class="portrait-card" style="border-left-color: var(--coral);">
+        <span class="portrait-icon icon-coral"><i data-lucide="flame"></i></span>
+        <h3>Frustration as Fuel</h3>
+        <p>The best creative output follows friction. A conversation about being &ldquo;too versatile&rdquo; produced a consulting rate card and an essay. A job rejection produced the entire portfolio.</p>
+      </div>
+      <div class="portrait-card" style="border-left-color: var(--rose);">
+        <span class="portrait-icon icon-rose"><i data-lucide="moon"></i></span>
+        <h3>48% After Dark</h3>
+        <p>Two peaks at nearly equal weight&mdash;organized output by day, creative breakthroughs after 10&nbsp;PM. The biggest writing and building sessions happen late.</p>
+        <span class="portrait-stat">24% at 11 AM&ndash;1 PM &middot; 22% at 10 PM&ndash;2 AM</span>
+      </div>
+    </div>
+    <p class="portrait-source reveal"><a href="data-portrait.html">See the full data portrait &rarr;</a></p>
 
     <hr>
 
