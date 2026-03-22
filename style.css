@@ -20,7 +20,7 @@
   --purple: #6d5acd;      /* AI Brain, Creative production */
   --lavender: #6d5acd;    /* PerfDev (same family as purple) */
   --sky: #5a8dbf;          /* What My AI, Content Design */
-  --teal: #4a7fad;         /* Team Effectiveness */
+  --steel: #557bcc;         /* Team Effectiveness */
   --peach: #b8941f;        /* AI Manager */
   --green: #4a9960;        /* Conversations */
   --coral: #c06060;        /* stonerOS */
@@ -55,8 +55,8 @@ i[data-lucide].icon-purple { color: var(--purple); }
 i[data-lucide].icon-lavender { color: var(--lavender); }
 .icon-sky i[data-lucide], .icon-sky svg,
 i[data-lucide].icon-sky { color: var(--sky); }
-.icon-teal i[data-lucide], .icon-teal svg,
-i[data-lucide].icon-teal { color: var(--teal); }
+.icon-steel i[data-lucide], .icon-steel svg,
+i[data-lucide].icon-steel { color: var(--steel); }
 .icon-peach i[data-lucide], .icon-peach svg,
 i[data-lucide].icon-peach { color: var(--peach); }
 .icon-green i[data-lucide], .icon-green svg,
@@ -108,7 +108,7 @@ i[data-lucide].icon-muted { color: var(--text-faint); }
 .card-icon.icon-purple { background: rgba(124,58,237,0.1); }
 .card-icon.icon-lavender { background: rgba(124,58,237,0.1); }
 .card-icon.icon-sky { background: rgba(74,144,217,0.1); }
-.card-icon.icon-teal { background: rgba(74,144,217,0.1); }
+.card-icon.icon-steel { background: rgba(85,123,204,0.1); }
 .card-icon.icon-peach { background: rgba(212,160,23,0.1); }
 .card-icon.icon-green { background: rgba(52,168,83,0.1); }
 .card-icon.icon-coral { background: rgba(217,79,79,0.1); }
@@ -130,7 +130,7 @@ i[data-lucide].icon-muted { color: var(--text-faint); }
 .card-title:has(.icon-purple) { color: var(--purple); }
 .card-title:has(.icon-lavender) { color: var(--lavender); }
 .card-title:has(.icon-sky) { color: var(--sky); }
-.card-title:has(.icon-teal) { color: var(--teal); }
+.card-title:has(.icon-steel) { color: var(--steel); }
 .card-title:has(.icon-peach) { color: var(--peach); }
 .card-title:has(.icon-green) { color: var(--green); }
 .card-title:has(.icon-coral) { color: var(--coral); }
@@ -188,7 +188,7 @@ td strong:has(.icon-purple) { color: var(--purple); }
 td strong:has(.icon-lavender) { color: var(--lavender); }
 td strong:has(.icon-blue) { color: var(--text-muted); }
 td strong:has(.icon-sky) { color: var(--sky); }
-td strong:has(.icon-teal) { color: var(--teal); }
+td strong:has(.icon-steel) { color: var(--steel); }
 td strong:has(.icon-peach) { color: var(--peach); }
 td strong:has(.icon-green) { color: var(--green); }
 td strong:has(.icon-coral) { color: var(--coral); }
@@ -297,7 +297,7 @@ h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
 h1.color-purple, .case-header .tab-title.color-purple { color: var(--purple); }
 h1.color-lavender, .case-header .tab-title.color-lavender { color: var(--lavender); }
 h1.color-sky, .case-header .tab-title.color-sky { color: var(--sky); }
-h1.color-teal, .case-header .tab-title.color-teal { color: var(--teal); }
+h1.color-steel, .case-header .tab-title.color-steel { color: var(--steel); }
 h1.color-peach, .case-header .tab-title.color-peach { color: var(--peach); }
 h1.color-green, .case-header .tab-title.color-green { color: var(--green); }
 h1.color-coral, .case-header .tab-title.color-coral { color: var(--coral); }
@@ -563,7 +563,7 @@ main {
 .card:has(.icon-purple)::before { background: var(--purple); }
 .card:has(.icon-lavender)::before { background: var(--lavender); }
 .card:has(.icon-sky)::before { background: var(--sky); }
-.card:has(.icon-teal)::before { background: var(--teal); }
+.card:has(.icon-steel)::before { background: var(--steel); }
 .card:has(.icon-peach)::before { background: var(--peach); }
 .card:has(.icon-green)::before { background: var(--green); }
 .card:has(.icon-coral)::before { background: var(--coral); }
@@ -624,7 +624,7 @@ a.card:hover {
 .tag--purple { color: var(--purple); background: rgba(124,58,237,0.08); border-color: rgba(124,58,237,0.12); }
 .tag--lavender { color: var(--lavender); background: rgba(124,58,237,0.08); border-color: rgba(124,58,237,0.12); }
 .tag--sky { color: var(--sky); background: rgba(74,144,217,0.08); border-color: rgba(74,144,217,0.12); }
-.tag--teal { color: var(--teal); background: rgba(74,144,217,0.08); border-color: rgba(74,144,217,0.12); }
+.tag--steel { color: var(--steel); background: rgba(85,123,204,0.08); border-color: rgba(85,123,204,0.12); }
 .tag--peach { color: var(--peach); background: rgba(212,160,23,0.08); border-color: rgba(212,160,23,0.12); }
 .tag--green { color: var(--green); background: rgba(52,168,83,0.08); border-color: rgba(52,168,83,0.12); }
 .tag--coral { color: var(--coral); background: rgba(217,79,79,0.08); border-color: rgba(217,79,79,0.12); }
@@ -649,7 +649,7 @@ a.card:hover {
 .section-label:has(.icon-purple) { color: var(--purple); border-bottom-color: var(--purple); }
 .section-label:has(.icon-lavender) { color: var(--lavender); border-bottom-color: var(--lavender); }
 .section-label:has(.icon-sky) { color: var(--sky); border-bottom-color: var(--sky); }
-.section-label:has(.icon-teal) { color: var(--teal); border-bottom-color: var(--teal); }
+.section-label:has(.icon-steel) { color: var(--steel); border-bottom-color: var(--steel); }
 .section-label:has(.icon-peach) { color: var(--peach); border-bottom-color: var(--peach); }
 .section-label:has(.icon-green) { color: var(--green); border-bottom-color: var(--green); }
 .section-label:has(.icon-coral) { color: var(--coral); border-bottom-color: var(--coral); }
@@ -1054,8 +1054,8 @@ a.card:has(.icon-lavender):hover {
 a.card:has(.icon-sky):hover {
   box-shadow: 0 8px 24px rgba(74,144,217,0.1), 0 2px 8px rgba(74,144,217,0.05);
 }
-a.card:has(.icon-teal):hover {
-  box-shadow: 0 8px 24px rgba(74,144,217,0.1), 0 2px 8px rgba(74,144,217,0.05);
+a.card:has(.icon-steel):hover {
+  box-shadow: 0 8px 24px rgba(85,123,204,0.1), 0 2px 8px rgba(85,123,204,0.05);
 }
 a.card:has(.icon-peach):hover {
   box-shadow: 0 8px 24px rgba(212,160,23,0.1), 0 2px 8px rgba(212,160,23,0.05);
@@ -1126,7 +1126,7 @@ a.card:has(.icon-mauve):hover {
   --purple: #8a75d6;
   --lavender: #8a75d6;
   --sky: #7aa4cc;
-  --teal: #6a9cc4;
+  --steel: #dbeafe;
   --peach: #d4ad3a;
   --green: #66b47a;
   --coral: #d47878;
