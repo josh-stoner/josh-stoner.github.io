@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+<style>
+  @media (prefers-color-scheme: dark) {
+    rect { fill: #110A0F; }
+    .s { fill: #d48a9e; }
+    .os { fill: #D2CBC7; }
+  }
+</style>
+<rect width="32" height="32" rx="7" fill="#F1F0ED"/>
+<text font-family="Inter, -apple-system, system-ui, sans-serif" font-weight="800" font-size="16" letter-spacing="-0.5">
+  <tspan x="3" y="22" class="s" fill="#c47088">s</tspan><tspan class="os" fill="#6d5acd">OS</tspan>
+</text>
+</svg>
