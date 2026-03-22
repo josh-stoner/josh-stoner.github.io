@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClaudeUsage — macOS Menu Bar Usage Tracker — Joshua Stoner</title>
+  <meta name="description" content="Native macOS menu bar app that tracks Claude Code usage — plan limits, weekly stats, cost analysis, and usage patterns. 35x ROI.">
+  <meta property="og:title" content="ClaudeUsage — macOS Menu Bar Usage Tracker">
+  <meta property="og:description" content="Built a native macOS menu bar app in Swift/SwiftUI that tracks Claude Code usage in real time. 35x ROI on Max plan.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://josh-stoner.github.io/case-studies/claude-usage.html">
+  <meta name="twitter:card" content="summary">
+  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    blockquote { border-left-color: var(--purple); }
+    .screenshot-row {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin: 1.5rem 0 0.5rem;
+    }
+    .screenshot-row img {
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      max-width: 280px;
+      height: auto;
+    }
+    .caption {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-faint);
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .screenshot-row { flex-direction: column; align-items: center; gap: 1rem; }
+      .screenshot-row img { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="nav-name"><i data-lucide="home"></i> Joshua Stoner</a>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <ul class="nav-links">
+        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="../" class="back-link"><i data-lucide="arrow-left"></i> Back to Portfolio</a>
+
+    <div class="case-header">
+      <span class="case-icon icon-purple"><i data-lucide="bar-chart-3"></i></span>
+      <span class="tab-title color-purple">ClaudeUsage &mdash; macOS Menu Bar Usage Tracker</span>
+      <span class="tab-subtitle">Native macOS App | Self-Initiated | March 2026</span>
+      <div class="tags">
+        <span class="tag tag--purple">Swift / SwiftUI</span>
+        <span class="tag tag--purple">macOS development</span>
+        <span class="tag tag--purple">API integration</span>
+        <span class="tag tag--purple">Data visualization</span>
+        <span class="tag tag--purple">Self-directed build</span>
+      </div>
+    </div>
+
+    <div class="screenshot-row">
+      <img src="../assets/images/claude-usage-week-dark.png" alt="ClaudeUsage Week tab — dark mode" />
+      <img src="../assets/images/claude-usage-week-light.png" alt="ClaudeUsage Week tab — light mode" />
+    </div>
+    <p class="caption">Weekly activity dashboard &mdash; dark and light modes. Same design system tokens, automatic theme switching.</p>
+
+    <nav class="toc" style="border-left-color: var(--purple);">
+      <span class="toc-label">On this page</span>
+      <a href="#about-this-project">About This Project</a>
+      <a href="#context">Context</a>
+      <a href="#the-problem">The Problem</a>
+      <a href="#design-approach">Design Approach</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#ui-design">UI Design</a>
+      <a href="#results">Results</a>
+      <a href="#what-this-demonstrates">What This Demonstrates</a>
+    </nav>
+
+    <hr>
+
+    <h2 id="about-this-project"><i data-lucide="info" class="icon-blue"></i> About This Project</h2>
+    <p>I built a macOS app to find out if using Claude is actually worth it. Not philosophically&mdash;financially. What would I have paid at API rates instead of a flat subscription?</p>
+    <p><strong>ClaudeUsage</strong> is a native menu bar app that answers that. It hits an undocumented Anthropic API endpoint for plan usage, reads the local stats cache for token data, and applies current API pricing to calculate what everything would have cost. One click from the menu bar, four tabs.</p>
+    <p>The answer: <strong>$3,178 in 27 active days. Projected monthly: $3,531. My plan costs $100. That&rsquo;s 35x.</strong></p>
+    <p>I used Claude Code to build an app about Claude Code. The whole thing&mdash;UI, endpoint calls, caching layer, design system integration&mdash;took a few focused sessions. Swift/SwiftUI, not Electron. Same design tokens as stonerOS. Light and dark mode.</p>
+    <blockquote>This demonstrates: native macOS development, API integration, data visualization, design system application, and the instinct to build a tool when the data is there but invisible.</blockquote>
+
+    <h2 id="context"><i data-lucide="map-pin" class="icon-sky"></i> Context</h2>
+    <table>
+      <tbody>
+        <tr><td><strong>Role</strong></td><td>Self-initiated&mdash;designer, developer, user</td></tr>
+        <tr><td><strong>Built</strong></td><td>March 2026</td></tr>
+        <tr><td><strong>Status</strong></td><td>Active daily use</td></tr>
+        <tr><td><strong>Stack</strong></td><td>Swift 6.0, SwiftUI, macOS 14+, Anthropic OAuth2 API, macOS Keychain</td></tr>
+        <tr><td><strong>Repo</strong></td><td>Private GitHub</td></tr>
+        <tr><td><strong>Related</strong></td><td>Built on top of stonerOS design system (<a href="stoneros.html">case study 05</a>)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="the-problem"><i data-lucide="alert-triangle" class="icon-yellow"></i> The Problem</h2>
+    <p>I had a vague sense Claude was saving me time. I had no idea what &ldquo;saving me time&rdquo; was actually worth.</p>
+    <p>The data was there&mdash;Claude Code writes a stats cache file locally with token counts, model breakdowns, session timestamps. There&rsquo;s an API endpoint for plan usage. There&rsquo;s a history log with session timings. But nothing surfaced any of it anywhere useful. The Anthropic dashboard shows billing, not behavior.</p>
+    <p>I wanted to see how close I was to plan limits mid-session, what my week looked like, what it would cost at API rates, and when my peak hours were. So I built a window into it.</p>
+
+    <h2 id="design-approach"><i data-lucide="layout" class="icon-purple"></i> Design Approach</h2>
+    <p>Menu bar app, not a full window. Click to check, close to keep working. Four tabs, each answering one question:</p>
+    <table>
+      <thead><tr><th>Tab</th><th>Question</th><th>Data source</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Limits</strong></td><td>Am I near my plan cap?</td><td>Anthropic OAuth2 API (real-time)</td></tr>
+        <tr><td><strong>Week</strong></td><td>How active was my week?</td><td>Claude&rsquo;s local stats cache</td></tr>
+        <tr><td><strong>Cost</strong></td><td>What would this cost at API rates?</td><td>Stats cache + published pricing model</td></tr>
+        <tr><td><strong>When</strong></td><td>When do I use it most?</td><td>Claude&rsquo;s session history log</td></tr>
+      </tbody>
+    </table>
+    <p>Zero configuration&mdash;it reads credentials from Keychain, stats from Claude&rsquo;s own cache files. No setup wizard, no settings screen. If you&rsquo;re logged into Claude Code, it works.</p>
+
+    <h2 id="architecture"><i data-lucide="network" class="icon-purple"></i> Architecture</h2>
+    <p>Three data sources feed a single SwiftUI view model: the Anthropic OAuth2 API (polled with backoff), Claude&rsquo;s local stats cache (watched via file system events), and the session history log (parsed on demand).</p>
+
+    <h3>Key Technical Decisions</h3>
+    <p><strong>OAuth2 from Keychain</strong>&mdash;I read Claude Code&rsquo;s own stored credentials from macOS Keychain. No separate auth flow, no token management UI.</p>
+    <p><strong>File system monitoring</strong>&mdash;Instead of polling on a timer, I use <code>DispatchSource</code> to watch for file writes. When Claude Code updates its stats, the dashboard refreshes instantly.</p>
+    <p><strong>Rate limit handling</strong>&mdash;The API returns 429s under heavy use. Exponential backoff (doubling the poll interval up to 10 minutes) and disk caching of the last successful response so the UI is never blank.</p>
+    <p><strong>Dual-source cost model</strong>&mdash;Token counts from the local stats cache, costs calculated against published API rates for each model tier, compared against the subscription price.</p>
+
+    <h2 id="ui-design"><i data-lucide="palette" class="icon-purple"></i> UI Design</h2>
+
+    <div class="screenshot-row">
+      <img src="../assets/images/claude-usage-cost-light.png" alt="ClaudeUsage Cost tab — 35x ROI" />
+      <img src="../assets/images/claude-usage-when-dark.png" alt="ClaudeUsage When tab — peak hours heatmap" />
+    </div>
+    <p class="caption">Left: Cost tab showing 35x ROI and per-model breakdown. Right: When tab with 24-hour peak hours heatmap and busiest days.</p>
+
+    <h3>Design System</h3>
+    <p>Same color tokens and density rules as stonerOS (<a href="stoneros.html">case study 05</a>).</p>
+    <table>
+      <thead><tr><th>Element</th><th>Dark mode</th><th>Light mode</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Background</strong></td><td><code>#110A0F</code> (warm black)</td><td><code>#F1F0ED</code> (warm cream)</td></tr>
+        <tr><td><strong>Primary accent</strong></td><td>Purple</td><td>Purple</td></tr>
+        <tr><td><strong>Secondary</strong></td><td>Steel</td><td>Steel</td></tr>
+        <tr><td><strong>Success</strong></td><td>Green</td><td>Green</td></tr>
+        <tr><td><strong>Warning</strong></td><td>Gold</td><td>Gold</td></tr>
+        <tr><td><strong>Critical</strong></td><td>Rose/Coral</td><td>Rose/Coral</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Compact Layout</h3>
+    <p>The entire dashboard fits in a 320px-wide menu bar popover. Every element earns its space:</p>
+    <ul>
+      <li>No settings screen (zero-config)</li>
+      <li>No onboarding flow (reads existing credentials)</li>
+      <li>No chrome beyond the tab picker and refresh button</li>
+      <li>Monospaced numerics for cost and percentage alignment</li>
+    </ul>
+
+    <h2 id="results"><i data-lucide="trending-up" class="icon-green"></i> Results</h2>
+
+    <h3>Usage Data Surfaced (27 Active Days)</h3>
+    <table>
+      <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Total messages</strong></td><td>67,873</td></tr>
+        <tr><td><strong>Sessions</strong></td><td>243</td></tr>
+        <tr><td><strong>Active hours</strong></td><td>88 (avg 4.4/day)</td></tr>
+        <tr><td><strong>Tool calls</strong></td><td>Tracked per-day</td></tr>
+        <tr><td><strong>API-equivalent cost</strong></td><td>$3,178</td></tr>
+        <tr><td><strong>Subscription cost</strong></td><td>$100/month</td></tr>
+        <tr><td><strong>ROI</strong></td><td><strong>35x</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Cost Breakdown by Model</h3>
+    <table>
+      <thead><tr><th>Model</th><th>Cost</th><th>Share</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Opus 4.6</strong></td><td>$2,929</td><td>92%</td></tr>
+        <tr><td><strong>Sonnet 4.6</strong></td><td>$215</td><td>7%</td></tr>
+        <tr><td><strong>Haiku 4.5</strong></td><td>$34</td><td>1%</td></tr>
+      </tbody>
+    </table>
+    <p>The cache read number surprised me. $1,842 of the Opus cost is cache reads alone&mdash;context retrieval, not generation. The stonerOS memory system loads a lot of context per session, and at reduced cache-read rates, that still compounds.</p>
+
+    <hr>
+
+    <h2 id="what-this-demonstrates"><i data-lucide="award" class="icon-green"></i> What This Demonstrates</h2>
+    <table>
+      <thead><tr><th>Competency</th><th>Evidence</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Native macOS development</strong></td><td>Swift 6.0, SwiftUI, MenuBarExtra, DispatchSource file monitoring, Keychain integration</td></tr>
+        <tr><td><strong>API integration</strong></td><td>OAuth2 bearer auth, rate limit handling with exponential backoff, response caching</td></tr>
+        <tr><td><strong>Data visualization</strong></td><td>24-hour heatmap, weekly bar charts, color-coded progress meters, interactive hover tooltips</td></tr>
+        <tr><td><strong>Design system application</strong></td><td>stonerOS color tokens, light/dark mode, density rules applied consistently across all views</td></tr>
+        <tr><td><strong>Product thinking</strong></td><td>Identified invisible data gap, scoped to four clear questions, shipped zero-config solution</td></tr>
+        <tr><td><strong>Full-stack ownership</strong></td><td>Designed, built, and daily-drive the app&mdash;no team, no spec, no external deadline</td></tr>
+      </tbody>
+    </table>
+
+    <div class="page-nav">
+      <a href="stoneros.html" class="page-nav-link page-nav-prev"><i data-lucide="arrow-left"></i> stonerOS</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
+  </footer>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
+</body>
+</html>
