@@ -62,18 +62,7 @@
       position: relative;
       margin: 1.5rem 0 2rem;
     }
-    /* Vertical line behind center of cards */
-    .timeline-sequence::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: linear-gradient(to bottom, rgba(61,143,128,0.08), rgba(61,143,128,0.18), rgba(131,0,119,0.18), rgba(131,0,119,0.08));
-      z-index: 0;
-    }
+    .timeline-sequence::before { display: none; }
     .timeline-block {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -118,17 +107,6 @@
       width: 0.9rem;
       height: 0.9rem;
     }
-    .cost-block {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-left: 3px solid var(--gold);
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      padding: 1.25rem;
-      margin: 1rem 0;
-    }
-    .cost-block strong {
-      color: var(--gold);
-    }
     .closing {
       border-top: 1px solid rgba(0,0,0,0.08);
       padding-top: 2rem;
@@ -138,6 +116,105 @@
       border-top-color: rgba(255,255,255,0.08);
     }
     .article-body blockquote { border-left-color: var(--purple); }
+
+    /* Layer section cards (ch2 pattern) */
+    .layer-section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      margin: 2rem 0;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .layer-section.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .layer-section:nth-child(2) { transition-delay: 120ms; }
+    .layer-section:nth-child(3) { transition-delay: 240ms; }
+    .layer-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .layer-header h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .layer-header .layer-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+      margin-left: auto;
+      color: var(--purple);
+      background: rgba(109,90,205,0.08);
+    }
+    [data-theme="dark"] .layer-header .layer-tag { background: rgba(109,90,205,0.15); }
+    .layer-section.layer-eliminate .layer-header { border-left: 4px solid var(--steel); }
+    .layer-section.layer-eliminate .layer-tag { color: var(--steel); background: rgba(85,123,204,0.08); }
+    [data-theme="dark"] .layer-section.layer-eliminate .layer-tag { background: rgba(85,123,204,0.15); }
+    .layer-section.layer-accumulate .layer-header { border-left: 4px solid var(--green); }
+    .layer-section.layer-accumulate .layer-tag { color: var(--green); background: rgba(74,153,96,0.08); }
+    [data-theme="dark"] .layer-section.layer-accumulate .layer-tag { background: rgba(74,153,96,0.15); }
+    .layer-section.layer-accountability .layer-header { border-left: 4px solid var(--purple); }
+    .layer-section.layer-accountability .layer-tag { color: var(--purple); background: rgba(109,90,205,0.08); }
+    [data-theme="dark"] .layer-section.layer-accountability .layer-tag { background: rgba(109,90,205,0.15); }
+    .layer-body {
+      padding: 1.25rem;
+    }
+    .layer-body p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .layer-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Callout block for key insights */
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--purple);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .callout.callout-gold { border-left-color: var(--gold); }
+    .callout.callout-green { border-left-color: var(--green); }
+
+    /* Convention grid */
+    .convention-grid {
+      display: grid;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+    .convention-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+    }
+    .convention-item strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .convention-item p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
@@ -193,7 +270,9 @@
 
       <p>Imagine hiring an assistant who's brilliant but wakes up every morning with only the vaguest sense of who you are. They know your name and a few facts. But they don't remember yesterday's conversation. They don't remember the project you're in the middle of. You'd still use them&mdash;they're too capable not to. But you'd spend the first fifteen minutes of every interaction re-establishing the context that matters.</p>
 
-      <p>The tools are extraordinary. The memory is a sticky note. And because the tools are so good, most people don't notice how much that shallow memory costs them until they experience something deeper.</p>
+      <div class="callout">
+        <p>The tools are extraordinary. The memory is a sticky note. And because the tools are so good, most people don't notice how much that shallow memory costs them until they experience something deeper.</p>
+      </div>
 
       <h2 id="what-changed-week-by-week"><i data-lucide="trending-up" class="icon-green"></i> What Changed, Week by Week</h2>
 
@@ -222,46 +301,74 @@
 
       <p>Strip away the implementation details and memory does exactly three things:</p>
 
-      <h3>1. Eliminates Re-establishment</h3>
+      <div class="layer-sections-wrapper">
+      <div class="layer-section layer-eliminate">
+        <div class="layer-header">
+          <i data-lucide="timer-off" class="icon-steel"></i>
+          <h3>1. Eliminates Re-establishment</h3>
+          <span class="layer-tag">Efficiency</span>
+        </div>
+        <div class="layer-body">
+          <p>I described the preamble tax above&mdash;40-80 minutes a week of re-establishment. Memory eliminates it entirely. The AI reads your context at session start and arrives ready to work. The compound savings over weeks and months are significant&mdash;not because any single re-establishment is expensive, but because they add up and they break flow.</p>
+        </div>
+      </div>
 
-      <p>I described the preamble tax above&mdash;40-80 minutes a week of re-establishment. Memory eliminates it entirely. The AI reads your context at session start and arrives ready to work. The compound savings over weeks and months are significant&mdash;not because any single re-establishment is expensive, but because they add up and they break flow.</p>
+      <div class="layer-section layer-accumulate">
+        <div class="layer-header">
+          <i data-lucide="plus-circle" class="icon-green"></i>
+          <h3>2. Enables Accumulation</h3>
+          <span class="layer-tag">Depth</span>
+        </div>
+        <div class="layer-body">
+          <p>Without memory, every insight the AI generates about you is disposable. It notices a pattern in your communication style&mdash;gone next session. It identifies a gap in your skill inventory&mdash;gone. It makes a connection between two projects you're working on&mdash;gone.</p>
 
-      <h3>2. Enables Accumulation</h3>
+          <p>With memory, observations accumulate. The AI builds a progressively richer model of your context. Not because it's doing anything magical, but because good observations are being captured instead of discarded.</p>
 
-      <p>Without memory, every insight the AI generates about you is disposable. It notices a pattern in your communication style&mdash;gone next session. It identifies a gap in your skill inventory&mdash;gone. It makes a connection between two projects you're working on&mdash;gone.</p>
+          <div class="callout callout-green">
+            <p>This is the same principle behind journaling, therapy notes, or a manager's 1:1 document. The value isn't in any single entry. It's in the accumulation over time.</p>
+          </div>
+        </div>
+      </div>
 
-      <p>With memory, observations accumulate. The AI builds a progressively richer model of your context. Not because it's doing anything magical, but because good observations are being captured instead of discarded.</p>
+      <div class="layer-section layer-accountability">
+        <div class="layer-header">
+          <i data-lucide="book-open" class="icon-purple"></i>
+          <h3>3. Creates Accountability</h3>
+          <span class="layer-tag">Awareness</span>
+        </div>
+        <div class="layer-body">
+          <p>This one is subtle. When your AI has memory, it also has a record. You can look back and see where you ignored your own patterns.</p>
 
-      <p>This is the same principle behind journaling, therapy notes, or a manager's 1:1 document. The value isn't in any single entry. It's in the accumulation over time.</p>
-
-      <h3>3. Creates Accountability</h3>
-
-      <p>This one is subtle. When your AI has memory, it also has a record. You can look back and see where you ignored your own patterns.</p>
-
-      <p>I've gone back to my learnings files and found entries where the system flagged a pattern I then ignored. The pattern showed up again two weeks later. The memory didn't fix my behavior, but it made ignoring it harder. That's not productivity. That's a log you can't argue with.</p>
+          <p>I've gone back to my learnings files and found entries where the system flagged a pattern I then ignored. The pattern showed up again two weeks later. The memory didn't fix my behavior, but it made ignoring it harder. That's not productivity. That's a log you can't argue with.</p>
+        </div>
+      </div>
+      </div>
 
       <h2 id="the-honest-cost"><i data-lucide="scale" class="icon-gold"></i> The Honest Cost</h2>
 
       <p>I want to be upfront about this, because I think most people who'd benefit from a system like this will feel the same resistance I did.</p>
 
-      <div class="cost-block">
-        <p><strong>A week of pure investment.</strong> The initial build&mdash;directory structure, memory files, basic automation&mdash;produced zero &ldquo;real&rdquo; output. It was a week of setup before the system started paying for itself. The payoff began in week two and compounded from there, but that first week felt like over-engineering. Which is my favorite trap.</p>
-      </div>
-
-      <div class="cost-block">
-        <p><strong>15&ndash;20 minutes of maintenance per week.</strong> A memory system is infrastructure, not a feature. Files accumulate. Assumptions go stale. I spend about fifteen minutes a week reviewing what the system thinks it knows about me. If I stopped doing that, the data would rot and the AI would start acting on outdated context. Bad memory is worse than no memory.</p>
-      </div>
-
-      <div class="cost-block">
-        <p><strong>Privacy tradeoffs are real.</strong> A persistent memory system stores information about you in files. Mine lives in a private git repo with automated backups to GitHub. I'm comfortable with that. Not everyone would be&mdash;and that's a legitimate reason not to do this.</p>
-      </div>
-
-      <div class="cost-block">
-        <p><strong>It only makes sense at scale.</strong> If you use AI the way you use a search engine&mdash;ask a question, get an answer, move on&mdash;memory adds overhead for no return. This system exists because I use AI 3&ndash;4 hours per day for complex, multi-domain work that spans weeks. At twenty minutes a day for quick questions, the math doesn't work.</p>
-      </div>
-
-      <div class="cost-block">
-        <p><strong>The return is unambiguous.</strong> My AI interactions are faster, more relevant, and more useful. The system surfaces patterns I wouldn't notice on my own. It makes my job search more efficient, my writing sharper, and my project work more continuous. But that return is proportional to how much I use it&mdash;and I use it a lot.</p>
+      <div class="convention-grid">
+        <div class="convention-item">
+          <strong><i data-lucide="hammer" class="icon-gold"></i> A week of pure investment</strong>
+          <p>The initial build&mdash;directory structure, memory files, basic automation&mdash;produced zero &ldquo;real&rdquo; output. It was a week of setup before the system started paying for itself. The payoff began in week two and compounded from there, but that first week felt like over-engineering. Which is my favorite trap.</p>
+        </div>
+        <div class="convention-item">
+          <strong><i data-lucide="wrench" class="icon-gold"></i> 15&ndash;20 minutes of maintenance per week</strong>
+          <p>A memory system is infrastructure, not a feature. Files accumulate. Assumptions go stale. I spend about fifteen minutes a week reviewing what the system thinks it knows about me. If I stopped doing that, the data would rot and the AI would start acting on outdated context. Bad memory is worse than no memory.</p>
+        </div>
+        <div class="convention-item">
+          <strong><i data-lucide="shield" class="icon-gold"></i> Privacy tradeoffs are real</strong>
+          <p>A persistent memory system stores information about you in files. Mine lives in a private git repo with automated backups to GitHub. I'm comfortable with that. Not everyone would be&mdash;and that's a legitimate reason not to do this.</p>
+        </div>
+        <div class="convention-item">
+          <strong><i data-lucide="trending-up" class="icon-gold"></i> It only makes sense at scale</strong>
+          <p>If you use AI the way you use a search engine&mdash;ask a question, get an answer, move on&mdash;memory adds overhead for no return. This system exists because I use AI 3&ndash;4 hours per day for complex, multi-domain work that spans weeks. At twenty minutes a day for quick questions, the math doesn't work.</p>
+        </div>
+        <div class="convention-item">
+          <strong><i data-lucide="check-circle" class="icon-green"></i> The return is unambiguous</strong>
+          <p>My AI interactions are faster, more relevant, and more useful. The system surfaces patterns I wouldn't notice on my own. It makes my job search more efficient, my writing sharper, and my project work more continuous. But that return is proportional to how much I use it&mdash;and I use it a lot.</p>
+        </div>
       </div>
 
       <p>I built it anyway. Not because I was sure it would pay off, but because the friction of repeating myself every session had crossed a threshold.</p>
@@ -272,7 +379,7 @@
 
       <div class="page-nav">
         <a href="ai-brain-ch0.html" class="page-nav-link page-nav-prev"><i data-lucide="arrow-left"></i> Ch 0 — I Gave Claude a Brain</a>
-        <a href="what-my-ai-taught-me-about-myself.html" class="page-nav-link page-nav-next">What My AI Taught Me <i data-lucide="arrow-right"></i></a>
+        <a href="ai-brain-ch2.html" class="page-nav-link page-nav-next">Ch 2 &mdash; The Architecture <i data-lucide="arrow-right"></i></a>
       </div>
 
     </div>
@@ -293,9 +400,9 @@
           entry.target.classList.add('revealed');
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.timeline-block').forEach(el => observer.observe(el));
+    document.querySelectorAll('.timeline-block, .layer-section').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>

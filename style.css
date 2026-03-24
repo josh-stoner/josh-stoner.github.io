@@ -1124,6 +1124,11 @@ a.card:has(.icon-mauve):hover {
 [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
+/* ---- Theme-aware images ---- */
+.img-dark { display: none; }
+[data-theme="dark"] .img-light { display: none; }
+[data-theme="dark"] .img-dark { display: block; }
+
 /* ---- Dark Mode ---- */
 
 [data-theme="dark"] {

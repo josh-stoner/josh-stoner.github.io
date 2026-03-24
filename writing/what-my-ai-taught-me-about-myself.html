@@ -29,6 +29,9 @@
     .article-body h2 {
       margin-top: 3rem;
     }
+    .article-body h3 {
+      margin-top: 2rem;
+    }
     .article-body p {
       font-size: 1.02rem;
       line-height: 1.75;
@@ -85,6 +88,23 @@
       border-top-color: rgba(255,255,255,0.08);
     }
     .article-body blockquote { border-left-color: var(--sky); }
+
+    /* Callout block for key insights */
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--sky);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .callout.callout-gold { border-left-color: var(--gold); }
+    .callout.callout-green { border-left-color: var(--green); }
+
     .lede {
       font-size: 1.1rem;
       color: var(--text-muted);
@@ -130,7 +150,9 @@
 
       <p>I've been building something called stonerOS&mdash;a personal AI memory system that sits on top of Claude. It tracks my career history, preferences, projects, and working patterns across sessions. But until this week, it only knew what I <em>told</em> it.</p>
 
-      <p>So I tried something different: <strong>what if it could learn from my actual behavior instead?</strong></p>
+      <div class="callout">
+        <p>So I tried something different: <strong>what if it could learn from my actual behavior instead?</strong></p>
+      </div>
 
       <p>Your Mac already has access to most of your iPhone data through iCloud&mdash;browsing history, photos, app usage, reminders, voice memos. All SQLite databases. I had Claude build a set of Python scripts to pull patterns from each one and feed them into stonerOS's routing pipeline. Everything runs locally&mdash;no data leaves the machine.</p>
 
@@ -188,7 +210,9 @@
 
       <p>Honestly, none of this was a surprise. <strong>I already knew all of it.</strong> I knew I was a night builder. I knew my focus was narrow. I knew my hobbies used the same muscles as my work.</p>
 
-      <p>But knowing something and seeing it in data are different. "I think I'm a night person" becomes "my peak cognitive window is 11pm&ndash;3am, confirmed across three data sources." One is a feeling. The other is something I can actually plan around.</p>
+      <div class="callout callout-gold">
+        <p>But knowing something and seeing it in data are different. "I think I'm a night person" becomes "my peak cognitive window is 11pm&ndash;3am, confirmed across three data sources." One is a feeling. The other is something I can actually plan around.</p>
+      </div>
 
       <div class="closing">
         <p><em>All of this was already on my phone. I just never looked at it this way before.</em></p>

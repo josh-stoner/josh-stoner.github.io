@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Architecture &mdash; Joshua Stoner</title>
+  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .article-header {
+      padding: 3rem 0 1.5rem;
+    }
+    .article-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .article-meta {
+      font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-bottom: 0.25rem;
+    }
+    .article-body h2 {
+      margin-top: 3rem;
+    }
+    .article-body h3 {
+      margin-top: 2rem;
+    }
+    .article-body p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .article-body ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .article-body li {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 0.5rem;
+    }
+    .article-body img {
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
+      margin: 1.5rem 0;
+    }
+    .article-body strong {
+      color: var(--text);
+    }
+    .article-body em {
+      color: var(--text-muted);
+    }
+    .article-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 4px;
+      padding: 0.15em 0.4em;
+    }
+    .article-body pre {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin: 1.25rem 0;
+    }
+    .article-body pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    .article-body blockquote { border-left-color: var(--green); }
+
+    /* Layer section cards */
+    .layer-section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      margin: 2rem 0;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .layer-section.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .layer-section:nth-child(2) { transition-delay: 120ms; }
+    .layer-section:nth-child(3) { transition-delay: 240ms; }
+    .layer-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .layer-header h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .layer-header .layer-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+      margin-left: auto;
+    }
+    .layer-baseline .layer-header { border-left: 4px solid var(--steel); }
+    .layer-baseline .layer-tag { color: var(--steel); background: rgba(85,123,204,0.08); }
+    .layer-learnings .layer-header { border-left: 4px solid var(--green); }
+    .layer-learnings .layer-tag { color: var(--green); background: rgba(74,153,96,0.08); }
+    .layer-current .layer-header { border-left: 4px solid var(--purple); }
+    .layer-current .layer-tag { color: var(--purple); background: rgba(109,90,205,0.08); }
+    [data-theme="dark"] .layer-baseline .layer-tag { background: rgba(85,123,204,0.15); }
+    [data-theme="dark"] .layer-learnings .layer-tag { background: rgba(74,153,96,0.15); }
+    [data-theme="dark"] .layer-current .layer-tag { background: rgba(109,90,205,0.15); }
+    .layer-body {
+      padding: 1.25rem;
+    }
+    .layer-body p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .layer-body p:last-child {
+      margin-bottom: 0;
+    }
+    .layer-file {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--text-faint);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Callout block for key insights */
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--green);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .callout.callout-steel { border-left-color: var(--steel); }
+    .callout.callout-gold { border-left-color: var(--gold); }
+
+    /* Convention grid for naming section */
+    .convention-grid {
+      display: grid;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+    .convention-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+    }
+    .convention-item strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .convention-item p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* Mechanism blocks for "how it stays organized" */
+    .mechanism {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      margin: 1rem 0;
+    }
+    .mechanism strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--green);
+    }
+    .mechanism p {
+      margin: 0;
+    }
+
+    .closing {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+    [data-theme="dark"] .closing {
+      border-top-color: rgba(255,255,255,0.08);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> Joshua Stoner</a>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <ul class="nav-links">
+        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="ai-brain-ch1.html" class="back-link"><i data-lucide="arrow-left"></i> Back to Chapter 1</a>
+
+    <div class="article-header">
+      <h1 class="color-green">The Architecture: How Not to Build a Junk Drawer</h1>
+      <p class="article-meta">March 2026 &middot; Josh Stoner &middot; Chapter 2</p>
+    </div>
+
+    <nav class="toc" style="border-left-color: var(--green);">
+      <span class="toc-label">On this page</span>
+      <a href="#the-problem">The Problem with &ldquo;Just Put It Somewhere&rdquo;</a>
+      <a href="#three-layers">Three Layers, Three Behaviors</a>
+      <a href="#plain-files">Why Plain Files Beat a Database</a>
+      <a href="#naming">The Naming Problem</a>
+      <a href="#organized">How It Stays Organized as It Grows</a>
+    </nav>
+
+    <div class="article-body">
+
+      <h2 id="the-problem"><i data-lucide="archive" class="icon-steel"></i> The Problem with &ldquo;Just Put It Somewhere&rdquo;</h2>
+
+      <p>When I started building stonerOS, I had a very simple system: one file called <code>context.md</code> that contained everything. My preferences. My career history. My tech stack. My current projects. Everything.</p>
+
+      <p>It lasted about three days.</p>
+
+      <p>By day four, the file was 600 lines. The AI was loading the entire thing at the start of every session. Unrelated facts lived next to each other. Finding anything meant reading everything. And when I needed to update a preference, I had to manually hunt for the right section and make sure I hadn&rsquo;t accidentally introduced a contradiction.</p>
+
+      <p>I had built a junk drawer.</p>
+
+      <p>The problem isn&rsquo;t unique to AI memory systems. It&rsquo;s the default state of any information system that grows without structure. You start with a flat list because it&rsquo;s simple, and you end up with a pile because structure wasn&rsquo;t built in when the pile was small.</p>
+
+      <p>The fix was architecture&mdash;deciding upfront what goes where and why.</p>
+
+      <h2 id="three-layers"><i data-lucide="layers" class="icon-green"></i> Three Layers, Three Behaviors</h2>
+
+      <p>The core architectural decision in stonerOS is separating memory into three distinct layers. Each layer has different characteristics, different update rules, and different implications for how the AI uses it.</p>
+
+      <img class="img-light" src="../assets/images/ai-brain-architecture.png" alt="stonerOS architecture diagram: three memory layers, 21 agents across Haiku/Sonnet/Opus tiers, and six automation hooks">
+      <img class="img-dark" src="../assets/images/ai-brain-architecture-dark.png" alt="stonerOS architecture diagram: three memory layers, 21 agents across Haiku/Sonnet/Opus tiers, and six automation hooks">
+
+      <!-- Layer 1 -->
+      <div class="layer-section layer-baseline">
+        <div class="layer-header">
+          <i data-lucide="lock" class="icon-steel"></i>
+          <h3>Layer 1: Immutable Baseline</h3>
+          <span class="layer-tag">Read-only</span>
+        </div>
+        <div class="layer-body">
+          <p class="layer-file">learnings/baseline_insights.md</p>
+
+          <p>This file contains foundational facts about who I am&mdash;professional background, personality patterns, communication style, values, cognitive tendencies. Things that are true about me at a deep level and unlikely to change on a weekly basis.</p>
+
+          <p>The key property: it&rsquo;s read-only. No agent writes to it. No automated process updates it. When something in this layer needs correction, the fix goes into <code>learnings/corrections.md</code> as an override&mdash;not into the baseline file itself.</p>
+
+          <p>Why? Because baselines that can be freely overwritten stop being baselines. The value of this layer is that it&rsquo;s stable reference material. If it changes every week, it&rsquo;s not baseline&mdash;it&rsquo;s just another log.</p>
+
+          <p>The read-only constraint forces a useful discipline: corrections are explicit. If <code>baseline_insights.md</code> says I worked at a company with 15,000 employees and the actual number is 4,000, that fact gets explicitly corrected in <code>corrections.md</code>. Any agent reading the baseline is also required to load corrections. The error doesn&rsquo;t silently propagate&mdash;it&rsquo;s visibly fixed.</p>
+
+          <p>But &ldquo;immutable&rdquo; doesn&rsquo;t mean &ldquo;frozen forever.&rdquo; It means &ldquo;frozen between deliberate checkpoints.&rdquo; Corrections accumulate in the overlay file, and periodically&mdash;quarterly in my case&mdash;I review them and merge the validated ones back into the baseline. The old version gets archived. The corrections file resets. A new baseline is minted.</p>
+
+          <p>The first re-baseline happened about six weeks after the system was created. Three factual errors in the original baseline&mdash;an employee count, a layoff date, a project timeline&mdash;had been living as corrections the entire time. Every agent that loaded the baseline also had to load the overlay and mentally reconcile the two. After the merge, the baseline just said the right thing. The overlay shrank from twelve entries to nine.</p>
+
+          <div class="callout callout-steel">
+            <p>This is the difference between write discipline and permanent fossilization. The baseline is protected from casual writes&mdash;no agent can update it during a session, no automated process touches it. But a human-triggered re-baseline is a deliberate act with version history. It&rsquo;s version control for identity, not a time capsule.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layer 2 -->
+      <div class="layer-section layer-learnings">
+        <div class="layer-header">
+          <i data-lucide="plus-circle" class="icon-green"></i>
+          <h3>Layer 2: Append-Only Learnings</h3>
+          <span class="layer-tag">Append-only</span>
+        </div>
+        <div class="layer-body">
+          <p class="layer-file">learnings/patterns.md &middot; learnings/expertise.md &middot; learnings/communication.md &middot; learnings/corrections.md</p>
+
+          <p>This layer accumulates observations over time. New entries get added. Old entries stay. Nothing gets deleted.</p>
+
+          <p>The update pattern is the <code>/remember</code> command. When something is worth capturing&mdash;a behavioral pattern, a new preference, a correction to an old assumption&mdash;it gets written into the appropriate file with a date, context, and an implication for future interactions.</p>
+
+          <p>The entries are structured:</p>
+
+<pre><code>## YYYY-MM-DD: [Title]
+**Type**: semantic | episodic | procedural
+**Context**: [What prompted this]
+**Observation**: [What was observed]
+**Implication**: [How this affects future interactions]
+**Tags**: #tag1 #tag2</code></pre>
+
+          <p>Three entry types exist for a reason. Semantic entries capture facts and corrections. Episodic entries capture what happened&mdash;&ldquo;during the March job sprint, I noticed X.&rdquo; Procedural entries capture patterns and workflows&mdash;how to do things. Mixing types in a flat list makes retrieval harder; separating them by type makes both writing and searching more reliable.</p>
+
+          <p>The append-only rule does create one problem: accumulation. After enough sessions, the learnings files grow long enough that loading them all into context becomes expensive. The <code>dedup-validator</code> agent&mdash;a Haiku-tier subagent&mdash;runs before every write to check for semantic near-duplicates. If a new observation is substantively the same as an existing one, it doesn&rsquo;t get written. If it supersedes an older entry, the older entry is flagged. The files grow, but they don&rsquo;t grow with noise.</p>
+        </div>
+      </div>
+
+      <!-- Layer 3 -->
+      <div class="layer-section layer-current">
+        <div class="layer-header">
+          <i data-lucide="refresh-cw" class="icon-purple"></i>
+          <h3>Layer 3: Current State</h3>
+          <span class="layer-tag">Overwritable</span>
+        </div>
+        <div class="layer-body">
+          <p class="layer-file">preferences/current.md &middot; context/session_YYYYMMDD.md</p>
+
+          <p>This layer holds active, changeable information. What I&rsquo;m working on right now. What my current priorities are. What happened in the last few sessions.</p>
+
+          <p>Unlike the learnings layer, current-state files get overwritten. <code>preferences/current.md</code> reflects what&rsquo;s true today, not a historical record. Session files are created fresh each session.</p>
+
+          <p>The distinction matters for how the AI uses each layer. When I ask &ldquo;what should I focus on today?&rdquo;, the AI looks at current state. When I ask &ldquo;what patterns have you noticed about how I work?&rdquo;, it looks at learnings. When it needs to understand my baseline personality, it looks at the immutable layer. Different questions, different sources, appropriate for each.</p>
+        </div>
+      </div>
+
+      <h2 id="plain-files"><i data-lucide="file-text" class="icon-sky"></i> Why Plain Files Beat a Database</h2>
+
+      <p>Why not use a real database? SQLite, a vector store, something with actual query capabilities?</p>
+
+      <p>I considered it. Here&rsquo;s why I didn&rsquo;t:</p>
+
+      <div class="convention-grid">
+        <div class="convention-item">
+          <strong><i data-lucide="eye" class="icon-green"></i> Directly readable</strong>
+          <p>I can open <code>learnings/patterns.md</code> in iA Writer on my Mac or iPhone and read it. The AI reads it as part of its context window&mdash;no translation layer, no schema, no query syntax. The file is the data and the interface simultaneously.</p>
+        </div>
+        <div class="convention-item">
+          <strong><i data-lucide="git-branch" class="icon-sky"></i> Git handles versioning</strong>
+          <p>Every change to every memory file is automatically committed and pushed to a private repository. If the system ever corrupts a file or makes a wrong update, I can see exactly what changed and roll it back. Try getting that kind of transparency from a SQLite database.</p>
+        </div>
+        <div class="convention-item">
+          <strong><i data-lucide="shield" class="icon-steel"></i> Markdown survives tool changes</strong>
+          <p>Anthropic will change APIs. Claude Code will add and deprecate features. Plain text files with consistent formatting will outlast any specific tooling. I&rsquo;ve already lived through two major Claude Code updates during this build&mdash;the files survived both.</p>
+        </div>
+        <div class="convention-item">
+          <strong><i data-lucide="search" class="icon-gold"></i> The search problem isn&rsquo;t a problem</strong>
+          <p>I load most of the memory system at session start anyway. The context window is large enough to hold the files I need. For targeted searches, a <code>memory-search</code> agent runs a focused lookup. Full-text search over markdown files is fast and sufficient.</p>
+        </div>
+      </div>
+
+      <p>The tradeoff: plain files don&rsquo;t scale to millions of entries. I&rsquo;m one person with a few hundred KB of accumulated observations, so that&rsquo;s not my problem.</p>
+
+      <h2 id="naming"><i data-lucide="folder-tree" class="icon-gold"></i> The Naming Problem</h2>
+
+      <p>File and directory naming sounds like a minor implementation detail. It isn&rsquo;t.</p>
+
+      <p>When the system was young and I was the only one navigating it, arbitrary names were fine. <code>stuff.md</code> didn&rsquo;t matter because I knew what stuff.md was. But once you have 21 agents loading different combinations of files at session start, names become a coordination mechanism. The wrong file in the wrong agent&rsquo;s loading path means outdated context, irrelevant noise, or missing facts.</p>
+
+      <div class="convention-grid">
+        <div class="convention-item">
+          <strong><code>learnings/</code> &mdash; by category, not by date</strong>
+          <p><code>patterns.md</code> contains all behavioral patterns, ever. <code>corrections.md</code> contains all corrections, ever. Searching for a specific type of learning means looking in one file, not scanning a directory full of dated archives.</p>
+        </div>
+        <div class="convention-item">
+          <strong><code>context/</code> &mdash; by date, not by category</strong>
+          <p><code>session_20260310.md</code> contains everything from March 10. Sessions are chronological records, not thematic ones&mdash;date-first naming makes navigation obvious.</p>
+        </div>
+        <div class="convention-item">
+          <strong><code>.claude/context/</code> &mdash; agent artifacts</strong>
+          <p>Naming pattern: <code>[agent]-[topic]-[date].md</code>. A research agent&rsquo;s competitive analysis lands at <code>research-drift-competitive-20260310.md</code>. Flat-named, agent-prefixed, dated. Any file in that directory is an agent artifact, not a memory file.</p>
+        </div>
+        <div class="convention-item">
+          <strong><code>temp/</code> &mdash; ephemeral</strong>
+          <p>Gitignored and iCloud-synced but not tracked. Draft outputs, experimental work, one-off analysis. It clears periodically and nothing in it is assumed to persist.</p>
+        </div>
+      </div>
+
+      <p>The naming system also enforces role separation. A file in <code>memories/professional/</code> is a human-facing career artifact. A file in <code>learnings/</code> is AI-context data. A file in <code>.claude/context/</code> is agent staging output. The path tells you what the file is for before you open it.</p>
+
+      <h2 id="organized"><i data-lucide="shield-check" class="icon-lavender"></i> How It Stays Organized as It Grows</h2>
+
+      <p>The honest answer: it doesn&rsquo;t stay organized automatically. Structure has to be maintained.</p>
+
+      <p>Three mechanisms keep the junk drawer from returning:</p>
+
+      <div class="mechanism">
+        <strong><i data-lucide="pen-line"></i> Single-writer constraint</strong>
+        <p>Only one agent&mdash;<code>session-writer</code>&mdash;is allowed to write to <code>learnings/</code>, <code>preferences/</code>, and <code>context/</code>. Every other agent that wants to update memory has to route through it. This eliminates write races and guarantees that the memory layer has one coherent update process. One writer, one point of control.</p>
+      </div>
+
+      <div class="mechanism">
+        <strong><i data-lucide="filter"></i> The dedup-validator gate</strong>
+        <p>Before <code>session-writer</code> writes any new entry, it calls <code>dedup-validator</code>&mdash;a Haiku-tier agent that costs fractions of a cent per check. The validator returns one of three verdicts: UNIQUE (write it), SUPERSEDE (this replaces an older entry, flag the old one), or DUPLICATE (this already exists, skip it). The learnings files accumulate signal, not repetition.</p>
+      </div>
+
+      <div class="mechanism">
+        <strong><i data-lucide="refresh-cw"></i> The /docs-sync command</strong>
+        <p>Documentation about the system&mdash;agent counts, slash command lists, memory layer descriptions&mdash;drifts from reality as the system evolves. The <code>/docs-sync</code> command runs an agent that compares documentation against the actual repo state and patches discrepancies. If your system changes frequently, documentation has to be a process, not a deliverable. A once-written README is wrong within two weeks.</p>
+      </div>
+
+      <hr>
+
+      <p>This is the unglamorous part. File names and directory structure and naming conventions. Nobody gets excited about it.</p>
+
+      <p>But it&rsquo;s why the system still works a month later. The exciting parts&mdash;the agents, the automation, the moments where the system does something I didn&rsquo;t explicitly ask for&mdash;all run on top of this foundation. Get the foundation wrong and nothing else holds up.</p>
+
+      <div class="closing">
+        <p><em>Next: the agents that actually do the work.</em></p>
+      </div>
+
+      <div class="page-nav">
+        <a href="ai-brain-ch1.html" class="page-nav-link page-nav-prev"><i data-lucide="arrow-left"></i> Ch 1 &mdash; Why Memory Changes Everything</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
+  <script>
+    // Scroll-reveal for layer sections
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.layer-section').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

@@ -30,6 +30,9 @@
     .article-body h2 {
       margin-top: 3rem;
     }
+    .article-body h3 {
+      margin-top: 2rem;
+    }
     .article-body p {
       font-size: 1.02rem;
       line-height: 1.75;
@@ -89,7 +92,57 @@
     [data-theme="dark"] .closing {
       border-top-color: rgba(255,255,255,0.08);
     }
+    .article-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 4px;
+      padding: 0.15em 0.4em;
+    }
     .article-body blockquote { border-left-color: var(--purple); }
+
+    /* Callout block for key insights */
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--purple);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .callout.callout-green { border-left-color: var(--green); }
+    .callout.callout-gold { border-left-color: var(--gold); }
+
+    /* Scroll-reveal for ahead items */
+    .ahead-item {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    .ahead-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .ahead-item:nth-child(2) { transition-delay: 80ms; }
+    .ahead-item:nth-child(3) { transition-delay: 160ms; }
+    .ahead-item:nth-child(4) { transition-delay: 240ms; }
+    .ahead-item:nth-child(5) { transition-delay: 320ms; }
+
+    /* Upcoming (unwritten) chapters — muted */
+    .ahead-upcoming {
+      opacity: 0.45;
+    }
+    .ahead-upcoming.revealed {
+      opacity: 0.45;
+    }
+    .ahead-upcoming strong {
+      color: var(--text-faint);
+    }
   </style>
 </head>
 <body>
@@ -121,7 +174,6 @@
       <a href="#what-surprised-me">What Surprised Me</a>
       <a href="#why-im-writing-this">Why I'm Writing This</a>
       <a href="#whats-ahead">What's Ahead</a>
-      <a href="#the-slide-deck">The Slide Deck</a>
     </nav>
 
     <div class="article-body">
@@ -146,15 +198,21 @@
         <li>I run a slash command&mdash;<code>/job-prep</code>&mdash;and it scores a job posting against my actual skill inventory, professional history, and career goals. Not generic advice. Advice grounded in <em>my</em> context.</li>
       </ul>
 
-      <p>None of this is magic. It's just files, conventions, and a few automation hooks. But the cumulative effect is something I didn't expect: the AI started doing useful things without me asking.</p>
+      <div class="callout">
+        <p>None of this is magic. It's just files, conventions, and a few automation hooks. But the cumulative effect is something I didn't expect: the AI started doing useful things without me asking.</p>
+      </div>
 
-      <img src="../assets/images/ai-brain-before-after.png" alt="Side-by-side comparison: a stateless AI conversation asking 6 clarifying questions vs. stonerOS immediately delivering a personalized fit score, specific project matches, and behavioral warnings">
+      <img class="img-light" src="../assets/images/ai-brain-before-after.png" alt="Side-by-side comparison: a stateless AI conversation asking 6 clarifying questions vs. stonerOS immediately delivering a personalized fit score, specific project matches, and behavioral warnings">
+      <img class="img-dark" src="../assets/images/ai-brain-before-after-dark.png" alt="Side-by-side comparison: a stateless AI conversation asking 6 clarifying questions vs. stonerOS immediately delivering a personalized fit score, specific project matches, and behavioral warnings">
 
       <h2 id="the-architecture-one-paragraph-version"><i data-lucide="network" class="icon-purple"></i> The Architecture (One Paragraph Version)</h2>
 
-      <p>Three memory layers: an immutable baseline (who I am, my history, my personality), an append-only learnings layer (corrections, patterns, expertise that evolve), and a current-state layer (active preferences, live projects, recent sessions). Twenty-one specialized agents handle different jobs&mdash;searching memory, writing session logs, validating outputs, auditing documentation, coaching career strategy. Each agent runs on the cheapest model that can do the job well. Five automation hooks fire on file changes, session ends, and context compression events. Two git hooks block secrets and auto-push backups. Everything version-controlled, everything recoverable.</p>
+      <div class="callout callout-green">
+        <p>Three memory layers: an immutable baseline (who I am, my history, my personality), an append-only learnings layer (corrections, patterns, expertise that evolve), and a current-state layer (active preferences, live projects, recent sessions). Twenty-one specialized agents handle different jobs&mdash;searching memory, writing session logs, validating outputs, auditing documentation, coaching career strategy. Each agent runs on the cheapest model that can do the job well. Five automation hooks fire on file changes, session ends, and context compression events. Two git hooks block secrets and auto-push backups. Everything version-controlled, everything recoverable.</p>
+      </div>
 
-      <img src="../assets/images/ai-brain-architecture.png" alt="stonerOS architecture diagram: session start flow through context-router, three memory layers (baseline, learnings, current state), 21 agents across Haiku/Sonnet/Opus tiers, and six automation hooks">
+      <img class="img-light" src="../assets/images/ai-brain-architecture.png" alt="stonerOS architecture diagram: session start flow through context-router, three memory layers (baseline, learnings, current state), 21 agents across Haiku/Sonnet/Opus tiers, and six automation hooks">
+      <img class="img-dark" src="../assets/images/ai-brain-architecture-dark.png" alt="stonerOS architecture diagram: session start flow through context-router, three memory layers (baseline, learnings, current state), 21 agents across Haiku/Sonnet/Opus tiers, and six automation hooks">
 
       <p>Here's what I learned building it.</p>
 
@@ -201,40 +259,32 @@
       <h2 id="whats-ahead"><i data-lucide="arrow-right" class="icon-green"></i> What's Ahead</h2>
 
       <div class="ahead-item">
-        <strong><a href="ai-brain-ch1.html">Why Memory Changes Everything</a></strong>
+        <strong><a href="ai-brain-ch1.html">Ch 1: Why Memory Changes Everything</a></strong>
         <p>The shift from stateless conversations to persistent context, and what it actually feels like week by week.</p>
       </div>
 
       <div class="ahead-item">
-        <strong>Designing the Memory Layer</strong>
+        <strong><a href="ai-brain-ch2.html">Ch 2: Designing the Memory Layer</a></strong>
         <p>How I organized files, naming conventions, and a three-tier architecture that keeps things from turning into a junk drawer.</p>
       </div>
 
-      <div class="ahead-item">
-        <strong>The First Agent</strong>
+      <div class="ahead-item ahead-upcoming">
+        <strong>Ch 3: The First Agent</strong>
         <p>The moment the system went from "files Claude reads" to "a team that works for me"&mdash;building a specialized sub-agent on the cheapest model possible.</p>
       </div>
 
-      <div class="ahead-item">
-        <strong>Automation That Runs Itself</strong>
+      <div class="ahead-item ahead-upcoming">
+        <strong>Ch 4: Automation That Runs Itself</strong>
         <p>Hooks, scheduled tasks, and the moment I stopped manually maintaining the system and let it maintain itself.</p>
       </div>
 
-      <div class="ahead-item">
-        <strong>What Broke (And What I Learned)</strong>
+      <div class="ahead-item ahead-upcoming">
+        <strong>Ch 5: What Broke (And What I Learned)</strong>
         <p>Write races, silent failures, documentation rot, and the design decisions that came from getting it wrong first.</p>
       </div>
 
       <div class="closing">
         <p><em>I built stonerOS because I got tired of starting over. The system isn't perfect, but I haven't re-introduced myself in six weeks.</em></p>
-      </div>
-
-      <h2 id="the-slide-deck"><i data-lucide="presentation" class="icon-lavender"></i> The Slide Deck</h2>
-
-      <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Prefer the visual version? The full system in 19 slides.</p>
-
-      <div style="border-radius: var(--radius-sm); overflow: hidden; aspect-ratio: 16/9;">
-        <iframe src="https://docs.google.com/presentation/d/1jv2zkUVSJ2YLWU9AAOOGzJJUF4_WlD5ekzRC78kHMDQ/embed?start=false&loop=false&delayms=5000" frameborder="0" width="100%" height="100%" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="display: block;"></iframe>
       </div>
 
     <div class="page-nav">
@@ -252,5 +302,16 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>lucide.createIcons();</script>
   <script src="../theme.js"></script>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.ahead-item').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
