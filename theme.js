@@ -25,6 +25,18 @@
       });
     }
 
+    // ---- Nav scroll: show name on scroll ----
+    var navEl = document.querySelector('nav');
+    if (navEl) {
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 60) {
+          navEl.classList.add('scrolled');
+        } else {
+          navEl.classList.remove('scrolled');
+        }
+      }, { passive: true });
+    }
+
     // ---- Scroll Reveal (IntersectionObserver) ----
     var reveals = document.querySelectorAll('.reveal');
     if (!reveals.length || !('IntersectionObserver' in window)) {
