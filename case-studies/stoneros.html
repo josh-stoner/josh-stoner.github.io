@@ -66,8 +66,8 @@
 
     <h2 id="about-this-project"><i data-lucide="info" class="icon-blue"></i> About This Project</h2>
     <p>Every Claude session starts from zero. No memory of prior conversations, no knowledge of preferences, no continuity across sessions. For a daily AI user doing serious work&mdash;job search strategy, resume iteration, research synthesis&mdash;that&rsquo;s a meaningful friction point.</p>
-    <p>I built <strong>stonerOS</strong>: a production AI memory system that gives Claude persistent, evolving knowledge about me across every session. It&rsquo;s a git repository&mdash;3-layer memory architecture, 22 specialized agents across three model tiers, 5 automation hooks, autonomous scheduled sessions, pre-commit secret scanning, and daily backup via macOS launchd. I use it every day. No one asked me to build it.</p>
-    <p>What makes it a portfolio piece is not that it was built&mdash;it&rsquo;s how it evolved. The system now on version 2.13 looks materially different from v1.0. Real use generated real friction. Real friction generated real fixes. The system learns about me as I use it. I also got better at building systems by running one.</p>
+    <p>I built <strong>stonerOS</strong>: a production AI memory system that gives Claude persistent, evolving knowledge about me across every session. It&rsquo;s a git repository&mdash;3-layer memory architecture, 22 specialized agents across three model tiers, 13 automation hooks, autonomous scheduled sessions, pre-commit secret scanning, and daily backup via macOS launchd. I use it every day. No one asked me to build it.</p>
+    <p>What makes it a portfolio piece is not that it was built&mdash;it&rsquo;s how it evolved. The system now on version 2.19 looks materially different from v1.0. Real use generated real friction. Real friction generated real fixes. The system learns about me as I use it. I also got better at building systems by running one.</p>
     <blockquote>This demonstrates: AI systems architecture, multi-agent orchestration, automation pipeline design, iterative engineering judgment, and the kind of self-directed builder instinct that doesn&rsquo;t wait for a formal request to solve a real problem.</blockquote>
 
     <h2 id="context"><i data-lucide="map-pin" class="icon-sky"></i> Context</h2>
@@ -78,7 +78,7 @@
         <tr><td><strong>Status</strong></td><td>Active production use&mdash;daily</td></tr>
         <tr><td><strong>Stack</strong></td><td>Claude API, Claude Code hooks, bash, git, macOS launchd</td></tr>
         <tr><td><strong>Repo</strong></td><td>Private GitHub</td></tr>
-        <tr><td><strong>Version</strong></td><td>2.13 as of March 2026</td></tr>
+        <tr><td><strong>Version</strong></td><td>2.19 as of March 2026</td></tr>
       </tbody>
     </table>
 
@@ -187,14 +187,14 @@ Automation Layer (5 hooks + launchd):
     <ul>
       <li><strong>Git log</strong>: Session-end commits timestamped to every working session since February 2026</li>
       <li><strong>Agent invocations</strong>: 22 agents across 3 model tiers actively routing tasks</li>
-      <li><strong>5 automation hooks</strong>: PostToolUse, SessionEnd, PreCompact, SubagentStart, SubagentStop&mdash;zero manual intervention</li>
+      <li><strong>13 automation hooks</strong>: clock-anchor, context-injector, drain-pipeline, end-session, log-changes, post-compact, pre-compact, pre-tooluse-guardrail, rhythm-check, stale-html-check, subagent-start, subagent-stop, validate-agent&mdash;zero manual intervention</li>
       <li><strong>2 autonomous scheduled sessions</strong>: Weekly headless runs via launchd with 6-layer safety</li>
-      <li><strong>22 slash commands</strong>: From <code>/weekly-review</code> to <code>/security-audit</code></li>
+      <li><strong>31 slash commands</strong>: From <code>/weekly-review</code> to <code>/morning-brief</code></li>
       <li><strong>11 active skill modules</strong>: Covering job search, finance, security, app building, collectibles trading, and more</li>
       <li><strong>Correction layer active</strong>: Known baseline errors documented and overridden</li>
       <li><strong>BUG-002 resolved</strong>: Write race fix has held across hundreds of sessions</li>
       <li><strong>Token reduction confirmed</strong>: transactional sessions skip memory load entirely; light-use days average under $2 vs. deep-work days at $10&ndash;$34 (ccusage data, Feb&ndash;Mar 2026)</li>
-      <li><strong>Version history</strong>: v1 &rarr; v2.13 across 11 documented iterations</li>
+      <li><strong>Version history</strong>: v1 &rarr; v2.19 across 11+ documented iterations</li>
     </ul>
 
     <hr>
@@ -206,8 +206,8 @@ Automation Layer (5 hooks + launchd):
         <tr><td><strong>Systems architecture</strong></td><td>3-layer memory hierarchy; correction overlay pattern; context-router; adversarial debate and ensemble patterns</td></tr>
         <tr><td><strong>AI/ML engineering</strong></td><td>22-agent orchestration; model-tier delegation; dedup-validator for learnings integrity</td></tr>
         <tr><td><strong>Automation &amp; CI/CD</strong></td><td>5 hooks; pre-commit scanning; launchd backup; auto-push; autonomous headless sessions with 6-layer safety</td></tr>
-        <tr><td><strong>Iterative engineering</strong></td><td>v1 &rarr; v2.13 across 11 iterations driven by real friction</td></tr>
-        <tr><td><strong>Product thinking</strong></td><td>22 slash commands, 11 skill modules, session classification, QA gates, decision log</td></tr>
+        <tr><td><strong>Iterative engineering</strong></td><td>v1 &rarr; v2.19 across 11+ iterations driven by real friction</td></tr>
+        <tr><td><strong>Product thinking</strong></td><td>31 slash commands, 11 skill modules, session classification, QA gates, decision log</td></tr>
         <tr><td><strong>Learning systems design</strong></td><td>Architecture mirrors instructional design principles</td></tr>
         <tr><td><strong>Self-direction</strong></td><td>No spec, no team, no deadline&mdash;iterated through 11 versions, in daily production</td></tr>
       </tbody>

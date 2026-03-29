@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ClaudeUsage — macOS Menu Bar Usage Tracker — Joshua Stoner</title>
-  <meta name="description" content="Native macOS menu bar app that tracks Claude Code usage — plan limits, weekly stats, cost analysis, and usage patterns. 35x ROI.">
+  <meta name="description" content="Native macOS menu bar app that tracks Claude Code usage — plan limits, weekly stats, cost analysis, and usage patterns. 53x ROI.">
   <meta property="og:title" content="ClaudeUsage — macOS Menu Bar Usage Tracker">
-  <meta property="og:description" content="Built a native macOS menu bar app in Swift/SwiftUI that tracks Claude Code usage in real time. 35x ROI on Max plan.">
+  <meta property="og:description" content="Built a native macOS menu bar app in Swift/SwiftUI that tracks Claude Code usage in real time. 53x ROI on Max plan.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://josh-stoner.github.io/case-studies/claude-usage.html">
   <meta name="twitter:card" content="summary">
@@ -95,7 +95,7 @@
     <h2 id="about-this-project"><i data-lucide="info" class="icon-blue"></i> About This Project</h2>
     <p>I built a macOS app to find out if using Claude is actually worth it. Not philosophically&mdash;financially. What would I have paid at API rates instead of a flat subscription?</p>
     <p><strong>ClaudeUsage</strong> is a native menu bar app that answers that. It hits an undocumented Anthropic API endpoint for plan usage, reads the local stats cache for token data, and applies current API pricing to calculate what everything would have cost. One click from the menu bar, four tabs.</p>
-    <p>The answer: <strong>$3,178 in 27 active days. Projected monthly: $3,531. My plan costs $100. That&rsquo;s 35x.</strong></p>
+    <p>The answer: <strong>$5,521 in 31 days tracked. Daily average: $178. My plan costs $100/month. That&rsquo;s 53x.</strong></p>
     <p>I used Claude Code to build an app about Claude Code. The whole thing&mdash;UI, endpoint calls, caching layer, design system integration&mdash;took a few focused sessions. Swift/SwiftUI, not Electron. Same design tokens as stonerOS. Light and dark mode.</p>
     <blockquote>This demonstrates: native macOS development, API integration, data visualization, design system application, and the instinct to build a tool when the data is there but invisible.</blockquote>
 
@@ -141,10 +141,10 @@
     <h2 id="ui-design"><i data-lucide="palette" class="icon-purple"></i> UI Design</h2>
 
     <div class="screenshot-row">
-      <img src="../assets/images/claude-usage-cost-light.png" alt="ClaudeUsage Cost tab — 35x ROI" />
+      <img src="../assets/images/claude-usage-cost-light.png" alt="ClaudeUsage Cost tab — 53x ROI" />
       <img src="../assets/images/claude-usage-when-dark.png" alt="ClaudeUsage When tab — peak hours heatmap" />
     </div>
-    <p class="caption">Left: Cost tab showing 35x ROI and per-model breakdown. Right: When tab with 24-hour peak hours heatmap and busiest days.</p>
+    <p class="caption">Left: Cost tab showing 53x ROI and per-model breakdown. Right: When tab with 24-hour peak hours heatmap and busiest days.</p>
 
     <h3>Design System</h3>
     <p>Same color tokens and density rules as stonerOS (<a href="stoneros.html">case study 05</a>).</p>
@@ -171,17 +171,17 @@
 
     <h2 id="results"><i data-lucide="trending-up" class="icon-green"></i> Results</h2>
 
-    <h3>Usage Data Surfaced (27 Active Days)</h3>
+    <h3>Usage Data Surfaced (31 Days Tracked)</h3>
     <table>
       <thead><tr><th>Metric</th><th>Value</th></tr></thead>
       <tbody>
-        <tr><td><strong>Total messages</strong></td><td>67,873</td></tr>
-        <tr><td><strong>Sessions</strong></td><td>243</td></tr>
-        <tr><td><strong>Active hours</strong></td><td>88 (avg 4.4/day)</td></tr>
-        <tr><td><strong>Tool calls</strong></td><td>Tracked per-day</td></tr>
-        <tr><td><strong>API-equivalent cost</strong></td><td>$3,178</td></tr>
+        <tr><td><strong>Total messages</strong></td><td>44,785</td></tr>
+        <tr><td><strong>Sessions</strong></td><td>370</td></tr>
+        <tr><td><strong>Active hours</strong></td><td>118.2 (avg 4.5/day)</td></tr>
+        <tr><td><strong>Tool calls</strong></td><td>13,261</td></tr>
+        <tr><td><strong>API-equivalent cost</strong></td><td>$5,521</td></tr>
         <tr><td><strong>Subscription cost</strong></td><td>$100/month</td></tr>
-        <tr><td><strong>ROI</strong></td><td><strong>35x</strong></td></tr>
+        <tr><td><strong>ROI</strong></td><td><strong>53x</strong></td></tr>
       </tbody>
     </table>
 
@@ -189,12 +189,12 @@
     <table>
       <thead><tr><th>Model</th><th>Cost</th><th>Share</th></tr></thead>
       <tbody>
-        <tr><td><strong>Opus 4.6</strong></td><td>$2,929</td><td>92%</td></tr>
-        <tr><td><strong>Sonnet 4.6</strong></td><td>$215</td><td>7%</td></tr>
-        <tr><td><strong>Haiku 4.5</strong></td><td>$34</td><td>1%</td></tr>
+        <tr><td><strong>Opus 4.6</strong></td><td>$5,386</td><td>97.6%</td></tr>
+        <tr><td><strong>Sonnet 4.6</strong></td><td>$127</td><td>2.3%</td></tr>
+        <tr><td><strong>Haiku 4.5</strong></td><td>$8</td><td>0.1%</td></tr>
       </tbody>
     </table>
-    <p>The cache read number surprised me. $1,842 of the Opus cost is cache reads alone&mdash;context retrieval, not generation. The stonerOS memory system loads a lot of context per session, and at reduced cache-read rates, that still compounds.</p>
+    <p>The cache read ratio tells the real story: 2.2 billion tokens read from cache vs. 89 million created&mdash;a 25:1 ratio. The stonerOS memory system loads a lot of context per session, and prompt caching makes that sustainable instead of ruinous.</p>
 
     <hr>
 
