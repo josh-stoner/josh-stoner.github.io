@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /temp/
+Disallow: /dashboard.html
+
+Sitemap: https://josh-stoner.github.io/sitemap.xml

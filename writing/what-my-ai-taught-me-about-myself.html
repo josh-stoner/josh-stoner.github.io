@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N6V09SW4DE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-N6V09SW4DE');
-</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>What My AI Taught Me About Myself — Joshua Stoner</title>
+  <meta name="description" content="I pointed my personal AI memory system at my own data. What came back was more honest than I expected — patterns I couldn't see from the inside.">
+  <link rel="canonical" href="https://josh-stoner.github.io/writing/what-my-ai-taught-me-about-myself.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="What My AI Taught Me About Myself">
+  <meta property="og:description" content="I pointed my personal AI memory system at my own data. What came back was more honest than I expected — patterns I couldn't see from the inside.">
+  <meta property="og:url" content="https://josh-stoner.github.io/writing/what-my-ai-taught-me-about-myself.html">
+  <meta property="og:site_name" content="Joshua Stoner">
+  <meta property="article:author" content="Joshua Stoner">
+  <meta property="article:published_time" content="2026-03-14">
+  <meta property="og:image" content="https://josh-stoner.github.io/assets/og/what-my-ai-taught-me-about-myself.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What My AI Taught Me About Myself">
+  <meta name="twitter:description" content="I pointed my personal AI memory system at my own data. What came back was more honest than I expected — patterns I couldn't see from the inside.">
+  <meta name="twitter:image" content="https://josh-stoner.github.io/assets/og/what-my-ai-taught-me-about-myself.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What My AI Taught Me About Myself",
+    "author": {"@type": "Person", "name": "Joshua Stoner", "url": "https://josh-stoner.github.io"},
+    "datePublished": "2026-03-14",
+    "publisher": {"@type": "Person", "name": "Joshua Stoner"},
+    "description": "I pointed my personal AI memory system at my own data. What came back was more honest than I expected — patterns I couldn't see from the inside."
+  }
+  </script>
   <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -119,37 +136,12 @@
       font-style: italic;
       margin-bottom: 2rem;
     }
-  
-    /* Audio player */
-    .audio-player {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-sm);
-      padding: 0.75rem 1rem;
-      margin: 1.5rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .audio-player .audio-label {
-      font-size: 0.82rem;
-      color: var(--text-faint);
-      font-weight: 500;
-      white-space: nowrap;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-    .audio-player audio {
-      flex: 1;
-      height: 32px;
-      min-width: 0;
-    }
   </style>
 </head>
 <body>
   <nav>
     <div class="nav-inner">
-      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> <span class="nav-text">Joshua Stoner</span></a>
+      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> Joshua Stoner</a>
       <button class="theme-toggle" aria-label="Toggle theme">
         <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
@@ -172,16 +164,10 @@
       <span class="toc-label">On this page</span>
       <a href="#im-a-night-builder">I'm a Night Builder</a>
       <a href="#the-hobby-thats-actually-a-skill">The Hobby That's Actually a Skill</a>
-      <a href="#my-focus-has-a-shape">My Focus Has a Shape</a>
+      <a href="#im-narrower-than-i-think">I'm Narrower Than I Think</a>
       <a href="#my-old-systems-are-time-capsules">My Old Systems Are Time Capsules</a>
       <a href="#the-meta-lesson">The Meta-Lesson</a>
     </nav>
-
-    
-    <div class="audio-player">
-      <span class="audio-label">Listen</span>
-      <audio controls preload="none" src="../audio/what-my-ai-taught-me.mp3">Your browser does not support audio.</audio>
-    </div>
 
     <div class="article-body">
 
@@ -203,44 +189,40 @@
 
       <p>My app usage data shows peak activity between <strong>1am and 3am</strong>. Not doomscrolling&mdash;VS Code. 91 hours of active use in 90 days, nearly double the next app (Perplexity at 52 hours). Development represents 48% of my total tracked screen time.</p>
 
-      <p>I've always known I'm a night owl. But there's a difference between knowing that and seeing "peak sessions: 1&ndash;3am" confirmed across three different data sources. There's also a clear afternoon dip where I switch from building to communicating, then a second wind after 10pm.</p>
+      <p>I've always known I'm a night owl. But there's a difference between knowing that and seeing it in the data&mdash;Screen Time peaks at 1&ndash;3am (VS Code), Safari browsing surges again at 11pm, Messages cluster in the 1&ndash;4pm afternoon window. After 10pm it's all building again.</p>
 
       <div class="insight-block">
-        <strong><i data-lucide="zap"></i> What I learned</strong>
-        <p>This isn't a habit to fix&mdash;it's when my brain actually works. Schedule deep work for late night. Keep meetings in the afternoon. Lean into the rhythm instead of fighting it.</p>
+        <p>This isn't a habit to fix&mdash;it's when my brain actually works. Deep work goes late night. Meetings go in the afternoon. Lean into the rhythm instead of fighting it.</p>
       </div>
 
       <h2 id="the-hobby-thats-actually-a-skill"><i data-lucide="shopping-bag" class="icon-gold"></i> The Hobby That's Actually a Skill</h2>
 
-      <p>My browsing data categorized 68% of my web activity as "Other." When I actually looked at what that meant: <strong>~780 visits</strong> to collectibles marketplaces&mdash;eBay, Whatnot, PopMart, specialty jewelry sites. Almost as much as social media.</p>
+      <p>My browsing data categorized 68% of my web activity as "Other." When I actually looked at what that meant: <strong>~780 visits</strong> to collectibles marketplaces&mdash;eBay, Whatnot, PopMart, specialty jewelry sites. Nearly as much as the ~1,091 social media visits in the same period.</p>
 
       <p>I collect designer toys and vinyl figures. I knew I spent time on this, but the data showed how much of it is <em>research</em>&mdash;not just browsing. I have an eBay scraper that tracks market prices into a SQLite database. I'm watching wholesale and secondary markets. It's systematic.</p>
 
       <div class="insight-block">
-        <strong><i data-lucide="zap"></i> What I learned</strong>
-        <p>The skills I use for collecting&mdash;market analysis, data pipelines, pattern recognition&mdash;are the same ones I use in my professional work. Hobbies aren't separate from your professional identity. They're often the same muscles applied differently.</p>
+        <p>Turns out my hobbies and professional work use the same muscles&mdash;market analysis, data pipelines, pattern recognition. Just applied to different markets.</p>
       </div>
 
-      <h2 id="my-focus-has-a-shape"><i data-lucide="target" class="icon-green"></i> My Focus Has a Shape</h2>
+      <h2 id="im-narrower-than-i-think"><i data-lucide="target" class="icon-green"></i> I'm Narrower Than I Think</h2>
 
       <p>I'm a builder in deep-focus mode. My geographic footprint is essentially two places: my apartment in Brooklyn and my family's place in rural Pennsylvania. My communication is concentrated in a tight inner circle&mdash;a handful of people I talk to daily, deeply, and consistently. My photos are 78% from home: plants, my space, my dog Theodore.</p>
 
-      <p>None of this was news to me. But seeing all of it together, quantified, I noticed something I hadn't named before: <strong>narrow inputs, deep engagement, high consistency.</strong> It's the same pattern everywhere&mdash;few apps used heavily, few people messaged frequently, few places visited repeatedly.</p>
+      <p>None of this was news to me. But seeing all of it together, quantified, I noticed something I hadn't named before: <strong>narrow inputs, deep engagement, high consistency.</strong> Same few apps, same few people, same few places. The pattern doesn't change&mdash;only the surface it shows up on.</p>
 
       <div class="insight-block">
-        <strong><i data-lucide="zap"></i> What I learned</strong>
-        <p>This is how I operate. It works well for building&mdash;but it also means things like networking and exploring new spaces don't happen on their own. They have to be intentional.</p>
+        <p>This is how I operate. It builds things well. It doesn't network or explore by accident&mdash;both require intentional effort.</p>
       </div>
 
       <h2 id="my-old-systems-are-time-capsules"><i data-lucide="archive" class="icon-lavender"></i> My Old Systems Are Time Capsules</h2>
 
       <p>My Apple Notes&mdash;86 of them&mdash;haven't been touched since November 2025. They contain resume drafts, job search prompts, design philosophy statements, and shower thoughts from a pre-AI version of me.</p>
 
-      <p>One note from 2023: <em>"Designers are observers and curators to the creation of a finalized product, not the dictators."</em> Another: <em>"My design starts with Why."</em> The ideas are still mine, but they were written in a different role, at a different company, with different tools. It's interesting to see where your head was before you had a system to build on those thoughts.</p>
+      <p>Notes from 2023 about design philosophy&mdash;observer vs. dictator, why-before-what thinking. All ideas I still believe in, written in a different role, at a different company, with different tools. A snapshot of how I thought before I had a system to build on those thoughts.</p>
 
       <div class="insight-block">
-        <strong><i data-lucide="zap"></i> What I learned</strong>
-        <p>The thinking was always there. What changed is having a system that compounds it instead of letting it sit in a notes app.</p>
+        <p>The thinking was always there. What changed is a system that builds on it instead of letting it collect dust in a notes app.</p>
       </div>
 
       <hr>
@@ -250,7 +232,7 @@
       <p>Honestly, none of this was a surprise. <strong>I already knew all of it.</strong> I knew I was a night builder. I knew my focus was narrow. I knew my hobbies used the same muscles as my work.</p>
 
       <div class="callout callout-gold">
-        <p>But knowing something and seeing it in data are different. "I think I'm a night person" becomes "my peak cognitive window is 11pm&ndash;3am, confirmed across three data sources." One is a feeling. The other is something I can actually plan around.</p>
+        <p>But knowing something and seeing it in data are different. "I think I'm a night person" is a vibe. "My peak cognitive window is 11pm&ndash;3am, backed by screen time, browsing history, and messaging patterns" is something I can actually schedule around.</p>
       </div>
 
       <div class="closing">

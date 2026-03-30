@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N6V09SW4DE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-N6V09SW4DE');
-</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>I Gave Claude a Brain — Joshua Stoner</title>
+  <meta name="description" content="I built a persistent memory system for Claude using plain markdown files and a git repo. Here's what happened when my AI stopped forgetting.">
+  <link rel="canonical" href="https://josh-stoner.github.io/writing/ai-brain-ch0.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="I Gave Claude a Brain. Here's What Happened.">
+  <meta property="og:description" content="I built a persistent memory system for Claude using plain markdown files and a git repo. Here's what happened when my AI stopped forgetting.">
+  <meta property="og:url" content="https://josh-stoner.github.io/writing/ai-brain-ch0.html">
+  <meta property="og:site_name" content="Joshua Stoner">
+  <meta property="article:author" content="Joshua Stoner">
+  <meta property="article:published_time" content="2026-03-14">
+  <meta property="og:image" content="https://josh-stoner.github.io/assets/og/ai-brain-ch0.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="I Gave Claude a Brain. Here's What Happened.">
+  <meta name="twitter:description" content="I built a persistent memory system for Claude using plain markdown files and a git repo. Here's what happened when my AI stopped forgetting.">
+  <meta name="twitter:image" content="https://josh-stoner.github.io/assets/og/ai-brain-ch0.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "I Gave Claude a Brain. Here's What Happened.",
+    "author": {"@type": "Person", "name": "Joshua Stoner", "url": "https://josh-stoner.github.io"},
+    "datePublished": "2026-03-14",
+    "publisher": {"@type": "Person", "name": "Joshua Stoner"},
+    "description": "I built a persistent memory system for Claude using plain markdown files and a git repo. Here's what happened when my AI stopped forgetting."
+  }
+  </script>
   <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -154,37 +171,12 @@
     .ahead-upcoming strong {
       color: var(--text-faint);
     }
-  
-    /* Audio player */
-    .audio-player {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-sm);
-      padding: 0.75rem 1rem;
-      margin: 1.5rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .audio-player .audio-label {
-      font-size: 0.82rem;
-      color: var(--text-faint);
-      font-weight: 500;
-      white-space: nowrap;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-    .audio-player audio {
-      flex: 1;
-      height: 32px;
-      min-width: 0;
-    }
   </style>
 </head>
 <body>
   <nav>
     <div class="nav-inner">
-      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> <span class="nav-text">Joshua Stoner</span></a>
+      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> Joshua Stoner</a>
       <button class="theme-toggle" aria-label="Toggle theme">
         <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
@@ -211,12 +203,6 @@
       <a href="#why-im-writing-this">Why I'm Writing This</a>
       <a href="#whats-ahead">What's Ahead</a>
     </nav>
-
-    
-    <div class="audio-player">
-      <span class="audio-label">Listen</span>
-      <audio controls preload="none" src="../audio/ai-brain-ch0.mp3">Your browser does not support audio.</audio>
-    </div>
 
     <div class="article-body">
 
@@ -328,15 +314,6 @@
       <div class="closing">
         <p><em>I built stonerOS because I got tired of starting over. The system isn't perfect, but I haven't re-introduced myself in six weeks.</em></p>
       </div>
-
-    <div class="newsletter-cta">
-      <h3>Get the next chapter.</h3>
-      <p>I'm writing a 5-part series about building a persistent memory system for AI. Architecture decisions, agent design, cost tradeoffs, and what it actually means when your AI starts remembering you. One email per chapter. No spam. Unsubscribe anytime.</p>
-      <form action="https://buttondown.com/api/emails/embed-subscribe/itsjoshstoner" method="post" class="embeddable-buttondown-form">
-        <input type="email" name="email" id="bd-email" placeholder="you@email.com" required />
-        <input type="submit" value="Send me the next one" />
-      </form>
-    </div>
 
     <div class="page-nav">
       <a href="../case-studies/stoneros.html" class="page-nav-link page-nav-prev"><i data-lucide="arrow-left"></i> stonerOS</a>
