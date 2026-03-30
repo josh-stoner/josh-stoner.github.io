@@ -48,6 +48,31 @@
       .screenshot-row { flex-direction: column; align-items: center; gap: 1rem; }
       .screenshot-row img { max-width: 100%; }
     }
+  
+    /* Audio player */
+    .audio-player {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .audio-player .audio-label {
+      font-size: 0.82rem;
+      color: var(--text-faint);
+      font-weight: 500;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .audio-player audio {
+      flex: 1;
+      height: 32px;
+      min-width: 0;
+    }
   </style>
 </head>
 <body>
@@ -99,6 +124,13 @@
     </nav>
 
     <hr>
+
+    <div class="audio-player">
+      <span class="audio-label">Listen</span>
+      <audio controls preload="none" src="../audio/cs-claude-usage.mp3">Your browser does not support audio.</audio>
+    </div>
+
+
 
     <h2 id="about-this-project"><i data-lucide="info" class="icon-blue"></i> About This Project</h2>
     <p>I built a macOS app to find out if using Claude is actually worth it. Not philosophically&mdash;financially. What would I have paid at API rates instead of a flat subscription?</p>
