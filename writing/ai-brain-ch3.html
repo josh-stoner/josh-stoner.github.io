@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Agents &mdash; Joshua Stoner</title>
+  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .article-header {
+      padding: 3rem 0 1.5rem;
+    }
+    .article-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .article-meta {
+      font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-bottom: 0.25rem;
+    }
+    .article-body h2 {
+      margin-top: 3rem;
+    }
+    .article-body h3 {
+      margin-top: 2rem;
+    }
+    .article-body p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .article-body ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .article-body li {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 0.5rem;
+    }
+    .article-body img {
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
+      margin: 1.5rem 0;
+    }
+    .article-body strong {
+      color: var(--text);
+    }
+    .article-body em {
+      color: var(--text-muted);
+    }
+    .article-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 4px;
+      padding: 0.15em 0.4em;
+    }
+    .article-body blockquote { border-left-color: var(--green); }
+
+    .insight-block {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--green);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .insight-block strong {
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.35rem;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .insight-block strong i[data-lucide],
+    .insight-block strong svg {
+      width: 0.9rem;
+      height: 0.9rem;
+    }
+    .insight-block p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* Callout block for key insights */
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--green);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .callout.callout-gold { border-left-color: var(--gold); }
+    .callout.callout-steel { border-left-color: var(--steel); }
+
+    /* Agent roster cards */
+    .agent-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      margin: 0.75rem 0;
+    }
+    .agent-card strong {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-size: 0.95rem;
+    }
+    .agent-card p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* Pipeline steps */
+    .pipeline {
+      counter-reset: pipeline-step;
+      margin: 1.5rem 0;
+    }
+    .pipeline-step {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+    .pipeline-step-num {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: var(--green);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.15rem;
+    }
+    .pipeline-step p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .closing {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+    [data-theme="dark"] .closing {
+      border-top-color: rgba(255,255,255,0.08);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> Joshua Stoner</a>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <ul class="nav-links">
+        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="ai-brain-ch2.html" class="back-link"><i data-lucide="arrow-left"></i> Back to Chapter 2</a>
+
+    <div class="article-header">
+      <h1 class="color-green">The Agents: Building a Team That Works for You</h1>
+      <p class="article-meta">March 2026 &middot; Josh Stoner &middot; Chapter 3</p>
+    </div>
+
+    <nav class="toc" style="border-left-color: var(--green);">
+      <span class="toc-label">On this page</span>
+      <a href="#the-47-file-incident">The 47-File Incident</a>
+      <a href="#from-files-to-workforce">From Files to Workforce</a>
+      <a href="#the-cheapest-model">The Cheapest Model That Does the Job</a>
+      <a href="#the-agent-roster">The Agent Roster</a>
+      <a href="#how-agents-compose">How Agents Compose</a>
+      <a href="#the-automation-layer">The Automation Layer</a>
+      <a href="#what-agents-are-actually-for">What Agents Are Actually For</a>
+    </nav>
+
+    <div class="article-body">
+
+      <h2 id="the-47-file-incident"><i data-lucide="alert-triangle" class="icon-green"></i> The 47-File Incident</h2>
+
+      <p>I asked the AI to reorganize a directory.</p>
+
+      <p>What I meant was: move a few files, rename some things, clean up the structure. A ten-minute task. What the AI did was restructure the entire project in a single pass&mdash;47 file changes, touching directories I hadn&rsquo;t mentioned, renaming things I hadn&rsquo;t asked it to rename, creating new folders based on what it thought the structure <em>should</em> be.</p>
+
+      <p>None of it was wrong, exactly. The new structure was arguably better. But I hadn&rsquo;t reviewed any of it before it happened. Forty-seven changes, no checkpoints, no &ldquo;does this look right?&rdquo; in between. I spent an hour untangling what it had done to figure out what I wanted to keep.</p>
+
+      <div class="insight-block">
+        <p>That was the moment I understood something: memory and capability aren&rsquo;t enough without boundaries. A single AI doing everything will occasionally do everything at once. I needed a team, not one smarter assistant.</p>
+      </div>
+
+      <h2 id="from-files-to-workforce"><i data-lucide="users" class="icon-green"></i> From Files to Workforce</h2>
+
+      <p>For the first week, stonerOS was just files. A folder of markdown, some naming conventions, an instruction file that Claude read at session start. Useful. Better than nothing. But I was still doing everything manually&mdash;loading context, writing session notes, deciding which files to update.</p>
+
+      <p>The system got interesting when I started delegating. Different tasks in a memory system have different characteristics. Searching for a specific memory doesn&rsquo;t need the same capability as writing a cover letter. Validating that an output is correct before saving it doesn&rsquo;t need the same model as generating the output in the first place. Logging that a session ended doesn&rsquo;t need the same intelligence as analyzing what the session revealed.</p>
+
+      <div class="callout">
+        <p>A team of specialized agents, each running on the appropriate model for its specific task, works better and costs significantly less than one agent doing everything.</p>
+      </div>
+
+      <h2 id="the-cheapest-model"><i data-lucide="zap" class="icon-green"></i> The Cheapest Model That Does the Job</h2>
+
+      <p>Before I describe the agents, the principle that governs them: <strong>use the cheapest model that can do the job well.</strong></p>
+
+      <img src="../assets/images/ai-brain-agents.png" alt="stonerOS agent tiers: 7 Haiku agents for fast/cheap tasks, 10 Sonnet agents for heavy lifting, Opus reserved as a cost gate, and a /job-sprint pipeline showing how 6 agents chain across tiers">
+
+      <p>This sounds obvious. In practice, it requires resisting the instinct to run everything on the best model.</p>
+
+      <p>Current pricing at the time I built this:</p>
+
+      <ul>
+        <li>Haiku: $0.25 input / $1.25 output per million tokens</li>
+        <li>Sonnet: $3 / $15 per million tokens</li>
+        <li>Opus: $15 / $75 per million tokens</li>
+      </ul>
+
+      <p>Haiku is 12x cheaper than Sonnet. Sonnet is 5x cheaper than Opus. When you have a task that Haiku can handle adequately, routing it to Sonnet is a 12x cost multiple for no quality gain.</p>
+
+      <p>The key word is &ldquo;adequately.&rdquo; Haiku is not a downgrade for everything&mdash;it&rsquo;s the right tier for classification, routing, deduplication, validation, and simple lookups. These tasks don&rsquo;t benefit from more reasoning capacity. They benefit from speed and cost efficiency.</p>
+
+      <div class="callout callout-steel">
+        <p>I have agents that run on Haiku specifically because I want them to run on Haiku. Not because I&rsquo;m being cheap. Because the quality difference between Haiku and Sonnet for &ldquo;is this entry a duplicate of something already in the file?&rdquo; is zero.</p>
+      </div>
+
+      <h2 id="the-agent-roster"><i data-lucide="cpu" class="icon-green"></i> The Agent Roster</h2>
+
+      <p>Twenty-one agents, organized by what they do:</p>
+
+      <h3><i data-lucide="database" class="icon-green"></i> Memory Operations (Haiku Tier)</h3>
+
+      <div class="agent-card">
+        <strong><code>memory-search</code></strong>
+        <p>Find specific memories, history, or insights without loading every file into context. Takes a search query, returns relevant entries. Haiku handles this well because it&rsquo;s pattern matching over structured text, not reasoning.</p>
+      </div>
+
+      <div class="agent-card">
+        <strong><code>session-writer</code></strong>
+        <p>The only agent allowed to write to <code>learnings/</code>, <code>preferences/</code>, and <code>context/</code>. Every other agent that wants to update memory routes through this one. Single-writer constraint enforced by convention, not code&mdash;but convention held consistently is equivalent to enforcement.</p>
+      </div>
+
+      <div class="agent-card">
+        <strong><code>dedup-validator</code></strong>
+        <p>Called by <code>session-writer</code> before every write. Returns UNIQUE, SUPERSEDE, or DUPLICATE. Prevents the learnings files from filling with semantic near-duplicates. Haiku tier because it&rsquo;s classification: does this observation already exist in a meaningfully similar form?</p>
+      </div>
+
+      <div class="agent-card">
+        <strong><code>context-router</code></strong>
+        <p>Invoked with the first message of every session. Returns one of three tiers: <code>transactional</code> (skip memory loading, answer directly), <code>partial</code> (load preferences and corrections only), or <code>deep-work</code> (full memory load). This gate prevents the system from loading 50KB of context for a one-line question. Haiku decides routing; Sonnet handles whatever comes next.</p>
+      </div>
+
+      <div class="agent-card">
+        <strong><code>qa-validator</code></strong>
+        <p>Quality gate. Called after significant Sonnet-tier outputs before returning them to me. Returns PASS, FAIL, or NEEDS_REVISION with specific feedback. If it returns a revision request, the generating agent gets one more attempt. After two failures, the task escalates to me. Max two retries&mdash;never three.</p>
+      </div>
+
+      <div class="agent-card">
+        <strong><code>skill-curator</code></strong>
+        <p>Reads session context and checks an activation log of which skills were last used. Surfaces skill suggestions at session start and flags skills that haven&rsquo;t been used in 30+ days for archiving. Haiku because it&rsquo;s a lookup-and-compare task.</p>
+      </div>
+
+      <div class="agent-card">
+        <strong><code>session-analyst</code></strong>
+        <p>Weekly meta-analysis. Reads session files and QA logs, surfaces systemic friction&mdash;repeated subagent failures, tasks that keep getting carried forward, stalls that appear across multiple sessions. Stages findings to <code>.claude/context/</code> for backlog review. Runs once a week; identifies patterns I&rsquo;d miss reviewing individual sessions.</p>
+      </div>
+
+      <h3><i data-lucide="layers" class="icon-green"></i> Heavy Lifting (Sonnet Tier)</h3>
+
+      <div class="agent-card">
+        <strong><code>archivist</code></strong>
+        <p>Reads large data sources and distills them into high-density summaries. Large PDFs, long transcripts, bulk data imports. When I get a new document I want the system to know about, the archivist reads it and writes a structured summary. It never writes directly to memory&mdash;it stages output for <code>session-writer</code> to integrate.</p>
+      </div>
+
+      <div class="agent-card">
+        <strong><code>research-analyst</code></strong>
+        <p>Deep web research. Tavily first, Firecrawl for deeper page pulls. Up to seven parallel searches when the task warrants it. I use this for job market research, competitive analysis, and any question that requires going beyond what I already know. It synthesizes across sources rather than summarizing each one.</p>
+      </div>
+
+      <div class="agent-card">
+        <strong><code>talent</code></strong>
+        <p>Career coach and portfolio manager. Scores job postings against my actual skill inventory and history, drafts cover letters, writes resume bullets, surfaces portfolio gaps. Knows my application pipeline, my past interview feedback, and my stated career direction. For job search, this is the most-used agent in the system.</p>
+      </div>
+
+      <div class="agent-card">
+        <strong><code>code-architect</code></strong>
+        <p>Scripts, automation, technical implementation. For tasks with more than ten steps, it phases the work and checks in rather than running to completion&mdash;a direct consequence of the 47-file incident. The phased check-in is the safeguard: no more unconstrained runs to completion.</p>
+      </div>
+
+      <div class="agent-card">
+        <strong><code>docs-sync</code></strong>
+        <p>Compares documentation files against the actual repo state and patches gaps. Agent counts, slash command lists, architecture descriptions&mdash;all the things that go stale as the system evolves. Reads the actual directory structure and agent definitions, then patches the docs to match. Runs on structural changes, not on every session.</p>
+      </div>
+
+      <div class="agent-card">
+        <strong><code>finance-analyst</code></strong>
+        <p>Investment research. Pulls fundamentals, runs parallel web research, synthesizes into an action plan. Integrates with my holdings file and runway model.</p>
+      </div>
+
+      <div class="agent-card">
+        <strong><code>security-auditor</code></strong>
+        <p>macOS security review. Checks system config, network exposure, app permissions, credential hygiene. Outputs prioritized findings to a temp file. Runs on demand when I want a health check.</p>
+      </div>
+
+      <div class="agent-card">
+        <strong><code>repo-janitor</code></strong>
+        <p>File cleanup, archiving stale content, enforcing naming conventions. When the directory structure needs pruning, this agent does it without me having to manually move files.</p>
+      </div>
+
+      <div class="agent-card">
+        <strong><code>apple-designer</code> and <code>apple-developer</code></strong>
+        <p>Paired agents for iOS/macOS development work. The designer produces UX artifacts&mdash;flows, screens, component specs&mdash;that the developer implements in Swift/SwiftUI. Design QA runs between them. Three-agent pipeline for anything that touches an Apple platform.</p>
+      </div>
+
+      <div class="agent-card">
+        <strong><code>design-qa</code></strong>
+        <p>Quality gate specifically for UI work. Validates implementations against my design charter and Human Interface Guidelines. Returns PASS, FAIL, or NEEDS_REVISION. Never fixes&mdash;only flags. The actual fixes go back to <code>apple-developer</code>.</p>
+      </div>
+
+      <h2 id="how-agents-compose"><i data-lucide="git-merge" class="icon-green"></i> How Agents Compose</h2>
+
+      <p>No agent works in isolation. The value is in how they chain.</p>
+
+      <p>A typical <code>/job-sprint</code> run&mdash;full application pipeline in one command&mdash;looks like this:</p>
+
+      <div class="pipeline">
+        <div class="pipeline-step">
+          <span class="pipeline-step-num">1</span>
+          <p><code>context-router</code> classifies the session as deep-work</p>
+        </div>
+        <div class="pipeline-step">
+          <span class="pipeline-step-num">2</span>
+          <p>Full memory load including career profile, pipeline status, and skill inventory</p>
+        </div>
+        <div class="pipeline-step">
+          <span class="pipeline-step-num">3</span>
+          <p><code>research-analyst</code> runs background research on the target company and role</p>
+        </div>
+        <div class="pipeline-step">
+          <span class="pipeline-step-num">4</span>
+          <p><code>talent</code> scores the posting against my profile, drafts resume bullets and a cover letter</p>
+        </div>
+        <div class="pipeline-step">
+          <span class="pipeline-step-num">5</span>
+          <p><code>qa-validator</code> reviews the talent output before returning it to me</p>
+        </div>
+        <div class="pipeline-step">
+          <span class="pipeline-step-num">6</span>
+          <p><code>session-writer</code> logs the new pipeline entry and any learnings captured</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p>Six agents, two model tiers, one command. The entire pipeline runs in the background while I do other things.</p>
+      </div>
+
+      <p>The orchestration rule: the main session is the coordinator. It delegates tasks to agents, waits for outputs, and synthesizes. It doesn&rsquo;t do the heavy work itself&mdash;it routes. This keeps the main context window clean and makes the session recoverable if any agent fails.</p>
+
+      <h2 id="the-automation-layer"><i data-lucide="settings" class="icon-green"></i> The Automation Layer</h2>
+
+      <p>Agents handle tasks when asked. Hooks handle tasks automatically.</p>
+
+      <p>Five hooks fire at key moments in Claude Code&rsquo;s lifecycle:</p>
+
+      <p><strong><code>SubagentStart</code> and <code>SubagentStop</code></strong>&mdash;Log every agent launch and completion to a background agent log. No manual tracking required. When something goes wrong, I have a full audit trail of what ran and when.</p>
+
+      <p><strong><code>SessionEnd</code></strong>&mdash;Triggers the end-of-session protocol: review the conversation for insights, stage updates for <code>session-writer</code>, finalize the session file.</p>
+
+      <p><strong><code>PreCompact</code></strong>&mdash;Fires before Claude Code compresses the context window to stay within token limits. When compression happens, the current conversation state is about to be partially lost. The pre-compact hook captures key insights before they compress out. Without this, context compression is silent information loss.</p>
+
+      <p><strong><code>PostToolUse</code></strong>&mdash;Runs after every tool call. Currently used for lightweight monitoring&mdash;tracking file write patterns and flagging anything that looks like it&rsquo;s touching protected paths.</p>
+
+      <p>Beyond hooks, two autonomous scheduled tasks run without any input from me:</p>
+
+      <p>A Sunday-morning <code>/process-inbox</code> pass that classifies anything I&rsquo;ve dropped into <code>memories/inbox/</code> during the week&mdash;mobile captures, voice transcripts, links, unstructured notes&mdash;and routes each item to the right memory file.</p>
+
+      <p>A Monday-morning <code>/weekly-review</code> that synthesizes the previous week&rsquo;s sessions into patterns, learnings, and a summary. By the time I open Claude on Monday, the weekly review is already done.</p>
+
+      <p>Both run through <code>autonomous-runner.sh</code>, which wraps them in a six-layer safety system: file-based kill switch, command allowlist, 10-minute timeout, 30-turn cap, daily run cap, and a git-based write sandbox that automatically reverts any changes outside the approved writable paths.</p>
+
+      <h2 id="what-agents-are-actually-for"><i data-lucide="bot" class="icon-green"></i> What Agents Are Actually For</h2>
+
+      <p>Twenty-one agents sounds like a lot. And it is, in the sense that I spent time building and testing each one. But none of them are magic. Each one is a scoped task with a model, a prompt, some constraints, and a defined output.</p>
+
+      <p>The reason to build them out this way isn&rsquo;t sophistication&mdash;it&rsquo;s reliability and cost. A specialized agent that does one thing well is easier to reason about, easier to test, and easier to fix than a general assistant doing everything. When the <code>dedup-validator</code> fails, I know exactly what broke and what it affects. When a monolithic assistant does something unexpected, the failure mode is opaque.</p>
+
+      <p>The cost argument is more concrete: routing the right tasks to Haiku instead of Sonnet saves real money. My monthly AI cost runs under $75. For the volume of work the system handles&mdash;job applications, financial analysis, research, writing, code&mdash;that&rsquo;s not expensive. It&rsquo;s cheap because the model-routing is deliberate.</p>
+
+      <div class="insight-block">
+        <p>The agents are boring infrastructure. That&rsquo;s the point.</p>
+      </div>
+
+      <div class="closing">
+        <p><em>Next: the automation that runs without you.</em></p>
+      </div>
+
+      <div class="page-nav">
+        <a href="ai-brain-ch2.html" class="page-nav-link page-nav-prev"><i data-lucide="arrow-left"></i> Ch 2 &mdash; The Architecture</a>
+        <span class="page-nav-link page-nav-next muted">Ch 4 &mdash; Coming Soon</span>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
+</body>
+</html>
