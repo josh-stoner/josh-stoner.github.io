@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>When a Builder Does L&amp;D &mdash; Joshua Stoner</title>
+  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .article-header {
+      padding: 3rem 0 1.5rem;
+    }
+    .article-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .article-meta {
+      font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-bottom: 0.25rem;
+    }
+    .article-body h2 {
+      margin-top: 3rem;
+    }
+    .article-body h3 {
+      margin-top: 2rem;
+    }
+    .article-body p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .article-body ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .article-body li {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 0.5rem;
+    }
+    .article-body strong {
+      color: var(--text);
+    }
+    .article-body em {
+      color: var(--text-muted);
+    }
+    .insight-block {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .insight-block strong {
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.35rem;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .insight-block strong i[data-lucide],
+    .insight-block strong svg {
+      width: 0.9rem;
+      height: 0.9rem;
+    }
+    .insight-block p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .closing {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+    [data-theme="dark"] .closing {
+      border-top-color: rgba(255,255,255,0.08);
+    }
+    .article-body blockquote { border-left-color: var(--gold); }
+
+    /* Callout block for key insights */
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .callout.callout-gold { border-left-color: var(--gold); }
+    .callout.callout-green { border-left-color: var(--green); }
+
+    .lede {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> Joshua Stoner</a>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <ul class="nav-links">
+        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="../" class="back-link"><i data-lucide="arrow-left"></i> Back to Portfolio</a>
+
+    <div class="article-header">
+      <h1 class="color-gold">When a Builder Does L&amp;D</h1>
+      <p class="article-meta">March 2026 &middot; Josh Stoner</p>
+    </div>
+
+    <nav class="toc" style="border-left-color: var(--gold);">
+      <span class="toc-label">On this page</span>
+      <a href="#the-gap-most-enablement-programs-miss">The Gap Most Enablement Programs Miss</a>
+      <a href="#what-builders-get-wrong-about-people">What Builders Get Wrong About People</a>
+      <a href="#what-the-middle-looks-like">What the Middle Looks Like</a>
+      <a href="#the-role-that-doesnt-exist-yet">The Role That Doesn&rsquo;t Exist Yet</a>
+    </nav>
+
+    <div class="article-body">
+
+      <p class="lede">The gap between the people who build AI tools and the people who teach others to use them is where the actual work lives.</p>
+
+      <p>There are two conversations happening about AI in organizations right now, and they&rsquo;re not talking to each other.</p>
+
+      <p>The first conversation is technical: model selection, agent architectures, context engineering, tool-use patterns, token economics. This conversation happens in engineering teams, AI labs, and developer communities. The people in this room can build the thing. What they can&rsquo;t always do is explain it, teach it, or design for adoption.</p>
+
+      <p>The second conversation is organizational: change management, upskilling, enablement programs, &ldquo;AI readiness.&rdquo; This conversation happens in L&amp;D departments, HR, and consulting decks. The people in this room understand people. What they often can&rsquo;t do is build the thing they&rsquo;re supposed to teach.</p>
+
+      <div class="callout">
+        <p>I&rsquo;ve spent the last decade in the second room and the last year building my way into the first. The view from the middle is clarifying.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="the-gap-most-enablement-programs-miss"><i data-lucide="search" class="icon-gold"></i> The Gap Most Enablement Programs Miss</h2>
+
+      <p>Most corporate AI enablement follows the same playbook: pick a tool, build a prompt library, run a workshop, measure adoption, declare victory. I helped build a version of this at Lyft&mdash;an AI prompt library for our performance cycle that reached 4,000+ employees. It worked. People used it.</p>
+
+      <p>But looking back, we taught people to operate the tool. The harder question&mdash;how do you know when the output is wrong?&mdash;never made it into the curriculum.</p>
+
+      <p>The gap isn&rsquo;t awareness. Everyone knows AI exists. The gap is <em>judgment</em>&mdash;knowing when the output is wrong, when to push back, when to throw it away and do the work yourself. That&rsquo;s a different skill entirely, and most enablement programs don&rsquo;t touch it.</p>
+
+      <p>The people designing enablement programs often haven&rsquo;t built with AI at the system level. They haven&rsquo;t watched an agent confidently fabricate a fact&mdash;something I caught in my own system when it surfaced incorrect details about my previous employer. They haven&rsquo;t debugged a prompt that works 80% of the time and hallucinates the other 20%. They haven&rsquo;t needed to build verification layers because they&rsquo;ve never shipped AI output that mattered.</p>
+
+      <div class="insight-block">
+        <p>You can&rsquo;t teach judgment about a tool you haven&rsquo;t broken.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="what-builders-get-wrong-about-people"><i data-lucide="users" class="icon-gold"></i> What Builders Get Wrong About People</h2>
+
+      <p>On the other side: the teams building AI tools routinely underestimate what it takes for someone to actually use them well. They ship features and assume adoption. They write documentation and assume understanding. They build agent systems and assume trust.</p>
+
+      <p>I built a 20+ agent AI memory system. Getting the architecture right was hard. Getting <em>myself</em> to trust its outputs took longer.</p>
+
+      <p>Trust isn&rsquo;t a feature. It&rsquo;s a relationship built through repeated experience&mdash;watching the system be right, catching it being wrong, developing an intuition for when to lean on it and when to double-check. That process looks a lot like learning. It <em>is</em> learning. And it needs to be designed, not assumed.</p>
+
+      <div class="insight-block">
+        <p>The best technical systems fail when the human layer is treated as an afterthought. An AI assistant that can do 50 things is useless to someone who doesn&rsquo;t know which 3 they need. A powerful agent is dangerous if its user can&rsquo;t tell when it&rsquo;s hallucinating.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="what-the-middle-looks-like"><i data-lucide="git-merge" class="icon-gold"></i> What the Middle Looks Like</h2>
+
+      <p><strong>1. The best enablement is built by people who have broken the tool.</strong></p>
+
+      <p>When I built feedback programs at Lyft, the curriculum was shaped by what actually went wrong&mdash;watching real conversations, seeing where managers struggled, and iterating the design around those failure points.</p>
+
+      <p>The same principle applies to AI. The people designing AI learning experiences need to have built things with AI&mdash;not just used ChatGPT, but built something complex enough to discover where it fails. My AI system has a corrections file that exists solely because the model made confident factual errors about my own career. That experience shaped how I think about teaching AI judgment.</p>
+
+      <p><strong>2. Adoption design is a technical skill.</strong></p>
+
+      <p>Getting people to change behavior isn&rsquo;t soft work&mdash;it&rsquo;s systems design. At Lyft, I built a team effectiveness assessment that ran through a 10-step Zapier automation chain: Google Form &rarr; Apps Script scoring &rarr; personalized result delivery &rarr; manager coaching workflow. The &ldquo;learning&rdquo; was embedded in the system, not stapled on afterward.</p>
+
+      <p>AI enablement needs the same approach: learning embedded in workflows, not added as a training module. That requires someone who can both design the learning <em>and</em> build the pipeline.</p>
+
+      <p><strong>3. The verification layer is the whole game.</strong></p>
+
+      <p>The most important AI skill isn&rsquo;t prompting. It&rsquo;s evaluating. Can you tell when the output is wrong? Do you know which claims to check? Can you distinguish between &ldquo;this sounds right&rdquo; and &ldquo;this <em>is</em> right&rdquo;?</p>
+
+      <div class="callout callout-gold">
+        <p>I built a QA validator agent that checks other agents&rsquo; outputs before they reach me. That&rsquo;s not paranoia&mdash;it&rsquo;s engineering. The same reflex needs to exist in every person using AI at work. Building that reflex is a learning design problem, and it requires someone who understands both the failure modes and the pedagogy.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="the-role-that-doesnt-exist-yet"><i data-lucide="compass" class="icon-gold"></i> The Role That Doesn&rsquo;t Exist Yet</h2>
+
+      <p>What I&rsquo;m describing is a role that most org charts don&rsquo;t have: someone who can build AI systems <em>and</em> design how people learn to use them. Not an AI engineer. Not an L&amp;D generalist. Someone who&rsquo;s been in both rooms and knows what each one is missing.</p>
+
+      <p>The job title might be AI Enablement Lead, or Learning Architect, or something nobody&rsquo;s named yet. The work is: design the learning experience, build the tools that support it, measure whether behavior actually changed, and iterate.</p>
+
+      <div class="insight-block">
+        <p>The organizations that figure out this intersection will be the ones where AI actually works&mdash;not just for the engineering team, but for everyone. The ones that keep these two conversations separate will keep wondering why adoption stalls at &ldquo;it writes my emails.&rdquo;</p>
+      </div>
+
+      <div class="closing">
+        <p><em>Josh Stoner spent 10+ years as a Learning Architect&mdash;most recently at Lyft, building for 4,000+ employees across curriculum design, automation, analytics, and AI enablement. He now builds AI memory systems and native macOS apps, and writes about the gap between what AI can do and what people actually do with it. Portfolio at <a href="https://josh-stoner.github.io">josh-stoner.github.io</a>.</em></p>
+      </div>
+
+      <div class="page-nav">
+        <span class="page-nav-link page-nav-prev" style="opacity:0.4;pointer-events:none;"><i data-lucide="arrow-left"></i></span>
+        <a href="teamos-what-if-your-team-had-a-memory.html" class="page-nav-link page-nav-next">What If Your Team Had a Memory? <i data-lucide="arrow-right"></i></a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
+</body>
+</html>
