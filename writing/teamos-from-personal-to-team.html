@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>From Personal to Team — Joshua Stoner</title>
+  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .article-header {
+      padding: 3rem 0 1.5rem;
+    }
+    .article-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .article-meta {
+      font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-bottom: 0.25rem;
+    }
+    .article-body h2 {
+      margin-top: 3rem;
+    }
+    .article-body h3 {
+      margin-top: 2rem;
+    }
+    .article-body p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .article-body ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .article-body li {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 0.5rem;
+    }
+    .article-body strong {
+      color: var(--text);
+    }
+    .article-body em {
+      color: var(--text-muted);
+    }
+    .insight-block {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--purple);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .insight-block strong {
+      color: var(--purple);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.35rem;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .insight-block strong i[data-lucide],
+    .insight-block strong svg {
+      width: 0.9rem;
+      height: 0.9rem;
+    }
+    .insight-block p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .closing {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+    [data-theme="dark"] .closing {
+      border-top-color: rgba(255,255,255,0.08);
+    }
+    .article-body blockquote { border-left-color: var(--purple); }
+
+    /* Callout block for key insights */
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--purple);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .callout.callout-gold { border-left-color: var(--gold); }
+    .callout.callout-green { border-left-color: var(--green); }
+
+    .lede {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> Joshua Stoner</a>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <ul class="nav-links">
+        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="../" class="back-link"><i data-lucide="arrow-left"></i> Back to Portfolio</a>
+
+    <div class="article-header">
+      <h1 class="color-purple">From Personal to Team: stonerOS &rarr; TeamOS</h1>
+      <p class="article-meta">March 2026 &middot; Josh Stoner</p>
+    </div>
+
+    <nav class="toc" style="border-left-color: var(--purple);">
+      <span class="toc-label">On this page</span>
+      <a href="#what-stoneros-actually-is">What stonerOS Actually Is</a>
+      <a href="#what-transfers-directly">What Transfers Directly</a>
+      <a href="#what-breaks-at-team-scale">What Breaks at Team Scale</a>
+      <a href="#the-personal-system-as-prototype">The Personal System as Prototype</a>
+      <a href="#what-id-do-differently-at-team-scale-from-the-start">What I'd Do Differently at Team Scale From the Start</a>
+      <a href="#the-deeper-pattern">The Deeper Pattern</a>
+    </nav>
+
+    <div class="article-body">
+
+      <p class="lede">What transfers when you scale a personal AI system to a team. What doesn't. And what I learned about both by trying.</p>
+
+      <p>In February 2026, I built a personal AI memory system for myself. Plain markdown files, a git repo, Claude reading context at the start of every session. I called it stonerOS.</p>
+
+      <p>By late March, I was asking a different question: what does this look like for a team?</p>
+
+      <p>Not "what would I build if I were starting fresh for a team" &mdash; what actually transfers from the personal system, what fundamentally breaks at team scale, and where the interesting design problems live.</p>
+
+      <p>This is the answer I came up with.</p>
+
+      <hr>
+
+      <h2 id="what-stoneros-actually-is"><i data-lucide="database" class="icon-purple"></i> What stonerOS Actually Is</h2>
+
+      <p>Before I can explain what transfers, it helps to understand the personal system.</p>
+
+      <p>stonerOS is a persistent context layer for a single user &mdash; me &mdash; working with Claude. Every session starts by loading a set of markdown files that contain everything the AI needs to know: who I am, what I'm working on, what I've already decided, what corrections I've made to things the AI got wrong. The AI reads these at the start of a session and starts from context instead of starting from zero.</p>
+
+      <p>The key patterns that emerged over two months of building it:</p>
+
+      <p><strong>Layered memory.</strong> Baseline facts about me that rarely change. A learnings layer that accumulates over time &mdash; corrections, patterns, expertise. A current-state layer that reflects right now: active projects, live preferences, recent session notes. Three tiers with different change rates and different loading rules.</p>
+
+      <p><strong>Corrections file.</strong> A single file that gets loaded before everything else and overrides conflicting information. This exists because AI models make confident errors about things you've told them. The corrections file is the highest-ROI thing I built.</p>
+
+      <p><strong>Session writer pattern.</strong> Only one designated process can write to the memory layer at a time. No write races. No conflicting updates. A single writer serializes everything.</p>
+
+      <p><strong>Slash commands.</strong> Structured triggers for recurring workflows. <code>/weekly-review</code>, <code>/job-prep</code>, <code>/morning-brief</code>. Pattern-matched shortcuts that load the right context and run the right agents without manual orchestration.</p>
+
+      <p><strong>Agents for delegation.</strong> Different specialized subagents for different task types &mdash; research, code, career, memory management. Main session stays clean; heavy work gets offloaded.</p>
+
+      <div class="insight-block">
+        <p>This is what I'd been running for myself. It worked. Then I tried to think through what "this, but for a team" actually means.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="what-transfers-directly"><i data-lucide="arrow-right" class="icon-purple"></i> What Transfers Directly</h2>
+
+      <p>The structural patterns hold almost entirely. The file-based architecture, the layered information model, the separation between raw captures and structured docs and synthesized outputs &mdash; all of that maps cleanly from one user to many.</p>
+
+      <p>The slash command pattern transfers intact. The commands change (team-relevant operations: <code>/status</code>, <code>/decision</code>, <code>/standup</code>, <code>/handoff</code>) but the underlying mechanism &mdash; structured triggers that load context and route to the right agent &mdash; is the same. The agent delegation pattern transfers. The context routing pattern transfers. The corrections-file concept transfers as a team <code>corrections.md</code> that captures repeated mistakes the team keeps making.</p>
+
+      <p>The design philosophy transfers most importantly: connect and synthesize instead of replace. stonerOS doesn't try to replace how I work; it sits alongside my workflow and makes it more retrievable. TeamOS does the same thing for a team &mdash; it sits alongside Slack, Jira, Google Drive, and makes their combined context actually accessible.</p>
+
+      <div class="insight-block">
+        <p>The "baseline creator" concept translates directly from my personal system's approach to consistency. In stonerOS, I have a <code>preferences/design_charter.md</code> that governs how every app I build should look and behave. In TeamOS, that becomes <code>standards/brand-charter.md</code> &mdash; the same idea: define it once, enforce it every time.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="what-breaks-at-team-scale"><i data-lucide="alert-triangle" class="icon-purple"></i> What Breaks at Team Scale</h2>
+
+      <p>The trust model breaks first.</p>
+
+      <p>In a personal system, there's one user with full trust and full context. The AI can access everything because there's only one "everything" and I own all of it. A team system has multiple users with different roles, different visibility scopes, and sometimes competing interests. The same <code>/status</code> command needs to return different information depending on whether it's a team member, a project lead, or an external stakeholder asking.</p>
+
+      <p>Identity breaks next. stonerOS doesn't need to know who's asking. TeamOS needs attribution on every write &mdash; who made this decision, who triggered this action, who logged this risk. That's a trivially easy problem for a solo system and a non-trivial architectural requirement for a team system.</p>
+
+      <p>Concurrency breaks everything. I can't have two sessions open simultaneously. A team of eight can have simultaneous writes in a four-minute window &mdash; two people updating the same project doc, an auto-sync firing, and a context connector match all competing for the same file. The single-writer pattern that works perfectly for me produces write races the moment you add a second user. You need a write queue, file-level locking, and conflict resolution logic. None of that exists in the personal system because it can't happen there.</p>
+
+      <div class="callout">
+        <p>The information density model needs a complete rethink. Personal stonerOS surfaces everything relevant to me &mdash; I'm the only person with a preference about what I see. TeamOS has eight people with different roles, different information needs, and different tolerances for notification volume. What's relevant to a project lead is different from what's relevant to a team member, and both are different from what a stakeholder should see. The three-layer density model and per-person information budgets exist specifically to solve this &mdash; but there's no analog in the personal system because there's only one person to design for.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="the-personal-system-as-prototype"><i data-lucide="git-branch" class="icon-purple"></i> The Personal System as Prototype</h2>
+
+      <p>Here's what I actually think is happening when you build a personal AI system well.</p>
+
+      <p>You're not building a productivity tool. You're building a working prototype of organizational tooling &mdash; at a scale where you can iterate in hours instead of weeks, where the feedback loop is immediate, where failure costs almost nothing.</p>
+
+      <p>Every architectural decision I made in stonerOS came from hitting a real problem. The corrections file exists because the AI confidently gave a recruiter the wrong employee count for my previous company. The session writer pattern exists because I let an autonomous agent write to a protected file at 3am and had to roll it back. The three-layer memory architecture exists because I started with one flat file, everything had equal weight, and within a week the AI was treating a Tuesday preference as a permanent personality trait.</p>
+
+      <p>Each of those problems has a direct analog at team scale:</p>
+
+      <ul>
+        <li>The corrections file &rarr; team <code>corrections.md</code> that prevents the AI from repeating mistakes about the company or its systems</li>
+        <li>The session writer pattern &rarr; the write queue that serializes concurrent writes from multiple users</li>
+        <li>The three-layer memory architecture &rarr; the three-layer density model that prevents the system from drowning in its own output</li>
+      </ul>
+
+      <div class="insight-block">
+        <p>I didn't design these solutions in advance. They emerged from use. The personal system was the lab; the team system is the production application.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="what-id-do-differently-at-team-scale-from-the-start"><i data-lucide="settings" class="icon-purple"></i> What I'd Do Differently at Team Scale From the Start</h2>
+
+      <p>The biggest thing I'd change: governance, day one.</p>
+
+      <p>In stonerOS, governance is trivial &mdash; I'm the only stakeholder. In TeamOS, "who decides how this evolves" is the question that determines everything else. I'd write <code>governance.md</code> before writing <code>TEAM.md</code>. Who owns the system? Who approves new commands? Who reviews changes to standards? What's the process for a team member to propose something? Without answers to these questions, you're building on sand.</p>
+
+      <p>The second thing: get IT and legal alignment before building the integration layer. The audit trail, the decision logs, the capture system &mdash; all of that is potentially discoverable. Getting alignment after you've already built the system is harder than getting it before. The questions they'll ask (where does data live, which AI provider, what's the retention policy) are easier to answer when they're design inputs rather than retrofit requirements.</p>
+
+      <div class="insight-block">
+        <p>The third thing: pilot with one project and two or three willing early adopters before rolling out broadly. The ramp-up protocol exists because I knew from personal experience that the first two weeks of a new system are always noisy. With a team, noisy first weeks mean people forming negative impressions before the system is calibrated. A quiet pilot lets you tune signal thresholds, information budgets, and notification triggers before the broader team encounters them.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="the-deeper-pattern"><i data-lucide="brain" class="icon-purple"></i> The Deeper Pattern</h2>
+
+      <p>There's something more general here that I keep coming back to.</p>
+
+      <p>The gap between "AI tool that helps me individually" and "AI infrastructure that helps a team" is mostly a systems design problem, not an AI problem. The intelligence layer &mdash; the models, the agents, the prompts &mdash; is relatively easy to port. The hard problems are identity, concurrency, governance, information density management, trust calibration. These are organizational design problems with a technical implementation. They'd exist whether the tool was AI-powered or not.</p>
+
+      <div class="callout callout-gold">
+        <p>What AI changes is the ceiling. The manual versions of these systems &mdash; shared wikis, decision logs, status docs, brand guidelines &mdash; have always existed. What they've never had is a synthesis layer that can automatically connect context across them, adapt output for different audiences, proactively surface overlaps, and generate drafts from raw material. That part is genuinely new.</p>
+      </div>
+
+      <div class="insight-block">
+        <p>The floor &mdash; the plumbing, the process design, the adoption work &mdash; is the same as it's always been. Build it right, or nothing on top of it works.</p>
+      </div>
+
+      <div class="page-nav">
+        <a href="teamos-the-hard-parts.html" class="page-nav-link page-nav-prev"><i data-lucide="arrow-left"></i> The Hard Parts</a>
+        <span class="page-nav-link page-nav-next" style="opacity:0.3; cursor:default;">End of series</span>
+      </div>
+
+    </div>
+  </main>
+
+  <div class="closing" style="max-width:680px; margin:0 auto; padding:0 1.5rem 3rem;">
+    <p><em>This is the last article in a four-part series on TeamOS. The full blueprint &mdash; file structure, agent roster, implementation phases, governance model &mdash; lives at <a href="https://josh-stoner.github.io">josh-stoner.github.io</a>.</em></p>
+    <p><em>Josh Stoner is a Learning Architect and systems builder based in Brooklyn. He spent 10+ years building learning programs at scale &mdash; most recently at Lyft &mdash; and now builds AI memory systems, native macOS apps, and writes about what happens when you give AI actual context.</em></p>
+  </div>
+
+  <footer>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building a Team Operating System — Joshua Stoner</title>
+  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .article-header {
+      padding: 3rem 0 1.5rem;
+    }
+    .article-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .article-meta {
+      font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-bottom: 0.25rem;
+    }
+    .article-body h2 {
+      margin-top: 3rem;
+    }
+    .article-body h3 {
+      margin-top: 2rem;
+    }
+    .article-body p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .article-body ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .article-body li {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 0.5rem;
+    }
+    .article-body strong {
+      color: var(--text);
+    }
+    .article-body em {
+      color: var(--text-muted);
+    }
+    .insight-block {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--purple);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .insight-block strong {
+      color: var(--purple);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.35rem;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .insight-block strong i[data-lucide],
+    .insight-block strong svg {
+      width: 0.9rem;
+      height: 0.9rem;
+    }
+    .insight-block p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .closing {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+    [data-theme="dark"] .closing {
+      border-top-color: rgba(255,255,255,0.08);
+    }
+    .article-body blockquote { border-left-color: var(--purple); }
+
+    /* Callout block for key insights */
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--purple);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .callout.callout-gold { border-left-color: var(--gold); }
+    .callout.callout-green { border-left-color: var(--green); }
+
+    .lede {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    /* Code blocks */
+    .article-body pre {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    .article-body pre code {
+      background: none;
+      padding: 0;
+      font-size: inherit;
+    }
+    .article-body code {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 3px;
+      padding: 0.15em 0.4em;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+    }
+
+    /* Table */
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+    .article-body th {
+      text-align: left;
+      padding: 0.6rem 0.75rem;
+      border-bottom: 2px solid var(--card-border);
+      font-weight: 600;
+      color: var(--text);
+    }
+    .article-body td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid var(--card-border);
+      color: var(--text-secondary);
+    }
+    .article-body tr:last-child td {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> Joshua Stoner</a>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <ul class="nav-links">
+        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="../" class="back-link"><i data-lucide="arrow-left"></i> Back to Portfolio</a>
+
+    <div class="article-header">
+      <h1 class="color-purple">Building a Team Operating System</h1>
+      <p class="article-meta">March 2026 &middot; Josh Stoner</p>
+    </div>
+
+    <nav class="toc" style="border-left-color: var(--purple);">
+      <span class="toc-label">On this page</span>
+      <a href="#the-file-structure">The File Structure</a>
+      <a href="#the-baseline-creator">The Baseline Creator</a>
+      <a href="#the-context-connector">The Context Connector</a>
+      <a href="#the-write-queue">The Write Queue</a>
+      <a href="#the-three-layer-density-model">The Three-Layer Density Model</a>
+      <a href="#what-commands-look-like">What Commands Look Like</a>
+      <a href="#why-plain-files">Why Plain Files</a>
+    </nav>
+
+    <div class="article-body">
+
+      <p class="lede">The architecture behind TeamOS &mdash; how the pieces fit together, and why it's built from plain files.</p>
+
+      <p>The hardest part of building any shared system is deciding what it's actually for.</p>
+
+      <p>TeamOS has a narrow mandate: synthesize context across the tools you already use, make that context retrievable without hunting, and eliminate the reformatting loop. It doesn't replace Slack. It doesn't replace Jira. It doesn't try to become the place where work happens. It's the layer between those tools that makes them collectively useful instead of collectively siloed.</p>
+
+      <p>Here's how it's built.</p>
+
+      <hr>
+
+      <h2 id="the-file-structure"><i data-lucide="layers" class="icon-purple"></i> The File Structure</h2>
+
+      <p>Everything lives in a git repo. The structure is the system:</p>
+
+<pre><code>team-os/
+├── TEAM.md                    # System config — rules, integrations, commands
+├── projects/
+│   └── project-alpha/
+│       ├── brief.md           # Original charter
+│       ├── plan.md            # Phased plan with milestones
+│       ├── status.md          # Current state (auto-updated)
+│       ├── decisions.md       # Decision log with reasoning
+│       ├── risks.md           # Risk register
+│       └── dependencies.md    # Cross-project dependencies
+├── standards/
+│   ├── brand-charter.md       # Visual identity, slide themes, formatting
+│   ├── writing-guide.md       # Tone, terminology, acronym glossary
+│   └── templates/             # Canonical templates for every deliverable type
+├── team/
+│   ├── roster.md              # Members, roles, expertise
+│   ├── stakeholders.md        # Who to keep updated, how, and when
+│   ├── expertise-map.md       # Who knows what
+│   └── preferences/
+│       └── sarah.md           # "Bullets, risks first, Slack over email"
+├── context/
+│   ├── standup_YYYYMMDD.md    # Async standup summaries
+│   ├── meeting-notes/
+│   ├── connections/           # Context connector match log
+│   └── audit-trail.md         # Append-only action log
+├── learnings/
+│   ├── patterns.md            # What we've learned works and doesn't
+│   ├── tribal-knowledge/      # Captured expertise
+│   └── corrections.md        # Corrected assumptions
+├── inbox/                     # Unprocessed captures — raw notes, Slack threads
+├── outputs/                   # Generated decks, reports, plans
+└── access/
+    ├── roles.md               # Role tiers
+    └── connector-consent.md   # Per-person opt-in/out for proactive DMs</code></pre>
+
+      <div class="insight-block">
+        <p><code>TEAM.md</code> is the control plane &mdash; the equivalent of a <code>CLAUDE.md</code> for the system as a whole. It tells the AI what the team is, which integrations are live, what commands are available, and what rules govern behavior. If something about the system changes, <code>TEAM.md</code> is where it's documented.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="the-baseline-creator"><i data-lucide="shield" class="icon-purple"></i> The Baseline Creator</h2>
+
+      <p>The highest-value pattern in the system is what I call the <strong>Baseline Creator</strong>.</p>
+
+      <p>The idea is simple: define your standards once, then enforce them through every transformation command automatically.</p>
+
+      <p>Standards live in <code>standards/</code>:</p>
+      <ul>
+        <li><code>brand-charter.md</code> &mdash; colors, fonts, slide layouts, logo usage rules</li>
+        <li><code>writing-guide.md</code> &mdash; tone, terminology, what not to say, audience-specific conventions</li>
+        <li><code>templates/</code> &mdash; canonical structures for decks, briefs, status reports, project plans</li>
+      </ul>
+
+      <p>Every content transformation reads standards first. When someone runs:</p>
+
+<pre><code>/to-deck quarterly-update.md</code></pre>
+
+      <p>The agent reads <code>brand-charter.md</code> + the deck template + the source doc, then generates a branded HTML slide deck to <code>outputs/decks/</code>. A <code>standards-enforcer</code> validates it before delivery. Wrong font? Caught. Missing required section? Caught. Off-brand language? Caught.</p>
+
+      <p>The practical effect: nobody asks "can you make this look like the last deck?" anymore. The last deck and this deck look the same because both ran through the same template against the same brand charter.</p>
+
+      <p>The before/after is stark:</p>
+
+      <table>
+        <thead>
+          <tr><th>Before</th><th>After</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>"Can you make this look like the last deck?"</td><td><code>/to-deck file.md</code> &mdash; always matches brand</td></tr>
+          <tr><td>"What template should I use?"</td><td>Templates auto-applied by command type</td></tr>
+          <tr><td>30&ndash;60 min reformatting per deck</td><td>2 min generation + review</td></tr>
+          <tr><td>"Can you reformat this for the VP?"</td><td><code>/to-report alpha --for leadership</code></td></tr>
+        </tbody>
+      </table>
+
+      <p>The <code>--for</code> flag on <code>/to-report</code> adapts the same data for different audiences. Same project, same facts &mdash; <code>--for team</code> gets full technical detail with blockers and open decisions; <code>--for exec</code> gets three bullets: ship date, top risk, the ask.</p>
+
+      <hr>
+
+      <h2 id="the-context-connector"><i data-lucide="git-branch" class="icon-purple"></i> The Context Connector</h2>
+
+      <p>The second core pattern is proactive intelligence &mdash; the system connecting people who are working on related problems without knowing it.</p>
+
+      <p>In most teams, these connections happen by accident. Two engineers are solving adjacent auth problems. Two PMs are scheduling reviews with the same VP in the same week. Someone writes a plan to deprecate an API that another team just built on top of. These collisions are expensive. And they're mostly preventable if someone is watching the whole board.</p>
+
+      <p>The context connector runs on every project update:</p>
+      <ol style="padding-left:1.25rem; margin-bottom:1.25rem;">
+        <li style="color:var(--text-secondary); font-size:1.02rem; line-height:1.75; margin-bottom:0.5rem;">Every update is tagged with topic vectors &mdash; auth, API, vendor-X, performance, deploy</li>
+        <li style="color:var(--text-secondary); font-size:1.02rem; line-height:1.75; margin-bottom:0.5rem;">The system scans for overlap across projects and people</li>
+        <li style="color:var(--text-secondary); font-size:1.02rem; line-height:1.75; margin-bottom:0.5rem;">Matches above a relevance threshold get scored and routed</li>
+        <li style="color:var(--text-secondary); font-size:1.02rem; line-height:1.75; margin-bottom:0.5rem;">Opted-in members get a structured DM; everyone else sees it in the weekly digest</li>
+      </ol>
+
+      <p>A dependency contradiction &mdash; where one project plans to deprecate something another project depends on &mdash; always gets surfaced immediately. Soft overlaps (two people working on related topics) go to digest unless the recipient has opted into real-time DMs.</p>
+
+      <p>The DM format matters. It's not a notification &mdash; it's an offer:</p>
+
+<pre><code>Hey Sarah — TeamOS spotted a connection:
+
+Your work: Auth migration in Project Alpha (decisions.md, Mar 28)
+Related: Marcus hit an auth regression in Project Beta (risks.md, Mar 30)
+
+Both involve the OAuth token refresh flow.
+
+→ Want me to create a shared thread?
+→ Or just an FYI? (React 👀 to dismiss)</code></pre>
+
+      <div class="insight-block">
+        <p>Dismissed connections don't resurface. The system logs what was acted on and what wasn't, and that feedback calibrates future scoring.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="the-write-queue"><i data-lucide="database" class="icon-purple"></i> The Write Queue</h2>
+
+      <p>Personal AI systems don't have concurrency problems. I'm the only user; I don't have two sessions open simultaneously.</p>
+
+      <p>Teams do.</p>
+
+      <p>Sarah logs a decision at 2:01. Marcus pulls a status at 2:01. Jordan drops meeting notes at 2:02. A Jira sync fires at 2:05. Five writes to overlapping files within four minutes. Without serialization, you get write races &mdash; two agents writing to the same file and producing garbage.</p>
+
+      <p>The write queue fixes this:</p>
+
+<pre><code>All writes → queue (FIFO) → single writer process → git commit</code></pre>
+
+      <p>Reads bypass the queue entirely &mdash; they're never the bottleneck. Writes get ordered by timestamp. File-level locking (not repo-level) means Sarah's write to <code>projects/alpha/decisions.md</code> only blocks other writes to that specific file. Marcus's write to a different file proceeds in parallel.</p>
+
+      <div class="insight-block">
+        <p>For a small team (3&ndash;5 people), a simple mutex file per target document is enough. For 6&ndash;15, a lightweight message queue. For larger teams, you're probably moving off git anyway.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="the-three-layer-density-model"><i data-lucide="layers" class="icon-purple"></i> The Three-Layer Density Model</h2>
+
+      <p>With a team of eight running five projects, syncing Jira + Slack + Calendar, you can drown in your own output within weeks. The information overload problem is real, and it's what kills adoption of tools like this.</p>
+
+      <p>The solution is explicit information density management across three layers:</p>
+
+      <p><strong>Layer 1: Raw</strong> &mdash; inbox captures, meeting notes, Slack threads. High volume. Only the routing agent sees this. 7-day retention, auto-archived after processing.</p>
+
+      <p><strong>Layer 2: Structured</strong> &mdash; project files, decisions, risks. Medium volume. Project-scoped visibility. Accumulates for the life of the project, then archives.</p>
+
+      <p><strong>Layer 3: Synthesized</strong> &mdash; digests, reports, dashboards. Low volume. Role-filtered. The only layer that grows permanently &mdash; and it's compressed by design.</p>
+
+      <p>The weekly digest uses progressive summarization:</p>
+
+<pre><code>🔴 Needs Attention (read this)
+  - Alpha: API v2 deprecation conflicts with Beta dependency
+  - Gamma: Ship date slipped — QA resource gap
+
+🟡 Decisions Made (skim this)
+  - Alpha: Webhook polling over streaming (Sarah, Mar 28)
+  - Beta: Launch delayed 1 week for QA (Marcus, Mar 30)
+
+🟢 On Track (skip unless your project)
+  - Alpha: Auth migration 80% complete, on schedule
+  - Beta: New timeline confirmed
+
+📊 Numbers
+  - Decisions: 7 | Blockers resolved: 3 | Connector matches: 4 (3 acted on)</code></pre>
+
+      <p>Red gets two sentences. Yellow gets one line each. Green you skip. The reader chooses depth; the system doesn't force it.</p>
+
+      <div class="insight-block">
+        <p>Per-person information budgets enforce this at the DM level. A team lead gets up to five DMs a day (action items, connector matches, escalations). A member gets three (their own action items, direct connector matches). Stakeholders get zero DMs &mdash; scheduled digests only. If the system would exceed someone's budget, it batches and prioritizes: blockers always get through, FYI notifications get dropped.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="what-commands-look-like"><i data-lucide="terminal" class="icon-purple"></i> What Commands Look Like</h2>
+
+      <p>The full command set covers project management, content transformation, and team operations. A few that show the range:</p>
+
+      <ul>
+        <li><code>/status alpha</code> &mdash; current project state from live Jira + recent decisions + blockers, formatted for whoever asked</li>
+        <li><code>/to-deck quarterly-update.md</code> &mdash; branded slides from any doc, 2 minutes</li>
+        <li><code>/decision "delay launch for QA"</code> &mdash; logs the decision with reasoning, alternatives, owner, and a review date</li>
+        <li><code>/capture "how billing actually works"</code> &mdash; interactive interview that extracts tribal knowledge from whoever knows it</li>
+        <li><code>/handoff alpha jordan</code> &mdash; generates a "what I'd tell you over coffee" doc with full context, open items, landmines, and unwritten stakeholder notes</li>
+        <li><code>/who-knows oauth</code> &mdash; searches roster, project history, and tribal knowledge base for expertise matches</li>
+        <li><code>/onboard [person]</code> &mdash; generates a curated context package for a new team member</li>
+      </ul>
+
+      <hr>
+
+      <h2 id="why-plain-files"><i data-lucide="file-text" class="icon-purple"></i> Why Plain Files</h2>
+
+      <p>Plain files are debuggable, portable, and human-readable. If the AI layer goes completely down, the git repo still has every project doc, decision log, and template in it. The system degrades to "a well-organized shared folder" &mdash; not zero. You can open any file and read it without special tooling.</p>
+
+      <p>There's also a practical limit. Git handles concurrent writes well up to about fifteen active contributors. Below that, the simplicity wins. Above it, you migrate the storage layer &mdash; the file structure and agent patterns transfer directly to a database backend, with commands unchanged.</p>
+
+      <div class="callout callout-gold">
+        <p>Start simple. Add complexity when the problem demands it.</p>
+      </div>
+
+      <div class="page-nav">
+        <a href="teamos-what-if-your-team-had-a-memory.html" class="page-nav-link page-nav-prev"><i data-lucide="arrow-left"></i> What If Your Team Had a Memory?</a>
+        <a href="teamos-the-hard-parts.html" class="page-nav-link page-nav-next">The Hard Parts <i data-lucide="arrow-right"></i></a>
+      </div>
+
+    </div>
+  </main>
+
+  <div class="closing" style="max-width:680px; margin:0 auto; padding:0 1.5rem 3rem;">
+    <p><em>Josh Stoner is a Learning Architect and systems builder based in Brooklyn. He spent 10+ years building learning programs at scale &mdash; most recently at Lyft &mdash; and now builds AI memory systems, native macOS apps, and writes about what happens when you give AI actual context. His work lives at <a href="https://josh-stoner.github.io">josh-stoner.github.io</a>.</em></p>
+  </div>
+
+  <footer>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
+</body>
+</html>
