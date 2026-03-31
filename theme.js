@@ -17,6 +17,9 @@
 
   // Toggle button
   document.addEventListener('DOMContentLoaded', function () {
+    // Initialize Lucide icons (self-hosted, loaded with defer)
+    if (window.lucide) lucide.createIcons();
+
     var btn = document.querySelector('.theme-toggle');
     if (btn) {
       btn.addEventListener('click', function () {

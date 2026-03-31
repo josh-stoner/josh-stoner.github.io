@@ -772,17 +772,17 @@ tr:hover td {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--text-faint);
-  opacity: 0.6;
+  color: var(--text-secondary);
   margin-bottom: 0.35rem;
 }
 
 .toc a {
   display: block;
   font-size: 0.8rem;
-  color: var(--sky);
+  color: #3d6d8f;
   text-decoration: none;
-  line-height: 1.8;
+  padding: 0.3rem 0;
+  line-height: 1.6;
   transition: color 0.2s;
 }
 
@@ -1203,6 +1203,10 @@ a.card:has(.icon-mauve):hover {
 
 [data-theme="dark"] .toc {
   background: rgba(255,255,255,0.05);
+}
+
+[data-theme="dark"] .toc a {
+  color: #7ab4d4;
 }
 
 [data-theme="dark"] .tag {
