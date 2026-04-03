@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>When a Builder Does L&amp;D &mdash; Joshua Stoner</title>
-  <meta name="description" content="The gap between people who build AI tools and people who teach others to use them is where the actual work lives. A case for builder-educators.">
+  <meta name="description" content="The gap between building AI tools and teaching people to use them is where the actual work lives. A case for builder-educators.">
   <link rel="canonical" href="https://josh-stoner.github.io/writing/when-a-builder-does-ld.html">
   <meta property="og:type" content="article">
   <meta property="og:title" content="When a Builder Does L&D">
-  <meta property="og:description" content="The gap between people who build AI tools and people who teach others to use them is where the actual work lives. A case for builder-educators.">
+  <meta property="og:description" content="The gap between building AI tools and teaching people to use them is where the actual work lives. A case for builder-educators.">
   <meta property="og:url" content="https://josh-stoner.github.io/writing/when-a-builder-does-ld.html">
   <meta property="og:site_name" content="Joshua Stoner">
   <meta property="article:author" content="Joshua Stoner">
@@ -16,7 +16,7 @@
   <meta property="og:image" content="https://josh-stoner.github.io/assets/og/when-a-builder-does-ld.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="When a Builder Does L&D">
-  <meta name="twitter:description" content="The gap between people who build AI tools and people who teach others to use them is where the actual work lives. A case for builder-educators.">
+  <meta name="twitter:description" content="The gap between building AI tools and teaching people to use them is where the actual work lives. A case for builder-educators.">
   <meta name="twitter:image" content="https://josh-stoner.github.io/assets/og/when-a-builder-does-ld.png">
   <script type="application/ld+json">
   {
@@ -26,7 +26,7 @@
     "author": {"@type": "Person", "name": "Joshua Stoner", "url": "https://josh-stoner.github.io"},
     "datePublished": "2026-03-28",
     "publisher": {"@type": "Person", "name": "Joshua Stoner"},
-    "description": "The gap between people who build AI tools and people who teach others to use them is where the actual work lives. A case for builder-educators."
+    "description": "The gap between building AI tools and teaching people to use them is where the actual work lives. A case for builder-educators."
   }
   </script>
   <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
@@ -170,7 +170,7 @@
 
     <article class="article-body">
 
-      <p class="lede">The gap between the people who build AI tools and the people who teach others to use them is where the actual work lives.</p>
+      <p class="lede">The gap between building AI tools and teaching people to use them is where I&rsquo;ve been living for the past several months.</p>
 
       <p>There are two conversations happening about AI in organizations right now, and they&rsquo;re not talking to each other.</p>
 
@@ -179,20 +179,20 @@
       <p>The second conversation is organizational: change management, upskilling, enablement programs, &ldquo;AI readiness.&rdquo; This conversation happens in L&amp;D departments, HR, and consulting decks. The people in this room understand people. What they often can&rsquo;t do is build the thing they&rsquo;re supposed to teach.</p>
 
       <div class="callout">
-        <p>I&rsquo;ve spent the last decade in the second room and the last year building my way into the first. The view from the middle is clarifying.</p>
+        <p>I&rsquo;ve spent the last decade in the second room and the past several months building my way into the first. The view from the middle is clarifying.</p>
       </div>
 
       <hr>
 
       <h2 id="the-gap-most-enablement-programs-miss"><i data-lucide="search" class="icon-gold"></i> The Gap Most Enablement Programs Miss</h2>
 
-      <p>Most corporate AI enablement follows the same playbook: pick a tool, build a prompt library, run a workshop, measure adoption, declare victory. I helped build a version of this at Lyft&mdash;an AI prompt library for our performance cycle that reached 4,000+ employees. It worked. People used it.</p>
+      <p>Most corporate AI enablement follows the same playbook: pick a tool, build a prompt library, run a workshop, measure adoption, declare victory. At Lyft, I helped build a prompt library for our performance cycle&mdash;tool-agnostic, designed to set a baseline for how teams could use AI to reduce the burden of recurring workflows. It landed well with the teams that got it.</p>
 
-      <p>But looking back, we taught people to operate the tool. The harder question&mdash;how do you know when the output is wrong?&mdash;never made it into the curriculum.</p>
+      <p>That experience taught me something, though. We&rsquo;d nailed the <em>how to use it</em> part. The harder question&mdash;how do you know when the output is wrong?&mdash;was a different skill entirely, and one I didn&rsquo;t fully understand until I started building with AI at the system level.</p>
 
       <p>The gap isn&rsquo;t awareness. Everyone knows AI exists. The gap is <em>judgment</em>&mdash;knowing when the output is wrong, when to push back, when to throw it away and do the work yourself. That&rsquo;s a different skill entirely, and most enablement programs don&rsquo;t touch it.</p>
 
-      <p>The people designing enablement programs often haven&rsquo;t built with AI at the system level. They haven&rsquo;t watched an agent confidently fabricate a fact&mdash;something I caught in my own system when it surfaced incorrect details about my previous employer. They haven&rsquo;t debugged a prompt that works 80% of the time and hallucinates the other 20%. They haven&rsquo;t needed to build verification layers because they&rsquo;ve never shipped AI output that mattered.</p>
+      <p>The people designing enablement programs often haven&rsquo;t built with AI at the system level. They haven&rsquo;t watched an agent confidently fabricate a fact&mdash;something I caught in my own system when it surfaced incorrect details about my previous employer. They haven&rsquo;t debugged a prompt that hallucinates just often enough to be dangerous. They haven&rsquo;t needed to build verification layers because they&rsquo;ve never shipped AI output that mattered.</p>
 
       <div class="insight-block">
         <p>You can&rsquo;t teach judgment about a tool you haven&rsquo;t broken.</p>
@@ -204,9 +204,9 @@
 
       <p>On the other side: the teams building AI tools routinely underestimate what it takes for someone to actually use them well. They ship features and assume adoption. They write documentation and assume understanding. They build agent systems and assume trust.</p>
 
-      <p>I built a 20+ agent AI memory system. Getting the architecture right was hard. Getting <em>myself</em> to trust its outputs took longer.</p>
+      <p>I built a 20+ agent AI memory system. Building the architecture was hard. Trusting it took longer.</p>
 
-      <p>Trust isn&rsquo;t a feature. It&rsquo;s a relationship built through repeated experience&mdash;watching the system be right, catching it being wrong, developing an intuition for when to lean on it and when to double-check. That process looks a lot like learning. It <em>is</em> learning. And it needs to be designed, not assumed.</p>
+      <p>Trust isn&rsquo;t a feature. It&rsquo;s a relationship built through repeated experience&mdash;watching the system be right, catching it being wrong, developing an intuition for when to lean on it and when to double-check. That process <em>is</em> learning. And it needs to be designed, not assumed.</p>
 
       <div class="insight-block">
         <p>The best technical systems fail when the human layer is treated as an afterthought. An AI assistant that can do 50 things is useless to someone who doesn&rsquo;t know which 3 they need. A powerful agent is dangerous if its user can&rsquo;t tell when it&rsquo;s hallucinating.</p>
@@ -216,40 +216,40 @@
 
       <h2 id="what-the-middle-looks-like"><i data-lucide="git-merge" class="icon-gold"></i> What the Middle Looks Like</h2>
 
-      <p><strong>1. The best enablement is built by people who have broken the tool.</strong></p>
+      <p><strong>The best enablement I&rsquo;ve built came from breaking the tool first.</strong></p>
 
-      <p>When I built feedback programs at Lyft, the curriculum was shaped by what actually went wrong&mdash;watching real conversations, seeing where managers struggled, and iterating the design around those failure points.</p>
+      <p>When I built feedback programs at Lyft, the best curriculum came from watching what actually went wrong&mdash;real conversations, where managers struggled, what the design needed to account for.</p>
 
-      <p>The same principle applies to AI. The people designing AI learning experiences need to have built things with AI&mdash;not just used ChatGPT, but built something complex enough to discover where it fails. My AI system has a corrections file that exists solely because the model made confident factual errors about my own career. That experience shaped how I think about teaching AI judgment.</p>
+      <p>Same thing happened with AI. My system has a corrections file that exists solely because the model made confident factual errors about my own career. That experience&mdash;not a course, not a whitepaper&mdash;shaped how I think about teaching AI judgment.</p>
 
-      <p><strong>2. Adoption design is a technical skill.</strong></p>
+      <p><strong>Adoption design turned out to be a technical skill.</strong></p>
 
-      <p>Getting people to change behavior isn&rsquo;t soft work&mdash;it&rsquo;s systems design. At Lyft, I built a team effectiveness assessment that ran through a 10-step Zapier automation chain: Google Form &rarr; Apps Script scoring &rarr; personalized result delivery &rarr; manager coaching workflow. The &ldquo;learning&rdquo; was embedded in the system, not stapled on afterward.</p>
+      <p>Getting people to change behavior isn&rsquo;t soft work&mdash;it&rsquo;s systems design. At Lyft, I built a team effectiveness assessment as an automated pipeline&mdash;the learning was embedded in the system, not stapled on afterward.</p>
 
-      <p>AI enablement needs the same approach: learning embedded in workflows, not added as a training module. That requires someone who can both design the learning <em>and</em> build the pipeline.</p>
+      <p>AI enablement works the same way: learning embedded in workflows, not added as a training module. That requires someone who can design the learning <em>and</em> build the pipeline.</p>
 
-      <p><strong>3. The verification layer is the whole game.</strong></p>
+      <p><strong>The verification layer was the whole game.</strong></p>
 
-      <p>The most important AI skill isn&rsquo;t prompting. It&rsquo;s evaluating. Can you tell when the output is wrong? Do you know which claims to check? Can you distinguish between &ldquo;this sounds right&rdquo; and &ldquo;this <em>is</em> right&rdquo;?</p>
+      <p>The most important AI skill isn&rsquo;t prompting. It&rsquo;s evaluating. Can you tell when the output is wrong? Do you know which claims to check?</p>
 
       <div class="callout callout-gold">
-        <p>I built a QA validator agent that checks other agents&rsquo; outputs before they reach me. That&rsquo;s not paranoia&mdash;it&rsquo;s engineering. The same reflex needs to exist in every person using AI at work. Building that reflex is a learning design problem, and it requires someone who understands both the failure modes and the pedagogy.</p>
+        <p>I built a QA validator agent that checks other agents&rsquo; outputs before they reach me. Not paranoia&mdash;engineering. That same reflex is a learning design problem, and it requires someone who understands both the failure modes and the pedagogy.</p>
       </div>
 
       <hr>
 
       <h2 id="the-role-that-doesnt-exist-yet"><i data-lucide="compass" class="icon-gold"></i> The Role That Doesn&rsquo;t Exist Yet</h2>
 
-      <p>What I&rsquo;m describing is a role that most org charts don&rsquo;t have: someone who can build AI systems <em>and</em> design how people learn to use them. Not an AI engineer. Not an L&amp;D generalist. Someone who&rsquo;s been in both rooms and knows what each one is missing.</p>
+      <p>What I&rsquo;m describing is a role most org charts don&rsquo;t have yet. Someone who&rsquo;s been in both rooms and knows what each one is missing. Not an AI engineer. Not an L&amp;D generalist.</p>
 
-      <p>The job title might be AI Enablement Lead, or Learning Architect, or something nobody&rsquo;s named yet. The work is: design the learning experience, build the tools that support it, measure whether behavior actually changed, and iterate.</p>
+      <p>The job title might be AI Enablement Lead, or Learning Architect, or something nobody&rsquo;s named yet. The work is the same regardless: design the learning experience, build the tools that support it, measure whether behavior actually changed, iterate.</p>
 
       <div class="insight-block">
-        <p>The organizations that figure out this intersection will be the ones where AI actually works&mdash;not just for the engineering team, but for everyone. The ones that keep these two conversations separate will keep wondering why adoption stalls at &ldquo;it writes my emails.&rdquo;</p>
+        <p>The organizations where AI actually works&mdash;beyond the engineering team&mdash;seem to be the ones figuring out this intersection. The ones that keep these two conversations separate keep wondering why adoption stalls at &ldquo;it writes my emails.&rdquo;</p>
       </div>
 
       <div class="closing">
-        <p><em>Josh Stoner spent 10+ years as a Learning Architect&mdash;most recently at Lyft, building for 4,000+ employees across curriculum design, automation, analytics, and AI enablement. He now builds AI memory systems and native macOS apps, and writes about the gap between what AI can do and what people actually do with it. Portfolio at <a href="https://josh-stoner.github.io">josh-stoner.github.io</a>.</em></p>
+        <p><em>Josh Stoner spent 10+ years as a Learning Architect&mdash;most recently at Lyft, working across curriculum design, automation, analytics, and AI enablement. He now builds AI memory systems and native macOS apps, and writes about the gap between what AI can do and what people actually do with it. Portfolio at <a href="https://josh-stoner.github.io">josh-stoner.github.io</a>.</em></p>
       </div>
       <div class="related-reading" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--card-border);">
         <h3 style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 0.75rem;">Related reading</h3>
@@ -273,7 +273,8 @@
     <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
   </footer>
 
-  <script defer src="../lucide.min.js"></script>
-  <script defer src="../theme.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
 </body>
 </html>
