@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bring Your Own AI — Joshua Stoner</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6V09SW4DE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N6V09SW4DE');
+  </script>
+  <meta name="description" content="What happens when your personal AI system is better than the one your company gives you. BYOD happened because personal devices were better — the same forcing function is building with AI.">
+  <link rel="canonical" href="https://josh-stoner.github.io/writing/bring-your-own-ai.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Bring Your Own AI">
+  <meta property="og:description" content="What happens when your personal AI system is better than the one your company gives you. BYOD happened because personal devices were better — the same forcing function is building with AI.">
+  <meta property="og:url" content="https://josh-stoner.github.io/writing/bring-your-own-ai.html">
+  <meta property="og:site_name" content="Joshua Stoner">
+  <meta property="article:author" content="Joshua Stoner">
+  <meta property="article:published_time" content="2026-04-08">
+  <meta property="og:image" content="https://josh-stoner.github.io/assets/og/bring-your-own-ai.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bring Your Own AI">
+  <meta name="twitter:description" content="What happens when your personal AI system is better than the one your company gives you. BYOD happened because personal devices were better — the same forcing function is building with AI.">
+  <meta name="twitter:image" content="https://josh-stoner.github.io/assets/og/bring-your-own-ai.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bring Your Own AI",
+    "author": {"@type": "Person", "name": "Joshua Stoner", "url": "https://josh-stoner.github.io"},
+    "datePublished": "2026-04-08",
+    "publisher": {"@type": "Person", "name": "Joshua Stoner"},
+    "description": "What happens when your personal AI system is better than the one your company gives you. BYOD happened because personal devices were better — the same forcing function is building with AI."
+  }
+  </script>
+  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .article-header {
+      padding: 3rem 0 1.5rem;
+    }
+    .article-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .article-meta {
+      font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-bottom: 0.25rem;
+    }
+    .article-body h2 {
+      margin-top: 3rem;
+    }
+    .article-body h3 {
+      margin-top: 2rem;
+    }
+    .article-body p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .article-body ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .article-body li {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 0.5rem;
+    }
+    .article-body strong {
+      color: var(--text);
+    }
+    .article-body em {
+      color: var(--text-muted);
+    }
+    .insight-block {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--rose);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .insight-block p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .closing {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+    [data-theme="dark"] .closing {
+      border-top-color: rgba(255,255,255,0.08);
+    }
+    .article-body blockquote { border-left-color: var(--rose); }
+
+    /* Callout block for key insights */
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--rose);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .callout.callout-gold { border-left-color: var(--gold); }
+    .callout.callout-green { border-left-color: var(--green); }
+
+    .lede {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> Joshua Stoner</a>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <ul class="nav-links">
+        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="../" class="back-link"><i data-lucide="arrow-left"></i> Back to Portfolio</a>
+
+    <div class="article-header">
+      <h1 class="color-rose">Bring Your Own AI</h1>
+      <p class="article-meta">April 2026 &middot; Josh Stoner</p>
+    </div>
+
+    <nav class="toc" style="border-left-color: var(--rose);">
+      <span class="toc-label">On this page</span>
+      <a href="#the-gap-i-keep-noticing">The Gap I Keep Noticing</a>
+      <a href="#why-this-looks-like-byod">Why This Looks Like BYOD</a>
+      <a href="#the-boundary-problem">The Boundary Problem</a>
+      <a href="#what-this-means-for-careers">What This Means for Careers</a>
+    </nav>
+
+    <article class="article-body">
+
+      <p class="lede">What happens when your personal AI system is better than the one your company gives you.</p>
+
+      <p>I built a personal AI system in February 2026&mdash;not a chatbot, but something customized to how I specifically think, work, and get stuck. Two months in, I realized it had become a career asset. Not the code. The accumulated context&mdash;corrections, preferences, behavioral patterns, decision history&mdash;all portable, all mine. No employer owns it. No vendor reset erases it.</p>
+
+      <div class="callout">
+        <p>That's when the BYOD parallel hit me.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="the-gap-i-keep-noticing">The Gap I Keep Noticing</h2>
+
+      <p>Many knowledge workers with an AI subscription have started building something, whether they name it or not. Custom instructions. Saved preferences. Project-specific prompts they copy-paste at the start of each session. These are the first traces of personal AI infrastructure&mdash;crude, manual, and already more useful than whatever the company provides.</p>
+
+      <p>In my own system, the difference is stark. Corporate AI might know the org chart and have access to internal docs. My AI knows that I reject passive voice, that I've already considered and ruled out three approaches to this problem, that my performance reviews flagged cross-functional communication as a strength, and that I work best in four-hour uninterrupted blocks. One has breadth. The other has depth. In my experience, depth compounds faster.</p>
+
+      <p>I run <code>/voice-qa</code>&mdash;a command I built&mdash;and it audits a draft against my documented communication patterns, flagging overclaiming language and corporate filler before I publish. I ask it to challenge a decision and it pushes back using my own behavioral history&mdash;patterns I captured but hadn't connected. I use it as a profiling tool, pointing it at my own data to surface tendencies I can't see from inside them. That kind of depth isn't something a generic corporate tool can replicate, because it requires months of accumulated personal context.</p>
+
+      <h2 id="why-this-looks-like-byod">Why This Looks Like BYOD</h2>
+
+      <p>BYOD succeeded because the personal device was simply better than the corporate one. Employees were more productive on the phone they'd already customized than on whatever the company handed out. The productivity gap created a forcing function that no policy could resist.</p>
+
+      <p>I see the same dynamic building with AI. In my own work, the personal system outperforms any generic tool I've tried&mdash;not because the model is better, but because the context is richer. Every correction I've logged makes the system more accurate about me specifically. Every preference I've documented means less friction next time. Every behavioral pattern I've captured gives it a sharper lens on my work.</p>
+
+      <p>Enterprise AI tools are improving, and some do retain organizational context over time. But personal AI accumulates a different kind of knowledge&mdash;individual depth that no company tool is designed to build. The gap isn't about capability. It's about whose context the system optimizes for.</p>
+
+      <div class="callout callout-gold">
+        <p>Companies will resist this for the same reasons they resisted BYOD: data governance, compliance, security, control. Those concerns are real. But the productivity asymmetry is creating the same forcing function. The question isn't whether personal AI enters the workplace. It's what the boundary looks like.</p>
+      </div>
+
+      <h2 id="the-boundary-problem">The Boundary Problem</h2>
+
+      <p>BYOD's boundary was relatively clean: the device is yours, the corporate data is ours, here's an MDM profile that enforces the separation. That software-level containerization worked because the technology could draw a hard line&mdash;work apps in one container, personal apps in another, managed by policy.</p>
+
+      <p>AI context doesn't containerize that cleanly. A personal AI system that knows your communication style also processes your work emails. An AI that understands your decision-making patterns applies that understanding to company strategy docs. The context is the value, and context doesn't respect org boundaries.</p>
+
+      <p>The industry is circling the problem. AI governance platforms like WitnessAI and Cloudflare's Firewall for AI control how data flows to AI tools. Microsoft's Agent 365, announced in March, is building a platform-level control plane for enterprise agent governance. NIST launched an AI Agent Standards Initiative in February 2026 targeting agent identity and authorization. These are real steps&mdash;but they're solving for corporate AI governance, not for the specific scenario where a persistent personal AI with pre-loaded memory enters a work context. Memory-layer boundary enforcement, personal agent identity portability, MDM-equivalent enrollment for personal agents&mdash;those problems are still open. The pressure is coming from both directions: employees already more productive with their own AI, and companies watching that gap widen.</p>
+
+      <h2 id="what-this-means-for-careers">What This Means for Careers</h2>
+
+      <p>My system&mdash;stonerOS&mdash;runs on plain markdown files in a git repo. No database, no vector store, no app wrapper. The accumulated context is what makes it valuable, and that context is portable.</p>
+
+      <p>When I change jobs, the system doesn't reset. It carries forward everything I've taught it about how I work and applies that understanding to a new domain on day one. Two months of corrections, patterns, and preferences transfer instantly. That's an advantage that grows with every role.</p>
+
+      <p>Two months into building mine, I can see the compounding effect clearly: the system I have today would take a new user weeks to replicate&mdash;not because the setup is hard, but because the accumulated context takes time. Every week I use it, the switching cost goes up and the productivity gap widens.</p>
+
+      <p>I didn't plan any of this as a career strategy. I wanted an AI that could think with me&mdash;challenge my assumptions, surface my patterns, and build alongside me. The system that emerged from that is portable, personal, and gets sharper every day. And it belongs entirely to me.</p>
+
+      <div class="insight-block">
+        <p>That's the shift. Not a new device in the workplace. A new layer of professional capability that belongs to the individual.</p>
+      </div>
+
+      <p>At this rate, maybe stonerOS can interview for me next.</p>
+
+      <div class="closing">
+        <p><em>Josh Stoner is a Learning Architect and systems builder based in Brooklyn. He spent 10+ years building learning programs at scale&mdash;most recently at Lyft&mdash;and now builds AI memory systems, native macOS apps, and explores what happens when you give AI persistent context. His work lives at <a href="https://josh-stoner.github.io">josh-stoner.github.io</a>.</em></p>
+      </div>
+
+      <div class="related-reading" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--card-border);">
+        <h3 style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 0.75rem;">Related reading</h3>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+        <li><a href="what-my-ai-taught-me-about-myself.html">What My AI Taught Me About Myself</a></li>
+        <li><a href="ai-brain-ch0.html">I Gave Claude a Brain</a></li>
+        <li><a href="when-a-builder-does-ld.html">When a Builder Does L&amp;D</a></li>
+        </ul>
+      </div>
+
+      <div class="page-nav">
+        <a href="what-my-ai-taught-me-about-myself.html" class="page-nav-link page-nav-prev"><i data-lucide="arrow-left"></i> What My AI Taught Me About Myself</a>
+        <a href="ai-brain-ch0.html" class="page-nav-link page-nav-next">AI Brain Ch 0 — I Gave Claude a Brain <i data-lucide="arrow-right"></i></a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
+</body>
+</html>
