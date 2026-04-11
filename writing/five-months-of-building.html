@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Five Months of Building — Joshua Stoner</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6V09SW4DE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N6V09SW4DE');
+  </script>
+  <meta name="description" content="After a layoff, five months of following curiosity: a memory system, two native macOS apps, a remastered EP, and a writing series&mdash;none of it planned.">
+  <link rel="canonical" href="https://josh-stoner.github.io/writing/five-months-of-building.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Five Months of Building">
+  <meta property="og:description" content="After a layoff, five months of following curiosity: a memory system, two native macOS apps, a remastered EP, and a writing series—none of it planned.">
+  <meta property="og:url" content="https://josh-stoner.github.io/writing/five-months-of-building.html">
+  <meta property="og:site_name" content="Joshua Stoner">
+  <meta property="article:author" content="Joshua Stoner">
+  <meta property="article:published_time" content="2026-04-11">
+  <meta property="og:image" content="https://josh-stoner.github.io/assets/og/five-months-of-building.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Five Months of Building">
+  <meta name="twitter:description" content="After a layoff, five months of following curiosity: a memory system, two native macOS apps, a remastered EP, and a writing series—none of it planned.">
+  <meta name="twitter:image" content="https://josh-stoner.github.io/assets/og/five-months-of-building.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Five Months of Building",
+    "author": {"@type": "Person", "name": "Joshua Stoner", "url": "https://josh-stoner.github.io"},
+    "datePublished": "2026-04-11",
+    "publisher": {"@type": "Person", "name": "Joshua Stoner"},
+    "description": "After a layoff, five months of following curiosity: a memory system, two native macOS apps, a remastered EP, and a writing series—none of it planned."
+  }
+  </script>
+  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .article-header {
+      padding: 3rem 0 1.5rem;
+    }
+    .article-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .article-meta {
+      font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-bottom: 0.25rem;
+    }
+    .article-body h2 {
+      margin-top: 3rem;
+    }
+    .article-body h3 {
+      margin-top: 2rem;
+    }
+    .article-body p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .article-body ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .article-body li {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 0.5rem;
+    }
+    .article-body strong {
+      color: var(--text);
+    }
+    .article-body em {
+      color: var(--text-muted);
+    }
+    .insight-block {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--coral);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .insight-block p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .closing {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+    [data-theme="dark"] .closing {
+      border-top-color: rgba(255,255,255,0.08);
+    }
+    .article-body blockquote { border-left-color: var(--coral); }
+
+    /* Callout block for key insights */
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--coral);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .callout.callout-gold { border-left-color: var(--gold); }
+    .callout.callout-green { border-left-color: var(--green); }
+
+    .lede {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    /* Audio player */
+    .audio-player {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .audio-player .audio-label {
+      font-size: 0.82rem;
+      color: var(--text-faint);
+      font-weight: 500;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .audio-player audio {
+      flex: 1;
+      height: 32px;
+      min-width: 0;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> Joshua Stoner</a>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <ul class="nav-links">
+        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="../" class="back-link"><i data-lucide="arrow-left"></i> Back to Portfolio</a>
+
+    <div class="article-header">
+      <h1 class="color-coral">Five Months of Building</h1>
+      <p class="article-meta">April 2026 &middot; Josh Stoner</p>
+    </div>
+
+    <nav class="toc" style="border-left-color: var(--coral);">
+      <span class="toc-label">On this page</span>
+      <a href="#the-first-thing-a-memory">The First Thing: A Memory</a>
+      <a href="#the-second-thing-music">The Second Thing: Music</a>
+      <a href="#the-third-thing-apps">The Third Thing: Apps</a>
+      <a href="#the-fourth-thing-writing">The Fourth Thing: Writing</a>
+      <a href="#the-pattern">The Pattern</a>
+      <a href="#what-i-notice">What I Notice</a>
+    </nav>
+
+    <article class="article-body">
+
+      <p class="lede">A memory system, two macOS apps, a remastered EP, and a 5-chapter writing series&mdash;none of it planned.</p>
+
+      <div class="audio-player">
+        <span class="audio-label">Listen</span>
+        <audio controls preload="none" src="../audio/five-months-of-building.mp3">Your browser does not support audio.</audio>
+      </div>
+
+      <p>In the last five months, I shipped more than in any year of my career. Not because I was grinding. Because nobody was telling me what to work on.</p>
+
+      <p>I was laid off from Lyft in October 2025. I'd been there as a Learning Architect&mdash;building programs, automation, and AI enablement for 4,000+ employees. When the structure disappeared, the same instincts that built learning systems started building other things.</p>
+
+      <hr>
+
+      <h2 id="the-first-thing-a-memory"><i data-lucide="brain" class="icon-coral"></i> The First Thing: A Memory</h2>
+
+      <p>In early February 2026, I started a project I didn't know was a project.</p>
+
+      <p>I was frustrated with Claude. Not the model&mdash;the amnesia. Every session started from zero. I'd explain my background, my preferences, my working style, my projects&mdash;and the next day, none of it existed. It was like having a brilliant colleague who got a complete memory wipe every night.</p>
+
+      <p>So I built a workaround. A folder of markdown files that Claude reads at the start of every session: who I am, what I'm working on, what I've already decided, what I've corrected. Plain text. Git-tracked. No database. No app.</p>
+
+      <p>I called it stonerOS.</p>
+
+      <p>Within two weeks, it had a three-layer memory architecture and a corrections system. Within a month, it had grown into something I hadn't planned&mdash;dozens of specialized agents, automation hooks, scheduled tasks running while I slept.</p>
+
+      <p>I didn't design this upfront. The corrections file exists because the AI confidently told a recruiter I'd built for 5,000 employees when the real number was 4,000. The agent system exists because I got tired of loading the same context for different tasks. The safety layer exists because I accidentally let an autonomous agent write to a protected file at 3 AM.</p>
+
+      <div class="insight-block">
+        <p>Each piece emerged because the previous piece needed it.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="the-second-thing-music"><i data-lucide="music" class="icon-coral"></i> The Second Thing: Music</h2>
+
+      <p>In December 2025, two months after the layoff, I made an EP.</p>
+
+      <p>AI tools handled the production&mdash;instruments, vocals, engineering. I wrote every word, made every structural choice, and picked which of 20+ generations to keep for each track. The same ear I use for design work: knowing when something lands and when it doesn't.</p>
+
+      <p>The result&mdash;<em>THE EXIT / Parallels</em>&mdash;is a 7-track duet about two perspectives on the same relationship. I later remastered it with a custom Python pipeline: EQ, compression, loudness normalization, multi-format export.</p>
+
+      <p>I published it on SoundCloud and told no one for three months.</p>
+
+      <hr>
+
+      <h2 id="the-third-thing-apps"><i data-lucide="monitor" class="icon-coral"></i> The Third Thing: Apps</h2>
+
+      <p>In March, stonerOS was mature enough that I started noticing other problems worth solving.</p>
+
+      <p><strong>ClaudeUsage</strong> started as a question: how much is this AI subscription actually worth? I built a native macOS menu bar app that tracks Claude's API-equivalent token cost in real time. When I checked the first month's data, it showed over $3,000 in compute value against a $20 subscription&mdash;numbers the app calculates by mapping local conversation files to current API pricing. OAuth from Keychain. No backend.</p>
+
+      <p><strong>Drift</strong> started as a different question: why do I keep falling into the same work patterns? I built a macOS app that monitors my work sessions for behavioral signals&mdash;scope creep, infrastructure-first rabbit holes, boredom-driven pivots&mdash;and surfaces gentle nudges before I'm too deep. Built it in a single day. CI/CD pipeline, notarized, GitHub release.</p>
+
+      <div class="insight-block">
+        <p>Neither app was on a roadmap. They came from paying attention to my own friction.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="the-fourth-thing-writing"><i data-lucide="pen-line" class="icon-coral"></i> The Fourth Thing: Writing</h2>
+
+      <p>In mid-March, I started a 5-chapter series called <em>I Gave Claude a Brain.</em> Not a tutorial&mdash;a practitioner's narrative about what happens when you give AI actual memory and structure.</p>
+
+      <p>Chapter 0: what I built and what surprised me. Chapter 1: why memory changes the AI relationship. Chapter 2: the three-layer architecture and why plain files beat databases. Chapter 3: the 21-agent system and how I allocate work across model tiers. Chapter 4: what it means&mdash;the gap between specifying what you want and recognizing quality when you see it.</p>
+
+      <p>Then standalone pieces: <em>What My AI Taught Me About Myself</em> (pointing stonerOS at my own iCloud data and seeing behavioral patterns I hadn't named). <em>The Learning Reset</em> (why corporate AI enablement is stuck at the cheatsheet stage). The EP write-up. A piece about thread-pulling&mdash;how a Monday afternoon of discount-hunting turned into a portfolio overhaul, a remastered EP, and a content calendar.</p>
+
+      <div class="insight-block">
+        <p>None of it planned. All of it connected.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="the-pattern"><i data-lucide="git-branch" class="icon-coral"></i> The Pattern</h2>
+
+      <p>Here's what I notice when I look at the last five months:</p>
+
+      <p>Every significant thing I built started as a specific frustration, not a goal. stonerOS started because Claude kept forgetting me. ClaudeUsage started because I wanted to know if the subscription was worth it. Drift started because I kept scope-creeping. The EP started because I had words and no way to make them audible. The writing started because I'd built things worth explaining.</p>
+
+      <div class="callout callout-gold">
+        <p>The thread-pulling isn't distraction. It's architecture. Each output creates a question that leads to the next build. The sequence is nonlinear, but the connections are real.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="what-i-notice"><i data-lucide="eye" class="icon-coral"></i> What I Notice</h2>
+
+      <p>I followed my curiosity through a stretch where nobody was telling me what to work on.</p>
+
+      <p>At Lyft, I was a learning architect&mdash;which meant I built programs, automation, and enablement within that scope. On my own, the same instincts produced a memory system, two native apps, a music project, and a writing practice. The skillset didn't change. The constraints did.</p>
+
+      <div class="closing">
+        <p><em>Josh Stoner is a Learning Architect and systems builder based in Brooklyn. He spent 10+ years building learning programs at scale&mdash;most recently at Lyft&mdash;and now builds AI memory systems, native macOS apps, and writes about what happens when you give AI actual context. He publishes at <a href="https://josh-stoner.github.io">josh-stoner.github.io</a>.</em></p>
+      </div>
+
+      <div class="related-reading" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--card-border);">
+        <h3 style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 0.75rem;">Related reading</h3>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li><a href="ai-brain-ch0.html">I Gave Claude a Brain</a></li>
+          <li><a href="what-my-ai-taught-me-about-myself.html">What My AI Taught Me About Myself</a></li>
+          <li><a href="parallels-ep.html">I Made an EP with AI</a></li>
+        </ul>
+      </div>
+
+      <div class="page-nav">
+        <a href="when-a-builder-does-ld.html" class="page-nav-link page-nav-prev"><i data-lucide="arrow-left"></i> When a Builder Does L&amp;D</a>
+        <a href="bring-your-own-ai.html" class="page-nav-link page-nav-next">Bring Your Own AI <i data-lucide="arrow-right"></i></a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
+</body>
+</html>

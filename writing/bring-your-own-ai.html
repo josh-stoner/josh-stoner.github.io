@@ -129,6 +129,31 @@
       font-style: italic;
       margin-bottom: 2rem;
     }
+
+    /* Audio player */
+    .audio-player {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .audio-player .audio-label {
+      font-size: 0.82rem;
+      color: var(--text-faint);
+      font-weight: 500;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .audio-player audio {
+      flex: 1;
+      height: 32px;
+      min-width: 0;
+    }
   </style>
 </head>
 <body>
@@ -164,6 +189,11 @@
     <article class="article-body">
 
       <p class="lede">What happens when your personal AI system is better than the one your company gives you.</p>
+
+      <div class="audio-player">
+        <span class="audio-label">Listen</span>
+        <audio controls preload="none" src="../audio/bring-your-own-ai.mp3">Your browser does not support audio.</audio>
+      </div>
 
       <p>I built a personal AI system in February 2026&mdash;not a chatbot, but something customized to how I specifically think, work, and get stuck. Two months in, I realized it had become a career asset. Not the code. The accumulated context&mdash;corrections, preferences, behavioral patterns, decision history&mdash;all portable, all mine. No employer owns it. No vendor reset erases it.</p>
 

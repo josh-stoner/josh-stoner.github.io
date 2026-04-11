@@ -195,13 +195,13 @@
     </nav>
 
     <article class="article-body">
-      <div class="audio-player">
-        <span class="audio-label">Listen</span>
-        <audio controls preload="none" src="../audio/what-my-ai-taught-me.mp3">Your browser does not support audio.</audio>
-      </div>
-
 
       <p class="lede">I pointed my personal AI memory system at my own data. What came back was more honest than I expected.</p>
+
+      <div class="audio-player">
+        <span class="audio-label">Listen</span>
+        <audio controls preload="none" src="../audio/what-my-ai-taught-me-about-myself.mp3">Your browser does not support audio.</audio>
+      </div>
 
       <p>I've been building something called stonerOS&mdash;a personal AI memory system that sits on top of Claude. It tracks my career history, preferences, projects, and working patterns across sessions. But until this week, it only knew what I <em>told</em> it.</p>
 
@@ -290,7 +290,8 @@
     <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
   </footer>
 
-  <script defer src="../lucide.min.js"></script>
-  <script defer src="../theme.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
 </body>
 </html>
