@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6V09SW4DE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N6V09SW4DE');
+  </script>
   <title>I Made an EP with AI — Joshua Stoner</title>
   <meta name="description" content="I wrote every lyric, built a prompt engineering system for sonic identity, and iterated across 20+ generations. Here's how Parallels by The Exit got made.">
   <link rel="canonical" href="https://josh-stoner.github.io/writing/parallels-ep.html">
@@ -160,7 +168,7 @@
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
       <ul class="nav-links">
-        <li><a href="https://linkedin.com/in/joshuastoner" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
       </ul>
     </div>
   </nav>
@@ -305,17 +313,18 @@
 
       <div class="page-nav">
         <a href="what-my-ai-taught-me-about-myself.html" class="page-nav-link page-nav-prev"><i data-lucide="arrow-left"></i> What My AI Taught Me</a>
-        <a href="the-learning-reset.html" class="page-nav-link page-nav-next">The Learning Reset <i data-lucide="arrow-right"></i></a>
+        <a href="../" class="page-nav-link page-nav-next">Back to Portfolio <i data-lucide="arrow-right"></i></a>
       </div>
 
     </article>
   </main>
 
   <footer>
-    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
   </footer>
 
-  <script defer src="../lucide.min.js"></script>
-  <script defer src="../theme.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
 </body>
 </html>

@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6V09SW4DE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N6V09SW4DE');
+  </script>
   <title>Why Memory Changes Everything — Joshua Stoner</title>
   <meta name="description" content="What happens when your AI remembers who you are, what you decided, and why. The moment it stopped being a tool and started being a collaborator.">
   <link rel="canonical" href="https://josh-stoner.github.io/writing/ai-brain-ch1.html">
@@ -240,31 +248,6 @@
       margin: 0;
       font-size: 0.95rem;
     }
-
-    /* Audio player */
-    .audio-player {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-sm);
-      padding: 0.75rem 1rem;
-      margin: 1.5rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .audio-player .audio-label {
-      font-size: 0.82rem;
-      color: var(--text-faint);
-      font-weight: 500;
-      white-space: nowrap;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-    .audio-player audio {
-      flex: 1;
-      height: 32px;
-      min-width: 0;
-    }
   </style>
 </head>
 <body>
@@ -276,7 +259,7 @@
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
       <ul class="nav-links">
-        <li><a href="https://linkedin.com/in/joshuastoner" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
       </ul>
     </div>
   </nav>
@@ -300,11 +283,6 @@
     </nav>
 
     <article class="article-body">
-      <div class="audio-player">
-        <span class="audio-label">Listen</span>
-        <audio controls preload="none" src="../audio/ai-brain-ch1.mp3">Your browser does not support audio.</audio>
-      </div>
-
 
       <h2 id="the-moment-it-stopped-being-a-tool"><i data-lucide="eye" class="icon-purple"></i> The Moment It Stopped Being a Tool</h2>
 
@@ -451,7 +429,7 @@
   </main>
 
   <footer>
-    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
   </footer>
 
   <script src="https://unpkg.com/lucide@latest"></script>
