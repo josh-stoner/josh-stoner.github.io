@@ -790,6 +790,54 @@ tr:hover td {
   color: var(--purple);
 }
 
+.toc-group {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-top: 0.6rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--card-border);
+}
+.toc-group:first-of-type {
+  margin-top: 0.1rem;
+  border-top: none;
+}
+.toc a.toc-sub {
+  padding-left: 0.75rem;
+  font-size: 0.78rem;
+}
+
+/* ---- Writing filter pills ---- */
+.filter-pills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.filter-pill {
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  font-family: inherit;
+}
+.filter-pill:hover {
+  border-color: var(--purple);
+  color: var(--purple);
+}
+.filter-pill[data-filter="all"].active    { background: var(--text); border-color: var(--text); color: var(--bg); }
+.filter-pill[data-filter="ai"].active     { background: var(--purple); border-color: var(--purple); color: #fff; }
+.filter-pill[data-filter="ld"].active     { background: var(--green);  border-color: var(--green);  color: #fff; }
+.filter-pill[data-filter="creative"].active { background: var(--rose); border-color: var(--rose);   color: #fff; }
+
 /* ---- Case Study Pages ---- */
 
 .case-header {

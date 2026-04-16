@@ -185,31 +185,6 @@
     .article-body tr:last-child td {
       border-bottom: none;
     }
-
-    /* Audio player */
-    .audio-player {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-sm);
-      padding: 0.75rem 1rem;
-      margin: 1.5rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .audio-player .audio-label {
-      font-size: 0.82rem;
-      color: var(--text-faint);
-      font-weight: 500;
-      white-space: nowrap;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-    .audio-player audio {
-      flex: 1;
-      height: 32px;
-      min-width: 0;
-    }
   </style>
 </head>
 <body>
@@ -221,7 +196,7 @@
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
       <ul class="nav-links">
-        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+        <li><a href="https://linkedin.com/in/joshuastoner" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a></li>
       </ul>
     </div>
   </nav>
@@ -246,17 +221,12 @@
     </nav>
 
     <article class="article-body">
-      <div class="audio-player">
-        <span class="audio-label">Listen</span>
-        <audio controls preload="none" src="../audio/teamos-building-a-team-operating-system.mp3">Your browser does not support audio.</audio>
-      </div>
-
 
       <p class="lede">The architecture behind TeamOS &mdash; how the pieces fit together, and why it's built from plain files.</p>
 
       <p>The hardest part of building any shared system is deciding what it's actually for.</p>
 
-      <p>TeamOS has a narrow mandate: synthesize context across the tools you already use, make that context retrievable without hunting, and eliminate the reformatting loop. It doesn't replace Slack. It doesn't replace Jira. It doesn't try to become the place where work happens. It's the layer between those tools that makes them collectively useful instead of collectively siloed.</p>
+      <p>TeamOS has a narrow mandate: synthesize context across the tools you already use, make that context retrievable without hunting, and eliminate the reformatting loop. It's the layer between those tools that makes them collectively useful instead of siloed.</p>
 
       <p>Here's how it's built.</p>
 
@@ -309,9 +279,7 @@
 
       <h2 id="the-baseline-creator"><i data-lucide="shield" class="icon-green"></i> The Baseline Creator</h2>
 
-      <p>The highest-value pattern in the system is what I call the <strong>Baseline Creator</strong>.</p>
-
-      <p>The idea is simple: define your standards once, then enforce them through every transformation command automatically.</p>
+      <p>The highest-value pattern: define your standards once, then enforce them through every transformation command automatically.</p>
 
       <p>Standards live in <code>standards/</code>:</p>
       <ul>
@@ -348,7 +316,7 @@
 
       <h2 id="the-context-connector"><i data-lucide="git-branch" class="icon-green"></i> The Context Connector</h2>
 
-      <p>The second core pattern is proactive intelligence &mdash; the system connecting people who are working on related problems without knowing it.</p>
+      <p>The second pattern is proactive connection &mdash; surfacing overlap between people working on related problems without knowing it.</p>
 
       <p>In most teams, these connections happen by accident. Two engineers are solving adjacent auth problems. Two PMs are scheduling reviews with the same VP in the same week. Someone writes a plan to deprecate an API that another team just built on top of. These collisions are expensive. And they're mostly preventable if someone is watching the whole board.</p>
 
@@ -485,10 +453,11 @@ Both involve the OAuth token refresh flow.
   </div>
 
   <footer>
-    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
   </footer>
 
-  <script defer src="../lucide.min.js"></script>
-  <script defer src="../theme.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
 </body>
 </html>

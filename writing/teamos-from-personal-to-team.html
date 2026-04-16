@@ -136,31 +136,6 @@
       font-style: italic;
       margin-bottom: 2rem;
     }
-
-    /* Audio player */
-    .audio-player {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-sm);
-      padding: 0.75rem 1rem;
-      margin: 1.5rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .audio-player .audio-label {
-      font-size: 0.82rem;
-      color: var(--text-faint);
-      font-weight: 500;
-      white-space: nowrap;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-    .audio-player audio {
-      flex: 1;
-      height: 32px;
-      min-width: 0;
-    }
   </style>
 </head>
 <body>
@@ -172,7 +147,7 @@
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
       <ul class="nav-links">
-        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+        <li><a href="https://linkedin.com/in/joshuastoner" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a></li>
       </ul>
     </div>
   </nav>
@@ -191,16 +166,11 @@
       <a href="#what-transfers-directly">What Transfers Directly</a>
       <a href="#what-breaks-at-team-scale">What Breaks at Team Scale</a>
       <a href="#the-personal-system-as-prototype">The Personal System as Prototype</a>
-      <a href="#what-id-do-differently-at-team-scale-from-the-start">What I'd Do Differently at Team Scale From the Start</a>
+      <a href="#what-i-learned-id-want-to-do-differently">What I Learned I'd Want to Do Differently</a>
       <a href="#the-deeper-pattern">The Deeper Pattern</a>
     </nav>
 
     <article class="article-body">
-      <div class="audio-player">
-        <span class="audio-label">Listen</span>
-        <audio controls preload="none" src="../audio/teamos-from-personal-to-team.mp3">Your browser does not support audio.</audio>
-      </div>
-
 
       <p class="lede">What transfers when you scale a personal AI system to a team. What doesn't. And what I learned about both by trying.</p>
 
@@ -210,13 +180,11 @@
 
       <p>Not "what would I build if I were starting fresh for a team" &mdash; what actually transfers from the personal system, what fundamentally breaks at team scale, and where the interesting design problems live.</p>
 
-      <p>This is the answer I came up with.</p>
-
       <hr>
 
       <h2 id="what-stoneros-actually-is"><i data-lucide="database" class="icon-green"></i> What stonerOS Actually Is</h2>
 
-      <p>Before I can explain what transfers, it helps to understand the personal system.</p>
+      <p>Here's what stonerOS actually is.</p>
 
       <p>stonerOS is a persistent context layer for a single user &mdash; me &mdash; working with Claude. Every session starts by loading a set of markdown files that contain everything the AI needs to know: who I am, what I'm working on, what I've already decided, what corrections I've made to things the AI got wrong. The AI reads these at the start of a session and starts from context instead of starting from zero.</p>
 
@@ -290,9 +258,9 @@
 
       <hr>
 
-      <h2 id="what-id-do-differently-at-team-scale-from-the-start"><i data-lucide="settings" class="icon-green"></i> What I'd Do Differently at Team Scale From the Start</h2>
+      <h2 id="what-i-learned-id-want-to-do-differently"><i data-lucide="settings" class="icon-green"></i> What I Learned I'd Want to Do Differently</h2>
 
-      <p>The biggest thing I'd change: governance, day one.</p>
+      <p>The biggest thing: governance, day one.</p>
 
       <p>In stonerOS, governance is trivial &mdash; I'm the only stakeholder. In TeamOS, "who decides how this evolves" is the question that determines everything else. I'd write <code>governance.md</code> before writing <code>TEAM.md</code>. Who owns the system? Who approves new commands? Who reviews changes to standards? What's the process for a team member to propose something? Without answers to these questions, you're building on sand.</p>
 
@@ -341,10 +309,11 @@
   </div>
 
   <footer>
-    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
   </footer>
 
-  <script defer src="../lucide.min.js"></script>
-  <script defer src="../theme.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
 </body>
 </html>

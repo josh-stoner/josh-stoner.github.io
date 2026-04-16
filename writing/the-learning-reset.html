@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Learning Reset — Joshua Stoner</title>
+  <meta name="description" content="Every L&amp;D team built the same prompt library. That's the gap. Here's what actually needs to change about how we teach people to work with AI.">
+  <link rel="canonical" href="https://josh-stoner.github.io/writing/the-learning-reset.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Learning Reset">
+  <meta property="og:description" content="Every L&amp;D team built the same prompt library. That's the gap. Here's what actually needs to change about how we teach people to work with AI.">
+  <meta property="og:url" content="https://josh-stoner.github.io/writing/the-learning-reset.html">
+  <meta property="og:site_name" content="Joshua Stoner">
+  <meta property="article:author" content="Joshua Stoner">
+  <meta property="article:published_time" content="2026-04-15">
+  <meta property="og:image" content="https://josh-stoner.github.io/assets/og/the-learning-reset.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Learning Reset">
+  <meta name="twitter:description" content="Every L&amp;D team built the same prompt library. That's the gap. Here's what actually needs to change about how we teach people to work with AI.">
+  <meta name="twitter:image" content="https://josh-stoner.github.io/assets/og/the-learning-reset.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Learning Reset",
+    "author": {"@type": "Person", "name": "Joshua Stoner", "url": "https://josh-stoner.github.io"},
+    "datePublished": "2026-04-15",
+    "publisher": {"@type": "Person", "name": "Joshua Stoner"},
+    "description": "Every L&D team built the same prompt library. That's the gap. Here's what actually needs to change about how we teach people to work with AI."
+  }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6V09SW4DE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N6V09SW4DE');
+  </script>
+  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .article-header {
+      padding: 3rem 0 1.5rem;
+    }
+    .article-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .article-meta {
+      font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-bottom: 0.25rem;
+    }
+    .article-body h2 {
+      margin-top: 3rem;
+    }
+    .article-body h3 {
+      margin-top: 2rem;
+    }
+    .article-body p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .article-body ul, .article-body ol {
+      padding-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .article-body li {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 0.5rem;
+    }
+    .article-body strong {
+      color: var(--text);
+    }
+    .article-body em {
+      color: var(--text-muted);
+    }
+    .insight-block {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--lavender);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .insight-block p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .pull-quote {
+      margin: 2.5rem 0;
+    }
+    .pull-quote p {
+      font-size: 1.2rem;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--text);
+      margin: 0;
+    }
+    .closing {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+    [data-theme="dark"] .closing {
+      border-top-color: rgba(255,255,255,0.08);
+    }
+    .article-body blockquote { border-left-color: var(--lavender); }
+
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--lavender);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .callout.callout-gold { border-left-color: var(--gold); }
+
+    .lede {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .audio-player {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .audio-player .audio-label {
+      font-size: 0.82rem;
+      color: var(--text-faint);
+      font-weight: 500;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .audio-player audio {
+      flex: 1;
+      height: 32px;
+      min-width: 0;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> Joshua Stoner</a>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <ul class="nav-links">
+        <li><a href="https://linkedin.com/in/joshuastoner" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="../" class="back-link"><i data-lucide="arrow-left"></i> Back to Portfolio</a>
+
+    <div class="article-header">
+      <h1 class="color-lavender">The Learning Reset</h1>
+      <p class="article-meta">April 2026 &middot; Josh Stoner</p>
+    </div>
+
+    <nav class="toc" style="border-left-color: var(--lavender);">
+      <span class="toc-label">On this page</span>
+      <a href="#the-cheatsheet-trap">The Cheatsheet Trap</a>
+      <a href="#where-the-work-actually-is">Where the Work Actually Is</a>
+      <a href="#the-actual-job-now">The Actual Job Now</a>
+    </nav>
+
+    <article class="article-body">
+
+      <div class="audio-player">
+        <span class="audio-label">Listen</span>
+        <audio controls preload="none" src="../audio/the-learning-reset.mp3">Your browser does not support audio.</audio>
+      </div>
+
+      <p>Everybody got the same idea at the same time.</p>
+
+      <p>The moment AI tools became accessible, many businesses did the same three things: built a prompt cheatsheet, assembled a &ldquo;curated&rdquo; prompt library, and scheduled an all-hands demo where someone screen-shared ChatGPT and said <em>see, it can write emails for you.</em></p>
+
+      <p>I know because I was one of them. I built an AI prompt library for our performance cycle&mdash;feedback templates, self-reflection scaffolds, manager rating guides&mdash;and deployed it to 4,000+ employees. It worked. People used it. Engagement was high.</p>
+
+      <p>But we taught people to use a tool. We didn&rsquo;t teach them to think differently about the work the tool was doing.</p>
+
+      <div class="callout">
+        <p>That&rsquo;s the gap. And it&rsquo;s widening.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="the-cheatsheet-trap"><i data-lucide="list-checks" class="icon-lavender"></i> The Cheatsheet Trap</h2>
+
+      <p>The current corporate AI learning playbook looks like this:</p>
+
+      <ol>
+        <li>Pick a tool (usually whatever the company licensed)</li>
+        <li>Build a prompt library or cheatsheet</li>
+        <li>Run a workshop: &ldquo;10 Ways to Use AI at Work&rdquo;</li>
+        <li>Measure adoption (logins, usage, maybe a survey)</li>
+        <li>Declare victory</li>
+      </ol>
+
+      <p>This is the equivalent of teaching someone Microsoft Word by handing them a list of keyboard shortcuts. Technically useful. Fundamentally incomplete.</p>
+
+      <p>The problem isn&rsquo;t that cheatsheets are bad. It&rsquo;s that they&rsquo;re the ceiling, not the floor. Most AI enablement programs stop at tool proficiency&mdash;<em>here&rsquo;s how to get the thing to do the thing</em>&mdash;and never get to the questions that actually matter:</p>
+
+      <ul>
+        <li>How do you know if the output is right?</li>
+        <li>When should you not use this?</li>
+        <li>What did you used to think about before the AI started thinking for you?</li>
+      </ul>
+
+      <div class="pull-quote">
+        <p>We&rsquo;ve been so focused on teaching people to use AI that we forgot to teach them to use AI <em>well.</em> And &ldquo;well&rdquo; is where L&amp;D either levels up or becomes irrelevant.</p>
+      </div>
+
+      <h2 id="where-the-work-actually-is"><i data-lucide="layers" class="icon-lavender"></i> Where the Work Actually Is</h2>
+
+      <p>After 13 years building learning programs&mdash;and the last year building an AI system that literally learns about me&mdash;the shift comes down to three things. None of them are about prompts.</p>
+
+      <h3>1. How (Properly)</h3>
+
+      <p>AI fluency isn&rsquo;t knowing which tool to open. It&rsquo;s understanding what&rsquo;s happening underneath.</p>
+
+      <p>The most common usage pattern I see: type question, get answer, move on. They don&rsquo;t understand why the same prompt gives different results on Tuesday than it did on Monday. They don&rsquo;t know what a system prompt is, why context length matters, or that the model is pattern-matching, not reasoning.</p>
+
+      <p>You don&rsquo;t need everyone to understand transformer architecture. But you need them to understand enough to make good decisions about when to trust the output, when to push back, and when to throw it away and do the work themselves.</p>
+
+      <p>The learning challenge here isn&rsquo;t technical&mdash;it&rsquo;s behavioral. People need to develop an intuition for what AI is good at and what it&rsquo;s bad at. That intuition doesn&rsquo;t come from a cheatsheet. It comes from structured practice with feedback loops. The same way you learn to drive&mdash;not by reading the manual, but by getting behind the wheel with someone who tells you when you&rsquo;re drifting.</p>
+
+      <div class="insight-block">
+        <p>Right now, most organizations are handing people the keys and saying <em>good luck.</em> The ones that build the practice infrastructure&mdash;guided exploration, exercises with actual stakes, and someone coaching in the moment&mdash;will be the ones whose people actually get better. Everyone else will plateau at &ldquo;it writes my emails.&rdquo;</p>
+      </div>
+
+      <h3>2. Critical Thinking (Fact-Checking the Machine)</h3>
+
+      <p>AI generates fluent, confident, well-structured text that is sometimes completely wrong. Not obviously wrong&mdash;subtly wrong. Wrong in ways that require domain knowledge to catch. Wrong in ways that sound more convincing than the truth because the model optimizes for coherence, not accuracy.</p>
+
+      <p>I&rsquo;ve watched it happen in my own system. An agent confidently cited a date that was off by four years. Another synthesized two unrelated data points into a claim that sounded great in a cover letter but had no factual basis. These weren&rsquo;t hallucinations in the cartoon sense&mdash;they were plausible, well-written, and would have survived a casual review.</p>
+
+      <p>The skill that matters now isn&rsquo;t <em>how do I get AI to generate content.</em> It&rsquo;s <em>how do I evaluate what AI just gave me.</em> That&rsquo;s a different skill entirely&mdash;and most corporate training has never touched it.</p>
+
+      <p>We&rsquo;ve spent decades in L&amp;D teaching people to follow processes, apply frameworks, and use tools. We&rsquo;ve spent very little time teaching people to question the output of the thing they just used. But that&rsquo;s the new core competency: the ability to read something that sounds right and ask <em>wait&mdash;is this actually true?</em></p>
+
+      <p>This doesn&rsquo;t mean everyone needs to become a fact-checker. It means learning programs need to build the reflex. When AI gives you an answer, your next thought shouldn&rsquo;t be <em>great, done.</em> It should be <em>how would I verify this?</em></p>
+
+      <div class="insight-block">
+        <p>The organizations that build this reflex into their culture will catch errors before they ship. The ones that don&rsquo;t will discover the cost of AI-generated confidence the hard way&mdash;like the cover letter with a fabricated claim that sounded better than the truth.</p>
+      </div>
+
+      <h3>3. Rebuilding the Human Layer</h3>
+
+      <p>Here&rsquo;s what I worry about most.</p>
+
+      <p>AI is genuinely good at a lot of the things we used to need humans for. It can draft a performance review. It can summarize a meeting. It can generate a training module. It can answer employee questions at 2 AM. The efficiency gain is real and it&rsquo;s significant.</p>
+
+      <p>But the things AI can&rsquo;t do are the things that make work actually work. Reading the room. Building trust. Giving feedback that lands because you earned the relationship. Navigating conflict where the answer isn&rsquo;t a framework&mdash;it&rsquo;s a conversation.</p>
+
+      <p>When I built Conversations that Count&mdash;a feedback skills program for people managers&mdash;the curriculum wasn&rsquo;t the hard part. The hard part was getting humans in a room together practicing difficult conversations. The framework (SBI-D) was the scaffold. The learning happened in the awkwardness of trying it live with a real colleague and a real facilitator who could say <em>here&rsquo;s what I noticed you doing just now.</em></p>
+
+      <p>No AI can do that. Not because the technology isn&rsquo;t there, but because the trust isn&rsquo;t. Feedback from a human who knows your work, your context, and your growth edge lands differently than feedback from a model that&rsquo;s pattern-matching on &ldquo;constructive criticism&rdquo; training data.</p>
+
+      <p>The risk isn&rsquo;t that AI replaces human learning experiences. The risk is that organizations, under cost pressure, quietly let the human layer atrophy. I&rsquo;ve already seen the early signs: a team replacing a live coaching session with a chatbot &ldquo;for efficiency,&rdquo; a manager onboarding program reduced to a self-paced AI module. Not maliciously&mdash;just under budget pressure, the human part is always the most expensive line item to justify.</p>
+
+      <div class="insight-block">
+        <p>The L&amp;D teams that matter in the next five years will be the ones who can articulate&mdash;clearly, with evidence&mdash;which parts of learning need to be human, which parts can be AI-assisted, and where the boundary should be drawn. Not because AI is bad. Because learning that changes behavior requires something AI can&rsquo;t provide: a relationship.</p>
+      </div>
+
+      <h2 id="the-actual-job-now"><i data-lucide="briefcase" class="icon-lavender"></i> The Actual Job Now</h2>
+
+      <p>If you work in learning, your job just changed. Not in the way the popular advice says&mdash;&ldquo;upskill in AI&rdquo; and &ldquo;become a prompt engineer.&rdquo; That&rsquo;s the cheatsheet answer.</p>
+
+      <p>The real shift is this: your job used to be designing content and delivering programs. Now it&rsquo;s figuring out where the human matters and where the machine does&mdash;in learning specifically.</p>
+
+      <p>That means:</p>
+
+      <ul>
+        <li>Building practice environments where people develop AI judgment, not just AI proficiency</li>
+        <li>Designing experiences where the human part is there on purpose&mdash;not because nobody got around to automating it yet</li>
+        <li>Measuring whether people are catching AI errors&mdash;not just using AI faster</li>
+        <li>Having the courage to say <em>this should be a conversation, not a course</em>&mdash;even when the bot is cheaper</li>
+      </ul>
+
+      <div class="callout callout-gold">
+        <p>The organizations that get this right won&rsquo;t be the ones with the best prompt libraries. They&rsquo;ll be the ones where people trust AI enough to use it and trust themselves enough to question it.</p>
+      </div>
+
+      <div class="closing">
+        <p><em>That&rsquo;s the reset.</em></p>
+        <p><em>Josh Stoner spent 13 years building learning systems at scale&mdash;building for 4,000+ employees across the full stack: curriculum design, LMS infrastructure, automation, analytics, and AI enablement. He currently builds stonerOS, a persistent AI memory system, and writes about what happens when you give AI actual context.</em></p>
+      </div>
+
+      <div class="related-reading" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--card-border);">
+        <h3 style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 0.75rem;">Related reading</h3>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li><a href="when-a-builder-does-ld.html">When a Builder Does L&amp;D</a></li>
+          <li><a href="five-months-of-building.html">Five Months of Building</a></li>
+          <li><a href="ai-brain-ch0.html">I Gave Claude a Brain</a></li>
+        </ul>
+      </div>
+
+      <div class="page-nav">
+        <a href="parallels-ep.html" class="page-nav-link page-nav-prev"><i data-lucide="arrow-left"></i> I Made an EP with AI</a>
+        <a href="../" class="page-nav-link page-nav-next">Back to Portfolio <i data-lucide="arrow-right"></i></a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
+</body>
+</html>

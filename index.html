@@ -50,7 +50,7 @@
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
       <ul class="nav-links">
-        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+        <li><a href="https://linkedin.com/in/joshuastoner" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a></li>
       </ul>
     </div>
   </nav>
@@ -64,19 +64,28 @@
 
     <nav class="toc">
       <span class="toc-label">On this page</span>
-      <a href="#ai-brain-series">AI Brain Series</a>
-      <a href="#teamos-series">TeamOS Series</a>
-      <a href="#standalone-writing">Essays & Creative</a>
-      <a href="#case-studies">Case Studies</a>
-      <a href="#how-i-work">How I Work</a>
-      <a href="#skill-areas">Skill Areas</a>
-      <a href="#content-design">Content Design & Production</a>
+      <span class="toc-group">Writing</span>
+      <a href="#ai-brain-series" class="toc-sub">AI Brain Series</a>
+      <a href="#teamos-series" class="toc-sub">TeamOS Series</a>
+      <a href="#standalone-writing" class="toc-sub">Essays</a>
+      <span class="toc-group">Work</span>
+      <a href="#case-studies" class="toc-sub">Case Studies</a>
+      <a href="#how-i-work" class="toc-sub">How I Work</a>
+      <a href="#skill-areas" class="toc-sub">Skills</a>
+      <a href="#content-design" class="toc-sub">Content Design</a>
     </nav>
 
+    <h2 class="reveal" id="writing" style="margin-bottom: 1rem;"><i data-lucide="feather" class="icon-purple"></i> Writing</h2>
+    <div class="filter-pills">
+      <button class="filter-pill active" data-filter="all">All</button>
+      <button class="filter-pill" data-filter="ai">AI &amp; Systems</button>
+      <button class="filter-pill" data-filter="ld">L&amp;D</button>
+      <button class="filter-pill" data-filter="creative">Creative</button>
+    </div>
     <div class="portfolio-section" id="portfolio">
     <p class="section-label reveal" id="ai-brain-series"><i data-lucide="pen-tool" class="icon-purple"></i> AI Brain Series</p>
     <div class="card-grid">
-      <a href="writing/ai-brain-ch0.html" class="card reveal">
+      <a href="writing/ai-brain-ch0.html" class="card reveal" data-topic="ai">
         <span class="card-title">
           <span class="card-icon icon-purple"><i data-lucide="pen-tool"></i></span>
           Ch 0 &mdash; I Gave Claude a Brain
@@ -88,7 +97,7 @@
           <span class="tag tag--purple">Build in public</span>
         </div>
       </a>
-      <a href="writing/ai-brain-ch1.html" class="card reveal">
+      <a href="writing/ai-brain-ch1.html" class="card reveal" data-topic="ai">
         <span class="card-title">
           <span class="card-icon icon-purple"><i data-lucide="pen-tool"></i></span>
           Ch 1 &mdash; Why Memory Changes Everything
@@ -100,7 +109,7 @@
           <span class="tag tag--purple">Week-by-week</span>
         </div>
       </a>
-      <a href="writing/ai-brain-ch2.html" class="card reveal">
+      <a href="writing/ai-brain-ch2.html" class="card reveal" data-topic="ai">
         <span class="card-title">
           <span class="card-icon icon-green"><i data-lucide="pen-tool"></i></span>
           Ch 2 &mdash; The Architecture
@@ -112,7 +121,7 @@
           <span class="tag tag--green">File design</span>
         </div>
       </a>
-      <a href="writing/ai-brain-ch3.html" class="card reveal">
+      <a href="writing/ai-brain-ch3.html" class="card reveal" data-topic="ai">
         <span class="card-title">
           <span class="card-icon icon-green"><i data-lucide="pen-tool"></i></span>
           Ch 3 &mdash; The Agents
@@ -124,7 +133,7 @@
           <span class="tag tag--green">Orchestration</span>
         </div>
       </a>
-      <a href="writing/ai-brain-ch4.html" class="card reveal">
+      <a href="writing/ai-brain-ch4.html" class="card reveal" data-topic="ai">
         <span class="card-title">
           <span class="card-icon icon-gold"><i data-lucide="pen-tool"></i></span>
           Ch 4 &mdash; What This Actually Means
@@ -140,7 +149,7 @@
 
     <p class="section-label reveal" id="teamos-series"><i data-lucide="users" class="icon-green"></i> TeamOS Series</p>
     <div class="card-grid">
-      <a href="writing/teamos-what-if-your-team-had-a-memory.html" class="card reveal">
+      <a href="writing/teamos-what-if-your-team-had-a-memory.html" class="card reveal" data-topic="ai ld">
         <span class="card-title">
           <span class="card-icon icon-green"><i data-lucide="brain"></i></span>
           What If Your Team Had a Memory?
@@ -152,7 +161,7 @@
           <span class="tag tag--green">Part 1 of 4</span>
         </div>
       </a>
-      <a href="writing/teamos-building-a-team-operating-system.html" class="card reveal">
+      <a href="writing/teamos-building-a-team-operating-system.html" class="card reveal" data-topic="ai ld">
         <span class="card-title">
           <span class="card-icon icon-green"><i data-lucide="layers"></i></span>
           Building a Team Operating System
@@ -164,7 +173,7 @@
           <span class="tag tag--green">Part 2 of 4</span>
         </div>
       </a>
-      <a href="writing/teamos-the-hard-parts.html" class="card reveal">
+      <a href="writing/teamos-the-hard-parts.html" class="card reveal" data-topic="ai ld">
         <span class="card-title">
           <span class="card-icon icon-green"><i data-lucide="shield-alert"></i></span>
           The Hard Parts Nobody Talks About
@@ -176,7 +185,7 @@
           <span class="tag tag--green">Part 3 of 4</span>
         </div>
       </a>
-      <a href="writing/teamos-from-personal-to-team.html" class="card reveal">
+      <a href="writing/teamos-from-personal-to-team.html" class="card reveal" data-topic="ai ld">
         <span class="card-title">
           <span class="card-icon icon-green"><i data-lucide="git-branch"></i></span>
           From Personal to Team
@@ -192,7 +201,7 @@
 
     <p class="section-label reveal" id="standalone-writing"><i data-lucide="file-text" class="icon-sky"></i> Essays &amp; Creative</p>
     <div class="card-grid">
-      <a href="writing/bring-your-own-ai.html" class="card reveal">
+      <a href="writing/bring-your-own-ai.html" class="card reveal" data-topic="ai ld">
         <span class="card-title">
           <span class="card-icon icon-rose"><i data-lucide="briefcase"></i></span>
           Bring Your Own AI
@@ -204,7 +213,7 @@
           <span class="tag tag--rose">Future of work</span>
         </div>
       </a>
-      <a href="writing/what-my-ai-taught-me-about-myself.html" class="card reveal">
+      <a href="writing/what-my-ai-taught-me-about-myself.html" class="card reveal" data-topic="ai">
         <span class="card-title">
           <span class="card-icon icon-sky"><i data-lucide="scan-search"></i></span>
           What My AI Taught Me About Myself
@@ -216,7 +225,7 @@
           <span class="tag tag--sky">Data &amp; identity</span>
         </div>
       </a>
-      <a href="writing/when-a-builder-does-ld.html" class="card reveal">
+      <a href="writing/when-a-builder-does-ld.html" class="card reveal" data-topic="ld">
         <span class="card-title">
           <span class="card-icon icon-gold"><i data-lucide="lightbulb"></i></span>
           When a Builder Does L&amp;D
@@ -228,7 +237,7 @@
           <span class="tag tag--gold">Opinion</span>
         </div>
       </a>
-      <a href="writing/parallels-ep.html" class="card reveal">
+      <a href="writing/parallels-ep.html" class="card reveal" data-topic="creative">
         <span class="card-title">
           <span class="card-icon icon-rose"><i data-lucide="music"></i></span>
           I Made an EP with AI
@@ -240,8 +249,25 @@
           <span class="tag tag--rose">Prompt engineering</span>
         </div>
       </a>
+      <a href="writing/the-learning-reset.html" class="card reveal" data-topic="ld">
+        <span class="card-title">
+          <span class="card-icon icon-lavender"><i data-lucide="refresh-cw"></i></span>
+          The Learning Reset
+        </span>
+        <span class="card-date">April 2026</span>
+        <p class="card-desc">Every L&amp;D team built the same prompt library. Here&rsquo;s what actually needs to change about how we teach people to work with AI&mdash;and why the cheatsheet was never the ceiling.</p>
+        <div class="tags">
+          <span class="tag tag--lavender">L&amp;D + AI</span>
+          <span class="tag tag--lavender">Opinion</span>
+        </div>
+      </a>
     </div>
+    </div><!-- end writing zone -->
 
+    <hr>
+
+    <h2 class="reveal" id="work" style="margin-bottom: 1.5rem;"><i data-lucide="briefcase" class="icon-steel"></i> Work</h2>
+    <div class="portfolio-section">
     <p class="section-label reveal" id="case-studies"><i data-lucide="folder-open" class="icon-lavender"></i> Case Studies</p>
     <div class="card-grid">
       <a href="case-studies/perfdev-pilot.html" class="card reveal">
@@ -323,8 +349,7 @@
         </div>
       </a>
     </div>
-
-    </div>
+    </div><!-- end work zone -->
 
     <hr>
 
@@ -418,10 +443,44 @@
   </main>
 
   <footer>
-    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
   </footer>
 
   <script defer src="lucide.min.js"></script>
   <script defer src="theme.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const pills = document.querySelectorAll('.filter-pill');
+      const cards = document.querySelectorAll('.portfolio-section .card[data-topic]');
+
+      pills.forEach(function (pill) {
+        pill.addEventListener('click', function () {
+          pills.forEach(function (p) { p.classList.remove('active'); });
+          pill.classList.add('active');
+
+          var filter = pill.dataset.filter;
+
+          cards.forEach(function (card) {
+            if (filter === 'all') {
+              card.style.display = '';
+            } else {
+              var topics = card.dataset.topic.split(' ');
+              card.style.display = topics.indexOf(filter) !== -1 ? '' : 'none';
+            }
+          });
+
+          // Hide section labels + grids when all their cards are filtered out
+          document.querySelectorAll('.portfolio-section .card-grid').forEach(function (grid) {
+            var visible = grid.querySelectorAll('.card:not([style*="none"])').length;
+            grid.style.display = visible ? '' : 'none';
+            var label = grid.previousElementSibling;
+            if (label && label.classList.contains('section-label')) {
+              label.style.display = visible ? '' : 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>

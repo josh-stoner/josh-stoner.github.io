@@ -241,31 +241,6 @@
     [data-theme="dark"] .closing {
       border-top-color: rgba(255,255,255,0.08);
     }
-
-    /* Audio player */
-    .audio-player {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-sm);
-      padding: 0.75rem 1rem;
-      margin: 1.5rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .audio-player .audio-label {
-      font-size: 0.82rem;
-      color: var(--text-faint);
-      font-weight: 500;
-      white-space: nowrap;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-    .audio-player audio {
-      flex: 1;
-      height: 32px;
-      min-width: 0;
-    }
   </style>
 </head>
 <body>
@@ -277,7 +252,7 @@
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
       <ul class="nav-links">
-        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+        <li><a href="https://linkedin.com/in/joshuastoner" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a></li>
       </ul>
     </div>
   </nav>
@@ -301,13 +276,8 @@
     </nav>
 
     <article class="article-body">
-      <div class="audio-player">
-        <span class="audio-label">Listen</span>
-        <audio controls preload="none" src="../audio/ai-brain-ch2.mp3">Your browser does not support audio.</audio>
-      </div>
 
-
-      <h2 id="the-problem"><i data-lucide="archive" class="icon-steel"></i> The Problem with &ldquo;Just Put It Somewhere&rdquo;</h2>
+      <h2 id="the-problem"><i data-lucide="archive" class="icon-green"></i> The Problem with &ldquo;Just Put It Somewhere&rdquo;</h2>
 
       <p>When I started building stonerOS, I had a very simple system: one file called <code>context.md</code> that contained everything. My preferences. My career history. My tech stack. My current projects. Everything.</p>
 
@@ -331,7 +301,7 @@
       <!-- Layer 1 -->
       <div class="layer-section layer-baseline">
         <div class="layer-header">
-          <i data-lucide="lock" class="icon-steel"></i>
+          <i data-lucide="lock" class="icon-green"></i>
           <h3>Layer 1: Immutable Baseline</h3>
           <span class="layer-tag">Read-only</span>
         </div>
@@ -419,7 +389,7 @@
           <p>Every change to every memory file is automatically committed and pushed to a private repository. If the system ever corrupts a file or makes a wrong update, I can see exactly what changed and roll it back. Try getting that kind of transparency from a SQLite database.</p>
         </div>
         <div class="convention-item">
-          <strong><i data-lucide="shield" class="icon-steel"></i> Markdown survives tool changes</strong>
+          <strong><i data-lucide="shield" class="icon-green"></i> Markdown survives tool changes</strong>
           <p>Anthropic will change APIs. Claude Code will add and deprecate features. Plain text files with consistent formatting will outlast any specific tooling. I&rsquo;ve already lived through two major Claude Code updates during this build&mdash;the files survived both.</p>
         </div>
         <div class="convention-item">
@@ -457,7 +427,7 @@
 
       <p>The naming system also enforces role separation. A file in <code>memories/professional/</code> is a human-facing career artifact. A file in <code>learnings/</code> is AI-context data. A file in <code>.claude/context/</code> is agent staging output. The path tells you what the file is for before you open it.</p>
 
-      <h2 id="organized"><i data-lucide="shield-check" class="icon-lavender"></i> How It Stays Organized as It Grows</h2>
+      <h2 id="organized"><i data-lucide="shield-check" class="icon-green"></i> How It Stays Organized as It Grows</h2>
 
       <p>The honest answer: it doesn&rsquo;t stay organized automatically. Structure has to be maintained.</p>
 
@@ -499,13 +469,14 @@
 
       <div class="page-nav">
         <a href="ai-brain-ch1.html" class="page-nav-link page-nav-prev"><i data-lucide="arrow-left"></i> Ch 1 &mdash; Why Memory Changes Everything</a>
+        <a href="ai-brain-ch3.html" class="page-nav-link page-nav-next">Ch 3 &mdash; The Agents <i data-lucide="arrow-right"></i></a>
       </div>
 
     </article>
   </main>
 
   <footer>
-    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a> &bull; <a href="mailto:itsJoshStoner@gmail.com"><i data-lucide="mail"></i> Email</a></p>
   </footer>
 
   <script src="https://unpkg.com/lucide@latest"></script>
