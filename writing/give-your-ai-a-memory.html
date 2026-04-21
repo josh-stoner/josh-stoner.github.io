@@ -12,11 +12,11 @@
     gtag('config', 'G-N6V09SW4DE');
   </script>
   <title>Give Your AI a Memory: What I Actually Built &mdash; Joshua Stoner</title>
-  <meta name="description" content="The real architecture of stonerOS — three memory layers, 23 subagents, 21 hooks, plain markdown files. No database. No vector store. Built on Claude Code.">
+  <meta name="description" content="The real architecture of stonerOS—three memory layers, 23 subagents, 21 hooks, plain markdown files. No database. No vector store. Built on Claude Code.">
   <link rel="canonical" href="https://josh-stoner.github.io/writing/give-your-ai-a-memory.html">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Give Your AI a Memory: What I Actually Built">
-  <meta property="og:description" content="The real architecture of stonerOS — three memory layers, 23 subagents, 21 hooks, plain markdown files. No database. No vector store. Built on Claude Code.">
+  <meta property="og:description" content="The real architecture of stonerOS—three memory layers, 23 subagents, 21 hooks, plain markdown files. No database. No vector store. Built on Claude Code.">
   <meta property="og:url" content="https://josh-stoner.github.io/writing/give-your-ai-a-memory.html">
   <meta property="og:site_name" content="Joshua Stoner">
   <meta property="article:author" content="Joshua Stoner">
@@ -24,7 +24,7 @@
   <meta property="og:image" content="https://josh-stoner.github.io/assets/og/give-your-ai-a-memory.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Give Your AI a Memory: What I Actually Built">
-  <meta name="twitter:description" content="The real architecture of stonerOS — three memory layers, 23 subagents, 21 hooks, plain markdown files. No database. No vector store. Built on Claude Code.">
+  <meta name="twitter:description" content="The real architecture of stonerOS—three memory layers, 23 subagents, 21 hooks, plain markdown files. No database. No vector store. Built on Claude Code.">
   <meta name="twitter:image" content="https://josh-stoner.github.io/assets/og/give-your-ai-a-memory.png">
   <script type="application/ld+json">
   {
@@ -34,7 +34,7 @@
     "author": {"@type": "Person", "name": "Joshua Stoner", "url": "https://josh-stoner.github.io"},
     "datePublished": "2026-04-23",
     "publisher": {"@type": "Person", "name": "Joshua Stoner"},
-    "description": "The real architecture of stonerOS — three memory layers, 23 subagents, 21 hooks, plain markdown files. No database. No vector store. Built on Claude Code."
+    "description": "The real architecture of stonerOS—three memory layers, 23 subagents, 21 hooks, plain markdown files. No database. No vector store. Built on Claude Code."
   }
   </script>
   <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
@@ -242,11 +242,11 @@
 
     <article class="article-body">
 
-      <p class="lede">The architecture of stonerOS &mdash; a persistent context system running on Claude Code. Plain files. No database. Two months of iteration.</p>
+      <p class="lede">The architecture of stonerOS&mdash;a persistent context system running on Claude Code. Plain files. No database. Two months of iteration.</p>
 
       <p>Most AI memory features are flat lists. Things the model noticed, stored without structure or priority. You spend three hours mapping project architecture. The AI remembers your name. It forgets the tradeoff you already rejected.</p>
 
-      <p>I built a system that fixes this. It&rsquo;s called stonerOS. It runs on Claude Code, but the core architecture works with any LLM that can read files. This is an honest account of what I actually built&mdash;not a simplified tutorial, but the real system.</p>
+      <p>I built a system that fixes this for me&mdash;stonerOS. It runs on Claude Code.</p>
 
       <hr>
 
@@ -257,7 +257,7 @@
 
       <h2 id="the-foundation"><i data-lucide="layers" class="icon-sky"></i> The Foundation</h2>
 
-      <p>The core idea: your AI reads markdown files at the start of every session. Those files contain everything about you&mdash;history, current work, preferences, how you think. When something changes, you update a file. Next session picks it up.</p>
+      <p>The core idea: my AI reads markdown files at the start of every session. Those files contain everything about me&mdash;history, current work, preferences, how I think. When something changes, I update a file. Next session picks it up.</p>
 
       <p>That&rsquo;s the whole idea. The rest is file organization and routing logic.</p>
 
@@ -287,7 +287,7 @@
 
       <h3>Layer 2: Learnings (Append-Only)</h3>
       <pre><code>learnings/
-├── corrections.md       # Errors the AI made — load FIRST, before anything else
+├── corrections.md       # Errors the AI made—load FIRST, before anything else
 ├── patterns.md          # Observed behavioral and work patterns
 ├── communication.md     # Voice, tone, format preferences
 └── expertise.md         # Domain knowledge accumulated over time</code></pre>
@@ -337,7 +337,7 @@ context/
 
       <pre><code>## 2026-03-10: Project shipped Q3, not Q4
 **Context**: AI wrote "launched in Q4 2025" in a portfolio write-up
-**Correction**: Project shipped end of September — Q3, not Q4
+**Correction**: Project shipped end of September—Q3, not Q4
 **Rule**: Always say "Q3 2025 launch" when referencing this project.</code></pre>
 
       <p>Load this file first&mdash;before the baseline, before anything else. In practice, after a few weeks, this starts to reduce the AI&rsquo;s most common mistakes about <em>you specifically</em>&mdash;not eliminate them, but it builds a working record of where it&rsquo;s failed before. This is the closest I&rsquo;ve gotten to actually teaching an LLM.</p>
@@ -381,7 +381,7 @@ context/
       <p><strong>Opus</strong> (reserved): <code>/debate</code>, <code>/challenge</code>, architecture decisions, adversarial analysis. Explicitly gated&mdash;runs only when the task actually needs Opus-tier reasoning.</p>
 
       <div class="insight-block">
-        <p>The rule: if you&rsquo;re doing 3+ sequential tool calls yourself, a subagent should own it instead. The main thread orchestrates&mdash;subagents execute.</p>
+        <p>My rule: once the main thread hits 3+ sequential tool calls, a subagent should own it instead. The main thread orchestrates&mdash;subagents execute.</p>
       </div>
 
       <h2 id="the-skill-and-command-system"><i data-lucide="command" class="icon-sky"></i> The Skill and Command System</h2>
