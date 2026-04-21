@@ -18,7 +18,7 @@
 
   /* Category Colors — stonerOS deck palette */
   --purple: #6d5acd;      /* AI Brain, Creative production */
-  --lavender: #6d5acd;    /* PerfDev (same family as purple) */
+  --lavender: #9183d1;    /* PerfDev, The Learning Reset — lighter/softer than purple for wayfinding distinction */
   --sky: #5a8dbf;          /* What My AI, Content Design */
   --steel: #557bcc;         /* Team Effectiveness */
   --gold: #b8941f;        /* AI Manager */
@@ -103,14 +103,8 @@ i[data-lucide].icon-green { color: var(--green); }
 i[data-lucide].icon-coral { color: var(--coral); }
 .icon-rose i[data-lucide], .icon-rose svg,
 i[data-lucide].icon-rose { color: var(--rose); }
-.icon-mauve i[data-lucide], .icon-mauve svg,
-i[data-lucide].icon-mauve { color: var(--coral); }
 .icon-yellow i[data-lucide], .icon-yellow svg,
 i[data-lucide].icon-yellow { color: var(--gold); }
-.icon-red i[data-lucide], .icon-red svg,
-i[data-lucide].icon-red { color: var(--coral); }
-.icon-flamingo i[data-lucide], .icon-flamingo svg,
-i[data-lucide].icon-flamingo { color: var(--coral); }
 .icon-muted i[data-lucide], .icon-muted svg,
 i[data-lucide].icon-muted { color: var(--text-faint); }
 
@@ -144,14 +138,13 @@ i[data-lucide].icon-muted { color: var(--text-faint); }
   flex-shrink: 0;
 }
 .card-icon.icon-purple { background: rgba(124,58,237,0.1); }
-.card-icon.icon-lavender { background: rgba(124,58,237,0.1); }
+.card-icon.icon-lavender { background: rgba(145,131,209,0.12); }
 .card-icon.icon-sky { background: rgba(74,144,217,0.1); }
 .card-icon.icon-steel { background: rgba(85,123,204,0.1); }
 .card-icon.icon-gold { background: rgba(212,160,23,0.1); }
 .card-icon.icon-green { background: rgba(52,168,83,0.1); }
 .card-icon.icon-coral { background: rgba(217,79,79,0.1); }
 .card-icon.icon-rose { background: rgba(196,112,136,0.1); }
-.card-icon.icon-mauve { background: rgba(217,79,79,0.1); }
 
 .card-icon i[data-lucide],
 .card-icon svg {
@@ -173,7 +166,6 @@ i[data-lucide].icon-muted { color: var(--text-faint); }
 .card-title:has(.icon-green) { color: var(--green); }
 .card-title:has(.icon-coral) { color: var(--coral); }
 .card-title:has(.icon-rose) { color: var(--rose); }
-.card-title:has(.icon-mauve) { color: var(--coral); }
 
 .case-icon {
   display: flex;
@@ -231,7 +223,6 @@ td strong:has(.icon-gold) { color: var(--gold); }
 td strong:has(.icon-green) { color: var(--green); }
 td strong:has(.icon-coral) { color: var(--coral); }
 td strong:has(.icon-rose) { color: var(--rose); }
-td strong:has(.icon-mauve) { color: var(--coral); }
 
 .skill-icon {
   display: inline-flex;
@@ -578,7 +569,7 @@ main {
 
 /* Tinted stat-icon backgrounds */
 .stat-icon.icon-purple { background: rgba(124,58,237,0.08); }
-.stat-icon.icon-lavender { background: rgba(124,58,237,0.08); }
+.stat-icon.icon-lavender { background: rgba(145,131,209,0.1); }
 .stat-icon.icon-sky { background: rgba(74,144,217,0.08); }
 .stat-icon.icon-green { background: rgba(52,168,83,0.08); }
 .stat-icon.icon-gold { background: rgba(212,160,23,0.08); }
@@ -633,7 +624,6 @@ main {
 .card:has(.icon-green)::before { background: var(--green); }
 .card:has(.icon-coral)::before { background: var(--coral); }
 .card:has(.icon-rose)::before { background: var(--rose); }
-.card:has(.icon-mauve)::before { background: var(--coral); }
 
 a.card:hover {
   transform: translateY(-2px);
@@ -687,7 +677,7 @@ a.card:hover {
 }
 
 .tag--purple { color: var(--purple); background: rgba(124,58,237,0.08); border-color: rgba(124,58,237,0.12); }
-.tag--lavender { color: var(--lavender); background: rgba(124,58,237,0.08); border-color: rgba(124,58,237,0.12); }
+.tag--lavender { color: var(--lavender); background: rgba(145,131,209,0.1); border-color: rgba(145,131,209,0.15); }
 .tag--sky { color: var(--sky); background: rgba(74,144,217,0.08); border-color: rgba(74,144,217,0.12); }
 .tag--steel { color: var(--steel); background: rgba(85,123,204,0.08); border-color: rgba(85,123,204,0.12); }
 .tag--gold { color: var(--gold); background: rgba(212,160,23,0.08); border-color: rgba(212,160,23,0.12); }
@@ -719,7 +709,6 @@ a.card:hover {
 .section-label:has(.icon-green) { color: var(--green); border-bottom-color: var(--green); }
 .section-label:has(.icon-coral) { color: var(--coral); border-bottom-color: var(--coral); }
 .section-label:has(.icon-rose) { color: var(--rose); border-bottom-color: var(--rose); }
-.section-label:has(.icon-mauve) { color: var(--coral); border-bottom-color: var(--coral); }
 
 /* ---- Tables ---- */
 
@@ -1182,10 +1171,6 @@ a.card:has(.icon-coral):hover {
 a.card:has(.icon-rose):hover {
   box-shadow: 0 8px 24px rgba(196,112,136,0.1), 0 2px 8px rgba(196,112,136,0.05);
 }
-a.card:has(.icon-mauve):hover {
-  box-shadow: 0 8px 24px rgba(217,79,79,0.1), 0 2px 8px rgba(217,79,79,0.05);
-}
-
 /* ---- Theme Toggle Button ---- */
 
 .theme-toggle {
@@ -1242,7 +1227,7 @@ a.card:has(.icon-mauve):hover {
 
   /* Accent colors — stonerOS deck palette (lightened for dark bg) */
   --purple: #8a75d6;
-  --lavender: #8a75d6;
+  --lavender: #ac9ee0;
   --sky: #7aa4cc;
   --steel: #7b9be0;
   --gold: #d4ad3a;

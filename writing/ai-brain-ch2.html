@@ -303,8 +303,8 @@
 
       <p>The core architectural decision in stonerOS is separating memory into three distinct layers. Each layer has different characteristics, different update rules, and different implications for how the AI uses it.</p>
 
-      <img class="img-light" src="../assets/images/ai-brain-architecture.png" alt="stonerOS architecture diagram: three memory layers, 21 agents across Haiku/Sonnet/Opus tiers, and six automation hooks">
-      <img class="img-dark" src="../assets/images/ai-brain-architecture-dark.png" alt="stonerOS architecture diagram: three memory layers, 21 agents across Haiku/Sonnet/Opus tiers, and six automation hooks">
+      <img class="img-light" src="../assets/images/ai-brain-architecture.png" alt="stonerOS architecture diagram: three memory layers, 23 agents across Haiku/Sonnet/Opus tiers, and 21 automation hooks">
+      <img class="img-dark" src="../assets/images/ai-brain-architecture-dark.png" alt="stonerOS architecture diagram: three memory layers, 23 agents across Haiku/Sonnet/Opus tiers, and 21 automation hooks">
 
       <!-- Layer 1 -->
       <div class="layer-section layer-baseline">
@@ -412,7 +412,7 @@
 
       <p>File and directory naming sounds like a minor implementation detail. It isn&rsquo;t.</p>
 
-      <p>When the system was young and I was the only one navigating it, arbitrary names were fine. <code>stuff.md</code> didn&rsquo;t matter because I knew what stuff.md was. But once you have 21 agents loading different combinations of files at session start, names become a coordination mechanism. The wrong file in the wrong agent&rsquo;s loading path means outdated context, irrelevant noise, or missing facts.</p>
+      <p>When the system was young and I was the only one navigating it, arbitrary names were fine. <code>stuff.md</code> didn&rsquo;t matter because I knew what stuff.md was. But once you have 23 agents loading different combinations of files at session start, names become a coordination mechanism. The wrong file in the wrong agent&rsquo;s loading path means outdated context, irrelevant noise, or missing facts.</p>
 
       <div class="convention-grid">
         <div class="convention-item">
