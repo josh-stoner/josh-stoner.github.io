@@ -268,20 +268,11 @@
     .faq-a { display: none; padding: 14px 18px; font-size: 14px; color: var(--text-secondary); line-height: 1.65; background: var(--bg-card); border-top: 1px solid var(--border); }
     .faq-item.open .faq-a { display: block; }
 
-    /* ─── Build notes ─────────────────────────────── */
-    .build-section { background: var(--bg-dark); color: #D2CBC7; padding: 52px 0; }
-    .build-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-    .build-col-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(210,203,199,0.4); margin-bottom: 16px; }
-    .build-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .build-list li { font-size: 13px; color: rgba(210,203,199,0.65); line-height: 1.55; display: flex; gap: 10px; }
-    .build-list li::before { content: '→'; color: rgba(210,203,199,0.25); flex-shrink: 0; }
-    .build-note { margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 13px; color: rgba(210,203,199,0.35); line-height: 1.65; }
-
     @media (max-width: 680px) {
       .scenario-nav { grid-template-columns: 1fr 1fr; }
       .field-row { grid-template-columns: 1fr; gap: 4px; }
       .field-key { text-align: left; padding-top: 0; }
-      .output-grid, .deploy-grid, .build-grid, .before-grid { grid-template-columns: 1fr; }
+      .output-grid, .deploy-grid, .before-grid { grid-template-columns: 1fr; }
       .hero h1 { font-size: 28px; }
       .slack-sidebar { display: none; }
       .slack-chrome { grid-template-columns: 1fr; }
@@ -310,7 +301,7 @@
         <div class="before-excerpt">
           "High-performing teams don't wait for performance reviews to share what's working and what isn't. Research consistently shows that employees who receive regular, specific feedback are more engaged, develop faster, and are more likely to stay…"
           <br><br>
-          <em>↓ 1,800 more words. Table of contents. Worked examples. Common mistakes. FAQs.</em>
+          <em>↓ 2,000 words total. Table of contents. Worked examples. Common mistakes. FAQs.</em>
         </div>
       </div>
       <div>
@@ -490,33 +481,6 @@
   </div>
 </section>
 
-<section class="build-section">
-  <div class="container">
-    <div class="build-grid">
-      <div>
-        <div class="build-col-label">AI was used for</div>
-        <ul class="build-list">
-          <li>Generating the mock 2,000-word "before" Confluence doc from SBI-D source material</li>
-          <li>Producing 15+ scenario question drafts &mdash; 4 per component selected, most rewritten</li>
-          <li>Drafting FAQ answers &mdash; roughly half rewritten for directness and specificity</li>
-          <li>Stress-testing usability by simulating a time-pressured manager</li>
-          <li>HTML scaffold and component structure</li>
-        </ul>
-      </div>
-      <div>
-        <div class="build-col-label">Human decisions</div>
-        <ul class="build-list">
-          <li>Design thesis: training artifact &rarr; decision-support tool</li>
-          <li>The 5 scenario structure and what each moment anchors to</li>
-          <li>Confluence + Slack as target surfaces (per brief); dual-path deployment model</li>
-          <li>Progressive disclosure, information hierarchy, output structure</li>
-          <li>All rationale copy and artifact framing</li>
-        </ul>
-        <div class="build-note">The AI output I rejected was as useful as what I kept &mdash; it consistently over-explained, confirming the original guide's core failure mode and sharpening the redesign thesis.</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <script>
   /* All user-generated text inserted via textContent — not innerHTML — to prevent XSS */
