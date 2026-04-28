@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback in the Moment — SBI-D Redesign</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F1F0ED;
+      --bg-card: #FFFFFF;
+      --bg-inner: #F5F4F1;
+      --bg-dark: #110A0F;
+      --border: rgba(0,0,0,0.07);
+      --border-md: rgba(0,0,0,0.10);
+      --text-primary: #1a1a1a;
+      --text-secondary: #666666;
+      --text-tertiary: #999999;
+      --accent: #6d5acd;
+      --accent-light: #EEEAFF;
+      --radius: 8px;
+      --radius-card: 12px;
+      --shadow: 0 1px 4px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* ─── Header ─────────────────────────────────── */
+    .site-header {
+      background: var(--bg-card);
+      border-top: 3px solid var(--accent);
+      border-bottom: 1px solid var(--border-md);
+      padding: 20px 0;
+    }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; }
+    .site-title { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: var(--text-primary); }
+    .site-meta { font-size: 12px; color: var(--text-tertiary); margin-top: 2px; }
+    .before-toggle {
+      font-size: 12px; color: var(--text-tertiary); cursor: pointer;
+      text-decoration: underline; text-underline-offset: 3px;
+      background: none; border: none; font-family: inherit; padding: 0;
+    }
+    .before-toggle:hover { color: var(--text-secondary); }
+
+    /* ─── Before panel ───────────────────────────── */
+    .before-panel { display: none; background: #FBF7EC; border-bottom: 1px solid #E8D49A; padding: 24px 0; }
+    .before-panel.open { display: block; }
+    .before-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .before-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #7A5C0E; margin-bottom: 8px; }
+    .before-excerpt { font-size: 13px; color: #5C4208; line-height: 1.7; border-left: 3px solid #D4AD3A; padding-left: 12px; }
+    .before-thesis { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+
+    /* ─── Hero ───────────────────────────────────── */
+    .hero {
+      background: var(--bg);
+      padding: 60px 0 52px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-md);
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--accent); margin-bottom: 16px;
+    }
+    .hero h1 { font-size: 38px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+    .hero p { font-size: 16px; color: var(--text-secondary); max-width: 520px; margin: 0 auto; line-height: 1.6; }
+
+    /* ─── Tool section ───────────────────────────── */
+    .tool-section { background: var(--bg-card); padding: 40px 0 80px; border-bottom: 1px solid var(--border-md); }
+    .scenario-nav { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 24px; }
+    .scenario-btn {
+      background: var(--bg); border: 1.5px solid var(--border-md); border-radius: var(--radius);
+      padding: 14px 10px; cursor: pointer; text-align: left; font-family: inherit; transition: all 0.15s;
+    }
+    .scenario-btn:hover { background: var(--bg-inner); border-color: rgba(0,0,0,0.14); }
+    .scenario-btn.active { background: var(--bg-card); border-color: var(--s-color); box-shadow: var(--shadow); }
+    .s-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--s-color); margin-bottom: 10px; }
+    .s-label { font-size: 12px; font-weight: 600; line-height: 1.3; margin-bottom: 3px; color: var(--text-primary); }
+    .s-tag { font-size: 11px; color: var(--text-tertiary); line-height: 1.4; }
+
+    /* ─── Form card ──────────────────────────────── */
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-md);
+      border-top: 3px solid var(--s-color, var(--border-md));
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .form-head {
+      padding: 18px 24px; border-bottom: 1px solid var(--border);
+      background: var(--bg-inner); display: flex; align-items: center; gap: 10px;
+    }
+    .form-head-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border-md); flex-shrink: 0; transition: background 0.2s; }
+    .form-head-text h2 { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+    .form-head-text p { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
+    .form-fields { padding: 24px; display: flex; flex-direction: column; gap: 24px; background: var(--bg-card); }
+    .form-placeholder { padding: 8px 0; font-size: 14px; color: var(--text-tertiary); text-align: center; }
+    .field-row { display: grid; grid-template-columns: 72px 1fr; gap: 16px; align-items: start; }
+    .field-key { padding-top: 10px; text-align: right; }
+    .field-code { font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    .field-name { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+    .field-question { font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; line-height: 1.5; }
+    textarea {
+      width: 100%; padding: 10px 12px;
+      border: 1.5px solid var(--border-md); border-radius: var(--radius);
+      font-family: inherit; font-size: 14px; color: var(--text-primary); line-height: 1.5;
+      resize: vertical; min-height: 68px; outline: none; transition: border-color 0.15s;
+      background: var(--bg);
+    }
+    textarea:focus { border-color: var(--accent); background: var(--bg-card); }
+    textarea::placeholder { color: var(--text-tertiary); }
+    .form-foot {
+      padding: 14px 24px; border-top: 1px solid var(--border);
+      background: var(--bg-inner); display: flex; align-items: center; justify-content: space-between;
+    }
+    .field-count { font-size: 12px; color: var(--text-tertiary); }
+    .gen-btn {
+      background: var(--accent); color: white; border: none; border-radius: var(--radius);
+      padding: 9px 20px; font-size: 13px; font-weight: 500; cursor: pointer; font-family: inherit;
+      opacity: 0.35; pointer-events: none; transition: all 0.15s;
+    }
+    .gen-btn.ready { opacity: 1; pointer-events: auto; }
+    .gen-btn.ready:hover { background: #5a47b0; }
+
+    /* ─── Output ──────────────────────────────────── */
+    .output-section { display: none; margin-top: 20px; }
+    .output-section.visible { display: block; }
+    .output-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .output-card {
+      background: var(--bg-card); border: 1px solid var(--border-md);
+      border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow);
+    }
+    .output-head {
+      padding: 12px 16px; border-bottom: 1px solid var(--border);
+      background: var(--bg-inner); display: flex; justify-content: space-between; align-items: center;
+    }
+    .output-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); }
+    .copy-btn { font-size: 12px; color: var(--accent); background: none; border: none; cursor: pointer; font-family: inherit; font-weight: 500; padding: 0; }
+    .copy-btn:hover { opacity: 0.7; }
+    .output-body { padding: 16px; }
+    .output-prose { font-size: 14px; line-height: 1.7; }
+    .chunk { margin-bottom: 12px; }
+    .chunk:last-child { margin-bottom: 0; }
+    .klabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 3px; }
+    .klabel-text { display: block; }
+    .ai-prompt {
+      font-size: 12px; line-height: 1.65; color: var(--text-secondary);
+      background: var(--bg); border-radius: 6px; padding: 14px;
+      white-space: pre-wrap; word-break: break-word;
+      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+    }
+
+    /* ─── Deployment ──────────────────────────────── */
+    .deploy-section {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border-md);
+      padding: 64px 0;
+    }
+    .section-eyebrow {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--accent); margin-bottom: 8px;
+    }
+    .section-h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 10px; color: var(--text-primary); }
+    .section-sub { font-size: 15px; color: var(--text-secondary); max-width: 540px; line-height: 1.6; margin-bottom: 36px; }
+    .deploy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .deploy-card { background: var(--bg-card); border: 1px solid var(--border-md); border-radius: var(--radius-card); overflow: hidden; }
+    .deploy-card-head {
+      padding: 14px 18px; border-bottom: 1px solid var(--border);
+      background: var(--bg-inner); display: flex; align-items: center; gap: 10px;
+    }
+    .deploy-icon { width: 30px; height: 30px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+    .deploy-icon.slack { background: #4A154B; }
+    .deploy-icon.confluence { background: #0052CC; }
+    .deploy-card-name { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+    .deploy-card-tag { font-size: 11px; color: var(--text-tertiary); margin-top: 1px; }
+    .deploy-steps { padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+    .deploy-step { display: flex; gap: 10px; align-items: flex-start; }
+    .step-n {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--bg-inner); border: 1px solid var(--border-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 600; color: var(--text-secondary); flex-shrink: 0; margin-top: 1px;
+    }
+    .step-t { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+    .step-t strong { color: var(--text-primary); font-weight: 500; }
+
+    /* ─── Slack mockup ────────────────────────────── */
+    .mockup-wrap { margin-top: 36px; border: 1px solid var(--border-md); border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-md); }
+    .slack-chrome { display: grid; grid-template-columns: 200px 1fr; background: #1A1D21; min-height: 300px; }
+    .slack-sidebar { background: #19171D; border-right: 1px solid rgba(255,255,255,0.07); padding: 14px 0; }
+    .slack-ws { padding: 0 14px 10px; font-size: 14px; font-weight: 700; color: white; }
+    .slack-ch { padding: 4px 14px; font-size: 13px; color: rgba(255,255,255,0.45); display: flex; align-items: center; gap: 7px; }
+    .slack-ch.active { background: rgba(255,255,255,0.1); color: white; border-radius: 4px; margin: 0 6px; padding: 4px 8px; }
+    .slack-ch-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.25); flex-shrink: 0; }
+    .slack-main { position: relative; display: flex; flex-direction: column; }
+    .slack-chan-head { padding: 10px 18px; border-bottom: 1px solid rgba(255,255,255,0.07); font-size: 14px; font-weight: 600; color: white; }
+    .slack-chan-head span { color: rgba(255,255,255,0.45); }
+    .slack-msgs { padding: 18px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
+    .slack-msg { display: flex; gap: 10px; align-items: flex-start; }
+    .slack-av { width: 30px; height: 30px; border-radius: 6px; background: linear-gradient(135deg, #6d5acd, #9183d1); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: white; }
+    .slack-msg-meta { font-size: 12px; color: rgba(255,255,255,0.35); margin-bottom: 3px; }
+    .slack-msg-meta strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+    .slack-msg-text { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+    .slack-chip { display: inline-flex; align-items: center; gap: 4px; background: rgba(109,90,205,0.2); border: 1px solid rgba(109,90,205,0.4); border-radius: 4px; padding: 2px 8px; font-size: 12px; color: #AC9EE0; font-weight: 500; }
+    .slack-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.55); display: flex; align-items: center; justify-content: center; }
+    .slack-modal { background: #1A1D21; border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; width: 420px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+    .modal-head { padding: 18px 18px 0; display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+    .modal-title { font-size: 17px; font-weight: 700; color: white; }
+    .modal-sub { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 3px; }
+    .modal-close { color: rgba(255,255,255,0.35); font-size: 20px; line-height: 1; }
+    .modal-body { padding: 0 18px 18px; display: flex; flex-direction: column; gap: 12px; }
+    .modal-field-label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.65); margin-bottom: 5px; }
+    .modal-select { display: flex; gap: 6px; flex-wrap: wrap; }
+    .modal-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 4px 12px; font-size: 12px; color: rgba(255,255,255,0.45); }
+    .modal-chip.on { background: rgba(109,90,205,0.25); border-color: rgba(109,90,205,0.5); color: #AC9EE0; }
+    .modal-input { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 9px 12px; font-size: 13px; color: rgba(255,255,255,0.55); width: 100%; line-height: 1.4; }
+    .modal-foot { padding: 12px 18px; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: flex-end; gap: 8px; }
+    .modal-btn { padding: 7px 16px; border-radius: 6px; font-size: 13px; font-weight: 500; border: none; font-family: inherit; }
+    .modal-btn.ghost { background: transparent; color: rgba(255,255,255,0.4); }
+    .modal-btn.primary { background: #6d5acd; color: white; }
+    .mockup-cap { background: var(--bg-inner); border-top: 1px solid var(--border-md); padding: 9px 16px; font-size: 11px; color: var(--text-tertiary); text-align: center; }
+
+    /* ─── FAQ ─────────────────────────────────────── */
+    .faq-section { background: var(--bg-card); border-bottom: 1px solid var(--border-md); padding: 64px 0; }
+    .faq-filters { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 5px 16px; border: 1.5px solid var(--border-md); border-radius: 20px;
+      font-size: 12px; font-weight: 500; cursor: pointer; background: var(--bg-card);
+      color: var(--text-secondary); font-family: inherit; transition: all 0.15s;
+    }
+    .filter-btn.on, .filter-btn:hover {
+      border-color: var(--btn-color, var(--accent));
+      color: var(--btn-color, var(--accent));
+      background: var(--btn-bg, var(--accent-light));
+    }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-group { margin-bottom: 28px; }
+    .faq-group:last-child { margin-bottom: 0; }
+    .faq-group-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--faq-color);
+    }
+    .faq-group-header::after { content: ''; flex: 1; height: 1px; background: var(--faq-color); opacity: 0.2; }
+    .faq-group-items { display: flex; flex-direction: column; gap: 4px; }
+    .faq-item { border: 1px solid var(--border-md); border-left: 3px solid var(--faq-color); border-radius: var(--radius); overflow: hidden; }
+    .faq-q {
+      padding: 14px 18px; font-size: 14px; font-weight: 500; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--bg-card); user-select: none; transition: background 0.12s;
+    }
+    .faq-q:hover { background: var(--bg); }
+    .faq-chev { color: var(--text-tertiary); transition: transform 0.2s; font-style: normal; flex-shrink: 0; margin-left: 12px; }
+    .faq-item.open .faq-chev { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 14px 18px; font-size: 14px; color: var(--text-secondary); line-height: 1.65; background: var(--bg-card); border-top: 1px solid var(--border); }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ─── Build notes ─────────────────────────────── */
+    .build-section { background: var(--bg-dark); color: #D2CBC7; padding: 52px 0; }
+    .build-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .build-col-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(210,203,199,0.4); margin-bottom: 16px; }
+    .build-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .build-list li { font-size: 13px; color: rgba(210,203,199,0.65); line-height: 1.55; display: flex; gap: 10px; }
+    .build-list li::before { content: '→'; color: rgba(210,203,199,0.25); flex-shrink: 0; }
+    .build-note { margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 13px; color: rgba(210,203,199,0.35); line-height: 1.65; }
+
+    @media (max-width: 680px) {
+      .scenario-nav { grid-template-columns: 1fr 1fr; }
+      .field-row { grid-template-columns: 1fr; gap: 4px; }
+      .field-key { text-align: left; padding-top: 0; }
+      .output-grid, .deploy-grid, .build-grid, .before-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 28px; }
+      .slack-sidebar { display: none; }
+      .slack-chrome { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <div>
+        <div class="site-title">Feedback in the Moment</div>
+        <div class="site-meta">SBI-D for Confluence + Slack &middot; Stripe Learning Architect Exercise</div>
+      </div>
+      <button class="before-toggle" onclick="toggleBefore(this)">See what this replaces ↓</button>
+    </div>
+  </div>
+</header>
+
+<div class="before-panel" id="beforePanel">
+  <div class="container">
+    <div class="before-grid">
+      <div>
+        <div class="before-label">Before — Confluence guide (excerpt)</div>
+        <div class="before-excerpt">
+          "High-performing teams don't wait for performance reviews to share what's working and what isn't. Research consistently shows that employees who receive regular, specific feedback are more engaged, develop faster, and are more likely to stay…"
+          <br><br>
+          <em>↓ 1,800 more words. Table of contents. Worked examples. Common mistakes. FAQs.</em>
+        </div>
+      </div>
+      <div>
+        <div class="before-label">The redesign thesis</div>
+        <div class="before-thesis">
+          The original guide is built for comprehensiveness — the right goal for a training artifact. But it fails the manager who has 5 minutes before a hard conversation. They don't need to read about feedback. They need to give it.<br><br>
+          This redesign converts the same framework into a decision-support tool: scenario-based, question-driven, built to live where feedback actually happens — in Slack and Confluence, not on a page you have to find first.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">SBI-D Feedback Builder</div>
+    <h1>What do you say right now?</h1>
+    <p>Pick your situation. Answer four questions. Get feedback you can actually deliver — plus a prompt to take it further with AI.</p>
+  </div>
+</section>
+
+<section class="tool-section">
+  <div class="container">
+    <div class="scenario-nav" id="scenarioNav"></div>
+    <div class="form-card" id="formCard">
+      <div class="form-head" id="formHead">
+        <div class="form-head-dot" id="formDot"></div>
+        <div class="form-head-text">
+          <h2 id="formTitle">Choose a scenario above</h2>
+          <p id="formTagline">Select the context that best fits your situation</p>
+        </div>
+      </div>
+      <div class="form-fields" id="formFields">
+        <div class="form-placeholder">Select a scenario to get started</div>
+      </div>
+      <div class="form-foot">
+        <span class="field-count" id="fieldCount">0 of 4 fields completed</span>
+        <button class="gen-btn" id="genBtn" onclick="generateOutput()">See my feedback →</button>
+      </div>
+    </div>
+    <div class="output-section" id="outputSection">
+      <div class="output-grid">
+        <div class="output-card">
+          <div class="output-head">
+            <span class="output-title">Your feedback</span>
+            <button class="copy-btn" onclick="copyOutput('summaryOut', this)">Copy</button>
+          </div>
+          <div class="output-body">
+            <div class="output-prose" id="summaryOut"></div>
+          </div>
+        </div>
+        <div class="output-card">
+          <div class="output-head">
+            <span class="output-title">Take to AI</span>
+            <button class="copy-btn" onclick="copyOutput('aiOut', this)">Copy prompt</button>
+          </div>
+          <div class="output-body">
+            <div class="ai-prompt" id="aiOut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="deploy-section">
+  <div class="container">
+    <div class="section-eyebrow">How it deploys</div>
+    <h2 class="section-h2">Where it lives in your workflow</h2>
+    <p class="section-sub">Designed to be embedded — not a destination you navigate to, but something that surfaces where feedback actually happens.</p>
+    <div class="deploy-grid">
+      <div class="deploy-card">
+        <div class="deploy-card-head">
+          <div class="deploy-icon slack">💬</div>
+          <div>
+            <div class="deploy-card-name">Slack — in-the-moment path</div>
+            <div class="deploy-card-tag">Never leave your workflow</div>
+          </div>
+        </div>
+        <div class="deploy-steps">
+          <div class="deploy-step"><div class="step-n">1</div><div class="step-t">Type <strong>/feedback</strong> or click the Workflow shortcut from any channel or DM</div></div>
+          <div class="deploy-step"><div class="step-n">2</div><div class="step-t">A <strong>native Slack modal</strong> opens with the scenario selector and SBI-D questions — no browser tab required</div></div>
+          <div class="deploy-step"><div class="step-n">3</div><div class="step-t">Submit → Workflow Builder <strong>DMs you</strong> the assembled summary and AI prompt instantly</div></div>
+          <div class="deploy-step"><div class="step-n">4</div><div class="step-t">Copy, use, or take to your AI assistant — entirely within Slack</div></div>
+        </div>
+      </div>
+      <div class="deploy-card">
+        <div class="deploy-card-head">
+          <div class="deploy-icon confluence">📄</div>
+          <div>
+            <div class="deploy-card-name">Confluence — reference path</div>
+            <div class="deploy-card-tag">For the full experience</div>
+          </div>
+        </div>
+        <div class="deploy-steps">
+          <div class="deploy-step"><div class="step-n">1</div><div class="step-t">This artifact is <strong>embedded via iframe</strong> in the existing Confluence feedback page — replacing the static text as the default view</div></div>
+          <div class="deploy-step"><div class="step-n">2</div><div class="step-t">The original guide <strong>moves to a collapsed section</strong> at the bottom — accessible, not the default</div></div>
+          <div class="deploy-step"><div class="step-n">3</div><div class="step-t">Builder, FAQ, and deployment context <strong>in one page</strong> — nothing to install, no new tool to learn</div></div>
+          <div class="deploy-step"><div class="step-n">4</div><div class="step-t">The Confluence page <strong>links to the Slack shortcut</strong> — both paths connected</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mockup-wrap">
+      <div class="slack-chrome">
+        <div class="slack-sidebar">
+          <div class="slack-ws">Stripe</div>
+          <div class="slack-ch active"><div class="slack-ch-dot" style="background:#6d5acd"></div># general</div>
+          <div class="slack-ch"><div class="slack-ch-dot"></div># engineering</div>
+          <div class="slack-ch"><div class="slack-ch-dot"></div># people-programs</div>
+          <div class="slack-ch"><div class="slack-ch-dot"></div>Direct messages</div>
+        </div>
+        <div class="slack-main">
+          <div class="slack-chan-head"><span>#</span> general</div>
+          <div class="slack-msgs">
+            <div class="slack-msg">
+              <div class="slack-av">JS</div>
+              <div>
+                <div class="slack-msg-meta"><strong>You</strong> &nbsp;10:22 AM</div>
+                <div class="slack-msg-text"><span class="slack-chip">&#9889; /feedback</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="slack-overlay">
+            <div class="slack-modal">
+              <div class="modal-head">
+                <div>
+                  <div class="modal-title">Feedback Builder</div>
+                  <div class="modal-sub">SBI-D &middot; Powered by People Programs</div>
+                </div>
+                <div class="modal-close">&#215;</div>
+              </div>
+              <div class="modal-body">
+                <div>
+                  <div class="modal-field-label">What type of feedback are you giving?</div>
+                  <div class="modal-select">
+                    <div class="modal-chip">Reinforcing</div>
+                    <div class="modal-chip on">Redirecting</div>
+                    <div class="modal-chip">Peer / 360</div>
+                    <div class="modal-chip">Performance</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="modal-field-label">S &mdash; When and where did this happen?</div>
+                  <div class="modal-input">In Monday's design review when we were presenting the timeline&hellip;</div>
+                </div>
+                <div>
+                  <div class="modal-field-label">B &mdash; What specifically did you observe?</div>
+                  <div class="modal-input">You redirected before Marcus finished his point&hellip;</div>
+                </div>
+              </div>
+              <div class="modal-foot">
+                <button class="modal-btn ghost">Cancel</button>
+                <button class="modal-btn primary">Generate feedback &rarr;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-cap">Slack Workflow Builder modal &mdash; native, no browser required &nbsp;&middot;&nbsp; Illustrative mockup</div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="container">
+    <div class="section-eyebrow">Common questions</div>
+    <h2 class="section-h2">When you want to understand, not just do</h2>
+    <p class="section-sub">Direct answers to real questions &mdash; no scrolling through 2,000 words.</p>
+    <div class="faq-filters">
+      <button class="filter-btn on" onclick="filterFaq('all',this)">All</button>
+      <button class="filter-btn" style="--btn-color:#4a9960;--btn-bg:#EDF7F0" onclick="filterFaq('Giving',this)">Giving feedback</button>
+      <button class="filter-btn" style="--btn-color:#557bcc;--btn-bg:#EEF3FB" onclick="filterFaq('Receiving',this)">Receiving feedback</button>
+      <button class="filter-btn" style="--btn-color:#b8941f;--btn-bg:#FBF6EC" onclick="filterFaq('Tricky',this)">Tricky situations</button>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<section class="build-section">
+  <div class="container">
+    <div class="build-grid">
+      <div>
+        <div class="build-col-label">AI was used for</div>
+        <ul class="build-list">
+          <li>Generating the mock 2,000-word "before" Confluence doc from SBI-D source material</li>
+          <li>Producing 15+ scenario question drafts &mdash; 4 per component selected, most rewritten</li>
+          <li>Drafting FAQ answers &mdash; roughly half rewritten for directness and specificity</li>
+          <li>Stress-testing usability by simulating a time-pressured manager</li>
+          <li>HTML scaffold and component structure</li>
+        </ul>
+      </div>
+      <div>
+        <div class="build-col-label">Human decisions</div>
+        <ul class="build-list">
+          <li>Design thesis: training artifact &rarr; decision-support tool</li>
+          <li>The 5 scenario structure and what each moment anchors to</li>
+          <li>Confluence + Slack as target surfaces (per brief); dual-path deployment model</li>
+          <li>Progressive disclosure, information hierarchy, output structure</li>
+          <li>All rationale copy and artifact framing</li>
+        </ul>
+        <div class="build-note">The AI output I rejected was as useful as what I kept &mdash; it consistently over-explained, confirming the original guide's core failure mode and sharpening the redesign thesis.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  /* All user-generated text inserted via textContent — not innerHTML — to prevent XSS */
+
+  function escHtml(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  const scenarios = [
+    {
+      id: 'realtime', label: 'Pre-1:1 / Real-time', tag: '"I need to give feedback right now"', color: '#b8941f',
+      qs: {
+        S: { name: 'Situation', q: 'When and where did this happen? Name the specific setting — a meeting, a Slack thread, a moment.' },
+        B: { name: 'Behavior',  q: 'What exactly did you observe? Describe the words or actions — not your interpretation of them.' },
+        I: { name: 'Impact',    q: 'What was the effect? On the work, the team, a deadline, or a relationship?' },
+        D: { name: 'Discussion',q: 'What do you most want to understand from their perspective?' }
+      },
+      hints: {
+        S: "e.g. In this morning's standup when we were reviewing the blockers...",
+        B: "e.g. You cut off Priya before she finished explaining the issue...",
+        I: "e.g. We moved on without understanding the full problem — the team is now blocked...",
+        D: "e.g. I want to understand what was driving the urgency to move on when you did"
+      }
+    },
+    {
+      id: 'reinforcing', label: 'Reinforcing', tag: '"Something went well — I want it to stick"', color: '#4a9960',
+      qs: {
+        S: { name: 'Situation', q: 'What was the specific situation where this stood out?' },
+        B: { name: 'Behavior',  q: 'What specifically did they do or say that you want to name?' },
+        I: { name: 'Impact',    q: 'Why did it matter? What did it enable, signal, or change?' },
+        D: { name: 'Discussion',q: 'What do you want them to take forward — or what are you genuinely curious to understand?' }
+      },
+      hints: {
+        S: "e.g. During Thursday's client demo when the data pipeline issue came up...",
+        B: "e.g. You immediately looped in Priya and had a workaround in Slack within 15 min...",
+        I: "e.g. The demo ran cleanly and the client had no idea there was a problem...",
+        D: "e.g. What made you default to looping someone in rather than solving it yourself first?"
+      }
+    },
+    {
+      id: 'redirecting', label: 'Redirecting', tag: '"Something needs to change"', color: '#c06060',
+      qs: {
+        S: { name: 'Situation', q: 'When did this happen? Name the specific moment.' },
+        B: { name: 'Behavior',  q: 'What did you observe — the action or words, not your judgment of them?' },
+        I: { name: 'Impact',    q: 'What was the cost? Be honest about the effect on the team, work, or outcome.' },
+        D: { name: 'Discussion',q: 'What question do you want to ask them before drawing any conclusions?' }
+      },
+      hints: {
+        S: "e.g. In Monday's design review when we were presenting the revised timeline...",
+        B: "e.g. You redirected the conversation before Marcus finished his point...",
+        I: "e.g. We left without a clear handoff date — engineering is now blocked...",
+        D: "e.g. What was driving the urgency to redirect when you did?"
+      }
+    },
+    {
+      id: 'peer', label: 'Peer / 360', tag: '"Feedback to someone I don\'t manage"', color: '#9183d1',
+      qs: {
+        S: { name: 'Situation', q: 'In what context did you observe this?' },
+        B: { name: 'Behavior',  q: 'What did you see or hear them do or say?' },
+        I: { name: 'Impact',    q: 'How did it affect you, the team, or the project?' },
+        D: { name: 'Discussion',q: 'What perspective are you genuinely curious about from them?' }
+      },
+      hints: {
+        S: "e.g. During last week's retrospective reviewing sprint outcomes...",
+        B: "e.g. You shared detailed notes on what you observed blocking the team...",
+        I: "e.g. It made the retro feel actually useful — I left with two concrete changes...",
+        D: "e.g. How do you decide what's worth documenting vs. raising verbally?"
+      }
+    },
+    {
+      id: 'performance', label: 'Performance Cycle', tag: '"Written feedback for a review"', color: '#557bcc',
+      qs: {
+        S: { name: 'Situation', q: 'What project, timeframe, or situation anchors this feedback?' },
+        B: { name: 'Behavior',  q: 'What specific actions, contributions, or behaviors did you observe?' },
+        I: { name: 'Impact',    q: 'What was the outcome or effect? Be specific — reviewers weight concrete impact heavily.' },
+        D: { name: 'Discussion',q: 'What growth question or reflection would you want them to carry forward?' }
+      },
+      hints: {
+        S: "e.g. Across Q1, specifically the payments integration project...",
+        B: "e.g. Consistently flagged cross-team dependencies before they became blockers...",
+        I: "e.g. The project shipped on time despite 3 scope changes — this was a direct factor...",
+        D: "e.g. How might this show up more proactively in larger, more ambiguous projects?"
+      }
+    }
+  ];
+
+  const faqs = [
+    { cat: 'Giving',    q: "What if I don't have a specific situation yet?",           a: "Wait until you do. Pattern feedback without a specific anchor creates defensiveness and is hard to act on. Catch the next instance — even if it's smaller than what you originally wanted to address." },
+    { cat: 'Giving',    q: "How soon after the event should I give feedback?",          a: "Reinforcing feedback: as soon as you observe it — don't bank it for a 1:1. Developmental feedback: same week is ideal. After two weeks, the behavior is harder to recall and the conversation starts to feel like you've been keeping score." },
+    { cat: 'Giving',    q: "Can SBI-D work in writing?",                               a: "Yes — especially useful there. Written feedback strips tone and body language, so grounding it in observation (B) and specific impact (I) reduces misinterpretation. Avoid vague summary language like 'strong communicator' — reviewers weight specific observations more heavily." },
+    { cat: 'Giving',    q: "What if I have multiple things I want to address?",        a: "Pick the most important one. Three pieces of feedback at once means none of them land — the person can't prioritize or process. Sequence the rest across future conversations." },
+    { cat: 'Giving',    q: "How do I give feedback to someone more senior than me?",   a: "Same structure. SBI-D works because it's grounded in observation, not hierarchy. Frame the D step as a genuine question — 'I'm curious what was driving that decision' lands differently than 'I think you should have done X.'" },
+    { cat: 'Receiving', q: "How do I receive feedback well when I disagree?",          a: "Listen without defending first. Ask 'Can you give me an example?' — always fair. You don't have to resolve disagreement in the moment. Thank them regardless of whether you agree — it took something to share it." },
+    { cat: 'Receiving', q: "What if I feel blindsided by something in a review?",     a: "Ask for a conversation, not a rebuttal. 'I want to understand this better — can we talk through the specific situations you had in mind?' signals you're taking it seriously without becoming defensive." },
+    { cat: 'Tricky',    q: "What if they get defensive?",                              a: "Pause and reflect back what you heard: 'It sounds like you feel the context wasn't fully visible — is that right?' Re-invite them into the discussion. Don't add more feedback until they feel heard." },
+    { cat: 'Tricky',    q: "What if the issue is serious or ongoing?",                a: "Same structure, higher stakes. Ensure privacy, prepare what you want to say, and give the D step genuine space. If it's serious or recurring, loop in your HR partner before the conversation — not after." },
+    { cat: 'Tricky',    q: "What if I don't know the full impact of what happened?",  a: "Say so. 'I'm not sure of the full impact, but here's what I observed' is honest and still actionable. The D step is where you learn what you don't know — ask openly rather than waiting for a complete picture." }
+  ];
+
+  let active = null;
+
+  function renderNav() {
+    const nav = document.getElementById('scenarioNav');
+    scenarios.forEach(s => {
+      const btn = document.createElement('button');
+      btn.className = 'scenario-btn';
+      btn.id = 'btn-' + s.id;
+      btn.style.setProperty('--s-color', s.color);
+      btn.onclick = () => selectScenario(s.id);
+      btn.innerHTML =
+        '<div class="s-dot" style="background:' + s.color + '"></div>' +
+        '<div class="s-label">' + escHtml(s.label) + '</div>' +
+        '<div class="s-tag">' + escHtml(s.tag) + '</div>';
+      nav.appendChild(btn);
+    });
+  }
+
+  function selectScenario(id) {
+    active = scenarios.find(s => s.id === id);
+    scenarios.forEach(s => document.getElementById('btn-' + s.id).classList.toggle('active', s.id === id));
+
+    document.getElementById('formDot').style.background = active.color;
+    document.getElementById('formTitle').textContent = active.label;
+    document.getElementById('formTagline').textContent = active.tag;
+    document.getElementById('formCard').style.setProperty('--s-color', active.color);
+
+    const fields = document.getElementById('formFields');
+    fields.textContent = '';
+    Object.entries(active.qs).forEach(([key, {name, q}]) => {
+      const row = document.createElement('div');
+      row.className = 'field-row';
+
+      const keyDiv = document.createElement('div');
+      keyDiv.className = 'field-key';
+      const codeDiv = document.createElement('div');
+      codeDiv.className = 'field-code';
+      codeDiv.style.color = active.color;
+      codeDiv.textContent = key;
+      const nameDiv = document.createElement('div');
+      nameDiv.className = 'field-name';
+      nameDiv.textContent = name;
+      keyDiv.appendChild(codeDiv);
+      keyDiv.appendChild(nameDiv);
+
+      const inputWrap = document.createElement('div');
+      const qDiv = document.createElement('div');
+      qDiv.className = 'field-question';
+      qDiv.textContent = q;
+      const ta = document.createElement('textarea');
+      ta.id = 'f-' + key;
+      ta.placeholder = active.hints[key];
+      ta.rows = 3;
+      ta.addEventListener('input', checkFields);
+      inputWrap.appendChild(qDiv);
+      inputWrap.appendChild(ta);
+
+      row.appendChild(keyDiv);
+      row.appendChild(inputWrap);
+      fields.appendChild(row);
+    });
+
+    document.getElementById('outputSection').classList.remove('visible');
+    document.getElementById('fieldCount').textContent = '0 of 4 fields completed';
+    document.getElementById('genBtn').classList.remove('ready');
+  }
+
+  function checkFields() {
+    const filled = ['S','B','I','D'].filter(k => {
+      const el = document.getElementById('f-' + k);
+      return el && el.value.trim();
+    }).length;
+    document.getElementById('fieldCount').textContent = filled + ' of 4 fields completed';
+    document.getElementById('genBtn').classList.toggle('ready', filled === 4);
+  }
+
+  function generateOutput() {
+    const vals = {};
+    ['S','B','I','D'].forEach(k => { vals[k] = document.getElementById('f-' + k).value.trim(); });
+
+    const summaryEl = document.getElementById('summaryOut');
+    summaryEl.textContent = '';
+    ['S','B','I','D'].forEach(k => {
+      const chunk = document.createElement('div');
+      chunk.className = 'chunk';
+      const label = document.createElement('div');
+      label.className = 'klabel';
+      label.style.color = active.color;
+      const labelText = document.createElement('span');
+      labelText.className = 'klabel-text';
+      labelText.textContent = k + ' — ' + active.qs[k].name;
+      label.appendChild(labelText);
+      const val = document.createElement('div');
+      val.textContent = vals[k];
+      chunk.appendChild(label);
+      chunk.appendChild(val);
+      summaryEl.appendChild(chunk);
+    });
+
+    const prompt =
+      "I'm preparing to give " + active.label.toLowerCase() + " feedback using the SBI-D framework. " +
+      "Help me refine the language, anticipate how they might respond, and think through how to open the discussion.\n\n" +
+      "Situation: " + vals.S + "\n\n" +
+      "Behavior: " + vals.B + "\n\n" +
+      "Impact: " + vals.I + "\n\n" +
+      "Discussion opener: " + vals.D + "\n\n" +
+      "Context: This is " + active.label.toLowerCase() + " feedback.";
+    document.getElementById('aiOut').textContent = prompt;
+
+    document.getElementById('outputSection').classList.add('visible');
+    setTimeout(() => document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+  }
+
+  function copyOutput(id, btn) {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = 'Copied ✓';
+      setTimeout(() => { btn.textContent = orig; }, 2000);
+    });
+  }
+
+  function toggleBefore(btn) {
+    const open = document.getElementById('beforePanel').classList.toggle('open');
+    btn.textContent = open ? 'Hide ↑' : 'See what this replaces ↓';
+  }
+
+  const catColors = { Giving: '#4a9960', Receiving: '#557bcc', Tricky: '#b8941f' };
+  const catOrder = ['Giving', 'Receiving', 'Tricky'];
+
+  function renderFaq(filter) {
+    const list = document.getElementById('faqList');
+    list.textContent = '';
+    const cats = (!filter || filter === 'all') ? catOrder : [filter];
+    cats.forEach(function(cat) {
+      const items = faqs.filter(function(f) { return f.cat === cat; });
+      if (!items.length) return;
+      const color = catColors[cat] || 'var(--accent)';
+      const group = document.createElement('div');
+      group.className = 'faq-group';
+      group.style.setProperty('--faq-color', color);
+      const header = document.createElement('div');
+      header.className = 'faq-group-header';
+      header.textContent = cat === 'Tricky' ? 'Tricky situations' : cat + ' feedback';
+      group.appendChild(header);
+      const groupItems = document.createElement('div');
+      groupItems.className = 'faq-group-items';
+      items.forEach(function(f, i) {
+        const item = document.createElement('div');
+        item.className = 'faq-item';
+        item.id = 'faq-' + cat + i;
+        const q = document.createElement('div');
+        q.className = 'faq-q';
+        q.onclick = function() { item.classList.toggle('open'); };
+        const qText = document.createElement('span');
+        qText.textContent = f.q;
+        const chev = document.createElement('i');
+        chev.className = 'faq-chev';
+        chev.textContent = '⌄';
+        q.appendChild(qText);
+        q.appendChild(chev);
+        const a = document.createElement('div');
+        a.className = 'faq-a';
+        a.textContent = f.a;
+        item.appendChild(q);
+        item.appendChild(a);
+        groupItems.appendChild(item);
+      });
+      group.appendChild(groupItems);
+      list.appendChild(group);
+    });
+  }
+
+  function filterFaq(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('on'); });
+    btn.classList.add('on');
+    renderFaq(cat);
+  }
+
+  renderNav();
+  renderFaq('all');
+</script>
+</body>
+</html>
