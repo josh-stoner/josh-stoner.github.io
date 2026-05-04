@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6V09SW4DE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N6V09SW4DE');
+  </script>
+  <title>Building Got Easy. Taste Didn't. &mdash; Joshua Stoner</title>
+  <meta name="description" content="AI commoditized creation. It didn't commoditize quality. The tools set the defaults&mdash;the rest of the work is still the rest of the work.">
+  <link rel="canonical" href="https://josh-stoner.github.io/writing/taste-gap-pt1.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Building Got Easy. Taste Didn't.">
+  <meta property="og:description" content="AI commoditized creation. It didn't commoditize quality. The tools set the defaults&mdash;the rest of the work is still the rest of the work.">
+  <meta property="og:url" content="https://josh-stoner.github.io/writing/taste-gap-pt1.html">
+  <meta property="og:site_name" content="Joshua Stoner">
+  <meta property="article:author" content="Joshua Stoner">
+  <meta property="article:published_time" content="2026-05-04">
+  <meta property="og:image" content="https://josh-stoner.github.io/assets/og/taste-gap-pt1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Building Got Easy. Taste Didn't.">
+  <meta name="twitter:description" content="AI commoditized creation. It didn't commoditize quality. The tools set the defaults&mdash;the rest of the work is still the rest of the work.">
+  <meta name="twitter:image" content="https://josh-stoner.github.io/assets/og/taste-gap-pt1.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Building Got Easy. Taste Didn't.",
+    "author": {"@type": "Person", "name": "Joshua Stoner", "url": "https://josh-stoner.github.io"},
+    "datePublished": "2026-05-04",
+    "publisher": {"@type": "Person", "name": "Joshua Stoner"},
+    "description": "AI commoditized creation. It didn't commoditize quality. The tools set the defaults&mdash;the rest of the work is still the rest of the work."
+  }
+  </script>
+  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .article-header {
+      padding: 3rem 0 1.5rem;
+    }
+    .article-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .article-meta {
+      font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-bottom: 0.25rem;
+    }
+    .article-body h2 {
+      margin-top: 3rem;
+    }
+    .article-body h3 {
+      margin-top: 2rem;
+    }
+    .article-body p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .article-body ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .article-body li {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 0.5rem;
+    }
+    .article-body strong {
+      color: var(--text);
+    }
+    .article-body em {
+      color: var(--text-muted);
+    }
+    .insight-block {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--coral);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .insight-block p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .closing {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+    [data-theme="dark"] .closing {
+      border-top-color: rgba(255,255,255,0.08);
+    }
+    .article-body blockquote { border-left-color: var(--coral); }
+
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--coral);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .callout.callout-coral { border-left-color: var(--coral); }
+
+    .lede {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .audio-player {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .audio-player .audio-label {
+      font-size: 0.82rem;
+      color: var(--text-faint);
+      font-weight: 500;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .audio-player audio {
+      flex: 1;
+      height: 32px;
+      min-width: 0;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> Joshua Stoner</a>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <ul class="nav-links">
+        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="../" class="back-link"><i data-lucide="arrow-left"></i> Back to Portfolio</a>
+
+    <div class="article-header">
+      <h1 class="color-coral">Building Got Easy. Taste Didn't.</h1>
+      <p class="article-meta">May 2026 &middot; Josh Stoner</p>
+    </div>
+
+    <article class="article-body">
+
+      <p class="lede">The curation is the work the tool doesn't do.</p>
+
+      <div class="audio-player">
+        <span class="audio-label">Listen</span>
+        <audio controls preload="none" src="../audio/taste-gap-pt1.mp3">Your browser does not support audio.</audio>
+      </div>
+
+      <hr>
+
+      <p>The pattern shows up just about everywhere AI gets used to make things. Browse the "I built this with AI" posts&mdash;and it generally starts looking the same. Same rounded corners, typography pairings, and heading hierarchy styles&hellip;</p>
+
+      <p>The tools set the defaults. The defaults set the aesthetic. More things got made, and volume and quality still aren't the same thing.</p>
+
+      <div class="insight-block">
+        <p>The hardest part was never building; it was knowing what to build, and how it should feel.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="built-from-the-tool-not-on-top-of-it">Built From the Tool, Not On Top of It</h2>
+
+      <p>stonerOS is a persistent memory system I built for Claude&mdash;a folder of markdown files, automation hooks, and specialized agents that give an AI assistant durable context about how I work. There's no interface, no web app, no subscription. The "app" is Claude Code, a CLI I was already using.</p>
+
+      <p>Most AI tools abstract the model away from you. stonerOS does the opposite. Every design decision required me to think through what I was actually asking the system to do.</p>
+
+      <p>When I built the <code>session-writer</code> agent, I made it the only agent allowed to write to the learnings directory. That rule came from a real problem: parallel writes were corrupting session files. The constraint encodes its own reason.</p>
+
+      <div class="insight-block">
+        <p>A cloned template gives you the rule without that. It breaks the moment your use case diverges. Building it yourself gives you the principle.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="design-is-not-pixels">Design Is Not Pixels</h2>
+
+      <p>Design is deciding what to include, what to cut, how information flows, and what the system shouldn't do.</p>
+
+      <p>I built a writing board to track everything I publish&mdash;status, dates, channels, calendar sync. The code took three hours. Claude wrote most of it.</p>
+
+      <p>What took three weeks was figuring out what it should show.</p>
+
+      <p>Early versions tried to surface everything: every channel, every date, every field in the schema. Technically complete, immediately useless. Too much information at equal weight is noise.</p>
+
+      <p>The version I use shows three things: what's stalled, what's due, what's drifted from the calendar. That came from using the first version and noticing what I actually looked at.</p>
+
+      <p>The same logic is in the stonerOS color system. Each accent color maps to a content domain&mdash;purple for AI and system content, rose for personal and creative work, steel for team content.</p>
+
+      <p>The palette is muted and warm because those colors thread through headings, borders, and icons without competing with the content. None of that came from generating palettes and picking one. It came from years managing sub-brands in L&amp;D&mdash;I already knew what each color needed to do. The AI generated the variations.</p>
+
+      <p>Same thing happened with writing. I kept shipping drafts that technically landed but felt smoothed out&mdash;too measured, too balanced, like a professional editor had been through them. The specific texture of how I actually write wasn't there.</p>
+
+      <p>So I built a voice-qa agent to catch that moment. The test isn't grammar. It's whether someone who knows my writing would recognize it.</p>
+
+      <div class="insight-block">
+        <p>That's the job. Not the rendering. Seeing the shape of what the thing is for, then holding that shape while the generation runs.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="what-happened-when-youtube-launched">What Happened When YouTube Launched</h2>
+
+      <p>In 2005, anyone with a camera could publish video to a global audience without a network or a budget. The barrier collapsed.</p>
+
+      <p>What happened to quality?</p>
+
+      <p>The floor rose. More got made, and average production went up as tools improved. The ceiling didn't move. The channels that dominated weren't the ones with the best cameras. They were the ones with a point of view&mdash;specific, communicated clearly enough that slightly rough audio didn't matter.</p>
+
+      <p>The camera gave everyone production capability. It didn't give anyone something to say.</p>
+
+      <p>Same inflection point now. The barrier to shipping&mdash;an app, a site, a piece of writing, an agent&mdash;has collapsed the same way. What hasn't changed is the value of knowing what you're trying to make, and being able to look at the output and know when it isn't done.</p>
+
+      <div class="callout callout-coral">
+        <p>The tools got better. The taste didn't come with them.</p>
+      </div>
+
+      <hr>
+
+      <h2 id="what-this-changes">What This Changes</h2>
+
+      <p>Production is broadly available now. More experiments get run. More ideas get tested without a team or a budget. That's genuinely good.</p>
+
+      <p>But capability and judgment aren't the same thing. The photographer who buys a better camera doesn't immediately take better photographs.</p>
+
+      <p>The skill that matters is directing AI, not prompting it. Prompting is learned fast. Directing takes reps&mdash;shipping enough things, watching them fall short, building the vocabulary to say why before the iterations get purposeful.</p>
+
+      <p>The taste gap isn't between people who use AI and people who don't. It's between treating generation as the endpoint and treating it as the start.</p>
+
+      <div class="closing">
+        <p>The building part got easy. The rest of the work is still the rest of the work.</p>
+      </div>
+
+      <div class="related-reading" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--card-border);">
+        <h3 style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 0.75rem;">Related reading</h3>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li><a href="ai-brain-ch4.html">What This Actually Means</a></li>
+          <li><a href="give-your-ai-a-memory.html">Give Your AI a Memory</a></li>
+          <li><a href="parallels-ep.html">I Made an EP with AI</a></li>
+        </ul>
+      </div>
+
+      <div class="page-nav">
+        <a href="how-i-figure-out-what-i-think.html" class="page-nav-link page-nav-prev"><i data-lucide="arrow-left"></i> How I Figure Out What I Think</a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
+</body>
+</html>
