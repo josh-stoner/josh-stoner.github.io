@@ -275,6 +275,34 @@
     .faq-a { display: none; padding: 14px 18px; font-size: 14px; color: var(--text-secondary); line-height: 1.65; background: var(--bg-card); border-top: 1px solid var(--border); }
     .faq-item.open .faq-a { display: block; }
 
+    /* ─── Dark mode ─────────────────────────────── */
+    body.dark {
+      --bg: #161613;
+      --bg-card: #1E1E1B;
+      --bg-inner: #252521;
+      --bg-dark: #0A0608;
+      --border: rgba(255,255,255,0.07);
+      --border-md: rgba(255,255,255,0.11);
+      --text-primary: #E8E8E3;
+      --text-secondary: #9E9B95;
+      --text-tertiary: #65635E;
+      --accent: #8576D6;
+      --accent-light: #28204A;
+      --sky: #6FA3D0;
+      --shadow: 0 1px 4px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.25);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.45), 0 2px 6px rgba(0,0,0,0.3);
+    }
+    body.dark textarea { background: var(--bg); color: var(--text-primary); border-color: rgba(255,255,255,0.12); }
+    body.dark textarea:focus { background: var(--bg-card); border-color: var(--accent); }
+    body.dark .before-panel { background: #1C1708; border-bottom-color: #3A2F00; }
+    body.dark .before-label { color: #C4A44E; }
+    body.dark .before-excerpt { color: #BBA870; border-left-color: #6A5020; }
+    body.dark .before-thesis { color: var(--text-secondary); }
+    body.dark .gen-btn { background: var(--accent); }
+    body.dark .gen-btn.ready:hover { background: #6E5EC0; }
+    body.dark .ai-prompt { background: var(--bg-inner); color: var(--text-secondary); }
+    body.dark .copy-btn { color: var(--sky); }
+
     @media (max-width: 680px) {
       .scenario-nav { grid-template-columns: 1fr 1fr; }
       .field-row { grid-template-columns: 1fr; gap: 4px; }
@@ -295,7 +323,10 @@
         <div class="site-title">Feedback in the Moment</div>
         <div class="site-meta">SBI-D for Confluence + Slack &middot; Stripe Learning Architect Exercise</div>
       </div>
-      <button class="before-toggle" onclick="toggleBefore(this)">See what this replaces ↓</button>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <button class="before-toggle" id="darkToggle" onclick="toggleDark()">Dark</button>
+        <button class="before-toggle" onclick="toggleBefore(this)">See what this replaces ↓</button>
+      </div>
     </div>
   </div>
 </header>
@@ -496,6 +527,19 @@
     const d = document.createElement('div');
     d.textContent = str;
     return d.innerHTML;
+  }
+
+  (function() {
+    if (localStorage.getItem('fbDark') === '1') {
+      document.body.classList.add('dark');
+      document.getElementById('darkToggle').textContent = 'Light';
+    }
+  })();
+
+  function toggleDark() {
+    const isDark = document.body.classList.toggle('dark');
+    document.getElementById('darkToggle').textContent = isDark ? 'Light' : 'Dark';
+    localStorage.setItem('fbDark', isDark ? '1' : '0');
   }
 
   const scenarios = [
