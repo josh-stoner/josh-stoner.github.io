@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6V09SW4DE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N6V09SW4DE');
+  </script>
+  <title>When Your AI Improves Itself &mdash; Joshua Stoner</title>
+  <meta name="description" content="The feedback loop that reads the AI's own failure record and proposes fixes to the agents that underperformed&mdash;and why the judgment of which fixes to keep stays manual.">
+  <link rel="canonical" href="https://josh-stoner.github.io/writing/ai-brain-ch6.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="When Your AI Improves Itself">
+  <meta property="og:description" content="The feedback loop that reads the AI's own failure record and proposes fixes to the agents that underperformed&mdash;and why the judgment of which fixes to keep stays manual.">
+  <meta property="og:url" content="https://josh-stoner.github.io/writing/ai-brain-ch6.html">
+  <meta property="og:site_name" content="Joshua Stoner">
+  <meta property="article:author" content="Joshua Stoner">
+  <meta property="article:published_time" content="2026-06-09">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "When Your AI Improves Itself",
+    "author": {"@type": "Person", "name": "Joshua Stoner", "url": "https://josh-stoner.github.io"},
+    "datePublished": "2026-06-09",
+    "publisher": {"@type": "Person", "name": "Joshua Stoner"},
+    "description": "The feedback loop that reads the AI's own failure record and proposes fixes to the agents that underperformed&mdash;and why the judgment of which fixes to keep stays manual."
+  }
+  </script>
+  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .article-header {
+      padding: 3rem 0 1.5rem;
+    }
+    .article-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .article-meta {
+      font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-bottom: 0.25rem;
+    }
+    .article-body h2 {
+      margin-top: 3rem;
+    }
+    .article-body h3 {
+      margin-top: 2rem;
+    }
+    .article-body p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .article-body ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .article-body li {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 0.5rem;
+    }
+    .article-body img {
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
+      margin: 1.5rem 0;
+    }
+    [data-theme="dark"] .article-body img.theme-adapt {
+      filter: invert(1) hue-rotate(180deg);
+    }
+    .article-body strong {
+      color: var(--text);
+    }
+    .article-body em {
+      color: var(--text-muted);
+    }
+    .article-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 4px;
+      padding: 0.15em 0.4em;
+    }
+    .article-body blockquote { border-left-color: var(--coral); }
+
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--coral);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .closing {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+    [data-theme="dark"] .closing {
+      border-top-color: rgba(255,255,255,0.08);
+    }
+
+    /* Audio player */
+    .audio-player {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .audio-player .audio-label {
+      font-size: 0.82rem;
+      color: var(--text-faint);
+      font-weight: 500;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .audio-player audio {
+      flex: 1;
+      height: 32px;
+      min-width: 0;
+    }
+
+    .color-coral { color: var(--coral); }
+    .icon-coral { color: var(--coral); }
+    .toc { border-left-color: var(--coral) !important; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> Joshua Stoner</a>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <ul class="nav-links">
+        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="ai-brain-ch5.html" class="back-link"><i data-lucide="arrow-left"></i> Back to Chapter 5</a>
+
+    <div class="article-header">
+      <p class="article-eyebrow" style="font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5rem; color: var(--coral);">AI Brain Series</p>
+      <h1 class="color-coral">When Your AI Improves Itself</h1>
+      <p class="article-meta">June 2026 &middot; Josh Stoner &middot; Chapter 6</p>
+    </div>
+
+    <nav class="toc">
+      <span class="toc-label">On this page</span>
+      <a href="#what-comes-after-acting">What Comes After Acting</a>
+      <a href="#the-failure-log-reads-itself">The Failure Log Reads Itself</a>
+      <a href="#prompt-edits-as-patches">Prompt Edits As Patches</a>
+      <a href="#did-the-fix-actually-fix-it">Did the Fix Actually Fix It</a>
+      <a href="#what-stays-manual">What Stays Manual</a>
+    </nav>
+
+    <article class="article-body">
+      <div class="audio-player">
+        <span class="audio-label">Listen</span>
+        <audio controls preload="none" src="../audio/ai-brain-ch6.mp3">Your browser does not support audio.</audio>
+      </div>
+
+      <h2 id="what-comes-after-acting"><i data-lucide="refresh-cw" class="icon-coral"></i> What Comes After Acting</h2>
+
+      <p>Ch5 ended on a clear boundary: zero unreviewed external action. Rules fire on their own; the writing twin drafts on demand. Nothing sends without me reading it first. That&rsquo;s a stable design.</p>
+
+      <p>What it doesn&rsquo;t answer is the question underneath it. If agents are acting autonomously&mdash;loading context, drafting messages, surfacing reminders&mdash;how do you keep them from getting worse at those jobs over time? The answer isn&rsquo;t a better model. It&rsquo;s a feedback loop that reads the agents&rsquo; own failure record and proposes structural fixes to the instructions they run on.</p>
+
+      <h2 id="the-failure-log-reads-itself"><i data-lucide="file-text" class="icon-coral"></i> The Failure Log Reads Itself</h2>
+
+      <p>Two agents log verdicts after every significant output: <code>qa-validator</code> for research and code, <code>voice-qa</code> for writing drafts. Every PASS, REVISE, and FAIL lands in <code>.claude/context/qa-log-YYYYMMDD.md</code>. That&rsquo;s the substrate. <code>/evolve</code> reads those logs across a configurable window&mdash;7 days, 30 days, everything&mdash;groups failures by agent, and categorizes each one. Six categories: voice/tone, scope drift, hallucination, format, safety, overreach.</p>
+
+      <p>Then it scores severity. Three or more of the same failure type in one agent is a systematic prompt gap. Two is an emerging pattern. One is probably contextual&mdash;noted, not actioned.</p>
+
+      <p>The categorization step does something I couldn&rsquo;t do manually at scale: it surfaces which agents are accumulating the same kind of mistake across different sessions, even when no single session looked alarming.</p>
+
+      <h2 id="prompt-edits-as-patches"><i data-lucide="git-pull-request" class="icon-coral"></i> Prompt Edits As Patches</h2>
+
+      <p>For every high-severity pattern, <code>/evolve</code> traces back to the agent&rsquo;s definition file and diagnoses: is the rule missing, present but ambiguous, contradicted by another rule, or present but consistently ignored?</p>
+
+      <p>The <code>research-analyst</code> agent was citing URLs from memory&mdash;auth-walled pages on LinkedIn, theorg.com, Crunchbase&mdash;that looked plausible but couldn&rsquo;t be verified. A soft self-check rule existed in the agent definition. It wasn&rsquo;t holding. The diagnosis was enforcement: the rule existed, but the model was self-assessing URL authenticity unreliably, constructing plausible-looking paths from domain knowledge rather than from actual tool results.</p>
+
+      <div class="callout">
+        <p>The fix wasn&rsquo;t a reminder. It was a structural prohibition: an explicit blocklist of auth-walled domains that must never have specific URLs cited, regardless of how confident the agent feels.</p>
+      </div>
+
+      <p>The proposal staged to <code>.claude/context/evolve-proposals-20260510.md</code>. I reviewed it, approved it, applied it. The constraint does what the behavioral reminder couldn&rsquo;t, because it removes the agent&rsquo;s discretion on the specific failure surface.</p>
+
+      <h2 id="did-the-fix-actually-fix-it"><i data-lucide="check-circle" class="icon-coral"></i> Did the Fix Actually Fix It</h2>
+
+      <p>This is where most prompt-engineering writeups stop. Apply the edit, move on. The loop doesn&rsquo;t close there.</p>
+
+      <p>After an edit lands, the next <code>/evolve</code> run measures whether the failure category recurs in subsequent QA logs. Zero recurrences is resolved. A recurrence means the fix didn&rsquo;t hold&mdash;back to diagnosis with a clearer failure signal and elevated severity.</p>
+
+      <p>A count-verification rule I added to <code>claude-code-expert</code> corrected the problem for hook counts, but the agent didn&rsquo;t generalize it to slash commands&mdash;same class of failure, different surface, and the rule was too narrow to cover it. A third version generalized the rule: any inventory that can be enumerated via grep or a directory listing is enumerable; no &ldquo;unverified&rdquo; hedging allowed when the source is a file you can read.</p>
+
+      <p>There&rsquo;s a subtler problem the measurement step catches. An edit can look resolved simply because the agent was never exercised on the relevant task&mdash;zero recurrences conflating &ldquo;fixed&rdquo; with &ldquo;never re-tested.&rdquo; The system holds an edit as &ldquo;measuring, no coverage&rdquo; until the agent produces output in the relevant category and passes. Without that gate, 5 entries were false-resolved in a single run.</p>
+
+      <h2 id="what-stays-manual"><i data-lucide="user-check" class="icon-coral"></i> What Stays Manual</h2>
+
+      <p>The loop handles the mechanical part. What stays human is the choice of which proposed edits actually land.</p>
+
+      <p><code>/evolve</code> stages proposals and stops. Every one gets a human review before applying. The reasoning is the same as Ch5&rsquo;s line about external actions: a bad prompt edit propagates through every future run of that agent. The review step is cheap relative to the compounding cost of a wrong fix.</p>
+
+      <p>There&rsquo;s also a thing the measurement loop doesn&rsquo;t catch on its own: cross-agent patterns. Per-agent analysis flags repeated failures within one agent, but single-instance hallucinations across different agents don&rsquo;t surface in any one agent&rsquo;s record. In early 2026, three agents produced one fabricated output each across three months. Each instance looked like a one-off contextual failure. Scanning all QA logs together, the pattern was clear: a system update had outpaced context propagation across three agents before corrections landed. That diagnostic pass was manual. The system doesn&rsquo;t close that loop automatically yet.</p>
+
+      <div class="closing">
+        <p>I&rsquo;ve spent years learning to catch my own mistakes before they ship. <code>/evolve</code> is that habit, externalized&mdash;the system does to its agents what I&rsquo;ve always done to myself.</p>
+
+        <p>It doesn&rsquo;t make the AI smarter. It makes it accountable to its own record. The fixes are automatic. The judgment of which ones to keep is still mine.</p>
+
+        <p><em><a href="ai-brain-ch0.html">Start at the beginning: Chapter 0&mdash;I Gave Claude a Brain. Here&rsquo;s What Happened.</a> &middot; <a href="ai-brain-ch5.html">Previous: Ch5&mdash;When Your AI Starts Thinking For You</a></em></p>
+      </div>
+
+      <div class="related-reading" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--card-border);">
+        <h3 style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 0.75rem;">Related reading</h3>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li><a href="ai-brain-ch5.html">Chapter 5: When Your AI Starts Thinking For You</a></li>
+          <li><a href="ai-brain-ch4.html">Chapter 4: What This Actually Means</a></li>
+          <li><a href="../standalone/bring-your-own-ai.html">Bring Your Own AI</a></li>
+        </ul>
+      </div>
+
+      <div class="page-nav">
+        <a href="ai-brain-ch5.html" class="page-nav-link page-nav-prev"><i data-lucide="arrow-left"></i> Ch 5 &mdash; When Your AI Starts Thinking For You</a>
+        <a href="ai-brain-ch0.html" class="page-nav-link page-nav-next">Start from Ch 0 <i data-lucide="arrow-right"></i></a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
+</body>
+</html>
