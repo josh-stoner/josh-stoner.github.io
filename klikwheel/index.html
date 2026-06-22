@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>klikWheel — A music player you actually touch</title>
+  <meta name="description" content="klikWheel is a music player for iPhone with a tactile scroll-wheel and haptic clicks. Browse your local library or stream Apple Music. Zero ads, zero tracking. Free on the App Store.">
+  <link rel="canonical" href="https://josh-stoner.github.io/klikwheel/">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="klikWheel — A music player you actually touch">
+  <meta property="og:description" content="Tactile scroll-wheel. Haptic clicks. Your local files + Apple Music. Free on iPhone.">
+  <meta property="og:url" content="https://josh-stoner.github.io/klikwheel/">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Palette (matches /klikwheel/privacy.html) ── */
+    :root {
+      --bg:       #f4f1ea;
+      --surface:  #fbf9f4;
+      --surface2: #f0ece2;
+      --ink:      #2b2722;
+      --muted:    #6f675c;
+      --line:     #e4ded2;
+      --accent:   #b07d48;
+      --accent-dk:#8a5f2e;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:       #1c1a17;
+        --surface:  #24211d;
+        --surface2: #2e2a24;
+        --ink:      #ece7dd;
+        --muted:    #a59c8d;
+        --line:     #34302a;
+        --accent:   #d9a064;
+        --accent-dk:#e8b87a;
+      }
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ── */
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 72px 24px 56px;
+    }
+    .hero-icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 22px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.14);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin: 0 0 12px;
+      line-height: 1.1;
+    }
+    .hero .tagline {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 28px;
+      line-height: 1.5;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--ink);
+      color: var(--bg);
+      border-radius: 12px;
+      padding: 13px 22px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      transition: opacity 0.15s;
+    }
+    .badge:hover { opacity: 0.85; text-decoration: none; }
+    .badge svg { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
+    .badge-sub { font-size: 0.7rem; font-weight: 500; opacity: 0.7; display: block; line-height: 1; margin-bottom: 2px; }
+    .badge-main { font-size: 1rem; font-weight: 700; line-height: 1; }
+
+    /* ── Screenshots ── */
+    .screenshots {
+      padding: 8px 0 64px;
+    }
+    .screenshot-row {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .screenshot-row img {
+      width: 200px;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .screenshot-row img:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+    }
+    @media (max-width: 540px) {
+      .screenshot-row { gap: 12px; }
+      .screenshot-row img { width: calc(50% - 8px); }
+    }
+
+    /* ── Feature grid ── */
+    .features { padding: 0 0 64px; }
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 24px;
+      text-align: center;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .feature {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px 20px;
+    }
+    .feature-icon {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .feature h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 0 0 6px;
+      letter-spacing: -0.01em;
+    }
+    .feature p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* ── Pricing ── */
+    .pricing {
+      background: var(--surface2);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 32px 28px;
+      margin: 0 0 64px;
+      text-align: center;
+    }
+    .pricing .price-tag {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .pricing p {
+      color: var(--muted);
+      font-size: 0.925rem;
+      margin: 0 auto;
+      max-width: 440px;
+      line-height: 1.55;
+    }
+    .pricing a { color: var(--accent); }
+
+    /* ── Built-with blurb ── */
+    .meta-blurb {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin: 0 0 56px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .meta-blurb .blurb-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .meta-blurb p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .meta-blurb strong { color: var(--ink); font-weight: 600; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 48px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+      line-height: 1.6;
+    }
+    footer a { color: var(--muted); text-decoration: underline; }
+    footer .footer-links { margin-bottom: 8px; }
+    footer .footer-links a { margin: 0 10px; }
+  </style>
+</head>
+<body>
+
+  <!-- ── Hero ── -->
+  <div class="hero wrap">
+    <img src="assets/icon.png" alt="klikWheel app icon" class="hero-icon">
+    <h1>klikWheel</h1>
+    <p class="tagline">A music player you actually touch. Spin to scroll, press to play — tactile wheel with haptic clicks. Your library or Apple Music, no accounts required.</p>
+    <a href="https://apps.apple.com/us/app/klikwheel/id6776382201"
+       class="badge"
+       target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      <span>
+        <span class="badge-sub">Download on the</span>
+        <span class="badge-main">App Store</span>
+      </span>
+    </a>
+  </div>
+
+  <!-- ── Screenshots ── -->
+  <div class="screenshots wrap">
+    <div class="screenshot-row">
+      <img src="assets/01-now-playing.webp" alt="klikWheel Now Playing screen" loading="lazy">
+      <img src="assets/02-browse.webp"      alt="klikWheel music library browser" loading="lazy">
+      <img src="assets/03-themes.webp"      alt="klikWheel theme selector" loading="lazy">
+      <img src="assets/05-up-next.webp"     alt="klikWheel Up Next queue" loading="lazy">
+    </div>
+  </div>
+
+  <!-- ── Features ── -->
+  <div class="features wrap">
+    <h2 class="section-title">What it does</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <span class="feature-icon">🎛</span>
+        <h3>Tactile scroll wheel</h3>
+        <p>Drag the wheel to scroll, tap a zone to act. Every tick has a haptic click — deliberate, physical control over your music.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🎵</span>
+        <h3>Your library, offline</h3>
+        <p>Import MP3, FLAC, and more. Your files live in the app's private storage — no cloud, no sync, nothing leaves your iPhone.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">☁️</span>
+        <h3>Apple Music streaming</h3>
+        <p>Search and stream the full Apple Music catalog alongside your local files, through the same warm retro interface.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">📡</span>
+        <h3>AirPlay</h3>
+        <p>Send audio to any AirPlay speaker or TV straight from the Now Playing screen. No extra steps.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🎨</span>
+        <h3>9 collectible themes</h3>
+        <p>Classic silver, midnight black, rose, sage, and more. A handful of bonus themes unlock via the optional Tip Jar.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">♿</span>
+        <h3>Built for everyone</h3>
+        <p>Full VoiceOver support, Dynamic Type, and WCAG AA contrast on every theme. Zero ads, zero tracking, zero accounts.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Pricing ── -->
+  <div class="pricing wrap">
+    <span class="price-tag">Free</span>
+    <p>No subscriptions. An optional <strong>Tip Jar</strong> ($0.99 / $2.99 / $4.99) unlocks a few bonus themes — nothing else is behind a paywall. Apple Music streaming requires an active Apple Music subscription.</p>
+  </div>
+
+  <!-- ── Built-with blurb ── -->
+  <div class="meta-blurb wrap">
+    <span class="blurb-icon">🤖</span>
+    <p><strong>Built with multi-agent AI orchestration.</strong> The bulk of klikWheel's ~20 parallel workstreams — UI, chess engine, audio, accessibility, monetization — were written by coordinated Claude Code subagents working on disjoint file sets. Zero merge conflicts. <a href="https://josh-stoner.github.io/">More on the portfolio →</a></p>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="mailto:itsjoshstoner@gmail.com">Contact</a>
+        <a href="https://apps.apple.com/us/app/klikwheel/id6776382201" target="_blank" rel="noopener">App Store</a>
+      </div>
+      klikWheel is an independent app by Joshua Stoner. Not affiliated with, endorsed by, or associated with Apple Inc.
+    </div>
+  </footer>
+
+</body>
+</html>
