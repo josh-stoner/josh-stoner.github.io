@@ -62,28 +62,28 @@
     /* ── Hero ── */
     .hero {
       text-align: center;
-      padding: 72px 24px 56px;
+      padding: 80px 24px 64px;
     }
     .hero-icon {
       width: 96px;
       height: 96px;
       border-radius: 22px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.14);
-      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(43,39,34,0.12);
+      margin-bottom: 24px;
     }
     .hero h1 {
       font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 800;
       letter-spacing: -0.03em;
-      margin: 0 0 12px;
+      margin: 0 0 14px;
       line-height: 1.1;
     }
     .hero .tagline {
       font-size: clamp(1rem, 2.5vw, 1.2rem);
       color: var(--muted);
       max-width: 520px;
-      margin: 0 auto 28px;
-      line-height: 1.5;
+      margin: 0 auto 32px;
+      line-height: 1.55;
     }
     .badge {
       display: inline-flex;
@@ -98,44 +98,39 @@
       letter-spacing: -0.01em;
       transition: opacity 0.15s;
     }
-    .badge:hover { opacity: 0.85; text-decoration: none; }
+    .badge:hover { opacity: 0.82; text-decoration: none; }
     .badge svg { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
-    .badge-sub { font-size: 0.7rem; font-weight: 500; opacity: 0.7; display: block; line-height: 1; margin-bottom: 2px; }
+    .badge-sub  { font-size: 0.7rem; font-weight: 500; opacity: 0.7; display: block; line-height: 1; margin-bottom: 2px; }
     .badge-main { font-size: 1rem; font-weight: 700; line-height: 1; }
 
     /* ── Screenshots ── */
     .screenshots {
-      padding: 8px 0 64px;
+      padding: 24px 0 88px;
     }
     .screenshot-row {
       display: flex;
-      gap: 16px;
+      gap: 20px;
       justify-content: center;
-      flex-wrap: wrap;
+      align-items: flex-start;
     }
     .screenshot-row img {
-      width: 200px;
+      width: clamp(90px, 27vw, 230px);
       height: auto;
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(43,39,34,0.09);
+      transition: transform 0.2s ease;
     }
     .screenshot-row img:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
-    }
-    @media (max-width: 540px) {
-      .screenshot-row { gap: 12px; }
-      .screenshot-row img { width: calc(50% - 8px); }
+      transform: translateY(-3px);
     }
 
     /* ── Feature grid ── */
-    .features { padding: 0 0 64px; }
+    .features { padding: 0 0 80px; }
     .section-title {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      margin: 0 0 24px;
+      margin: 0 0 28px;
       text-align: center;
     }
     .feature-grid {
@@ -147,15 +142,16 @@
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: 14px;
-      padding: 22px 20px;
+      padding: 24px 22px;
     }
     .feature-icon {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
+      width: 22px;
+      height: 22px;
+      margin-bottom: 14px;
       display: block;
     }
     .feature h3 {
-      font-size: 0.95rem;
+      font-size: 0.925rem;
       font-weight: 700;
       margin: 0 0 6px;
       letter-spacing: -0.01em;
@@ -164,7 +160,7 @@
       font-size: 0.875rem;
       color: var(--muted);
       margin: 0;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     /* ── Pricing ── */
@@ -172,8 +168,8 @@
       background: var(--surface2);
       border: 1px solid var(--line);
       border-radius: 16px;
-      padding: 32px 28px;
-      margin: 0 0 64px;
+      padding: 36px 28px;
+      margin: 0 0 80px;
       text-align: center;
     }
     .pricing .price-tag {
@@ -182,14 +178,14 @@
       letter-spacing: -0.04em;
       color: var(--accent);
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .pricing p {
       color: var(--muted);
       font-size: 0.925rem;
       margin: 0 auto;
       max-width: 440px;
-      line-height: 1.55;
+      line-height: 1.6;
     }
     .pricing a { color: var(--accent); }
 
@@ -198,29 +194,21 @@
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: 14px;
-      padding: 22px 24px;
-      margin: 0 0 56px;
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-    .meta-blurb .blurb-icon {
-      font-size: 1.6rem;
-      flex-shrink: 0;
-      margin-top: 2px;
+      padding: 24px 26px;
+      margin: 0 0 72px;
     }
     .meta-blurb p {
       margin: 0;
       font-size: 0.875rem;
       color: var(--muted);
-      line-height: 1.55;
+      line-height: 1.6;
     }
     .meta-blurb strong { color: var(--ink); font-weight: 600; }
 
     /* ── Footer ── */
     footer {
       border-top: 1px solid var(--line);
-      padding: 28px 0 48px;
+      padding: 28px 0 52px;
       color: var(--muted);
       font-size: 0.85rem;
       text-align: center;
@@ -255,7 +243,6 @@
       <img src="assets/01-now-playing.webp" alt="klikWheel Now Playing screen" loading="lazy">
       <img src="assets/02-browse.webp"      alt="klikWheel music library browser" loading="lazy">
       <img src="assets/03-themes.webp"      alt="klikWheel theme selector" loading="lazy">
-      <img src="assets/05-up-next.webp"     alt="klikWheel Up Next queue" loading="lazy">
     </div>
   </div>
 
@@ -263,49 +250,92 @@
   <div class="features wrap">
     <h2 class="section-title">What it does</h2>
     <div class="feature-grid">
+
       <div class="feature">
-        <span class="feature-icon">🎛</span>
+        <span class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="12" cy="12" r="9"/>
+            <circle cx="12" cy="12" r="3"/>
+            <line x1="12" y1="3" x2="12" y2="9"/>
+            <line x1="12" y1="15" x2="12" y2="21"/>
+            <line x1="3" y1="12" x2="9" y2="12"/>
+            <line x1="15" y1="12" x2="21" y2="12"/>
+          </svg>
+        </span>
         <h3>Tactile scroll wheel</h3>
-        <p>Drag the wheel to scroll, tap a zone to act. Every tick has a haptic click — deliberate, physical control over your music.</p>
+        <p>Spin to scroll, press to act. Every tick delivers a haptic click — deliberate, physical control over your music.</p>
       </div>
+
       <div class="feature">
-        <span class="feature-icon">🎵</span>
-        <h3>Your library, offline</h3>
-        <p>Import MP3, FLAC, and more. Your files live in the app's private storage — no cloud, no sync, nothing leaves your iPhone.</p>
+        <span class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"/>
+            <circle cx="6" cy="18" r="3"/>
+            <circle cx="18" cy="16" r="3"/>
+          </svg>
+        </span>
+        <h3>Your library, fully offline</h3>
+        <p>Import MP3, FLAC, and more. Your files live in the app's private storage — plays without a network connection.</p>
       </div>
+
       <div class="feature">
-        <span class="feature-icon">☁️</span>
+        <span class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/>
+          </svg>
+        </span>
         <h3>Apple Music streaming</h3>
-        <p>Search and stream the full Apple Music catalog alongside your local files, through the same warm retro interface.</p>
+        <p>Search and browse the full Apple Music catalog — by artist, album, or playlist — alongside your local files.</p>
       </div>
+
       <div class="feature">
-        <span class="feature-icon">📡</span>
-        <h3>AirPlay</h3>
-        <p>Send audio to any AirPlay speaker or TV straight from the Now Playing screen. No extra steps.</p>
+        <span class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12,2 14.4,9.6 22,12 14.4,14.4 12,22 9.6,14.4 2,12 9.6,9.6"/>
+          </svg>
+        </span>
+        <h3>Backdrops</h3>
+        <p>Choose floating notes, a slow Metal aurora, or bokeh — they react to what's playing, quiet when you pause.</p>
       </div>
+
       <div class="feature">
-        <span class="feature-icon">🎨</span>
-        <h3>9 collectible themes</h3>
-        <p>Classic silver, midnight black, rose, sage, and more. A handful of bonus themes unlock via the optional Tip Jar.</p>
+        <span class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="9" height="9" rx="2"/>
+            <rect x="13" y="2" width="9" height="9" rx="2"/>
+            <rect x="2" y="13" width="9" height="9" rx="2"/>
+            <rect x="13" y="13" width="9" height="9" rx="2"/>
+          </svg>
+        </span>
+        <h3>12 themes + 3 Pro unlocks</h3>
+        <p>Silver, midnight, rose, sage, and more. Three bonus Pro themes unlock via the optional Tip Jar.</p>
       </div>
+
       <div class="feature">
-        <span class="feature-icon">♿</span>
+        <span class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="4" r="2"/>
+            <path d="M5 9h14"/>
+            <path d="M12 9v6"/>
+            <path d="M9 22l3-7 3 7"/>
+          </svg>
+        </span>
         <h3>Built for everyone</h3>
-        <p>Full VoiceOver support, Dynamic Type, and WCAG AA contrast on every theme. Zero ads, zero tracking, zero accounts.</p>
+        <p>Full VoiceOver and Dynamic Type support. WCAG AA contrast on every theme. No ads, no tracking, no accounts.</p>
       </div>
+
     </div>
   </div>
 
   <!-- ── Pricing ── -->
   <div class="pricing wrap">
     <span class="price-tag">Free</span>
-    <p>No subscriptions. An optional <strong>Tip Jar</strong> ($0.99 / $2.99 / $4.99) unlocks a few bonus themes — nothing else is behind a paywall. Apple Music streaming requires an active Apple Music subscription.</p>
+    <p>No subscriptions. An optional <strong>Tip Jar</strong> ($0.99 / $2.99 / $4.99) unlocks three Pro themes — nothing else is behind a paywall. Apple Music streaming requires an active Apple Music subscription.</p>
   </div>
 
   <!-- ── Built-with blurb ── -->
   <div class="meta-blurb wrap">
-    <span class="blurb-icon">🤖</span>
-    <p><strong>Built with multi-agent AI orchestration.</strong> The bulk of klikWheel's ~20 parallel workstreams — UI, chess engine, audio, accessibility, monetization — were written by coordinated Claude Code subagents working on disjoint file sets. Zero merge conflicts. <a href="https://josh-stoner.github.io/">More on the portfolio →</a></p>
+    <p><strong>Built with multi-agent AI orchestration.</strong> The bulk of klikWheel's parallel workstreams — UI, audio engine, Apple Music integration, accessibility, and monetization — were written by coordinated Claude Code subagents working on disjoint file sets. Zero merge conflicts. <a href="https://josh-stoner.github.io/">More on the portfolio →</a></p>
   </div>
 
   <!-- ── Footer ── -->
