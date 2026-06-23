@@ -57,12 +57,13 @@
     a:hover { text-decoration: underline; }
 
     /* ── Layout ── */
-    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    /* .wrap owns the inline axis — never override margin-inline or padding-inline on it */
+    .wrap { max-width: 880px; margin-inline: auto; padding-inline: 24px; }
 
     /* ── Hero ── */
     .hero {
       text-align: center;
-      padding: 80px 24px 64px;
+      padding-block: 72px 56px;
     }
     .hero-icon {
       width: 96px;
@@ -105,7 +106,7 @@
 
     /* ── Screenshots ── */
     .screenshots {
-      padding: 24px 0 88px;
+      padding-block: 24px 80px;
     }
     .screenshot-row {
       display: flex;
@@ -125,7 +126,7 @@
     }
 
     /* ── Feature grid ── */
-    .features { padding: 0 0 64px; }
+    .features { padding-block: 0 72px; }
     .section-title {
       font-size: 1.35rem;
       font-weight: 700;
@@ -138,10 +139,10 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
     }
-    @media (max-width: 640px) {
+    @media (max-width: 760px) {
       .feature-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (max-width: 400px) {
+    @media (max-width: 460px) {
       .feature-grid { grid-template-columns: 1fr; }
     }
     .feature {
@@ -170,7 +171,7 @@
     }
 
     /* ── Themes strip ── */
-    .themes { padding: 0 0 80px; text-align: center; }
+    .themes { padding-block: 0 80px; text-align: center; }
     .theme-row {
       display: flex;
       gap: 16px;
@@ -198,12 +199,12 @@
     }
 
     /* ── Built-with blurb ── */
+    .blurb-section { padding-block: 0 72px; }  /* vertical rhythm; wrap owns inline axis */
     .meta-blurb {
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: 14px;
-      padding: 24px 26px;
-      margin: 0 0 72px;
+      padding: 22px 24px;
     }
     .meta-blurb p {
       margin: 0;
@@ -375,8 +376,10 @@
   </div>
 
   <!-- ── Built-with blurb ── -->
-  <div class="meta-blurb wrap">
-    <p><strong>Built with multi-agent AI orchestration.</strong> The bulk of klikWheel's parallel workstreams — UI, audio engine, Apple Music integration, accessibility, and monetization — were written by coordinated Claude Code subagents working on disjoint file sets. Zero merge conflicts. <a href="https://josh-stoner.github.io/">More on the portfolio →</a></p>
+  <div class="wrap blurb-section">
+    <div class="meta-blurb">
+      <p><strong>Built with multi-agent AI orchestration.</strong> The bulk of klikWheel's parallel workstreams — UI, audio engine, Apple Music integration, accessibility, and monetization — were written by coordinated Claude Code subagents working on disjoint file sets. Zero merge conflicts. <a href="https://josh-stoner.github.io/">More on the portfolio →</a></p>
+    </div>
   </div>
 
   <!-- ── Footer ── -->
