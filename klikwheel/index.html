@@ -131,11 +131,11 @@
       font-size: 0.95rem; color: var(--muted);
       max-width: 540px; margin: -10px auto 28px; line-height: 1.55;
     }
-    .backdrop-row .shot {
-      margin: 0; display: flex; flex-direction: column; align-items: center; gap: 10px;
-    }
-    .backdrop-row figcaption {
-      font-size: 0.78rem; color: var(--muted); letter-spacing: -0.01em;
+    .backdrop-single {
+      width: clamp(120px, 38vw, 300px);
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(43,39,34,0.09);
     }
 
     /* ── Feature grid ── */
@@ -353,16 +353,7 @@
   <div class="backdrops wrap">
     <h2 class="section-title">Backdrops</h2>
     <p class="section-sub">Floating notes, a slow Metal aurora, or bokeh drift behind the wheel — they react to what's playing, quiet when you pause and alive when something good comes on.</p>
-    <div class="screenshot-row backdrop-row">
-      <figure class="shot">
-        <img src="assets/04-backdrop-notes.webp" alt="klikWheel Notes backdrop — music notes drifting behind the player" loading="lazy">
-        <figcaption>Notes</figcaption>
-      </figure>
-      <figure class="shot">
-        <img src="assets/05-backdrop-bokeh.webp" alt="klikWheel Bokeh backdrop — soft light orbs behind the player" loading="lazy">
-        <figcaption>Bokeh</figcaption>
-      </figure>
-    </div>
+    <img src="assets/04-backdrop-picker.webp" alt="klikWheel Backdrop picker — choose Notes, Aurora, or Bokeh" loading="lazy" class="backdrop-single">
   </div>
 
   <!-- ── Themes strip ── -->
