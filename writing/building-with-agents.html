@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6V09SW4DE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N6V09SW4DE');
+  </script>
+  <title>Who Built klikWheel &mdash; Joshua Stoner</title>
+  <meta name="description" content="I shipped an iOS app using AI agents as the team&mdash;not &ldquo;AI-assisted.&rdquo; Twenty agents, zero merge conflicts, and bugs only a human on-device could catch.">
+  <link rel="canonical" href="https://josh-stoner.github.io/writing/building-with-agents.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Who Built klikWheel">
+  <meta property="og:description" content="I shipped an iOS app using AI agents as the team&mdash;not &ldquo;AI-assisted.&rdquo; Twenty agents, zero merge conflicts, and bugs only a human on-device could catch.">
+  <meta property="og:url" content="https://josh-stoner.github.io/writing/building-with-agents.html">
+  <meta property="og:site_name" content="Joshua Stoner">
+  <meta property="article:author" content="Joshua Stoner">
+  <meta property="article:published_time" content="2026-07-16">
+  <meta property="og:image" content="https://josh-stoner.github.io/assets/og/building-with-agents.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Who Built klikWheel">
+  <meta name="twitter:description" content="I shipped an iOS app using AI agents as the team&mdash;not &ldquo;AI-assisted.&rdquo; Twenty agents, zero merge conflicts, and bugs only a human on-device could catch.">
+  <meta name="twitter:image" content="https://josh-stoner.github.io/assets/og/building-with-agents.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Who Built klikWheel",
+    "author": {"@type": "Person", "name": "Joshua Stoner", "url": "https://josh-stoner.github.io"},
+    "datePublished": "2026-07-16",
+    "publisher": {"@type": "Person", "name": "Joshua Stoner"},
+    "description": "I shipped an iOS app using AI agents as the team—not “AI-assisted.” Twenty agents, zero merge conflicts, and bugs only a human on-device could catch."
+  }
+  </script>
+  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .article-header {
+      padding: 3rem 0 1.5rem;
+    }
+    .article-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .article-meta {
+      font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-bottom: 0.25rem;
+    }
+    .article-body h2 {
+      margin-top: 3rem;
+    }
+    .article-body h3 {
+      margin-top: 2rem;
+    }
+    .article-body p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .article-body ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .article-body li {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 0.5rem;
+    }
+    .article-body strong {
+      color: var(--text);
+    }
+    .article-body em {
+      color: var(--text-muted);
+    }
+    .insight-block {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--steel);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .insight-block strong {
+      color: var(--steel);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.35rem;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .insight-block strong i[data-lucide],
+    .insight-block strong svg {
+      width: 0.9rem;
+      height: 0.9rem;
+    }
+    .insight-block p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .closing {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+    [data-theme="dark"] .closing {
+      border-top-color: rgba(255,255,255,0.08);
+    }
+    .article-body blockquote { border-left-color: var(--steel); }
+
+    /* Callout block for key insights */
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--steel);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .callout.callout-gold { border-left-color: var(--gold); }
+    .callout.callout-green { border-left-color: var(--green); }
+
+    .lede {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    /* Audio player */
+    .audio-player {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .audio-player .audio-label {
+      font-size: 0.82rem;
+      color: var(--text-faint);
+      font-weight: 500;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .audio-player audio {
+      flex: 1;
+      height: 32px;
+      min-width: 0;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> Joshua Stoner</a>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <ul class="nav-links">
+        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="../" class="back-link"><i data-lucide="arrow-left"></i> Back to Portfolio</a>
+
+    <div class="article-header">
+      <h1 class="color-steel">Who Built klikWheel</h1>
+      <p class="article-meta">July 2026 &middot; Josh Stoner</p>
+    </div>
+
+    <nav class="toc" style="border-left-color: var(--steel);">
+      <span class="toc-label">On this page</span>
+      <a href="#twenty-agents-zero-conflicts">Twenty Agents, Zero Conflicts</a>
+      <a href="#what-the-audit-couldnt-see">What the Audit Couldn't See</a>
+      <a href="#the-8-build-lock-screen-bug">The 8-Build Lock-Screen Bug</a>
+      <a href="#a-missing-line">A Missing Line</a>
+      <a href="#the-person-with-the-phone">The Person With the Phone</a>
+    </nav>
+
+    <article class="article-body">
+
+      <p class="lede">Twenty AI agents built an iOS app end to end. The human's job turned out to be something else entirely.</p>
+
+      <p>I shipped an iOS app using AI agents as the team. Not &ldquo;AI-assisted&rdquo;&mdash;agents wrote the Swift, ran the audits, reviewed the App Store copy, and built the release scripts. I was the PM and the QA. Mostly the QA.</p>
+
+      <p>Here's what that's actually like.</p>
+
+      <hr>
+
+      <h2 id="twenty-agents-zero-conflicts"><i data-lucide="users" class="icon-steel"></i> Twenty Agents, Zero Conflicts</h2>
+
+      <p>The team had specific roles. An apple-developer agent owned all Swift/SwiftUI implementation. An apple-designer owned design artifacts and interaction specs. A design-qa agent ran audits and returned PASS/FAIL verdicts&mdash;it never fixed anything, only flagged. A code-architect built the automation tooling: build scripts, pre-archive gates, screenshot pipelines, and submission runbooks. A voice-qa agent reviewed the App Store copy before submission. And a rotating cast of exploration agents found things in the codebase when I wasn't sure where to look.</p>
+
+      <p>In peak sessions, roughly twenty agents ran concurrently on different parts of the codebase. The technique that made this work: each agent got an explicit, non-overlapping write-set before launching. Type contracts were dictated before agents started. Single build at session end.</p>
+
+      <div class="insight-block">
+        <p>Zero merge conflicts across the entire project. That part worked better than I expected.</p>
+      </div>
+
+      <h2 id="what-the-audit-couldnt-see"><i data-lucide="eye-off" class="icon-steel"></i> What the Audit Couldn't See</h2>
+
+      <p>The design audit was the first time I realized the agents couldn't do everything.</p>
+
+      <p>The parallel audit&mdash;five agents, five dimensions (fidelity, layout, theming, accessibility, and code), running simultaneously&mdash;caught real problems. A non-deterministic hash function silently corrupting import dedup across launches: the app was generating different filenames for the same imported track on every launch, creating duplicates without error. WCAG contrast failures on 35 color values across nine themes. The root cause of a screen treatment that hadn't looked like glass yet: wrong specular, missing backlight bloom, incorrect recess depth.</p>
+
+      <p>These were good finds. The kind of systematic sweep I couldn't have done manually in the same session.</p>
+
+      <p>The audit also passed the mode-picker.</p>
+
+      <p>Now Playing had a center-tap interaction that cycled between states, each one replacing the progress bar and shrinking the album art to show a different settings sub-panel. It was internally consistent&mdash;the code did exactly what it said it did. Every correctness lens passed it. The pattern was coherent.</p>
+
+      <div class="callout">
+        <p>It was also completely wrong for the feel of the app.</p>
+      </div>
+
+      <p>The rule&mdash;&ldquo;the wheel controls classic iPod things; touch handles everything else; center never takes over the screen&rdquo;&mdash;was implicit at that point. The agents didn't have it as an explicit input. The audit had no lens for &ldquo;does this belong here at all?&rdquo; So it passed something that was technically correct and shouldn't exist.</p>
+
+      <p>I caught it on device. The fix was deletion: removed the entire mode-picker, all related code, all related state. The agents did the removal fast. I had to see the problem first.</p>
+
+      <h2 id="the-8-build-lock-screen-bug"><i data-lucide="bug" class="icon-steel"></i> The 8-Build Lock-Screen Bug</h2>
+
+      <p>The 8-build lock-screen bug was the longest single debugging arc.</p>
+
+      <p>Lock-screen media controls were wrong&mdash;inverted play/pause, stale scrubber, required two taps to respond. The apple-developer agent added explicit metadata fields, per-tick resync, and audio session activation on play. Every intervention was correct. Nothing changed.</p>
+
+      <p>An on-screen readback showed the now-playing info was right the whole time: paused, correct playback rate, correct elapsed time. The metadata was fine.</p>
+
+      <p>Eight device builds across the session. The actual culprit was the click sound effect.</p>
+
+      <p><code>HapticService</code> ran an audio engine for haptic clicks. That engine started on the first click and never stopped. A continuously running audio engine keeps the session active. iOS inferred &ldquo;audio is playing&rdquo; from the live session and overrode the explicit now-playing state&mdash;ignoring the correctly set values entirely.</p>
+
+      <p>The fix was a debounced engine stop: half a second after the last click, the engine pauses. Two lines of change.</p>
+
+      <div class="callout">
+        <p>The metadata was never the problem. The click sound effect was.</p>
+      </div>
+
+      <div class="insight-block">
+        <p>Eight builds to find that. The agents couldn't have found it any faster than I could&mdash;both of us were reasoning about the wrong layer. It took running out of metadata interventions to look somewhere else.</p>
+      </div>
+
+      <h2 id="a-missing-line"><i data-lucide="code" class="icon-steel"></i> A Missing Line</h2>
+
+      <p>The bug that lived longest wasn't the hardest to fix. It was a missing line.</p>
+
+      <p>The runtime Apple Music show/hide toggle added a new navigation node to the Settings menu. The feature was wired into the menu enum, the navigator, the preference store, and the view hierarchy. Technically complete.</p>
+
+      <p>Not included: <code>isNavigable()</code>.</p>
+
+      <p>The dispatch function guarded on whether a node had children or was listed as navigable. The new case wasn't listed. So center-tap highlighted the Settings row&mdash;that code path used a different gate&mdash;then silently dropped the action. No error, no log, and no feedback. The row looked interactive. It wasn't.</p>
+
+      <p>One line fixed it. The bug lived through the feature's initial build and into a subsequent review session before being caught.</p>
+
+      <div class="insight-block">
+        <p>Adding a new navigation node requires five coordinated edits in five different files. The agents made four of the five. I spent time on device wondering why a feature I'd watched get built wasn't working.</p>
+      </div>
+
+      <h2 id="the-person-with-the-phone"><i data-lucide="smartphone" class="icon-steel"></i> The Person With the Phone</h2>
+
+      <p>The human's job in this collaboration wasn't what I expected.</p>
+
+      <p>I thought I'd be the architect&mdash;designing the system, delegating the implementation. That part was true. But the more important role turned out to be the person with the phone.</p>
+
+      <p>The agents built exactly what they were told. The audits caught exactly what they were designed to catch. Neither of those is the same as knowing whether something feels right.</p>
+
+      <p>&ldquo;This looks cool&rdquo;&mdash;my verdict when the screen treatment finally read like glass&mdash;wasn't available from any audit. &ldquo;Bulky/clunky&rdquo;&mdash;my reaction to button chrome that was technically fine but felt wrong on the LCD&mdash;required a human looking at it on a 6.1-inch screen. The cramped Now Playing layout, the glow that read &ldquo;raised&rdquo; instead of &ldquo;recessed,&rdquo; and the mode-picker that passed every check and still shouldn't exist: all of these were on-device reactions, not spec derivations.</p>
+
+      <p>The design iteration loop was: rough spec &rarr; build &rarr; I react on device &rarr; next pass. The agents handled the spec and the build. I handled the react.</p>
+
+      <div class="callout callout-gold">
+        <p>That's a specific kind of contribution. Not architectural, exactly. More like: taste, judgment, and knowing when the output is correct but the brief was wrong. I went in expecting to be the architect. I ended up being the oracle.</p>
+      </div>
+
+      <hr>
+
+      <p>klikWheel shipped to the App Store&mdash;v1.2.0 at submission&mdash;and it's kept iterating since (v1.6.0, build 33 as of late June).</p>
+
+      <div class="closing">
+        <p><em>The team did most of the work. The work kept requiring me to be there.</em></p>
+      </div>
+
+      <div class="related-reading" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--card-border);">
+        <h3 style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 0.75rem;">Related reading</h3>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li><a href="five-months-of-building.html">Five Months of Building</a></li>
+          <li><a href="i-had-the-writing-i-didnt-have-the-production.html">I Had the Writing. I Didn't Have the Production.</a></li>
+          <li><a href="../ai-brain/ai-brain-ch6.html">When Your AI Improves Itself</a></li>
+        </ul>
+      </div>
+
+      <div class="page-nav">
+        <a href="training-our-replacements.html" class="page-nav-link page-nav-prev"><i data-lucide="arrow-left"></i> Special Order 937</a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
+</body>
+</html>
