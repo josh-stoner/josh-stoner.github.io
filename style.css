@@ -51,8 +51,8 @@
   /* Shadows */
   --shadow-1: 0 1px 4px rgba(0,0,0,0.06);
   --shadow-2: 0 8px 24px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
-  --shadow-orb-purple: radial-gradient(circle, rgba(124,58,237,0.10) 0%, transparent 70%);
-  --shadow-orb-sky:    radial-gradient(circle, rgba(74,144,217,0.08) 0%, transparent 70%);
+  --shadow-orb-purple: radial-gradient(circle, rgba(109,90,205,0.10) 0%, transparent 70%);
+  --shadow-orb-sky:    radial-gradient(circle, rgba(90,141,191,0.08) 0%, transparent 70%);
 
   /* Type families */
   --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
@@ -137,13 +137,13 @@ i[data-lucide].icon-muted { color: var(--text-faint); }
   margin-right: 0.6rem;
   flex-shrink: 0;
 }
-.card-icon.icon-purple { background: rgba(124,58,237,0.1); }
+.card-icon.icon-purple { background: rgba(109,90,205,0.1); }
 .card-icon.icon-lavender { background: rgba(145,131,209,0.12); }
-.card-icon.icon-sky { background: rgba(74,144,217,0.1); }
+.card-icon.icon-sky { background: rgba(90,141,191,0.1); }
 .card-icon.icon-steel { background: rgba(85,123,204,0.1); }
-.card-icon.icon-gold { background: rgba(212,160,23,0.1); }
-.card-icon.icon-green { background: rgba(52,168,83,0.1); }
-.card-icon.icon-coral { background: rgba(217,79,79,0.1); }
+.card-icon.icon-gold { background: rgba(184,148,31,0.1); }
+.card-icon.icon-green { background: rgba(74,153,96,0.1); }
+.card-icon.icon-coral { background: rgba(192,96,96,0.1); }
 .card-icon.icon-rose { background: rgba(196,112,136,0.1); }
 
 .card-icon i[data-lucide],
@@ -522,7 +522,7 @@ main {
   height: 500px;
   top: -40%;
   right: -20%;
-  background: radial-gradient(circle, rgba(124,58,237,0.10) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(109,90,205,0.10) 0%, transparent 70%);
   filter: blur(40px);
 }
 
@@ -531,7 +531,7 @@ main {
   height: 400px;
   bottom: -50%;
   left: -15%;
-  background: radial-gradient(circle, rgba(74,144,217,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(90,141,191,0.08) 0%, transparent 70%);
   filter: blur(50px);
 }
 
@@ -568,11 +568,11 @@ main {
 .stat-block:has(.icon-gold) .stat-number { color: var(--gold); }
 
 /* Tinted stat-icon backgrounds */
-.stat-icon.icon-purple { background: rgba(124,58,237,0.08); }
+.stat-icon.icon-purple { background: rgba(109,90,205,0.08); }
 .stat-icon.icon-lavender { background: rgba(145,131,209,0.1); }
-.stat-icon.icon-sky { background: rgba(74,144,217,0.08); }
-.stat-icon.icon-green { background: rgba(52,168,83,0.08); }
-.stat-icon.icon-gold { background: rgba(212,160,23,0.08); }
+.stat-icon.icon-sky { background: rgba(90,141,191,0.08); }
+.stat-icon.icon-green { background: rgba(74,153,96,0.08); }
+.stat-icon.icon-gold { background: rgba(184,148,31,0.08); }
 
 .stat-label {
   display: block;
@@ -676,16 +676,16 @@ a.card:hover {
   border: 1px solid rgba(0,0,0,0.06);
 }
 
-.tag--purple { color: var(--purple); background: rgba(124,58,237,0.08); border-color: rgba(124,58,237,0.12); }
+.tag--purple { color: var(--purple); background: rgba(109,90,205,0.08); border-color: rgba(109,90,205,0.12); }
 .tag--lavender { color: var(--lavender); background: rgba(145,131,209,0.1); border-color: rgba(145,131,209,0.15); }
-.tag--sky { color: var(--sky); background: rgba(74,144,217,0.08); border-color: rgba(74,144,217,0.12); }
+.tag--sky { color: var(--sky); background: rgba(90,141,191,0.08); border-color: rgba(90,141,191,0.12); }
 .tag--steel { color: var(--steel); background: rgba(85,123,204,0.08); border-color: rgba(85,123,204,0.12); }
-.tag--gold { color: var(--gold); background: rgba(212,160,23,0.08); border-color: rgba(212,160,23,0.12); }
-.tag--green { color: var(--green); background: rgba(52,168,83,0.08); border-color: rgba(52,168,83,0.12); }
-.tag--coral { color: var(--coral); background: rgba(217,79,79,0.08); border-color: rgba(217,79,79,0.12); }
+.tag--gold { color: var(--gold); background: rgba(184,148,31,0.08); border-color: rgba(184,148,31,0.12); }
+.tag--green { color: var(--green); background: rgba(74,153,96,0.08); border-color: rgba(74,153,96,0.12); }
+.tag--coral { color: var(--coral); background: rgba(192,96,96,0.08); border-color: rgba(192,96,96,0.12); }
 .tag--rose { color: var(--rose); background: rgba(196,112,136,0.08); border-color: rgba(196,112,136,0.12); }
-.tag--mauve { color: var(--coral); background: rgba(217,79,79,0.08); border-color: rgba(217,79,79,0.12); }
-.tag--blue { color: var(--sky); background: rgba(74,144,217,0.08); border-color: rgba(74,144,217,0.12); }
+.tag--mauve { color: var(--coral); background: rgba(192,96,96,0.08); border-color: rgba(192,96,96,0.12); }
+.tag--blue { color: var(--sky); background: rgba(90,141,191,0.08); border-color: rgba(90,141,191,0.12); }
 
 /* ---- Section Divider Labels ---- */
 
@@ -1148,25 +1148,25 @@ a.card:hover::before {
 }
 
 a.card:has(.icon-purple):hover {
-  box-shadow: 0 8px 24px rgba(124,58,237,0.1), 0 2px 8px rgba(124,58,237,0.05);
+  box-shadow: 0 8px 24px rgba(109,90,205,0.1), 0 2px 8px rgba(109,90,205,0.05);
 }
 a.card:has(.icon-lavender):hover {
-  box-shadow: 0 8px 24px rgba(124,58,237,0.1), 0 2px 8px rgba(124,58,237,0.05);
+  box-shadow: 0 8px 24px rgba(145,131,209,0.1), 0 2px 8px rgba(145,131,209,0.05);
 }
 a.card:has(.icon-sky):hover {
-  box-shadow: 0 8px 24px rgba(74,144,217,0.1), 0 2px 8px rgba(74,144,217,0.05);
+  box-shadow: 0 8px 24px rgba(90,141,191,0.1), 0 2px 8px rgba(90,141,191,0.05);
 }
 a.card:has(.icon-steel):hover {
   box-shadow: 0 8px 24px rgba(85,123,204,0.1), 0 2px 8px rgba(85,123,204,0.05);
 }
 a.card:has(.icon-gold):hover {
-  box-shadow: 0 8px 24px rgba(212,160,23,0.1), 0 2px 8px rgba(212,160,23,0.05);
+  box-shadow: 0 8px 24px rgba(184,148,31,0.1), 0 2px 8px rgba(184,148,31,0.05);
 }
 a.card:has(.icon-green):hover {
-  box-shadow: 0 8px 24px rgba(52,168,83,0.1), 0 2px 8px rgba(52,168,83,0.05);
+  box-shadow: 0 8px 24px rgba(74,153,96,0.1), 0 2px 8px rgba(74,153,96,0.05);
 }
 a.card:has(.icon-coral):hover {
-  box-shadow: 0 8px 24px rgba(217,79,79,0.1), 0 2px 8px rgba(217,79,79,0.05);
+  box-shadow: 0 8px 24px rgba(192,96,96,0.1), 0 2px 8px rgba(192,96,96,0.05);
 }
 a.card:has(.icon-rose):hover {
   box-shadow: 0 8px 24px rgba(196,112,136,0.1), 0 2px 8px rgba(196,112,136,0.05);
@@ -1250,7 +1250,7 @@ a.card:has(.icon-rose):hover {
   border-top-color: rgba(255,255,255,0.08);
 }
 
-[data-theme="dark"] blockquote {
+:where([data-theme="dark"]) blockquote {
   border-left-color: rgba(255,255,255,0.12);
   background: rgba(255,255,255,0.03);
 }

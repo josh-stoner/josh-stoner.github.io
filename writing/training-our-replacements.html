@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N6V09SW4DE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N6V09SW4DE');
+  </script>
+  <title>Special Order 937 &mdash; Joshua Stoner</title>
+  <meta name="description" content="Alien got the computers wrong. It got the org chart right. On sci-fi interfaces, AI labor, and the training loop nobody scripted.">
+  <link rel="canonical" href="https://josh-stoner.github.io/writing/training-our-replacements.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Special Order 937">
+  <meta property="og:description" content="Alien got the computers wrong. It got the org chart right. On sci-fi interfaces, AI labor, and the training loop nobody scripted.">
+  <meta property="og:url" content="https://josh-stoner.github.io/writing/training-our-replacements.html">
+  <meta property="og:site_name" content="Joshua Stoner">
+  <meta property="article:author" content="Joshua Stoner">
+  <meta property="article:published_time" content="2026-06-14">
+  <meta property="og:image" content="https://josh-stoner.github.io/assets/og/training-our-replacements.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Special Order 937">
+  <meta name="twitter:description" content="Alien got the computers wrong. It got the org chart right. On sci-fi interfaces, AI labor, and the training loop nobody scripted.">
+  <meta name="twitter:image" content="https://josh-stoner.github.io/assets/og/training-our-replacements.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Special Order 937",
+    "author": {"@type": "Person", "name": "Joshua Stoner", "url": "https://josh-stoner.github.io"},
+    "datePublished": "2026-06-14",
+    "publisher": {"@type": "Person", "name": "Joshua Stoner"},
+    "description": "Alien got the computers wrong. It got the org chart right. On sci-fi interfaces, AI labor, and the training loop nobody scripted."
+  }
+  </script>
+  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .article-header {
+      padding: 3rem 0 1.5rem;
+    }
+    .article-header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .article-meta {
+      font-size: 0.85rem;
+      color: var(--text-faint);
+      margin-bottom: 0.25rem;
+    }
+    .article-body h2 {
+      margin-top: 3rem;
+    }
+    .article-body h3 {
+      margin-top: 2rem;
+    }
+    .article-body p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .article-body ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .article-body li {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 0.5rem;
+    }
+    .article-body strong {
+      color: var(--text);
+    }
+    .article-body em {
+      color: var(--text-muted);
+    }
+    .insight-block {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--coral);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .insight-block p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .closing {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 2rem;
+      margin-top: 3rem;
+    }
+    [data-theme="dark"] .closing {
+      border-top-color: rgba(255,255,255,0.08);
+    }
+    .article-body blockquote { border-left-color: var(--coral); }
+
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--coral);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .callout p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .callout.callout-gold { border-left-color: var(--gold); }
+    .callout.callout-green { border-left-color: var(--green); }
+
+    .lede {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .audio-player {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .audio-player .audio-label {
+      font-size: 0.82rem;
+      color: var(--text-faint);
+      font-weight: 500;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .audio-player audio {
+      flex: 1;
+      height: 32px;
+      min-width: 0;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> Joshua Stoner</a>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <ul class="nav-links">
+        <li><a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <a href="../" class="back-link"><i data-lucide="arrow-left"></i> Back to Portfolio</a>
+
+    <div class="article-header">
+      <h1 class="color-coral">Special Order 937</h1>
+      <p class="article-meta">June 2026 &middot; Josh Stoner</p>
+    </div>
+
+    <article class="article-body">
+
+      <p class="lede">Alien got the computers wrong. It got the org chart right.</p>
+
+      <div class="audio-player">
+        <span class="audio-label">Listen</span>
+        <audio controls preload="none" src="../audio/training-our-replacements.mp3">Your browser does not support audio.</audio>
+      </div>
+
+      <hr>
+
+      <p>Every few weeks, another tech company announces layoffs and, in the same breath, more AI spend. The message is explicit enough: the work is changing, and the systems replacing it are being built from the work itself.</p>
+
+      <h2 id="special-order-937">Special Order 937</h2>
+
+      <p>Strip the xenomorph from Alien&mdash;and what remains is a labor story.</p>
+
+      <p>The Nostromo crew are blue-collar truckers. Contract workers hauling ore across space, haggling over bonus shares, doing the math on whether this run is worth their time. They're people trying to get paid.</p>
+
+      <p>The Company&mdash;Weyland-Yutani&mdash;knows about the alien before the crew does. MU-TH-UR, the ship's AI, is operating under Special Order 937: retrieve the organism, crew expendable. The AI isn't malfunctioning. It's executing exactly what it was designed to do&mdash;optimizing a corporate objective that its human cargo would never have agreed to if anyone had told them. The humans weren't deceived by the machine. They were deceived by the organization in control of it.</p>
+
+      <p>Ash, the ship's science officer, makes it concrete: a Company android, planted and briefed, executing the same order in &lsquo;human&rsquo; form. It protects the organism, withholds what it knows, turns on Ripley when she gets too close. Not malfunctioning. Aligned&mdash;just not to the people next to it.</p>
+
+      <div class="callout">
+        <p>That's the alignment problem. Forty-seven years ago. In a horror movie.</p>
+      </div>
+
+      <p>What Alien understood&mdash;what AI coverage often misses&mdash;is that the danger isn't the machine going rogue. It's the machine working exactly as intended, toward goals that aren't yours&mdash;or ours. MU-TH-UR wasn't out of control. The Company was in perfect control of MU-TH-UR. That's what made the crew expendable.</p>
+
+      <p>Alien's accuracy was never the terminal, or the space travel&mdash;the green CRTs, the lumbering ore-freighter, the faster-than-light towing chain.</p>
+
+      <p>The film understood something about the shape of the problem that most real-time AI coverage still misses: the risk is a corporation handing decision-making authority to a system whose objective quietly diverges from the people affected by it. The humans aren't surprised by the AI. They're surprised by what it knew that they didn't.</p>
+
+      <p>The update nobody scripted is the training loop. In 1979, the crew of the Nostromo was collateral damage. In 2026, we're providing the instructions ourselves&mdash;every annotated workflow, every labeled decision, every documented process becomes training data for the system learning to do the work. Less a conspiracy than a default.</p>
+
+      <p>The xenomorph was the horror. The Company was the story. Forty-seven years on, the franchise is still telling it.</p>
+
+      <hr>
+
+      <div class="closing">
+        <p><em>Josh Stoner is a Learning Architect and systems builder based in Brooklyn. He spent 10+ years building learning programs at scale and now builds AI memory systems, native macOS apps, and writes about what happens when you give AI actual context. His work lives at <a href="https://josh-stoner.github.io">josh-stoner.github.io</a>.</em></p>
+      </div>
+
+      <div class="related-reading" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--card-border);">
+        <h3 style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 0.75rem;">Related reading</h3>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li><a href="five-months-of-building.html">Five Months of Building</a></li>
+          <li><a href="the-learning-reset.html">The Learning Reset</a></li>
+          <li><a href="how-i-figure-out-what-i-think.html">How I Figure Out What I Think</a></li>
+        </ul>
+      </div>
+
+      <div class="page-nav">
+        <a href="how-i-figure-out-what-i-think.html" class="page-nav-link page-nav-prev"><i data-lucide="arrow-left"></i> How I Figure Out What I Think</a>
+        <a href="building-with-agents.html" class="page-nav-link page-nav-next">Who Built klikWheel <i data-lucide="arrow-right"></i></a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner"><i data-lucide="linkedin"></i> LinkedIn</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script src="../theme.js"></script>
+</body>
+</html>

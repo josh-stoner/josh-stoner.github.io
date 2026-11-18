@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://josh-stoner.github.io/</loc>
-    <lastmod>2026-04-20</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
@@ -127,7 +127,7 @@
   </url>
   <url>
     <loc>https://josh-stoner.github.io/writing/parallels-ep.html</loc>
-    <lastmod>2025-12-15</lastmod>
+    <lastmod>2026-05-15</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -154,5 +154,25 @@
     <loc>https://josh-stoner.github.io/klikwheel/privacy.html</loc>
     <lastmod>2026-06-14</lastmod>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://josh-stoner.github.io/writing/how-i-figure-out-what-i-think.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://josh-stoner.github.io/writing/i-had-the-writing-i-didnt-have-the-production.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://josh-stoner.github.io/writing/taste-gap-pt1.html</loc>
+    <lastmod>2026-05-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://josh-stoner.github.io/writing/training-our-replacements.html</loc>
+    <lastmod>2026-10-26</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>
