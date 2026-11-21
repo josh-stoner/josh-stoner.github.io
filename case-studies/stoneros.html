@@ -18,12 +18,12 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://josh-stoner.github.io/case-studies/stoneros.html">
   <meta name="twitter:card" content="summary">
-  <script>(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)})();</script>
+  <script>document.documentElement.setAttribute('data-theme',matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')</script>
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="stylesheet" href="../style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..600&family=JetBrains+Mono&display=swap">
   <style>
     blockquote { border-left-color: var(--rose); }
   
@@ -52,23 +52,24 @@
       min-width: 0;
     }
   </style>
+  <link rel="stylesheet" href="../assets/pages.css">
 </head>
 <body>
-  <nav>
-    <div class="nav-inner">
-      <a href="../" class="nav-name"><span class="nav-mark"><span class="nm-j">J</span><span class="nm-s">S</span></span> <span class="nav-text">Joshua Stoner</span></a>
-      <button class="theme-toggle" aria-label="Toggle theme">
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-      </button>
-      <ul class="nav-links">
-        <li><a href="https://linkedin.com/in/joshuastoner" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="site-wrap">
+    <header class="site-top">
+      <a class="wordmark" href="../">Joshua Stoner</a>
+      <nav aria-label="Site">
+        <a href="../#apps">Apps</a>
+        <a href="../writing/">Writing</a>
+        <a href="../work/" aria-current="page">Work</a>
+        <a href="../#music">Music</a>
+        <a href="https://www.linkedin.com/in/joshuastoner/">LinkedIn</a>
+      </nav>
+    </header>
+  </div>
 
   <main>
-    <a href="../" class="back-link"><i data-lucide="arrow-left"></i> Back to Portfolio</a>
+    <a href="../work/" class="back-link">← All work</a>
 
     <div class="case-header">
       <span class="case-icon icon-rose"><i data-lucide="brain"></i></span>
@@ -105,8 +106,8 @@
 
 
     <h2 id="about-this-project"><i data-lucide="info" class="icon-blue"></i> About This Project</h2>
-    <p>Every Claude session starts from zero. No memory of prior conversations, no knowledge of preferences, no continuity across sessions. For a daily AI user doing serious work&mdash;job search strategy, resume iteration, research synthesis&mdash;that&rsquo;s a meaningful friction point.</p>
-    <p>I built <strong>stonerOS</strong>: a production AI memory system that gives Claude persistent, evolving knowledge about me across every session. It&rsquo;s a git repository&mdash;3-layer memory architecture, 23 specialized agents across three model tiers, 21 automation hooks, pre-commit secret scanning, auto-push pipeline, and SessionStart staleness surfacing. I use it every day. No one asked me to build it.</p>
+    <p>Every Claude session starts from zero: no memory of earlier work, no preferences, no continuity. For anyone doing serious, multi-week work with AI, that&rsquo;s real friction.</p>
+    <p>I built <strong>stonerOS</strong>: a production AI memory system that gives Claude persistent, evolving knowledge about me across every session. It&rsquo;s a git repository&mdash;3-layer memory architecture, 20+ specialized agents across three model tiers, 21 automation hooks, pre-commit secret scanning, auto-push pipeline, and SessionStart staleness surfacing. I use it every day. No one asked me to build it.</p>
     <p>What makes it a portfolio piece is not that it was built&mdash;it&rsquo;s how it evolved. The system at version 2.25 looks materially different from v1.0. Real use generated real friction. Real friction generated real fixes. The system learns about me as I use it. I also got better at building systems by running one.</p>
     <blockquote>This demonstrates: AI systems architecture, multi-agent orchestration, automation pipeline design, iterative engineering judgment, and the kind of self-directed builder instinct that doesn&rsquo;t wait for a formal request to solve a real problem.</blockquote>
 
@@ -114,16 +115,16 @@
     <table>
       <tbody>
         <tr><td><strong>Role</strong></td><td>Self-initiated&mdash;designer, architect, engineer, user</td></tr>
-        <tr><td><strong>Start</strong></td><td>February 2026 (built post-layoff, October 2025)</td></tr>
+        <tr><td><strong>Start</strong></td><td>February 2026</td></tr>
         <tr><td><strong>Status</strong></td><td>Active production use&mdash;daily</td></tr>
         <tr><td><strong>Stack</strong></td><td>Claude API, Claude Code hooks, bash, git, Python</td></tr>
         <tr><td><strong>Repo</strong></td><td>Private GitHub</td></tr>
-        <tr><td><strong>Version</strong></td><td>2.25 as of April 2026</td></tr>
+        <tr><td><strong>Version</strong></td><td>2.25 (April 2026)</td></tr>
       </tbody>
     </table>
 
     <h2 id="the-problem"><i data-lucide="alert-triangle" class="icon-yellow"></i> The Problem</h2>
-    <p>Large language models have no persistent memory by default. Every new conversation is a blank slate. For casual use, that&rsquo;s fine. For someone running active job search operations, refining career strategy, managing a personal knowledge base, and iterating on complex documents over weeks&mdash;it&rsquo;s a significant gap.</p>
+    <p>Large language models have no persistent memory by default. Every new conversation is a blank slate. For casual use, that&rsquo;s fine. For someone running long projects, writing series and an app build across months, managing a personal knowledge base, and iterating on complex documents over weeks&mdash;it&rsquo;s a significant gap.</p>
     <p>Workarounds exist but each breaks down:</p>
     <ul>
       <li><strong>Pasting context into every session</strong>: scales poorly, hits token limits, costs time</li>
@@ -147,7 +148,7 @@ Session Router:
     partial       → preferences + corrections only
     deep-work     → full load + skill suggestions
   ↓
-Agent Layer (23 agents, 3 model tiers):
+Agent Layer (20+ agents, 3 model tiers):
   Haiku:   memory-search, session-writer, qa-validator, dedup-validator,
            context-router, skill-curator, session-analyst, voice-qa
   Sonnet:  archivist, talent, code-architect, research-analyst, docs-sync,
@@ -204,7 +205,7 @@ Automation Layer (21 hooks):
     <p>As learnings grew, semantic near-duplicates accumulated. Added a <code>dedup-validator</code> that checks every proposed entry against existing entries. Returns UNIQUE, SUPERSEDE, or DUPLICATE at a 60% conceptual overlap threshold.</p>
 
     <h3>Decision Engineering &amp; Adversarial Patterns (v2.6 &rarr; v2.7)</h3>
-    <p>As the system matured, single-agent outputs became the bottleneck&mdash;not in quality, but in blind spots. Built an <strong>adversarial debate pattern</strong>: Advocate and Critic agents spawn in parallel with opposing briefs, then a Judge synthesizes the strongest arguments into a verdict. Also added an <strong>ensemble pattern</strong> for career-critical outputs&mdash;two independent agents run the same task in parallel, and their divergences surface blind spots neither catches alone.</p>
+    <p>As the system matured, single-agent outputs became the bottleneck&mdash;not in quality, but in blind spots. Built an <strong>adversarial debate pattern</strong>: Advocate and Critic agents spawn in parallel with opposing briefs, then a Judge synthesizes the strongest arguments into a verdict. Also added an <strong>ensemble pattern</strong> for high-stakes outputs&mdash;two independent agents run the same task in parallel, and their divergences surface blind spots neither catches alone.</p>
     <p>Also: 8 product management frameworks as interactive commands, and a decision log that prevents re-evaluating the same tools and patterns across sessions.</p>
 
     <h3>Autonomous Operations &amp; Platform Expansion (v2.7 &rarr; v2.8)</h3>
@@ -214,7 +215,7 @@ Automation Layer (21 hooks):
     <h3>Autonomous Deprecation &amp; SessionStart Staleness (v2.8 &rarr; v2.25, DEC-017)</h3>
     <p>The launchd cron approach was <strong>deprecated</strong> after a 4-week minimum viable autonomy (MVA) trial. Root cause: macOS TCC blocks launchd-spawned bash from reading the iCloud-resident repo (&ldquo;Operation not permitted&rdquo;), and <code>StartCalendarInterval</code> silently skips when the Mac is asleep at trigger time. Zero cron-fired runs ever completed&mdash;the execution log entries had all been manual terminal invocations. The autonomous channel was off for 16+ days before I noticed, with zero felt pain.</p>
     <p>Replaced with <strong>SessionStart staleness surfacing</strong>: every prompt injects a one-line status (pipeline count, inbox unprocessed, days-since-weekly-review) via a <code>UserPromptSubmit</code> hook. Overdue items appear at the top of every session; I decide whether to act. No headless execution, no TCC battles, no silent failures. The lesson&mdash;that a shipped feature can be invisibly broken and the underlying need can evaporate&mdash;is itself part of what the system is for.</p>
-    <p>Also in this stretch: 23 agents total (added <code>voice-qa</code>, <code>privacy-auditor</code>, <code>claude-code-expert</code>, <code>apple-designer</code>, <code>apple-developer</code>, <code>design-qa</code>, <code>collectibles-expert</code>); the full AI Brain writing series (Chapters 0&ndash;4) published with per-chapter wayfinding and TTS narration; <code>/build-html</code> and <code>/build-audio</code> sister skills for publishing pipeline automation; and the migration from launchd-driven automation to session-driven awareness.</p>
+    <p>Also in this stretch: 20+ agents total (added <code>voice-qa</code>, <code>privacy-auditor</code>, <code>claude-code-expert</code>, <code>apple-designer</code>, <code>apple-developer</code>, <code>design-qa</code>, <code>collectibles-expert</code>); the full AI Brain writing series (Chapters 0&ndash;4) published with per-chapter wayfinding and TTS narration; <code>/build-html</code> and <code>/build-audio</code> sister skills for publishing pipeline automation; and the migration from launchd-driven automation to session-driven awareness.</p>
 
     <h2 id="what-makes-it-a-learning-system"><i data-lucide="graduation-cap" class="icon-rose"></i> What Makes It a Learning System</h2>
     <table>
@@ -233,11 +234,11 @@ Automation Layer (21 hooks):
     <h2 id="evidence-of-production-use"><i data-lucide="check-square" class="icon-green"></i> Evidence of Production Use</h2>
     <ul>
       <li><strong>Git log</strong>: Session-end commits timestamped to every working session since February 2026</li>
-      <li><strong>Agent invocations</strong>: 23 agents across 3 model tiers actively routing tasks</li>
+      <li><strong>Agent invocations</strong>: 20+ agents across 3 model tiers actively routing tasks</li>
       <li><strong>21 automation hooks</strong>: spanning session lifecycle (clock-anchor, context-injector, end-session, post-compact, pre-compact), tool guardrails (pre-tooluse-guardrail, idle-detection, auto-approve, validate-agent), subagent instrumentation (subagent-start, subagent-stop), and domain automations (board-autoadd, daily-brief, log-changes, parry-scan, rhythm-check, stale-html-check, statusline, giggles-state, giggles-session-end, verify-skill-output)&mdash;zero manual intervention</li>
       <li><strong>SessionStart staleness surfacing</strong>: Overdue pipeline/inbox/review items injected into every prompt (replaced 7 launchd cron jobs retired 2026-04-06 after a 4-week MVA proved TCC blocked them; see DEC-017)</li>
       <li><strong>39 slash commands</strong>: From <code>/weekly-review</code> to <code>/build-audio</code>&mdash;pre-loaded workflows that expand into full operations</li>
-      <li><strong>11 active skill modules</strong>: Covering job search, finance, security, AI research, portfolio management, and more</li>
+      <li><strong>11 active skill modules</strong>: Covering finance, security, AI research, portfolio management, and more</li>
       <li><strong>Correction layer active</strong>: Known baseline errors documented and overridden</li>
       <li><strong>BUG-002 resolved</strong>: Write race fix has held across hundreds of sessions</li>
       <li><strong>Token reduction confirmed</strong>: transactional sessions skip memory load entirely; light-use days average under $2 vs. deep-work days at $10&ndash;$34 (ccusage data, Feb&ndash;Mar 2026)</li>
@@ -266,8 +267,11 @@ Automation Layer (21 hooks):
     </div>
   </main>
 
-  <footer>
-    <p>Joshua Stoner &bull; Brooklyn, NY &bull; <a href="https://linkedin.com/in/joshuastoner" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a></p>
+  <footer class="site-foot">
+    <div class="site-wrap">
+      <a href="../">← Home</a>
+      <span>© 2026 Joshua Stoner</span>
+    </div>
   </footer>
   <script defer src="../lucide.min.js"></script>
   <script defer src="../theme.js"></script>

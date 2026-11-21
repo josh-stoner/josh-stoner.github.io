@@ -1,32 +1,15 @@
-// Theme toggle + scroll reveal
+// Light/dark from the device setting + scroll reveal
 (function () {
-  // ---- Theme Toggle ----
-  function getPreferred() {
-    var saved = localStorage.getItem('theme');
-    if (saved) return saved;
-    return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
+  // ---- Light or dark follows the device setting ----
+  var mq = matchMedia('(prefers-color-scheme: dark)');
+  function apply() { document.documentElement.setAttribute('data-theme', mq.matches ? 'dark' : 'light'); }
+  apply();
+  if (mq.addEventListener) mq.addEventListener('change', apply);
+  try { localStorage.removeItem('theme'); } catch (e) {}
 
-  function apply(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }
-
-  // Apply on load (backup — inline script in <head> handles FOUC)
-  apply(getPreferred());
-
-  // Toggle button
   document.addEventListener('DOMContentLoaded', function () {
     // Initialize Lucide icons (self-hosted, loaded with defer)
     if (window.lucide) lucide.createIcons();
-
-    var btn = document.querySelector('.theme-toggle');
-    if (btn) {
-      btn.addEventListener('click', function () {
-        var current = document.documentElement.getAttribute('data-theme');
-        apply(current === 'dark' ? 'light' : 'dark');
-      });
-    }
 
     // ---- Nav scroll: show name on scroll ----
     var navEl = document.querySelector('nav');
